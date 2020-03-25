@@ -6,3 +6,4 @@ Thumbs.db
 # Ignore Development tool files.
 .idea
 node_modules
+files
