@@ -3,8 +3,12 @@
     @include cachet();
     background: transparent;
     border: 0;
-    color: $gray-300;
+    color: white;
     font-size: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: 0px;
+    text-transform: uppercase;
   }
 }
 
