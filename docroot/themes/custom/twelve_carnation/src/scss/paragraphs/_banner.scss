@@ -1,0 +1,145 @@
+.banner {
+  background-color: $cyan;
+  position: relative;
+
+  // main background image
+  .banner-bg,
+  .banner--medium .banner-cta {
+    min-height: 70px;
+
+    @include media-breakpoint-up(sm) {
+      min-height: 225px;
+    }
+
+    @include media-breakpoint-up(md) {
+      min-height: 350px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    span:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: black;
+      content: "";
+      opacity: .3;
+      z-index: 1;
+    }
+  }
+
+  .banner-cta {
+    position: relative;
+
+    // start overlaying images
+    @include media-breakpoint-up(lg) {
+      padding-top: 140px;
+    }
+
+    .banner-cta-content {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  // headings
+  h1 {
+    letter-spacing: -2px;
+  }
+
+  // Color variations.
+  &--dark-blue { background-color: $primary-darker; }
+  &--dark-green { background-color: $teal; }
+  &--green { background-color: $cyan; }
+  &--grey { background-color: $gray-400; }
+  &--purple { background-color: $purple; }
+
+  &-title {
+    font-size: 32px;
+    line-height: 36px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+
+    @include media-breakpoint-up(md) {
+      font-size: 40px;
+      line-height: 44px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: 50px;
+      line-height: 55px;
+    }
+  }
+
+  &-description {
+    font-size: 16px;
+    line-height: 1.22;
+
+    @include media-breakpoint-up(md) {
+      /*updated*/
+      font-size: 30px;
+      line-height: 30px;
+      letter-spacing: -0.75px;
+      margin-bottom: 30px !important;;
+    }
+  }
+
+  /*updated*/
+  .btn {
+    background: white 0% 0% no-repeat padding-box;
+    border: 3px solid #92278f;
+    border-radius: 5px;
+    opacity: 1;
+    letter-spacing: 0;
+    color: #92278f;
+  }
+
+  // heading only (blog nodes)
+  &--small {
+    min-height: 120px;
+  }
+
+  // heading + subheading (program nodes)
+  &--medium {
+    min-height: 120px;
+
+    @include media-breakpoint-up(lg) {
+      min-height: 350px;
+    }
+  }
+
+  // large cta banners (homepage)
+  &--large {
+    @include media-breakpoint-up(lg) {
+      min-height: 700px;
+
+      .banner-cta {
+        min-height: 700px;
+      }
+    }
+  }
+}
+
+.paragraph--type--banner .banner-title {
+  /*updated*/
+  font-size: 60px;
+  line-height: 60px;
+  letter-spacing: -3px;
+  margin-bottom: 15px !important;;
+}
+
+.wrapper-field-bottom-content {
+  .banner-description {
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
