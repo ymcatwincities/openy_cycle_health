@@ -65,7 +65,7 @@ class SettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     /* @var $config \Drupal\Core\Config\Config */
-    $config = \Drupal::service('config.factory')->getEditable('twelve_app.settings');
+    $config = $this->configFactory->getEditable('twelve_app.settings');
     $config->set('node_id', $form_state->getValue('node_id'))->save();
     parent::submitForm($form, $form_state);
   }

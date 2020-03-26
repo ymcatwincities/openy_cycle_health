@@ -56,11 +56,6 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
   protected $routeMatch;
 
   /**
-   * @var \Drupal\Core\Entity\EntityTypeManager
-   */
-  protected $entityTypeManager;
-
-  /**
    * {@inheritdoc}
    */
   public function __construct(
@@ -70,15 +65,13 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
     ConfigFactoryInterface $config_factory,
     QueryFactory $entity_query,
     AliasManagerInterface $alias_manager,
-    RouteMatchInterface $route_match,
-    EntityTypeManager $entity_type_manager
+    RouteMatchInterface $route_match
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->configFactory = $config_factory;
     $this->entityQuery = $entity_query;
     $this->aliasManager = $alias_manager;
     $this->routeMatch = $route_match;
-    $this->entityTypeManager = $entity_type_manager;
   }
 
   /**
@@ -93,7 +86,6 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
       $container->get('entity.query'),
       $container->get('path.alias_manager'),
       $container->get('current_route_match'),
-      $container->get('entity_type.manager')
     );
   }
 
@@ -108,9 +100,7 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
       ->get('node_id');
 
     if (!empty($node_id)) {
-      $landing_page = $this->entityTypeManager
-        ->getStorage('node')
-        ->load($node_id);
+      $landing_page = Node::load($node_id);
 
       foreach ($landing_page->field_content as $paragraph_ref) {
         /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
