@@ -1,12 +1,10 @@
 <template>
 
-  <div class="activity-finder__step_content container">
-    <div v-for="item in options" v-on:click="checkExcercise">
-      <div class="today-progress-item">
-        <input v-model="checked" type="checkbox" eclass="" name="today-progress-checkboxes">
-        <div class="title">{{ item.label }}</div>
-        <div class="description">{{ item.description }}</div>
-      </div>
+  <div class="container">
+    <div class="today-progress-item" v-for="item in options" v-on:click="checkExcercise">
+      <input v-model="checked" type="checkbox" class="checkbox" name="today-progress-checkboxes">
+      <div class="title">{{ item.label }}</div>
+      <div class="description" v-html="item.description"></div>
     </div>
   </div>
 
@@ -32,33 +30,31 @@
     components: {
       NameForm
     },
-    data: function() {
+    data: function () {
       return {
         checked: []
       };
     },
-    created: function() {
+    created: function () {
       if (this.default != undefined) {
         this.checked = this.default.split(',');
       }
     },
-    computed: {
+    computed: {},
+    methods: {
+      checkExcercise: function () {
+        console.log(this.$parent.userData);
 
-    },
-  methods: {
-    checkExcercise: function() {
-      console.log(this.$parent.userData);
-
-      if (!this.$parent.userData.name) {
-        this.$modal.show(NameForm);
+        if (!this.$parent.userData.name) {
+          this.$modal.show(NameForm);
+        }
       }
-    }
-  },
+    },
     watch: {
-      checked: function(values) {
+      checked: function (values) {
         let returnValues = values;
         if (typeof values == 'string') {
-          returnValues = [ values ];
+          returnValues = [values];
         }
         // Some of the values could be empty. Clean them up.
         var cleanValues = [];
@@ -72,7 +68,7 @@
     },
     mounted: function () {
 
-      jQuery(function() {
+      jQuery(function () {
         jQuery('*[data-mh="openy-card__item-label"]').matchHeight();
       });
     }
