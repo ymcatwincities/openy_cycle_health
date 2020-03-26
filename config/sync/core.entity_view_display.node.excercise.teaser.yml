@@ -6,28 +6,26 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.excercise.body
     - field.field.node.excercise.field_image
+    - image.style.large
     - node.type.excercise
   module:
-    - text
+    - media
     - user
 id: node.excercise.teaser
 targetEntityType: node
 bundle: excercise
 mode: teaser
 content:
-  body:
+  field_image:
+    type: media_thumbnail
+    weight: 0
+    region: content
     label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
     settings:
-      trim_length: 600
+      image_style: large
+      image_link: ''
     third_party_settings: {  }
-    region: content
-  links:
-    weight: 100
-    settings: {  }
-    third_party_settings: {  }
-    region: content
 hidden:
-  field_image: true
+  body: true
   langcode: true
+  links: true

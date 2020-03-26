@@ -1,5 +1,6 @@
 <template>
  <main-filter :options="excercisesOptions"></main-filter>
+
 </template>
 
 <script>
@@ -11,12 +12,18 @@
         data () {
             return {
                 checkedExcercises: [],
+                userData: {
+                 'name': '',
+                },
                 isStepNextDisabled: true
             };
         },
         components: {
             Spinner,
             MainFilter
+        },
+        mounted() {
+          if (localStorage.name) this.userData.name = localStorage.name;
         },
         computed: {
             excercisesOptions: function() {
