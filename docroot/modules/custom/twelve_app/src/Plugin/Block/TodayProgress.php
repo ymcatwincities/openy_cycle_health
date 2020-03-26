@@ -6,16 +6,18 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Entity\Query\QueryFactory;
+use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Path\AliasManagerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\openy_activity_finder\OpenyActivityFinderSolrBackend;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\paragraphs\Entity\Paragraph;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Provides a 'Activity Finder' block.
+ * Provides a 'Today Progress' block.
  *
  * @Block(
  *   id = "today_progress",
@@ -54,6 +56,11 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
   protected $routeMatch;
 
   /**
+   * @var \Drupal\Core\Entity\EntityTypeManager
+   */
+  protected $entityTypeManager;
+
+  /**
    * {@inheritdoc}
    */
   public function __construct(
@@ -63,13 +70,15 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
     ConfigFactoryInterface $config_factory,
     QueryFactory $entity_query,
     AliasManagerInterface $alias_manager,
-    RouteMatchInterface $route_match
+    RouteMatchInterface $route_match,
+    EntityTypeManager $entity_type_manager
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->configFactory = $config_factory;
     $this->entityQuery = $entity_query;
     $this->aliasManager = $alias_manager;
     $this->routeMatch = $route_match;
+    $this->entityTypeManager = $entity_type_manager;
   }
 
   /**
@@ -83,7 +92,8 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
       $container->get('config.factory'),
       $container->get('entity.query'),
       $container->get('path.alias_manager'),
-      $container->get('current_route_match')
+      $container->get('current_route_match'),
+      $container->get('entity_type.manager')
     );
   }
 
@@ -91,19 +101,37 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
    * {@inheritdoc}
    */
   public function build() {
+    $exercises_array = [];
+
+    $node_id = $this->configFactory
+      ->get('twelve_app.settings')
+      ->get('node_id');
+
+    if (!empty($node_id)) {
+      $landing_page = $this->entityTypeManager
+        ->getStorage('node')
+        ->load($node_id);
+
+      foreach ($landing_page->field_content as $paragraph_ref) {
+        /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+        $paragraph = $paragraph_ref->entity;
+
+        if ($paragraph->bundle() == '12_bursts_container') {
+          foreach ($paragraph->field_excercises as $excercise_reference) {
+            /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $reference */
+            $exercise_entity = $excercise_reference->entity;
+            $exercises_array[$exercise_entity->id()] = [
+              'label' => $exercise_entity->title->value,
+              'description' => $exercise_entity->body->value
+            ];
+          }
+        }
+      }
+    }
 
     return [
       '#theme' => 'today_progress',
-      '#excercises' => [
-        1 => [
-          'label' => 'Push ups',
-          'description' => 'Description here'
-        ],
-        2 => [
-          'label' => 'Jumps',
-          'description' => 'Do jumps all day until you die'
-        ]
-      ],
+      '#excercises' => $exercises_array,
 
       '#cache' => [
         'tags' => $this->getCacheTags(),
