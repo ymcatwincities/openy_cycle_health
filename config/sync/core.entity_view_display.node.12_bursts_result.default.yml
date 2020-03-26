@@ -26,10 +26,9 @@ content:
     weight: 103
     label: above
     settings:
-      thousand_separator: ''
-      prefix_suffix: true
+      link: true
     third_party_settings: {  }
-    type: number_integer
+    type: entity_reference_label
     region: content
   field_when:
     weight: 102

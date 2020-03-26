@@ -35,9 +35,12 @@ content:
   field_finished_items:
     weight: 123
     settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: number
+    type: entity_reference_autocomplete
     region: content
   field_when:
     weight: 122
