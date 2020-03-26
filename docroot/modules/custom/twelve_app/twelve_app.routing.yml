@@ -4,4 +4,4 @@ twelve_app.settings:
     _form: '\Drupal\twelve_app\Form\SettingsForm'
     _title: 'Twelve App'
   requirements:
-    _permission: 'administer'
+    _permission: 'administer content'
