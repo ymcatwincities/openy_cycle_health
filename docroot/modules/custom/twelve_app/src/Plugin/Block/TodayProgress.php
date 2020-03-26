@@ -85,7 +85,7 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
       $container->get('config.factory'),
       $container->get('entity.query'),
       $container->get('path.alias_manager'),
-      $container->get('current_route_match'),
+      $container->get('current_route_match')
     );
   }
 
