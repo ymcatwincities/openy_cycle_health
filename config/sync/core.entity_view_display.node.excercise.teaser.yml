@@ -6,7 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.excercise.body
     - field.field.node.excercise.field_image
-    - image.style.large
+    - image.style.exer
     - node.type.excercise
   module:
     - media
@@ -22,8 +22,8 @@ content:
     region: content
     label: hidden
     settings:
-      image_style: large
-      image_link: ''
+      image_style: exer
+      image_link: content
     third_party_settings: {  }
 hidden:
   body: true
