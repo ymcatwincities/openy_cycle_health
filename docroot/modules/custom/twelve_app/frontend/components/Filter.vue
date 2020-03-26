@@ -50,7 +50,9 @@
       console.log(this.$parent.userData);
 
       if (!this.$parent.userData.name) {
-        this.$modal.show(NameForm);
+        this.$modal.show(NameForm, null, {
+          name: 'twelve-modal'
+        });
       }
     }
   },
