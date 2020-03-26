@@ -47,13 +47,13 @@ class SettingsForm extends ConfigFormBase {
     $form['node_id'] = [
       '#type' => 'entity_autocomplete',
       '#target_type' => 'node',
-      '#title' => t('Exercise'),
+      '#title' => t('Current day landing page'),
       '#default_value' => $page,
       '#size' => 40,
       '#selection_settings' => [
         'target_bundles' => ['landing_page'],
       ],
-      '#description' => t('Search by exercise title'),
+      '#description' => t('Search by title'),
     ];
 
     return parent::buildForm($form, $form_state);
