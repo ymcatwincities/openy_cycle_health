@@ -42,7 +42,7 @@ class SettingsForm extends ConfigFormBase {
     $page = NULL;
     if (!empty($node_id)) {
       /** @var Node $page */
-      $page = \Drupal::entityTypeManager()->getStorage('node')->load($node_id);
+      $page = Node::load($node_id);
     }
 
     $form['node_id'] = [
