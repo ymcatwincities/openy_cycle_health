@@ -1,0 +1,39 @@
+uuid: 076d3b02-02a6-426d-b9f2-045ede59fc35
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.excercise.body
+    - field.field.node.excercise.field_image
+    - node.type.excercise
+  module:
+    - text
+    - user
+id: node.excercise.default
+targetEntityType: node
+bundle: excercise
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_image:
+    type: entity_reference_entity_view
+    weight: 102
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

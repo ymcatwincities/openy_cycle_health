@@ -6,4 +6,8 @@ Thumbs.db
 # Ignore Development tool files.
 .idea
 node_modules
-files
+
+/docroot/sites/default/prod.settings.php
+/docroot/sites/*/files
+/docroot/sites/*/private
+files/*

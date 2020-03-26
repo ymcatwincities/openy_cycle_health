@@ -1,0 +1,23 @@
+uuid: a00086bf-b7ca-4306-a7f6-0822e7efde06
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_finished_items
+    - node.type.12_bursts_result
+id: node.12_bursts_result.field_finished_items
+field_name: field_finished_items
+entity_type: node
+bundle: 12_bursts_result
+label: 'Finished items'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
