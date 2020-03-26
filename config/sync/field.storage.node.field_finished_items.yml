@@ -1,4 +1,4 @@
-uuid: 76482926-07cc-4327-ba9f-fab64aeec7d7
+uuid: 204bdddb-39ac-45ec-a5b4-8284b95ccbb0
 langcode: en
 status: true
 dependencies:
@@ -7,13 +7,12 @@ dependencies:
 id: node.field_finished_items
 field_name: field_finished_items
 entity_type: node
-type: integer
+type: entity_reference
 settings:
-  unsigned: false
-  size: normal
+  target_type: node
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

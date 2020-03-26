@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function twelve_app_theme() {
+  return [
+    'today_progress' => [
+      'variables' => [
+        'excercises' => [],
+
+      ],
+    ],
+  ];
+}
