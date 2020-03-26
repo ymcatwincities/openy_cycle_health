@@ -1,16 +1,20 @@
 <template>
 
   <div class="activity-finder__step_content container">
-    <div v-for="item in options">
+    <div v-for="item in options" v-on:click="checkExcercise">
       <div class="today-progress-item">
+        <input v-model="checked" type="checkbox" eclass="" name="today-progress-checkboxes">
         <div class="title">{{ item.label }}</div>
         <div class="description">{{ item.description }}</div>
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
+
+  import NameForm from '../components/NameForm.vue';
   // We expect structure of Options:
   // {
   //    314: {
@@ -25,6 +29,9 @@
     props: [
       'options'
     ],
+    components: {
+      NameForm
+    },
     data: function() {
       return {
         checked: []
@@ -39,7 +46,13 @@
 
     },
   methods: {
+    checkExcercise: function() {
+      console.log(this.$parent.userData);
 
+      if (!this.$parent.userData.name) {
+        this.$modal.show(NameForm);
+      }
+    }
   },
     watch: {
       checked: function(values) {
@@ -58,7 +71,7 @@
       }
     },
     mounted: function () {
-      console.log(this.options);
+
       jQuery(function() {
         jQuery('*[data-mh="openy-card__item-label"]').matchHeight();
       });
