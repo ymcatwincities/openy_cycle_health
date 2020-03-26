@@ -2,7 +2,10 @@
 
   <div class="activity-finder__step_content container">
     <div v-for="item in options">
-      <div class="title">{{ item.label }}</div>
+      <div class="today-progress-item">
+        <div class="title">{{ item.label }}</div>
+        <div class="description">{{ item.description }}</div>
+      </div>
     </div>
   </div>
 </template>
