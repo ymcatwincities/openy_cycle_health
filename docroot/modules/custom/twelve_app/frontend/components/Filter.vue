@@ -4,7 +4,7 @@
           v-on:toggle-introduced="toggleUserIntroduced"
   ></name-form>
   <div class="container" v-bind:class="{'visually-disabled': !userIntroduced}">
-    <div class="today-progress-item" v-for="item in options" v-on:click="checkExcercise">
+    <div class="today-progress-item" v-for="item in options" v-on:click="checkExcercise(item.id)" :class="{'checked': checked.includes(item.id)}">
       <input v-model="checked" type="checkbox" class="checkbox" :id="'twelve_' + item.id" name="today-progress-checkboxes">
       <div class="title">{{ item.label }}</div>
       <div class="description" v-html="item.description"></div>
@@ -50,11 +50,13 @@
     },
   methods: {
 
-    checkExcercise: function(event) {
-
-      if (!localStorage.twelveUserName) {
-
-      
+    checkExcercise: function(id) {
+      if (localStorage.twelveUserName !== '') {
+        if (this.checked.indexOf(id) === -1) {
+          this.checked.push(id);
+        } else {
+          this.checked.splice(this.checked.indexOf(id), 1);
+        }
       }
     },
 
@@ -80,10 +82,8 @@
       }
     },
     mounted: function () {
-      localStorage.twelveUserName = '';
-      jQuery(function() {
-        jQuery('*[data-mh="openy-card__item-label"]').matchHeight();
-      });
+      console.log(localStorage.twelveUserName);
+
     }
   }
 </script>
