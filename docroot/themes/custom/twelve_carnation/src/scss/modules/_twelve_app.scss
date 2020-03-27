@@ -49,4 +49,41 @@
       color: $gray-900;
     }
   }
+
+  .today-progress-item.checked {
+    background-color: $dark-blue;
+    .title, .description {
+      color: white;
+    }
+  }
+}
+
+#twelve_day_progress_app .visually-disabled {
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(5px);
+}
+
+#twelve_day_progress_app {
+  .introduce-form {
+    height: 30px;
+
+    .user-login-container {
+      position: absolute;
+      left: 50%;
+      margin-top: 30px;
+      margin-left: -140px;
+      background: white;
+
+      border: 3px solid $dark-blue;
+      border-radius: 5px;
+      padding: 20px;
+
+      z-index: 1;
+      //box-shadow: 0 0 10px 5px $dark-blue;
+
+    }
+  }
 }
