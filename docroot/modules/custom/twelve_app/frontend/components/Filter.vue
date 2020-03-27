@@ -1,13 +1,15 @@
 <template>
-
-  <div class="activity-finder__step_content container">
-    <div v-for="item in options" v-on:click="checkExcercise">
-      <div class="today-progress-item">
-        <input v-model="checked" type="checkbox" eclass="" name="today-progress-checkboxes">
-        <div class="title">{{ item.label }}</div>
-        <div class="description">{{ item.description }}</div>
-      </div>
+  <div>
+  <name-form
+          v-on:toggle-introduced="toggleUserIntroduced"
+  ></name-form>
+  <div class="container" v-bind:class="{'visually-disabled': !userIntroduced}">
+    <div class="today-progress-item" v-for="item in options" v-on:click="checkExcercise">
+      <input v-model="checked" type="checkbox" class="checkbox" :id="'twelve_' + item.id" name="today-progress-checkboxes">
+      <div class="title">{{ item.label }}</div>
+      <div class="description" v-html="item.description"></div>
     </div>
+  </div>
   </div>
 
 </template>
@@ -34,7 +36,8 @@
     },
     data: function() {
       return {
-        checked: []
+        checked: [],
+        userIntroduced: false,
       };
     },
     created: function() {
@@ -46,15 +49,19 @@
 
     },
   methods: {
-    checkExcercise: function() {
-      console.log(this.$parent.userData);
 
-      if (!this.$parent.userData.name) {
-        this.$modal.show(NameForm, null, {
-          name: 'twelve-modal'
-        });
+    checkExcercise: function(event) {
+
+      if (!localStorage.twelveUserName) {
+
+      
       }
+    },
+
+    toggleUserIntroduced: function() {
+      this.userIntroduced = !this.userIntroduced;
     }
+
   },
     watch: {
       checked: function(values) {
@@ -73,7 +80,7 @@
       }
     },
     mounted: function () {
-
+      localStorage.twelveUserName = '';
       jQuery(function() {
         jQuery('*[data-mh="openy-card__item-label"]').matchHeight();
       });

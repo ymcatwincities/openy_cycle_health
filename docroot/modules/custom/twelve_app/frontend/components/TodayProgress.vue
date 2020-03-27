@@ -1,6 +1,8 @@
 <template>
+ <div>
  <main-filter :options="excercisesOptions"></main-filter>
-
+ <notifications group="twelve_app"></notifications>
+ </div>
 </template>
 
 <script>
@@ -33,10 +35,11 @@
                     var item = this.excercises[i];
                     options[i] = {
                         'label': item.label,
-                        'description': item.description
+                        'description': item.description,
+                        'id': i,
                     };
                 }
-
+                console.log(options);
                 return options;
             }
         }
