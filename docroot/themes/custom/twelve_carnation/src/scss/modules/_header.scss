@@ -90,6 +90,12 @@
 
 // top menu (blue > mobile / black > desktop+ )
 .page-head__top-menu {
+  height: 50px;
+
+  .col-md {
+    align-self: center;
+  }
+
   background-color: rgba($primary, .8);
 
   @include media-breakpoint-up(lg) {
