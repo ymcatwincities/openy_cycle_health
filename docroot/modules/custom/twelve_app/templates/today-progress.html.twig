@@ -1,7 +1,6 @@
 {{ attach_library('twelve_app/day_progress') }}
 
 <div id="twelve_day_progress_app">
-  <h1>Today progress app</h1>
   <today-progress
     :excercises='{{ excercises|json_encode }}'
   ></today-progress>
