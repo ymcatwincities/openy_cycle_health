@@ -4,6 +4,11 @@
   }
 }
 
+#twelve_day_progress_app {
+  padding-top: 20px;
+}
+
+
 #twelve_day_progress_app .container {
   display: grid;
   grid-gap: 30px 15px;
@@ -63,7 +68,7 @@
   -moz-filter: blur(2px);
   -o-filter: blur(2px);
   -ms-filter: blur(2px);
-  filter: blur(5px);
+  filter: blur(2px);
 }
 
 #twelve_day_progress_app {
