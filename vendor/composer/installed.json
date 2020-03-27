@@ -6549,6 +6549,67 @@
         }
     },
     {
+        "name": "drupal/restui",
+        "version": "1.17.0",
+        "version_normalized": "1.17.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupalcode.org/project/restui.git",
+            "reference": "8.x-1.17"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://ftp.drupal.org/files/projects/restui-8.x-1.17.zip",
+            "reference": "8.x-1.17",
+            "shasum": "2fff1b74759d5e490884d002330ad04d1bf241ba"
+        },
+        "require": {
+            "drupal/core": "^8.2.0"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-1.x": "1.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-1.17",
+                "datestamp": "1557845581",
+                "security-coverage": {
+                    "status": "covered",
+                    "message": "Covered by Drupal's security advisory policy"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "-enzo-",
+                "homepage": "https://www.drupal.org/user/294937"
+            },
+            {
+                "name": "clemens.tolboom",
+                "homepage": "https://www.drupal.org/user/125814"
+            },
+            {
+                "name": "juampynr",
+                "homepage": "https://www.drupal.org/user/682736"
+            },
+            {
+                "name": "klausi",
+                "homepage": "https://www.drupal.org/user/262198"
+            }
+        ],
+        "description": "Provides a user interface to manage REST resources.",
+        "homepage": "https://www.drupal.org/project/restui",
+        "support": {
+            "source": "https://git.drupalcode.org/project/restui"
+        }
+    },
+    {
         "name": "drupal/scheduler",
         "version": "1.0.0",
         "version_normalized": "1.0.0.0",
@@ -9578,9 +9639,9 @@
         },
         "dist": {
             "type": "zip",
-            "url": "http://openy.cibox.tools:4680/dist/psr/log/psr-log-446d54b4cb6bf489fc9d75f55843658e6f25d801-zip-062ba4.zip",
+            "url": "https://api.github.com/repos/php-fig/log/zipball/446d54b4cb6bf489fc9d75f55843658e6f25d801",
             "reference": "446d54b4cb6bf489fc9d75f55843658e6f25d801",
-            "shasum": "235d9fe64c7d0bc175704bdb192e40d63d40dd20"
+            "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
@@ -10716,9 +10777,9 @@
         },
         "dist": {
             "type": "zip",
-            "url": "http://openy.cibox.tools:4680/dist/symfony/polyfill-ctype/symfony-polyfill-ctype-fbdeaec0df06cf3d51c93de80c7eb76e271f5a38-zip-a47cd8.zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/fbdeaec0df06cf3d51c93de80c7eb76e271f5a38",
             "reference": "fbdeaec0df06cf3d51c93de80c7eb76e271f5a38",
-            "shasum": "597bf89fc782d5e922362b92bd6460e4cf973745"
+            "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
@@ -10776,9 +10837,9 @@
         },
         "dist": {
             "type": "zip",
-            "url": "http://openy.cibox.tools:4680/dist/symfony/polyfill-iconv/symfony-polyfill-iconv-926832ce51059bb58211b7b2080a88e0c3b5328e-zip-f50d46.zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/926832ce51059bb58211b7b2080a88e0c3b5328e",
             "reference": "926832ce51059bb58211b7b2080a88e0c3b5328e",
-            "shasum": "881a51e8ff694a3ba7aea5d6f8f6d0192378ccbf"
+            "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
@@ -10837,9 +10898,9 @@
         },
         "dist": {
             "type": "zip",
-            "url": "http://openy.cibox.tools:4680/dist/symfony/polyfill-intl-idn/symfony-polyfill-intl-idn-6842f1a39cf7d580655688069a03dd7cd83d244a-zip-58df2f.zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/6842f1a39cf7d580655688069a03dd7cd83d244a",
             "reference": "6842f1a39cf7d580655688069a03dd7cd83d244a",
-            "shasum": "e9ccf9af524007444bc9bd74ef03221297534f27"
+            "shasum": ""
         },
         "require": {
             "php": ">=5.3.3",
@@ -10901,9 +10962,9 @@
         },
         "dist": {
             "type": "zip",
-            "url": "http://openy.cibox.tools:4680/dist/symfony/polyfill-mbstring/symfony-polyfill-mbstring-34094cfa9abe1f0f14f48f490772db7a775559f2-zip-d33011.zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/34094cfa9abe1f0f14f48f490772db7a775559f2",
             "reference": "34094cfa9abe1f0f14f48f490772db7a775559f2",
-            "shasum": "f58e3b016a0560dfaf0b6e4b0486494198724fb2"
+            "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
@@ -10962,9 +11023,9 @@
         },
         "dist": {
             "type": "zip",
-            "url": "http://openy.cibox.tools:4680/dist/symfony/polyfill-php56/symfony-polyfill-php56-16ec91cb06998b609501b55b7177b7d7c02badb3-zip-aec7e1.zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/16ec91cb06998b609501b55b7177b7d7c02badb3",
             "reference": "16ec91cb06998b609501b55b7177b7d7c02badb3",
-            "shasum": "9b8393b4acb92cc3c8b79ecb6b38e7fced02b213"
+            "shasum": ""
         },
         "require": {
             "php": ">=5.3.3",
@@ -11020,9 +11081,9 @@
         },
         "dist": {
             "type": "zip",
-            "url": "http://openy.cibox.tools:4680/dist/symfony/polyfill-php70/symfony-polyfill-php70-419c4940024c30ccc033650373a1fe13890d3255-zip-2a24b8.zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/419c4940024c30ccc033650373a1fe13890d3255",
             "reference": "419c4940024c30ccc033650373a1fe13890d3255",
-            "shasum": "fd4c39451197a6098053d6604c903860977b0719"
+            "shasum": ""
         },
         "require": {
             "paragonie/random_compat": "~1.0|~2.0|~9.99",
@@ -11081,9 +11142,9 @@
         },
         "dist": {
             "type": "zip",
-            "url": "http://openy.cibox.tools:4680/dist/symfony/polyfill-php72/symfony-polyfill-php72-46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf-zip-16e1bd.zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf",
             "reference": "46ecacf4751dd0dc81e4f6bf01dbf9da1dc1dadf",
-            "shasum": "dc2d6dc61aeda30f6a6062c0d133c7da32ae2bc4"
+            "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
@@ -11138,9 +11199,9 @@
         },
         "dist": {
             "type": "zip",
-            "url": "http://openy.cibox.tools:4680/dist/symfony/polyfill-util/symfony-polyfill-util-ba3cfcea6d0192cae46c62041f61cbb704b526d3-zip-877ee9.zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/ba3cfcea6d0192cae46c62041f61cbb704b526d3",
             "reference": "ba3cfcea6d0192cae46c62041f61cbb704b526d3",
-            "shasum": "45c155067e34068c87eb3a712c937585eb6a67e6"
+            "shasum": ""
         },
         "require": {
             "php": ">=5.3.3"
