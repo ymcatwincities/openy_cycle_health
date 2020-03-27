@@ -13,7 +13,7 @@ openy_carnation_camp_section_logo: {  }
 openy_carnation_camp_favicon: {  }
 schemas:
   openy_carnation: 8000
-display_search_form: 1
+display_search_form: 0
 search_query_key: keys
 search_page_alias: search/node
 colored_logo: {  }
