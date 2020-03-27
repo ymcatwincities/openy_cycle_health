@@ -3,7 +3,7 @@
   color: $white;
   font-size: 18px;
   padding-bottom: 0;
-  margin-top: 45px;
+  //margin-top: 45px; this makes gap between footer and content_bottom banner
   border-top: 0 solid;
 
   ul {
@@ -147,6 +147,12 @@
             }
           }
         }
+      }
+    }
+
+    .footer-copy-links {
+      @include media-breakpoint-down(sm) {
+        padding-top: 10px;
       }
     }
   }

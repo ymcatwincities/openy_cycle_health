@@ -19,10 +19,6 @@
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @include media-breakpoint-up(xl) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .today-progress-item {
     display: grid;
     grid-template-columns: 50px auto;

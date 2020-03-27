@@ -44,12 +44,12 @@
   }
 
   .layout-container .top-navs {
-    background-color: rgba($primary, .8);
+    background-color: $dark-blue;
     transition: background-color 0.5s ease;
 
     &.affix {
       /*updated*/
-      background-color: rgba($primary, .8);
+      background-color: $dark-blue;
     }
 
     &.affix.menu-in,
