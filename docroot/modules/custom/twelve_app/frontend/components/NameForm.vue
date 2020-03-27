@@ -19,8 +19,8 @@
     export default {
         data () {
             return {
-                username: '',
-                userIntroduced: false,
+                username: (localStorage.twelveUserName === '' ? '' : localStorage.twelveUserName),
+                userIntroduced: (localStorage.twelveUserName === '' ? false : true),
             };
         },
         methods: {
