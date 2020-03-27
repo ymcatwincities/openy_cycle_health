@@ -7,9 +7,11 @@
       </div>
 
       <div class="user-login-container" v-if="!userIntroduced">
-        <div class="login-message">Please, enter your name:</div>
-        <input type="text" name="username" v-model="username" class="username">
-        <input type="button" v-if="username !==''" v-on:click="setLogin" value="Go">
+        <div class="window">
+          <div class="login-message">Please, enter your name:</div>
+          <input type="text" name="username" v-model="username" class="username">
+          <input type="button" v-if="username !==''" v-on:click="setLogin" value="Go">
+        </div>
       </div>
 
     </div>
