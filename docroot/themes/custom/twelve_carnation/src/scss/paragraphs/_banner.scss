@@ -2,6 +2,12 @@
   background-color: $cyan;
   position: relative;
 
+  //margin-top: -76px;
+  //
+  //@include media-breakpoint-up(sm) {
+  //  min-height: 225px;
+  //}
+
   // main background image
   .banner-bg,
   .banner--medium .banner-cta {

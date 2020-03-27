@@ -1,6 +1,13 @@
+.paragraph--type--today-progress-app {
+  .label-for-field-block {
+    display: none;
+  }
+}
+
 #twelve_day_progress_app .container {
   display: grid;
   grid-gap: 30px 15px;
+  margin-top: 45px;
 
   grid-template-columns: repeat(1, 1fr);
 
@@ -9,10 +16,6 @@
   }
 
   @include media-breakpoint-up(lg) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @include media-breakpoint-up(xl) {
     grid-template-columns: repeat(3, 1fr);
   }
 
