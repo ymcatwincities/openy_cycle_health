@@ -1,6 +1,9 @@
 <template>
  <div>
- <main-filter :options="excercisesOptions"></main-filter>
+ <main-filter
+         :options="excercisesOptions"
+         v-on:filter-update="senData"
+ ></main-filter>
  <notifications group="twelve_app"></notifications>
  </div>
 </template>
@@ -10,7 +13,7 @@
     import MainFilter from '../components/Filter.vue'
 
     export default {
-        props: ['excercises'],
+        props: ['excercises', 'current_nid'],
         data () {
             return {
                 checkedExcercises: [],
@@ -25,7 +28,10 @@
             MainFilter
         },
         mounted() {
-          if (localStorage.name) this.userData.name = localStorage.name;
+          console.log(this.current_nid);
+        },
+        methods: {
+
         },
         computed: {
             excercisesOptions: function() {
@@ -39,7 +45,6 @@
                         'id': i,
                     };
                 }
-                console.log(options);
                 return options;
             }
         }

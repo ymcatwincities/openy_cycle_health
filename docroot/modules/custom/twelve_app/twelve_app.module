@@ -8,7 +8,7 @@ function twelve_app_theme() {
     'today_progress' => [
       'variables' => [
         'excercises' => [],
-
+        'current_nid' => '',
       ],
     ],
   ];

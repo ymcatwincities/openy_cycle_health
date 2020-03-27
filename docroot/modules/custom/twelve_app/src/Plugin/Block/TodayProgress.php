@@ -118,18 +118,21 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
           }
         }
       }
+
+      return [
+        '#theme' => 'today_progress',
+        '#excercises' => $exercises_array,
+        '#current_nid' => $node_id,
+        '#cache' => [
+          'tags' => $this->getCacheTags(),
+          'contexts' => $this->getCacheContexts(),
+          'max-age' => $this->getCacheMaxAge(),
+        ],
+      ];
+
+    } else {
+      return [];
     }
-
-    return [
-      '#theme' => 'today_progress',
-      '#excercises' => $exercises_array,
-
-      '#cache' => [
-        'tags' => $this->getCacheTags(),
-        'contexts' => $this->getCacheContexts(),
-        'max-age' => $this->getCacheMaxAge(),
-      ],
-    ];
   }
 
   /**
