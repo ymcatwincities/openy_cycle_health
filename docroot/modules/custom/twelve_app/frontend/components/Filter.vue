@@ -1,11 +1,15 @@
 <template>
-
-  <div class="container">
+  <div>
+  <name-form
+          v-on:toggle-introduced="toggleUserIntroduced"
+  ></name-form>
+  <div class="container" v-bind:class="{'visually-disabled': !userIntroduced}">
     <div class="today-progress-item" v-for="item in options" v-on:click="checkExcercise">
-      <input v-model="checked" type="checkbox" class="checkbox" name="today-progress-checkboxes">
+      <input v-model="checked" type="checkbox" class="checkbox" :id="'twelve_' + item.id" name="today-progress-checkboxes">
       <div class="title">{{ item.label }}</div>
       <div class="description" v-html="item.description"></div>
     </div>
+  </div>
   </div>
 
 </template>
@@ -30,31 +34,40 @@
     components: {
       NameForm
     },
-    data: function () {
+    data: function() {
       return {
-        checked: []
+        checked: [],
+        userIntroduced: false,
       };
     },
-    created: function () {
+    created: function() {
       if (this.default != undefined) {
         this.checked = this.default.split(',');
       }
     },
-    computed: {},
-    methods: {
-      checkExcercise: function () {
-        console.log(this.$parent.userData);
+    computed: {
 
-        if (!this.$parent.userData.name) {
-          this.$modal.show(NameForm);
-        }
+    },
+  methods: {
+
+    checkExcercise: function(event) {
+
+      if (!localStorage.twelveUserName) {
+
+      
       }
     },
+
+    toggleUserIntroduced: function() {
+      this.userIntroduced = !this.userIntroduced;
+    }
+
+  },
     watch: {
-      checked: function (values) {
+      checked: function(values) {
         let returnValues = values;
         if (typeof values == 'string') {
-          returnValues = [values];
+          returnValues = [ values ];
         }
         // Some of the values could be empty. Clean them up.
         var cleanValues = [];
@@ -67,8 +80,8 @@
       }
     },
     mounted: function () {
-
-      jQuery(function () {
+      localStorage.twelveUserName = '';
+      jQuery(function() {
         jQuery('*[data-mh="openy-card__item-label"]').matchHeight();
       });
     }
