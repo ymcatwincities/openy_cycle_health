@@ -19,11 +19,24 @@
 
     border: 2px solid $dark-blue;
     border-radius: 5px;
+    cursor: pointer;
 
     .checkbox {
       margin-top: 16px;
       grid-row-end: span 2;
       justify-self: center;
+      cursor: pointer;
+      height: 22px;
+      width: 23px;
+      border-radius: 5px;
+      padding: 1px 1px 2px 2px;
+      border: 2px solid gray;
+      box-shadow: 0px 0px 2px 0px;
+      color: bisque;
+    }
+
+    .checkbox.fa-check {
+      border: 2px solid lighten($dark-blue, 2);
     }
 
     .title {

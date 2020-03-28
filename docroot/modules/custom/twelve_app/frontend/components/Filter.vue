@@ -5,8 +5,8 @@
     ></name-form>
 
     <div class="excercise-container" v-for="item in options" v-if="currentExcercise === item.id">
-      <div class="exercise-content" v-on:click="closeExerciseModal">
-        <div class="close-button">X</div>
+      <div class="exercise-content">
+        <div class="close-button" v-if="!timerStart" v-on:click="closeExerciseModal">X</div>
         <countdown
           :time="30 * 1000"
           @start="triggerTimerStart(item.id)"
@@ -25,10 +25,15 @@
     </div>
 
     <div class="container" v-bind:class="{'visually-disabled': userIntroduced || exerciseModalVisible}">
-      <div class="today-progress-item" v-for="item in options" v-on:click="checkExcercise(item.id)"
-           :class="{'checked': checked.includes(item.id)}">
-        <input v-model="checked" type="checkbox" class="checkbox" :id="'twelve_' + item.id"
-               name="today-progress-checkboxes">
+      <div class="today-progress-item"
+           v-for="item in options"
+           v-on:click="checkExcercise(item.id)"
+           :class="{'checked': checked.includes(item.id)}"
+      >
+        <div
+          v-bind:class="{'fa-check': checked.includes(item.id)}"
+          class="checkbox fa"
+        ></div>
         <div class="title">{{ item.label }}</div>
         <div class="description" v-html="item.description"></div>
       </div>
@@ -81,7 +86,10 @@
           this.checked.push(id);
           this.$emit('data-update', this.checked);
           this.beep();
-          
+          this.timerStart = false;
+
+          this.closeExerciseModal();
+
           this.$notify({
             group: 'twelve_app',
             title: 'Hooray, you have finished your excercise!',
@@ -102,6 +110,7 @@
           this.currentExcercise = id;
           this.exerciseModalVisible = true;
         }
+        return false;
       },
 
       toggleUserIntroduced: function () {
