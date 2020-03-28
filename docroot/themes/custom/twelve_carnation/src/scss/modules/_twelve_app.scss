@@ -1,3 +1,7 @@
+@import 'twelve_app/exercise_list';
+@import 'twelve_app/introduce_form';
+@import 'twelve_app/exercise_timer';
+
 .paragraph--type--today-progress-app {
   .label-for-field-block {
     display: none;
@@ -8,61 +12,6 @@
   padding-top: 20px;
 }
 
-
-#twelve_day_progress_app .container {
-  display: grid;
-  grid-gap: 30px 15px;
-  margin-top: 45px;
-
-  grid-template-columns: repeat(1, 1fr);
-
-  @include media-breakpoint-up(sm) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include media-breakpoint-up(lg) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .today-progress-item {
-    display: grid;
-    grid-template-columns: 50px auto;
-
-    border: 2px solid $dark-blue;
-    border-radius: 5px;
-
-    .checkbox {
-      margin-top: 16px;
-      grid-row-end: span 2;
-      justify-self: center;
-    }
-
-    .title {
-      padding: 10px 10px 0 0;
-
-      font-size: 14px;
-      line-height: 21px;
-      font-weight: bold;
-      color: $dark-blue
-    }
-
-    .description {
-      padding: 10px 10px 10px 0;
-
-      font-size: 12px;
-      line-height: 18px;
-      color: $gray-900;
-    }
-  }
-
-  .today-progress-item.checked {
-    background-color: $dark-blue;
-    .title, .description {
-      color: white;
-    }
-  }
-}
-
 #twelve_day_progress_app .visually-disabled {
   -webkit-filter: blur(2px);
   -moz-filter: blur(2px);
@@ -71,29 +20,4 @@
   filter: blur(2px);
 }
 
-#twelve_day_progress_app {
-  .introduce-form {
-    height: 30px;
 
-    .user-login-container {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-
-      .window {
-        position: absolute;
-        left: 50%;
-        margin-top: 30px;
-        margin-left: -140px;
-        background: white;
-
-        border: 3px solid $dark-blue;
-        border-radius: 5px;
-        padding: 20px;
-
-        z-index: 1;
-      }
-    }
-  }
-}
