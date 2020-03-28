@@ -81,7 +81,7 @@
           this.checked.push(id);
           this.$emit('data-update', this.checked);
           this.beep();
-          s
+          
           this.$notify({
             group: 'twelve_app',
             title: 'Hooray, you have finished your excercise!',
