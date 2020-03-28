@@ -106,11 +106,13 @@
       },
 
       checkExcercise: function (id) {
+        if (this.checked.includes(id)) {
+          return;
+        }
         if (localStorage.twelveUserName !== '') {
           this.currentExcercise = id;
           this.exerciseModalVisible = true;
         }
-        return false;
       },
 
       toggleUserIntroduced: function () {
