@@ -81,6 +81,7 @@
           this.checked.push(id);
           this.$emit('data-update', this.checked);
           this.beep();
+          this.timerStart = false;
 
           this.closeExerciseModal();
 
