@@ -30,8 +30,10 @@
            v-on:click="checkExcercise(item.id)"
            :class="{'checked': checked.includes(item.id)}"
       >
-        <input v-model="checked[item.id]" type="checkbox" class="checkbox" :id="'twelve_' + item.id"
-               name="today-progress-checkboxes">
+        <div
+          v-bind:class="{'fa-check': checked.includes(item.id)}"
+          class="checkbox fa"
+        ></div>
         <div class="title">{{ item.label }}</div>
         <div class="description" v-html="item.description"></div>
       </div>
@@ -108,6 +110,7 @@
           this.currentExcercise = id;
           this.exerciseModalVisible = true;
         }
+        return false;
       },
 
       toggleUserIntroduced: function () {
