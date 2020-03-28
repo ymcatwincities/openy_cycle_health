@@ -6,7 +6,7 @@
 
     <div class="excercise-container" v-for="item in options" v-if="currentExcercise === item.id">
       <div class="exercise-content">
-        <div class="close-button" v-on:click="closeExerciseModal">X</div>
+        <div class="close-button" v-if="!timerStart" v-on:click="closeExerciseModal">X</div>
         <countdown
           :time="30 * 1000"
           @start="triggerTimerStart(item.id)"
@@ -81,7 +81,9 @@
           this.checked.push(id);
           this.$emit('data-update', this.checked);
           this.beep();
-          
+
+          this.closeExerciseModal();
+
           this.$notify({
             group: 'twelve_app',
             title: 'Hooray, you have finished your excercise!',
