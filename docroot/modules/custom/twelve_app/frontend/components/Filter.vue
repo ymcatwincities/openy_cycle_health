@@ -108,7 +108,7 @@
         this.userIntroduced = !this.userIntroduced;
       },
 
-      closeExerciseModal() {
+      closeExerciseModal: function() {
         this.currentExcercise = 0;
         this.exerciseModalVisible = false;
       },
