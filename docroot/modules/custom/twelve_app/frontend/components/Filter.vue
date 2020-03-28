@@ -25,9 +25,12 @@
     </div>
 
     <div class="container" v-bind:class="{'visually-disabled': userIntroduced || exerciseModalVisible}">
-      <div class="today-progress-item" v-for="item in options" v-on:click="checkExcercise(item.id)"
-           :class="{'checked': checked.includes(item.id)}">
-        <input v-model="checked" type="checkbox" class="checkbox" :id="'twelve_' + item.id"
+      <div class="today-progress-item"
+           v-for="item in options"
+           v-on:click="checkExcercise(item.id)"
+           :class="{'checked': checked.includes(item.id)}"
+      >
+        <input v-model="checked[item.id]" type="checkbox" class="checkbox" :id="'twelve_' + item.id"
                name="today-progress-checkboxes">
         <div class="title">{{ item.label }}</div>
         <div class="description" v-html="item.description"></div>
