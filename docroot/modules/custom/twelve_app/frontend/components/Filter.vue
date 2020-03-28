@@ -5,8 +5,8 @@
     ></name-form>
 
     <div class="excercise-container" v-for="item in options" v-if="currentExcercise === item.id">
-      <div class="exercise-content" v-on:click="closeExerciseModal">
-        <div class="close-button">X</div>
+      <div class="exercise-content">
+        <div class="close-button" v-on:click="closeExerciseModal">X</div>
         <countdown
           :time="30 * 1000"
           @start="triggerTimerStart(item.id)"
