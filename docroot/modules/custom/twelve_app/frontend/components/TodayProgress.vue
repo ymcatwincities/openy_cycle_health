@@ -2,7 +2,7 @@
  <div>
  <main-filter
          :options="excercisesOptions"
-         v-on:filter-update="senData"
+         v-on:data-update="sendData"
  ></main-filter>
  <notifications group="twelve_app"></notifications>
  </div>
@@ -31,6 +31,10 @@
           console.log(this.current_nid);
         },
         methods: {
+         
+          sendData: function (checked) {
+            //@TODO add axios request to drupal.
+          }
 
         },
         computed: {
