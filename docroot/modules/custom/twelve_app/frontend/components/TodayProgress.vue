@@ -2,6 +2,7 @@
  <div>
  <main-filter
          :options="excercisesOptions"
+         :current_nid="current_nid"
          v-on:data-update="sendData"
  ></main-filter>
  <notifications group="twelve_app"></notifications>
@@ -31,7 +32,7 @@
           console.log(this.current_nid);
         },
         methods: {
-         
+
           sendData: function (checked) {
             //@TODO add axios request to drupal.
           }
