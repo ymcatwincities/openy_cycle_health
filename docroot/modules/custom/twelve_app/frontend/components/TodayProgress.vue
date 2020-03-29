@@ -1,44 +1,82 @@
 <template>
- <div>
- <main-filter
-         :options="excercisesOptions"
-         v-on:data-update="sendData"
- ></main-filter>
- <notifications group="twelve_app"></notifications>
- </div>
+    <div>
+        <main-filter
+                :options="excercisesOptions"
+                v-on:data-update="sendData"
+        ></main-filter>
+        <notifications group="twelve_app"></notifications>
+    </div>
 </template>
 
 <script>
+
     import Spinner from '../components/Spinner.vue'
     import MainFilter from '../components/Filter.vue'
 
+    const axios = require('axios');
+
     export default {
         props: ['excercises', 'current_nid'],
-        data () {
+        data() {
             return {
                 checkedExcercises: [],
                 userData: {
-                 'name': '',
+                    'name': '',
                 },
                 isStepNextDisabled: true
             };
         },
         components: {
             Spinner,
-            MainFilter
+            MainFilter,
         },
         mounted() {
-          console.log(this.current_nid);
+            console.log(this.current_nid);
         },
         methods: {
-         
-          sendData: function (checked) {
-            //@TODO add axios request to drupal.
-          }
+
+            sendData: function (checked) {
+
+                let result_url = window.location.origin + '/node';
+                let request_type = 'post';
+
+                let data = {
+                    'type': '12_bursts_result',
+                    'title': {
+                        'value': localStorage.twelveUserName
+                    },
+                    'field_when': {
+                        'value': this.current_nid,
+                    },
+                    'field_finished_items': checked
+                };
+
+                if (localStorage.current_result_nid) {
+                    result_url += '/' + localStorage.current_result_nid;
+                    request_type = 'patch';
+                }
+
+                axios({
+                    method: request_type,
+                    url: result_url,
+                    data: data,
+                    auth: {
+                        username: 'admin',
+                        password: 'admin'
+                    }
+                }).
+                  then(function (response) {
+                    localStorage.current_result_nid = response.data.nid[0].value;
+
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+            }
 
         },
         computed: {
-            excercisesOptions: function() {
+            excercisesOptions: function () {
                 var options = {};
                 console.log(this.excercises);
                 for (var i in this.excercises) {
@@ -46,6 +84,7 @@
                     options[i] = {
                         'label': item.label,
                         'description': item.description,
+                        'timer': item.timer,
                         'id': i,
                     };
                 }
