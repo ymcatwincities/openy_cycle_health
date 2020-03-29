@@ -6,7 +6,6 @@ dependencies:
     - basic_auth
     - node
     - serialization
-    - user
 id: entity.node
 plugin_id: 'entity:node'
 granularity: resource
@@ -18,4 +17,3 @@ configuration:
     - json
   authentication:
     - basic_auth
-    - cookie
