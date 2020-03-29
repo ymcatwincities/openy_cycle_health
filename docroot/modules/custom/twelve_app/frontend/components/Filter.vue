@@ -9,7 +9,7 @@
       <div class="exercise-content">
         <div class="close-button" v-if="!timerStart" v-on:click="closeExerciseModal">X</div>
         <countdown
-          :time="3 * 1000"
+          :time="30 * 1000"
           @start="triggerTimerStart(item.id)"
           @end="triggerTimerEnd(item.id)"
           :emit-events="true"

@@ -1,17 +1,15 @@
 #twelve_day_progress_app .excercise-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 100;
 
   .exercise-content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-top: 30px;
-    margin-left: -140px;
     background: white;
 
     border: 3px solid $dark-blue;
