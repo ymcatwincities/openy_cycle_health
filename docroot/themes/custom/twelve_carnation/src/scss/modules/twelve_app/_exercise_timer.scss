@@ -16,6 +16,8 @@
     border-radius: 5px;
     padding: 20px;
 
+    min-width: 250px;
+
     z-index: 1;
 
     .close-button {
@@ -28,6 +30,21 @@
       background-color: #000;
       line-height: 4px;
       cursor: pointer;
+    }
+
+    .title {
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: bold;
+      color: $dark-blue
+    }
+
+    .description {
+      padding: 10px 10px 10px 0;
+
+      font-size: 12px;
+      line-height: 18px;
+      color: $gray-900;
     }
   }
 }
