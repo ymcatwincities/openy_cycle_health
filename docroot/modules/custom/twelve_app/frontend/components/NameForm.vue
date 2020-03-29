@@ -52,6 +52,10 @@
       },
 
       setLogin: function () {
+        if (!this.username) {
+          e.preventDefault();
+          return;
+        }
         localStorage.twelveUserName = this.username;
         this.userIntroduced = true;
         this.$emit('hide-modal');
