@@ -76,7 +76,7 @@
       };
     },
     created: function () {
-      console.log('created');
+     
 
       let cache = this.loadTodayProgressFromLocalStorage();
       for (let index = 0; index < cache.length; index++) {
