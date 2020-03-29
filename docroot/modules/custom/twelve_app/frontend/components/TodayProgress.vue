@@ -61,6 +61,7 @@
                     method: request_type,
                     url: result_url,
                     data: data,
+                    //@TODO create real user here
                     auth: {
                         username: 'admin',
                         password: 'admin'
@@ -70,7 +71,7 @@
                     localStorage.current_result_nid = response.data.nid[0].value;
 
                 }).catch(function (error) {
-                    console.log(error);
+                    //@TODO Add error handler
                 });
 
             }
@@ -90,6 +91,7 @@
                         'id': i,
                     };
                 }
+
                 return options;
             }
         }
