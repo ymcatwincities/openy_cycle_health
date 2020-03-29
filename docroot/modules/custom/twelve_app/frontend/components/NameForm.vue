@@ -21,7 +21,6 @@
   export default {
     data() {
       let name = this.loadNameFromCache();
-      console.log(this.isName(name));
       return {
         userIntroduced: this.isName(name),
         username: name,

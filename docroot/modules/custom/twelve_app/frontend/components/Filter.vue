@@ -108,7 +108,7 @@
       },
 
       triggerTimerStart: function (id) {
-        console.log(id);
+        // console.log(id);
       },
 
       checkExcercise: function (id) {

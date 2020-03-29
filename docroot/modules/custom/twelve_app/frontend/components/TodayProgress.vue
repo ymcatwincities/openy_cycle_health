@@ -29,7 +29,7 @@
             MainFilter
         },
         mounted() {
-          console.log(this.current_nid);
+          // console.log(this.current_nid);
         },
         methods: {
 
@@ -41,7 +41,7 @@
         computed: {
             excercisesOptions: function() {
                 var options = {};
-                console.log(this.excercises);
+                // console.log(this.excercises);
                 for (var i in this.excercises) {
                     var item = this.excercises[i];
                     options[i] = {
