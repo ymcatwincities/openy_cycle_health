@@ -1,7 +1,8 @@
 <template>
   <div>
     <name-form
-      v-on:toggle-introduced="toggleUserIntroduced"
+      v-on:show-modal="nameModalVisible = true"
+      v-on:hide-modal="nameModalVisible = false"
     ></name-form>
 
     <div class="excercise-container" v-for="item in options" v-if="currentExcercise === item.id">
@@ -24,7 +25,7 @@
       </div>
     </div>
 
-    <div class="container" v-bind:class="{'visually-disabled': userIntroduced || exerciseModalVisible}">
+    <div class="container" v-bind:class="{'visually-disabled': nameModalVisible || exerciseModalVisible}">
       <div class="today-progress-item"
            v-for="item in options"
            v-on:click="checkExcercise(item.id)"
@@ -68,10 +69,10 @@
     data: function () {
       return {
         checked: [],
-        userIntroduced: false,
         currentExcercise: 0,
         timerStart: false,
-        exerciseModalVisible: false
+        exerciseModalVisible: false,
+        nameModalVisible: false
       };
     },
     created: function () {
@@ -114,14 +115,9 @@
         if (this.checked.includes(id)) {
           return;
         }
-        if (localStorage.twelveUserName !== '') {
-          this.currentExcercise = id;
-          this.exerciseModalVisible = true;
-        }
-      },
 
-      toggleUserIntroduced: function () {
-        this.userIntroduced = !this.userIntroduced;
+        this.currentExcercise = id;
+        this.exerciseModalVisible = true;
       },
 
       closeExerciseModal: function() {
