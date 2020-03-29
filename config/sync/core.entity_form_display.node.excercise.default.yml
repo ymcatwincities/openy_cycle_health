@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.excercise.body
     - field.field.node.excercise.field_image
+    - field.field.node.excercise.field_timer
     - node.type.excercise
   module:
     - media_library
@@ -38,6 +39,13 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+    region: content
+  field_timer:
+    weight: 123
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
     region: content
   langcode:
     type: language_select

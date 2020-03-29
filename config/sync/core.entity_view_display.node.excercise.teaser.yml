@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.excercise.body
     - field.field.node.excercise.field_image
+    - field.field.node.excercise.field_timer
     - image.style.exer
     - node.type.excercise
   module:
@@ -27,5 +28,6 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
+  field_timer: true
   langcode: true
   links: true

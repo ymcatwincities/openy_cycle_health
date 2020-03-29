@@ -11,7 +11,7 @@
         <div class="title">{{ item.label }}</div>
         <div class="description" v-html="item.description"></div>
         <countdown
-          :time="30 * 1000"
+          :time="item.timer * 1000"
           @start="triggerTimerStart(item.id)"
           @end="triggerTimerEnd(item.id)"
           :emit-events="true"
@@ -22,7 +22,6 @@
           >{{ props.minutes }} minutes, {{ props.seconds }} seconds.
           </template>
         </countdown>
-
         <button v-if="!timerStart" @click="timerStart = true">Start</button>
       </div>
     </div>

@@ -113,7 +113,8 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
             $exercise_entity = $excercise_reference->entity;
             $exercises_array[$exercise_entity->id()] = [
               'label' => $exercise_entity->title->value,
-              'description' => $exercise_entity->body->value
+              'description' => $exercise_entity->body->value,
+              'timer' => $exercise_entity->field_timer->value
             ];
           }
         }
