@@ -10,6 +10,8 @@
         <div class="close-button" v-if="!timerStart" v-on:click="closeExerciseModal">X</div>
         <div class="title">{{ item.label }}</div>
         <div class="description" v-html="item.description"></div>
+        <div class="animation" v-if="item.gif"><img src="item.gif"></div>
+        <div class="countdown">
         <countdown
           :time="item.timer * 1000"
           @start="triggerTimerStart(item.id)"
@@ -19,9 +21,10 @@
         >
           <template
             slot-scope="props"
-          >{{ props.minutes }} minutes, {{ props.seconds }} seconds.
+          >{{ props.minutes }} min, {{ props.seconds }} sec.
           </template>
         </countdown>
+        </div>
         <button v-if="!timerStart" @click="timerStart = true">Start</button>
       </div>
     </div>

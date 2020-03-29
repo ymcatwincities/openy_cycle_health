@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.excercise.body
+    - field.field.node.excercise.field_animation
     - field.field.node.excercise.field_image
     - field.field.node.excercise.field_timer
     - node.type.excercise
@@ -33,6 +34,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_animation:
+    weight: 124
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_image:
     type: media_library_widget
     weight: 122
