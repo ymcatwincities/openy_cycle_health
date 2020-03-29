@@ -1,11 +1,12 @@
 <template>
-    <div>
-        <main-filter
-                :options="excercisesOptions"
-                v-on:data-update="sendData"
-        ></main-filter>
-        <notifications group="twelve_app"></notifications>
-    </div>
+ <div>
+ <main-filter
+         :options="excercisesOptions"
+         :current_nid="current_nid"
+         v-on:data-update="sendData"
+ ></main-filter>
+ <notifications group="twelve_app"></notifications>
+ </div>
 </template>
 
 <script>
@@ -31,7 +32,7 @@
             MainFilter,
         },
         mounted() {
-            console.log(this.current_nid);
+
         },
         methods: {
 
@@ -77,8 +78,9 @@
         },
         computed: {
             excercisesOptions: function () {
+
                 var options = {};
-                console.log(this.excercises);
+
                 for (var i in this.excercises) {
                     var item = this.excercises[i];
                     options[i] = {

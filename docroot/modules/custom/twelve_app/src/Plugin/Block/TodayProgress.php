@@ -109,7 +109,7 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
 
         if ($paragraph->bundle() == '12_bursts_container') {
           foreach ($paragraph->field_excercises as $excercise_reference) {
-            /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $reference */
+            /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $excercise_reference */
             $exercise_entity = $excercise_reference->entity;
             $exercises_array[$exercise_entity->id()] = [
               'label' => $exercise_entity->title->value,
