@@ -8,6 +8,8 @@
     <div class="excercise-container" v-for="item in options" v-if="currentExcercise === item.id">
       <div class="exercise-content">
         <div class="close-button" v-if="!timerStart" v-on:click="closeExerciseModal">X</div>
+        <div class="title">{{ item.label }}</div>
+        <div class="description" v-html="item.description"></div>
         <countdown
           :time="30 * 1000"
           @start="triggerTimerStart(item.id)"
@@ -76,7 +78,7 @@
       };
     },
     created: function () {
-     
+
 
       let cache = this.loadTodayProgressFromLocalStorage();
       for (let index = 0; index < cache.length; index++) {
