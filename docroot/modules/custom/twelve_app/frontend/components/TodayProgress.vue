@@ -88,6 +88,7 @@
                         'label': item.label,
                         'description': item.description,
                         'timer': item.timer,
+                        'gif': item.gif,
                         'id': i,
                     };
                 }
