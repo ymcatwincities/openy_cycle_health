@@ -88,7 +88,7 @@
                         'label': item.label,
                         'description': item.description,
                         'timer': item.timer,
-                        'gif': item.gif,
+                        'gif_path': item.gif,
                         'id': i,
                     };
                 }
