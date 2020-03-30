@@ -9,7 +9,8 @@
     "drupal-composer/drupal-scaffold": "2.4.0",
     "cweagans/composer-patches": "~1.0",
     "drupal/restui": "^1.17",
-    "drupal/viewsreference": "^1.4"
+    "drupal/viewsreference": "^1.4",
+    "drush/drush": "^10.2"
   },
   "require-dev": {
     "ymcatwincities/openy-docksal": "dev-master",
