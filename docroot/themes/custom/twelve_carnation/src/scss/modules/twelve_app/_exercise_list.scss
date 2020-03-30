@@ -16,6 +16,7 @@
   .today-progress-item {
     display: grid;
     grid-template-columns: 50px auto;
+    grid-template-rows: max-content auto;
 
     border: 2px solid $dark-blue;
     border-radius: 5px;

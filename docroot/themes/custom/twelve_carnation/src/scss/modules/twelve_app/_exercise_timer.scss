@@ -10,6 +10,7 @@
   z-index: 100;
 
   .exercise-content {
+    position: relative;
     background: white;
 
     border: 3px solid $dark-blue;
@@ -17,6 +18,7 @@
     padding: 20px;
 
     min-width: 250px;
+    max-width: 300px;
 
     z-index: 1;
 
