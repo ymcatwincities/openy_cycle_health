@@ -61,10 +61,9 @@
                     method: request_type,
                     url: result_url,
                     data: data,
-                    //@TODO create real user here
                     auth: {
-                        username: 'admin',
-                        password: 'admin'
+                        username: '12bursts_consumer',
+                        password: 'e+bMS3E)}qv(rAMa'
                     }
                 }).
                   then(function (response) {
