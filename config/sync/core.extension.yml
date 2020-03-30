@@ -170,6 +170,7 @@ module:
   views_field_formatter: 0
   views_infinite_scroll: 0
   views_ui: 0
+  viewsreference: 0
   webform: 0
   workflows: 0
   fontyourface: 1
