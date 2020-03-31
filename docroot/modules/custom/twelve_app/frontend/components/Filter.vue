@@ -5,27 +5,51 @@
       v-on:hide-modal="nameModalVisible = false"
     ></name-form>
 
-    <div class="excercise-container" v-for="item in options" v-if="currentExcercise === item.id">
-      <div class="exercise-content">
-        <div class="close-button" v-if="!timerStart" v-on:click="closeExerciseModal">X</div>
-        <div class="title">{{ item.label }}</div>
-        <div class="description" v-html="item.description"></div>
-        <div class="animation" v-if="item.gif"><img src="item.gif"></div>
-        <div class="countdown">
-        <countdown
-          :time="item.timer * 1000"
-          @start="triggerTimerStart(item.id)"
-          @end="triggerTimerEnd(item.id)"
-          :emit-events="true"
-          v-if="timerStart"
-        >
-          <template
-            slot-scope="props"
-          >{{ props.minutes }} min, {{ props.seconds }} sec.
-          </template>
-        </countdown>
+    <div class="modal fade show d-block excercise-container" v-for="item in options"
+         v-if="currentExcercise === item.id">
+      <div class="modal-backdrop fade in"></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">BURST DETAILS</h4>
+            <button type="button" class="close" aria-label="Close"
+                    v-if="!timerStart"
+                    v-on:click="closeExerciseModal"
+            ><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="description" v-html="item.description"></div>
+            <!--div class="animation" v-if="item.gif"><img src="item.gif"></div-->
+          </div>
+          <div class="modal-footer">
+            <div class="countdown" v-if="timerStart">
+              <countdown
+                :time="item.timer * 1000"
+                @start="triggerTimerStart(item.id)"
+                @end="triggerTimerEnd(item.id)"
+                :emit-events="true"
+                v-if="timerStart"
+              >
+                <template
+                  slot-scope="props"
+                >{{ props.minutes | formatNumber }}:{{ props.seconds | formatNumber }}
+                </template>
+              </countdown>
+            </div>
+            <button type="button" class="btn btn-blue"
+                    v-if="checked.includes(item.id)"
+                    @click="closeExerciseModal"
+            >
+              COMPLETE
+            </button>
+            <button type="button" class="btn btn-default"
+                    v-if="!timerStart && !checked.includes(item.id)"
+                    @click="timerStart = true"
+            >
+              READY … SET … GO!
+            </button>
+          </div>
         </div>
-        <button v-if="!timerStart" @click="timerStart = true">Start</button>
       </div>
     </div>
 
@@ -63,6 +87,11 @@
   //      label: " 40 Jumps",
   //      description: "Please do 40 jumps in "
   //  }
+
+  Vue.filter("formatNumber", function (n) {
+    return (n < 10) ? ("0" + n) : n;
+  });
+
   export default {
     props: [
       'options',
@@ -99,7 +128,6 @@
           this.beep();
           this.timerStart = false;
 
-          this.closeExerciseModal();
           this.saveTodayProgressToLocalStorage();
 
           this.$notify({
@@ -126,7 +154,7 @@
         this.exerciseModalVisible = true;
       },
 
-      closeExerciseModal: function() {
+      closeExerciseModal: function () {
         this.currentExcercise = 0;
         this.exerciseModalVisible = false;
       },
@@ -148,7 +176,8 @@
         let cache = localStorage.getItem(key);
         if (cache === null) {
           cache = [];
-        } else {
+        }
+        else {
           cache = JSON.parse(cache);
         }
 

@@ -1,57 +1,29 @@
 #twelve_day_progress_app .excercise-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
+  .modal-dialog {
+    width: 340px;
 
-  .exercise-content {
-    position: relative;
-    background: white;
+    .modal-content {
+      .modal-body {
+        .description {
+          font-size: 12px;
+          line-height: 18px;
+          color: $gray-900;
+        }
+      }
 
-    border: 3px solid $dark-blue;
-    border-radius: 5px;
-    padding: 20px;
-
-    min-width: 250px;
-    max-width: 300px;
-
-    z-index: 1;
-
-    .close-button {
-      position: absolute;
-      top: -15px;
-      right: -15px;
-      border-radius: 5px;
-      padding: 10px;
-      color: #fff;
-      background-color: #000;
-      line-height: 4px;
-      cursor: pointer;
-    }
-
-    .title {
-      font-size: 14px;
-      line-height: 21px;
-      font-weight: bold;
-      color: $dark-blue
-    }
-
-    .description {
-      padding: 10px 10px 10px 0;
-
-      font-size: 12px;
-      line-height: 18px;
-      color: $gray-900;
-    }
-
-    .btn {
-      background: #c6168d;
-      color: white;
+      .modal-footer {
+        .countdown {
+          border: 2px solid $dark-blue;
+          width: 100%;
+          border-radius: .25rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 18px;
+          color: $dark-blue;
+          height: 48px;
+        }
+      }
     }
   }
 }
