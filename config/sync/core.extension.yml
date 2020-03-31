@@ -27,6 +27,8 @@ module:
   datalayer: 0
   datetime: 0
   datetime_range: 0
+  dblog: 0
+  devel: 0
   draggableviews: 0
   dropzonejs: 0
   dropzonejs_eb_widget: 0
@@ -47,6 +49,8 @@ module:
   filter: 0
   focal_point: 0
   geolocation: 0
+  google_analytics: 0
+  google_tag: 0
   hal: 0
   help: 0
   history: 0
@@ -168,6 +172,8 @@ module:
   video_embed_media: 0
   views_field_formatter: 0
   views_infinite_scroll: 0
+  views_ui: 0
+  viewsreference: 0
   webform: 0
   workflows: 0
   fontyourface: 1

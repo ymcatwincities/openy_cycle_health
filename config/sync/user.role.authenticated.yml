@@ -14,3 +14,4 @@ permissions:
   - 'opt-in or out of google analytics tracking'
   - 'restful get alerts_rest_resource'
   - 'view media'
+  - 'view own simple_oauth entities'

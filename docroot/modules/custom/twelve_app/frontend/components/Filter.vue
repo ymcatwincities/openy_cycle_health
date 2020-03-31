@@ -19,7 +19,7 @@
           </div>
           <div class="modal-body">
             <div class="description" v-html="item.description"></div>
-            <!--div class="animation" v-if="item.gif"><img src="item.gif"></div-->
+            <div class="animation" v-if="item.gif_path"><img :src="item.gif_path"></div>
           </div>
           <div class="modal-footer">
             <div class="countdown" v-if="timerStart">
