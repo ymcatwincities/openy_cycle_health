@@ -10,7 +10,7 @@
         <div class="close-button" v-if="!timerStart" v-on:click="closeExerciseModal">X</div>
         <div class="title">{{ item.label }}</div>
         <div class="description" v-html="item.description"></div>
-        <div class="animation" v-if="item.gif"><img src="item.gif"></div>
+        <div class="animation" v-if="item.gif_path"><img :src="item.gif_path"></div>
         <div class="countdown">
         <countdown
           :time="item.timer * 1000"
