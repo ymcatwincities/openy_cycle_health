@@ -57,10 +57,19 @@
                     request_type = 'patch';
                 }
 
+                axios({url: '/session/token'}).then(data => {
+                  let token = data.data;
+                }).catch(function (error) {
+
+                });
+
                 axios({
                     method: request_type,
                     url: result_url,
                     data: data,
+                    headers: {
+
+                    },
                     auth: {
                         username: '12bursts_consumer',
                         password: 'e+bMS3E)}qv(rAMa'
