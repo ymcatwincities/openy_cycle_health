@@ -50,6 +50,7 @@ permissions:
   - 'delete own program_subcategory content'
   - 'delete own session content'
   - 'dropzone upload files'
+  - 'edit any 12_bursts_result content'
   - 'edit any activity content'
   - 'edit any alert content'
   - 'edit any announcement content'
