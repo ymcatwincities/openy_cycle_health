@@ -9,8 +9,8 @@ module.exports = {
                 'es6.string.repeat',
                 'es6.string.starts-with',
                 'es6.array.from',
-                // 'es6.promise',
-                // 'es6.symbol'
+                'es6.promise',
+                'es6.symbol'
             ]
         }],
         [
@@ -23,7 +23,7 @@ module.exports = {
                     ],
                 },
                 "corejs": "2.6.11",
-                "useBuiltIns": "usage"
+                "useBuiltIns": "entry"
             }
         ]
     ]
