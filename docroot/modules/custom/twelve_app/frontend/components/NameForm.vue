@@ -7,7 +7,7 @@
     </div>
 
     <div class="modal fade show d-block user-login-container" v-if="!userIntroduced">
-      <div class="modal-backdrop fade in" style="opacity: .5;"></div>
+      <div class="modal-backdrop fade in"></div>
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
