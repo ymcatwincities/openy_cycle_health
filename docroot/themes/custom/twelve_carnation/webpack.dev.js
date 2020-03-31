@@ -21,11 +21,19 @@ module.exports = merge(common, {
         test: /\.s[ac]ss$/i,
         use: [
           'style-loader',
-
           {
             loader: 'css-loader',
             options: {
               url: false,
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: (loader) => [
+                require('postcss-preset-env')({autoprefixer: {grid: true}}),
+              ],
               sourceMap: true
             }
           },
