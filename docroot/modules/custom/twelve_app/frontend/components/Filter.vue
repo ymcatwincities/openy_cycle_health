@@ -29,6 +29,8 @@
       </div>
     </div>
 
+    <div class="message">Click an activity below. Keep going until you've clicked them all!</div>
+
     <div class="container" v-bind:class="{'visually-disabled': nameModalVisible || exerciseModalVisible}">
       <div class="today-progress-item"
            v-for="item in options"

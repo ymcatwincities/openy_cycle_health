@@ -1,16 +1,28 @@
 <template>
   <div class="introduce-form">
 
-    <div class="user-name-container" v-if="userIntroduced">
-      <span>Hi, {{ username }}</span>
-      <button v-on:click="showModal">Change name</button>
+    <div class="user-name-container">
+      <span class="username">Hello, <template v-if="userIntroduced">{{ username }}!</template><template v-else>...</template></span>
+      <a class="change-button" v-on:click="showModal">Edit Name</a>
     </div>
 
-    <div class="user-login-container" v-if="!userIntroduced">
-      <div class="window">
-        <div class="login-message">Please, enter your name:</div>
-        <input type="text" name="username" v-model="username" class="username">
-        <input type="button" v-if="username !==''" v-on:click="setLogin" value="Go">
+    <div class="modal fade show d-block user-login-container" v-if="!userIntroduced">
+      <div class="modal-backdrop fade in" style="opacity: .5;"></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">CHALLENGER NAME</h4>
+            <!--button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button-->
+          </div>
+          <div class="modal-body">
+            <p>What name do you go by, challenger?</p>
+            <div class="label">Name</div>
+            <input type="text" name="username" v-model="username" class="username">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" v-on:click="setLogin">Enter</button>
+          </div>
+        </div>
       </div>
     </div>
 
