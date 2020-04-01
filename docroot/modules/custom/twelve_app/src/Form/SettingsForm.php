@@ -48,8 +48,27 @@ class SettingsForm extends ConfigFormBase {
     $form['node_id'] = [
       '#type' => 'entity_autocomplete',
       '#target_type' => 'node',
-      '#title' => t('Current day landing page'),
+      '#title' => t('Today exercises list page'),
       '#default_value' => $page,
+      '#size' => 40,
+      '#selection_settings' => [
+        'target_bundles' => ['landing_page'],
+      ],
+      '#description' => t('Search by title'),
+    ];
+
+    $completion_node_id = $config->get('completion_node_id');
+    $completion_node = NULL;
+    if (!empty($completion_node_id)) {
+      /** @var Node $page */
+      $completion_node = Node::load($completion_node_id);
+    }
+
+    $form['completion_node_id'] = [
+      '#type' => 'entity_autocomplete',
+      '#target_type' => 'node',
+      '#title' => t('Completion page'),
+      '#default_value' => $completion_node,
       '#size' => 40,
       '#selection_settings' => [
         'target_bundles' => ['landing_page'],
@@ -67,6 +86,7 @@ class SettingsForm extends ConfigFormBase {
     /* @var $config \Drupal\Core\Config\Config */
     $config = $this->configFactory->getEditable('twelve_app.settings');
     $config->set('node_id', $form_state->getValue('node_id'))->save();
+    $config->set('completion_node_id', $form_state->getValue('completion_node_id'))->save();
     parent::submitForm($form, $form_state);
   }
 }
