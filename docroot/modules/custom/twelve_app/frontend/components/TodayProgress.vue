@@ -3,6 +3,7 @@
  <main-filter
          :options="excercisesOptions"
          :current_nid="current_nid"
+         :completion_url="completion_url"
          v-on:data-update="sendData"
  ></main-filter>
  <notifications group="twelve_app"></notifications>
@@ -17,7 +18,7 @@
     const axios = require('axios');
 
     export default {
-        props: ['excercises', 'current_nid'],
+        props: ['excercises', 'current_nid', 'completion_url'],
         data() {
             return {
                 checkedExcercises: [],

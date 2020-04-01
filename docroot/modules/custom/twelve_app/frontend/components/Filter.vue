@@ -88,6 +88,9 @@
   //      description: "Please do 40 jumps in "
   //  }
 
+  /**
+   * append leading zero if number is lesser then 10
+   */
   Vue.filter("formatNumber", function (n) {
     return (n < 10) ? ("0" + n) : n;
   });
@@ -95,7 +98,8 @@
   export default {
     props: [
       'options',
-      'current_nid'
+      'current_nid',
+      'completion_url'
     ],
     components: {
       NameForm,
@@ -111,8 +115,6 @@
       };
     },
     created: function () {
-
-
       let cache = this.loadTodayProgressFromLocalStorage();
       for (let index = 0; index < cache.length; index++) {
         this.checked.push(cache[index]);
@@ -157,6 +159,14 @@
       closeExerciseModal: function () {
         this.currentExcercise = 0;
         this.exerciseModalVisible = false;
+
+        if (this.fullyCompletedTodayExercises() && this.$props.completion_url.length > 0) {
+          window.location = window.location.origin + this.$props.completion_url;
+        }
+      },
+
+      fullyCompletedTodayExercises: function () {
+        return (this.checked.length < Object.keys(this.$props.options).length) ? false: true;
       },
 
       beep: function () {
