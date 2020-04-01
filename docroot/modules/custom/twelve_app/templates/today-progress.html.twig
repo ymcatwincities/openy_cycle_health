@@ -3,6 +3,7 @@
 <div id="twelve_day_progress_app">
   <today-progress
     :excercises='{{ excercises|json_encode }}'
-    :current_nid = {{ current_nid }}
+    :completion_url='{{ completion_url|json_encode }}'
+    :current_nid='{{ current_nid }}'
   ></today-progress>
 </div>

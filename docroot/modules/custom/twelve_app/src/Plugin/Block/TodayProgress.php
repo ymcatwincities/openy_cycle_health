@@ -121,15 +121,26 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
         }
       }
 
+      $completion_node_url = '';
+      $completion_node_id = $this->configFactory
+        ->get('twelve_app.settings')
+        ->get('completion_node_id');
+      if (!empty($completion_node_id)) {
+        $completion_page = Node::load($completion_node_id);
+        $completion_node_url = $completion_page->toUrl()->toString();
+      }
+
+
       return [
         '#theme' => 'today_progress',
         '#excercises' => $exercises_array,
         '#current_nid' => $node_id,
+        '#completion_url' => $completion_node_url,
         '#cache' => [
           'tags' => $this->getCacheTags(),
           'contexts' => $this->getCacheContexts(),
           'max-age' => $this->getCacheMaxAge(),
-        ],
+        ]
       ];
 
     } else {
