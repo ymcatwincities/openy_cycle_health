@@ -29,15 +29,6 @@ module.exports = merge(common, {
             }
           },
           {
-            loader: 'postcss-loader',
-            options: {
-              plugins: (loader) => [
-                require('postcss-preset-env')({autoprefixer: {grid: true}}),
-              ],
-              sourceMap: true
-            }
-          },
-          {
             loader: 'sass-loader',
             options: {
               sourceMap: true

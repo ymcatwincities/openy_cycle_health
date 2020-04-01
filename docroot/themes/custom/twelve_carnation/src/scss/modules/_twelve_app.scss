@@ -24,4 +24,25 @@
   filter: blur(2px);
 }
 
+//ie only hack
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  #twelve_day_progress_app .today-progress-item {
+    margin-bottom: 10px;
+  }
 
+  #twelve_day_progress_app .today-progress-item .checkbox {
+    display: none;
+  }
+
+  #twelve_day_progress_app .today-progress-item .title, #twelve_day_progress_app .today-progress-item .description {
+    margin-left: 20px;
+  }
+
+  #block-twelve-carnation-main-menu .navbar {
+    float: right;
+  }
+
+  .user-login-container .modal-dialog {
+    width: 343px;
+  }
+}
