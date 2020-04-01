@@ -55,29 +55,18 @@
 
     <div class="message">Click an activity below. Keep going until you've clicked them all!</div>
 
-    <div class="container exercise-list" v-bind:class="{'visually-disabled': nameModalVisible || exerciseModalVisible}">
-      <div class="row mr-n5">
-        <div class="col-12 col-sm-6 col-lg-4 p-0 row-eq-height"
-             v-for="item in options"
-        >
-          <div class="container p-0 row-eq-height">
-            <div class="today-progress-item row no-gutters"
-                 v-on:click="checkExcercise(item.id)"
-                 :class="{'checked': checked.includes(item.id)}"
-            >
-              <div class="col-2">
-                <div
-                  v-bind:class="{'fa-check': checked.includes(item.id)}"
-                  class="checkbox fa"
-                ></div>
-              </div>
-              <div class="col-10">
-                <div class="title">{{ item.label }}</div>
-                <div class="description" v-html="item.description"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="container" v-bind:class="{'visually-disabled': nameModalVisible || exerciseModalVisible}">
+      <div class="today-progress-item"
+           v-for="item in options"
+           v-on:click="checkExcercise(item.id)"
+           :class="{'checked': checked.includes(item.id)}"
+      >
+        <div
+          v-bind:class="{'fa-check': checked.includes(item.id)}"
+          class="checkbox fa"
+        ></div>
+        <div class="title">{{ item.label }}</div>
+        <div class="description" v-html="item.description"></div>
       </div>
     </div>
   </div>
