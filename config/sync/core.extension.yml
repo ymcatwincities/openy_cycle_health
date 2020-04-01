@@ -67,6 +67,8 @@ module:
   media_directories_ui: 0
   media_entity_video: 0
   media_library: 0
+  memcache: 0
+  memcache_admin: 0
   menu_ui: 0
   metatag: 0
   metatag_open_graph: 0
