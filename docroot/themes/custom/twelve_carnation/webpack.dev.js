@@ -21,7 +21,6 @@ module.exports = merge(common, {
         test: /\.s[ac]ss$/i,
         use: [
           'style-loader',
-
           {
             loader: 'css-loader',
             options: {

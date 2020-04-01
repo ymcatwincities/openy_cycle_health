@@ -84,6 +84,10 @@
 
 .viewport {
   .page-head__main-menu {
+    .navbar {
+      margin-right: 35px !important;
+    }
+
     .nav-level-2 {
       @include cachet();
 
