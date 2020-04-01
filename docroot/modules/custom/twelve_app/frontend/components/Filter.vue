@@ -166,17 +166,7 @@
       },
 
       fullyCompletedTodayExercises: function () {
-        let a = this.checked;
-        let b = this.$props.options;
-        let c = this.$props.completion_url;
-
-        for (let i = 0; i < this.$props.options.length; i++) {
-          if (!this.checked.includes(this.$props.options[i])) {
-            return false;
-          }
-        }
-
-        return true;
+        return (this.checked.length < this.$props.options.length) ? false: true;
       },
 
       beep: function () {
