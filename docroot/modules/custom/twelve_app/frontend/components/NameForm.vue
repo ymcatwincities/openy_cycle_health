@@ -17,7 +17,7 @@
           <div class="modal-body">
             <p>What name do you go by, challenger?</p>
             <div class="label">Name</div>
-            <input type="text" name="username" v-model="username" class="username">
+            <input type="text" name="username" v-model="username" class="username" v-on:keyup.enter="setLogin">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" v-on:click="setLogin">Enter</button>
