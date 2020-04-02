@@ -38,7 +38,6 @@
         methods: {
 
             sendData: function (checked) {
-
                 let result_url = window.location.origin + '/node';
                 let request_type = 'post';
 
@@ -48,13 +47,15 @@
                         'value': localStorage.twelveUserName
                     },
                     'field_when': {
-                        'value': this.current_nid,
+                        'value': this.$props.current_nid,
                     },
                     'field_finished_items': checked
                 };
 
-                if (localStorage.current_result_nid) {
-                    result_url += '/' + localStorage.current_result_nid;
+                let result_key = 'result_node_id_for_' + this.$props.current_nid;
+                let result_nid = localStorage.getItem(result_key);
+                if (result_nid) {
+                    result_url += '/' + result_nid;
                     request_type = 'patch';
                 }
 
@@ -77,9 +78,10 @@
                     }
                 }).
                   then(function (response) {
-                    localStorage.current_result_nid = response.data.nid[0].value;
-
-                }).catch(function (error) {
+                    let result_key = 'result_node_id_for_' + this.$props.current_nid;
+                    let value = response.data.nid[0].value;
+                    localStorage.setItem(result_key, value);
+                }.bind(this)).catch(function (error) {
                     //@TODO Add error handler
                 });
 
