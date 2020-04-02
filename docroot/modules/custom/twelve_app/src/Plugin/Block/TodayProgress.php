@@ -152,7 +152,11 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
    * {@inheritdoc}
    */
   public function getCacheTags() {
-    return Cache::mergeTags(parent::getCacheTags(), ['twelve_app']);
+    $node_id = $this->configFactory
+      ->get('twelve_app.settings')
+      ->get('node_id');
+
+    return Cache::mergeTags(parent::getCacheTags(), ['twelve_app' . $node_id]);
   }
 
 }
