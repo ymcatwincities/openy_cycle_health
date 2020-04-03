@@ -75,3 +75,13 @@
     }
   }
 }
+
+.fixed-top.show {
+  top: 78px;
+}
+
+.user-logged-in {
+  .fixed-top.show {
+    top: 117px;
+  }
+}
