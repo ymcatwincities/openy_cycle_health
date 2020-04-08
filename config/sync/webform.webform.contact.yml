@@ -185,7 +185,7 @@ handlers:
     id: email
     label: 'Email confirmation'
     handler_id: email_confirmation
-    status: true
+    status: false
     conditions: {  }
     weight: 1
     settings:
@@ -227,7 +227,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: _default
+      to_mail: 'betsy.grams@ymcamn.org, anatoliy@imagexnedia.com, paige.kiecker@ymcamn.org'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
