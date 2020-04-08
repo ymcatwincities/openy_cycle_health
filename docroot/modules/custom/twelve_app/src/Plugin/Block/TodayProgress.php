@@ -96,9 +96,17 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
   public function build() {
     $exercises_array = [];
 
-    $node_id = $this->configFactory
+    $items = $this->configFactory
       ->get('twelve_app.settings')
-      ->get('node_id');
+      ->get('items');
+
+    $today = date('Y-m-d');
+    foreach ($items as $item) {
+      if ($today == $item['date']) {
+        $node_id = $item['node_id'];
+        continue;
+      }
+    }
 
     if (!empty($node_id)) {
       $landing_page = Node::load($node_id);
