@@ -1,0 +1,20 @@
+uuid: b80ebcee-4a18-48ad-9481-0f1e93875d0b
+langcode: en
+status: true
+dependencies:
+  module:
+    - openy_gtranslate
+  theme:
+    - twelve_carnation
+id: openygoogletranslate_2
+theme: twelve_carnation
+region: top_menu
+weight: 0
+provider: null
+plugin: openy_gtranslate_block
+settings:
+  id: openy_gtranslate_block
+  label: 'Open Y Google Translate'
+  provider: openy_gtranslate
+  label_display: '0'
+visibility: {  }

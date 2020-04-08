@@ -3,29 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.12_bursts_result.body
     - field.field.node.12_bursts_result.field_finished_items
     - field.field.node.12_bursts_result.field_when
     - node.type.12_bursts_result
   module:
     - path
     - scheduler
-    - text
 id: node.12_bursts_result.default
 targetEntityType: node
 bundle: 12_bursts_result
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 121
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
-    region: content
   created:
     type: datetime_timestamp
     weight: 10

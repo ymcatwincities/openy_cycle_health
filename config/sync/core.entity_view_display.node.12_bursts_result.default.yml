@@ -3,25 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.12_bursts_result.body
     - field.field.node.12_bursts_result.field_finished_items
     - field.field.node.12_bursts_result.field_when
     - node.type.12_bursts_result
   module:
-    - text
     - user
 id: node.12_bursts_result.default
 targetEntityType: node
 bundle: 12_bursts_result
 mode: default
 content:
-  body:
-    label: hidden
-    type: text_default
-    weight: 101
-    settings: {  }
-    third_party_settings: {  }
-    region: content
   field_finished_items:
     weight: 103
     label: above

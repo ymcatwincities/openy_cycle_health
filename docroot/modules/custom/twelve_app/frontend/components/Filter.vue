@@ -13,7 +13,6 @@
           <div class="modal-header">
             <h4 class="modal-title">BURST DETAILS</h4>
             <button type="button" class="close" aria-label="Close"
-                    v-if="!timerStart"
                     v-on:click="closeExerciseModal"
             ><span aria-hidden="true">&times;</span></button>
           </div>
@@ -22,13 +21,14 @@
             <div class="animation" v-if="item.gif_path"><img :src="item.gif_path"></div>
           </div>
           <div class="modal-footer">
-            <div class="countdown" v-if="timerStart">
+            <div class="countdown" v-if="timerIsRunning">
               <countdown
+                ref="countdown"
                 :time="item.timer * 1000"
                 @start="triggerTimerStart(item.id)"
                 @end="triggerTimerEnd(item.id)"
                 :emit-events="true"
-                v-if="timerStart"
+                v-if="timerIsRunning"
               >
                 <template
                   slot-scope="props"
@@ -37,14 +37,21 @@
               </countdown>
             </div>
             <button type="button" class="btn btn-blue"
+                    v-if="timerIsRunning"
+                    @click="toggleTimerPause"
+            >
+              <template v-if="timerIsPaused">CONTINUE</template>
+              <template v-else>PAUSE</template>
+            </button>
+            <button type="button" class="btn btn-blue"
                     v-if="checked.includes(item.id)"
                     @click="closeExerciseModal"
             >
               COMPLETE
             </button>
             <button type="button" class="btn btn-default"
-                    v-if="!timerStart && !checked.includes(item.id)"
-                    @click="timerStart = true"
+                    v-if="!timerIsRunning && !checked.includes(item.id)"
+                    @click="timerIsRunning = true"
             >
               READY … SET … GO!
             </button>
@@ -58,7 +65,7 @@
     <div class="container" v-bind:class="{'visually-disabled': nameModalVisible || exerciseModalVisible}">
       <div class="today-progress-item"
            v-for="item in options"
-           v-on:click="checkExcercise(item.id)"
+           v-on:click="openExerciseModal(item.id)"
            :class="{'checked': checked.includes(item.id)}"
       >
         <div
@@ -109,7 +116,8 @@
       return {
         checked: [],
         currentExcercise: 0,
-        timerStart: false,
+        timerIsRunning: false,
+        timerIsPaused: false,
         exerciseModalVisible: false,
         nameModalVisible: false
       };
@@ -128,7 +136,7 @@
           this.checked.push(id);
           this.$emit('data-update', this.checked);
           this.beep();
-          this.timerStart = false;
+          this.timerIsRunning = false;
 
           this.saveTodayProgressToLocalStorage();
 
@@ -147,7 +155,17 @@
         // console.log(id);
       },
 
-      checkExcercise: function (id) {
+      toggleTimerPause: function () {
+        if (this.timerIsPaused) {
+          this.$refs.countdown[0].start();
+          this.timerIsPaused = false;
+        } else {
+          this.$refs.countdown[0].abort();
+          this.timerIsPaused = true;
+        }
+      },
+
+      openExerciseModal: function (id) {
         if (this.checked.includes(id)) {
           return;
         }
@@ -158,6 +176,7 @@
 
       closeExerciseModal: function () {
         this.currentExcercise = 0;
+        this.timerIsRunning = false;
         this.exerciseModalVisible = false;
 
         if (this.fullyCompletedTodayExercises() && this.$props.completion_url.length > 0) {
