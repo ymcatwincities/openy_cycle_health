@@ -12,7 +12,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">BURST DETAILS</h4>
-            <button type="button" class="close" aria-label="Close"
+            <button type="button" class="close notranslate" aria-label="Close"
                     v-on:click="closeExerciseModal"
             ><span aria-hidden="true">&times;</span></button>
           </div>
@@ -21,7 +21,7 @@
             <div class="animation" v-if="item.gif_path"><img :src="item.gif_path"></div>
           </div>
           <div class="modal-footer">
-            <div class="countdown" v-if="timerIsRunning">
+            <div class="countdown notranslate" v-if="timerIsRunning">
               <countdown
                 ref="countdown"
                 :time="item.timer * 1000"
@@ -36,20 +36,20 @@
                 </template>
               </countdown>
             </div>
-            <button type="button" class="btn btn-blue"
+            <button type="button" class="btn btn-blue notranslate"
                     v-if="timerIsRunning"
                     @click="toggleTimerPause"
             >
               <template v-if="timerIsPaused">CONTINUE</template>
               <template v-else>PAUSE</template>
             </button>
-            <button type="button" class="btn btn-blue"
+            <button type="button" class="btn btn-blue notranslate"
                     v-if="checked.includes(item.id)"
                     @click="closeExerciseModal"
             >
               COMPLETE
             </button>
-            <button type="button" class="btn btn-default"
+            <button type="button" class="btn btn-default notranslate"
                     v-if="!timerIsRunning && !checked.includes(item.id)"
                     @click="timerIsRunning = true"
             >
