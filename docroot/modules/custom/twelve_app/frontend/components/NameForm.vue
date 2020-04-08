@@ -21,6 +21,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" v-on:click="setLogin">Enter</button>
+            <button type="button" class="btn btn-white" v-on:click="setDefaultName">No thanks</button>
           </div>
         </div>
       </div>
@@ -51,16 +52,17 @@
       },
 
       isName: function(name) {
-        if (typeof name === "string" && name.length > 0) {
-          return true;
-        } else {
-          return false;
-        }
+        return typeof name === "string" && name.length > 0;
       },
 
       showModal: function () {
         this.userIntroduced = false;
         this.$emit('show-modal');
+      },
+
+      setDefaultName: function() {
+        this.username = 'Challenger';
+        this.setLogin();
       },
 
       setLogin: function () {
