@@ -4,26 +4,16 @@ status: true
 dependencies:
   config:
     - core.entity_view_mode.node.teaser
-    - field.field.node.12_bursts_result.body
     - field.field.node.12_bursts_result.field_finished_items
     - field.field.node.12_bursts_result.field_when
     - node.type.12_bursts_result
   module:
-    - text
     - user
 id: node.12_bursts_result.teaser
 targetEntityType: node
 bundle: 12_bursts_result
 mode: teaser
 content:
-  body:
-    label: hidden
-    type: text_summary_or_trimmed
-    weight: 101
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
-    region: content
   links:
     weight: 100
     settings: {  }
