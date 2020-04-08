@@ -177,6 +177,7 @@
       closeExerciseModal: function () {
         this.currentExcercise = 0;
         this.timerIsRunning = false;
+        this.timerIsPaused = false;
         this.exerciseModalVisible = false;
 
         if (this.fullyCompletedTodayExercises() && this.$props.completion_url.length > 0) {
