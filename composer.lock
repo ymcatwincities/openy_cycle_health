@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c200794e69ddcb901014539861288ad4",
+    "content-hash": "4017e43126d7d0c09fe2110f7cb5bed0",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -5235,6 +5235,78 @@
             }
         },
         {
+            "name": "drupal/memcache",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/memcache.git",
+                "reference": "8.x-2.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/memcache-8.x-2.0.zip",
+                "reference": "8.x-2.0",
+                "shasum": "78c09097c42781343f4069b4823dce7acd98a8b1"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-2.0",
+                    "datestamp": "1540546681",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Fabianx",
+                    "homepage": "https://www.drupal.org/user/693738"
+                },
+                {
+                    "name": "Jeremy",
+                    "homepage": "https://www.drupal.org/user/409"
+                },
+                {
+                    "name": "bdragon",
+                    "homepage": "https://www.drupal.org/user/53081"
+                },
+                {
+                    "name": "catch",
+                    "homepage": "https://www.drupal.org/user/35733"
+                },
+                {
+                    "name": "damiankloip",
+                    "homepage": "https://www.drupal.org/user/1037976"
+                },
+                {
+                    "name": "jvandyk",
+                    "homepage": "https://www.drupal.org/user/2375"
+                },
+                {
+                    "name": "robertDouglass",
+                    "homepage": "https://www.drupal.org/user/5449"
+                }
+            ],
+            "description": "High performance integration with memcache.",
+            "homepage": "http://drupal.org/project/memcache",
+            "support": {
+                "source": "https://git.drupalcode.org/project/memcache",
+                "issues": "https://www.drupal.org/project/issues/memcache"
+            }
+        },
+        {
             "name": "drupal/metatag",
             "version": "1.11.0",
             "source": {
@@ -6478,6 +6550,74 @@
             "homepage": "https://www.drupal.org/project/slick_views",
             "support": {
                 "source": "https://git.drupalcode.org/project/slick_views"
+            }
+        },
+        {
+            "name": "drupal/smtp",
+            "version": "1.0.0-beta7",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/smtp.git",
+                "reference": "8.x-1.0-beta7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/smtp-8.x-1.0-beta7.zip",
+                "reference": "8.x-1.0-beta7",
+                "shasum": "d3936f9ca2b52b2a8782c14855b4f26bd6bef69f"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-beta7",
+                    "datestamp": "1582198326",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "LukeLast",
+                    "homepage": "https://www.drupal.org/user/30151"
+                },
+                {
+                    "name": "japerry",
+                    "homepage": "https://www.drupal.org/user/45640"
+                },
+                {
+                    "name": "josesanmartin",
+                    "homepage": "https://www.drupal.org/user/72012"
+                },
+                {
+                    "name": "oadaeh",
+                    "homepage": "https://www.drupal.org/user/4649"
+                },
+                {
+                    "name": "wundo",
+                    "homepage": "https://www.drupal.org/user/25523"
+                },
+                {
+                    "name": "yettyn",
+                    "homepage": "https://www.drupal.org/user/93281"
+                }
+            ],
+            "description": "Allow for site emails to be sent through an SMTP server of your choice.",
+            "homepage": "https://www.drupal.org/project/smtp",
+            "support": {
+                "source": "https://git.drupalcode.org/project/smtp",
+                "issues": "https://www.drupal.org/project/issues/smtp"
             }
         },
         {
@@ -9342,9 +9482,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/class-loader/symfony-class-loader-bcdf6ff46e115b29be3186391f29e0da82cd6f72-zip-9a3479.zip",
+                "url": "https://api.github.com/repos/symfony/class-loader/zipball/bcdf6ff46e115b29be3186391f29e0da82cd6f72",
                 "reference": "bcdf6ff46e115b29be3186391f29e0da82cd6f72",
-                "shasum": "0ffb549302e6aa5c821ae2ddfcb30c217f8feab9"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -9398,9 +9538,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/console/symfony-console-6827023c5872bea44b29d145de693b21981cf4cd-zip-2dd09a.zip",
+                "url": "https://api.github.com/repos/symfony/console/zipball/6827023c5872bea44b29d145de693b21981cf4cd",
                 "reference": "6827023c5872bea44b29d145de693b21981cf4cd",
-                "shasum": "b195e4f82cb6b4761f8627795cbce72e73b2ec25"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -9526,9 +9666,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/dependency-injection/symfony-dependency-injection-b06b36883abc61eb8fb576e89102a9ba6c9ee7ee-zip-1f4faf.zip",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/b06b36883abc61eb8fb576e89102a9ba6c9ee7ee",
                 "reference": "b06b36883abc61eb8fb576e89102a9ba6c9ee7ee",
-                "shasum": "4d0a0f3dd4dad9691098d548aad5e828f96e3b17"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -9658,9 +9798,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/event-dispatcher/symfony-event-dispatcher-2f67a869aef3eecf42e7f8be4a8b86c92308686c-zip-4bceec.zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/2f67a869aef3eecf42e7f8be4a8b86c92308686c",
                 "reference": "2f67a869aef3eecf42e7f8be4a8b86c92308686c",
-                "shasum": "9016b53add97499ada897b038c120053bcd1aeaf"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -9820,9 +9960,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/http-foundation/symfony-http-foundation-4d440be93adcfd5e4ee0bdc7acd1c3260625728f-zip-37b541.zip",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/4d440be93adcfd5e4ee0bdc7acd1c3260625728f",
                 "reference": "4d440be93adcfd5e4ee0bdc7acd1c3260625728f",
-                "shasum": "a296752ae62b78be725bcb51c91e23c1db6939cb"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -9874,9 +10014,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/http-kernel/symfony-http-kernel-449c3f7a9b8c47d178f80610afa6e2873ac0a3c0-zip-c70750.zip",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/449c3f7a9b8c47d178f80610afa6e2873ac0a3c0",
                 "reference": "449c3f7a9b8c47d178f80610afa6e2873ac0a3c0",
-                "shasum": "e449e6f0e51335f990af029c1087bfb376b412dc"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -10424,9 +10564,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/process/symfony-process-b03b02dcea26ba4c65c16a73bab4f00c186b13da-zip-e46152.zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/b03b02dcea26ba4c65c16a73bab4f00c186b13da",
                 "reference": "b03b02dcea26ba4c65c16a73bab4f00c186b13da",
-                "shasum": "967bb5c9c9c13df339ee63368590c08a8c800bc2"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -10536,9 +10676,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/routing/symfony-routing-c1377905edfa76e6934dd3c73f9a073305b47c00-zip-f44ed3.zip",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/c1377905edfa76e6934dd3c73f9a073305b47c00",
                 "reference": "c1377905edfa76e6934dd3c73f9a073305b47c00",
-                "shasum": "e56d316fa4169196d790f2a06490e59c5944c484"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8"
@@ -10612,9 +10752,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/serializer/symfony-serializer-f8b99832d016e2d2c77c797c3df561adecd33dd3-zip-e392c9.zip",
+                "url": "https://api.github.com/repos/symfony/serializer/zipball/f8b99832d016e2d2c77c797c3df561adecd33dd3",
                 "reference": "f8b99832d016e2d2c77c797c3df561adecd33dd3",
-                "shasum": "85a3530c7ff06958966401ced6651f928f07c53b"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -10691,9 +10831,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/translation/symfony-translation-1eb074e0bd94939a30dd14dbecf7a92b165cea34-zip-63acf3.zip",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/1eb074e0bd94939a30dd14dbecf7a92b165cea34",
                 "reference": "1eb074e0bd94939a30dd14dbecf7a92b165cea34",
-                "shasum": "cdf1f71ee8e179c1acd1e89cff66a8cb9703fce5"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -10761,9 +10901,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/validator/symfony-validator-b5ccfc1adf301bb6ca63823455fbd1b20902bcfe-zip-a99328.zip",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/b5ccfc1adf301bb6ca63823455fbd1b20902bcfe",
                 "reference": "b5ccfc1adf301bb6ca63823455fbd1b20902bcfe",
-                "shasum": "2e7ad6027bab46205edc70aeaf366aee0fd780ac"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -10923,9 +11063,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/symfony/yaml/symfony-yaml-bc63e15160866e8730a1f738541b194c401f72bf-zip-b4691d.zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/bc63e15160866e8730a1f738541b194c401f72bf",
                 "reference": "bc63e15160866e8730a1f738541b194c401f72bf",
-                "shasum": "310e3764573ec3a0433d000f26bdf38b260654be"
+                "shasum": ""
             },
             "require": {
                 "php": "^5.5.9|>=7.0.8",
@@ -12837,6 +12977,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "drupal/smtp": 10,
         "ymcatwincities/openy-docksal": 20,
         "drupal/tqextension": 20
     },
