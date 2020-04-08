@@ -104,16 +104,15 @@
 
   .navbar-nav {
     border-right: 0;
-    margin-right: 50px;
   }
 
   .navbar-nav > li {
     @include media-breakpoint-up(lg) {
-      border-right: 1px solid $gray-400;
+      border-right: 1px solid white;
     }
 
     &:last-child {
-      border: none;
+      border-right: 1px solid white;
     }
 
     > a { /*updated*/
