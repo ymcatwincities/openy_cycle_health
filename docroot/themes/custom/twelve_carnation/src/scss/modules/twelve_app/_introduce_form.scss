@@ -6,9 +6,10 @@
       align-items: center;
 
       .username {
+        font-family: "Cachet", Verdana, sans-serif;
         font-size: 48px;
         line-height: 72px;
-        color: #636466;
+        color: $gray-400;
       }
 
       .change-button {

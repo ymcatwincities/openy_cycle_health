@@ -5,7 +5,7 @@
       v-on:hide-modal="nameModalVisible = false"
     ></name-form>
 
-    <div class="modal fade show d-block excercise-container" v-for="item in options"
+    <div class="modal fade show excercise-container" v-for="item in options"
          v-if="currentExcercise === item.id">
       <div class="modal-backdrop fade in"></div>
       <div class="modal-dialog">
@@ -43,10 +43,11 @@
               <template v-if="timerIsPaused">CONTINUE</template>
               <template v-else>PAUSE</template>
             </button>
-            <button type="button" class="btn btn-blue notranslate"
+            <button type="button" class="btn btn-gold notranslate"
                     v-if="checked.includes(item.id)"
                     @click="closeExerciseModal"
             >
+              <img src="/themes/custom/twelve_carnation/dist/img/task-gold.png"></img>
               COMPLETE
             </button>
             <button type="button" class="btn btn-default notranslate"
@@ -69,8 +70,8 @@
            :class="{'checked': checked.includes(item.id)}"
       >
         <div
-          v-bind:class="{'fa-check': checked.includes(item.id)}"
-          class="checkbox fa"
+          v-bind:class="{'checked': checked.includes(item.id)}"
+          class="checkbox"
         ></div>
         <div class="title">{{ item.label }}</div>
         <div class="description" v-html="item.description"></div>

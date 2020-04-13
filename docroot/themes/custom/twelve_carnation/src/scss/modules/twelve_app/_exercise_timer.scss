@@ -1,4 +1,9 @@
-#twelve_day_progress_app .excercise-container {
+#twelve_day_progress_app {
+  .modal.show {
+    display: flex !important;
+    justify-content: center;
+  }
+
   .modal-dialog {
     width: 340px;
 
@@ -26,6 +31,15 @@
 
         .btn {
           margin-top: 10px;
+        }
+
+        .btn-gold {
+          background-color: $golden;
+          border-color: $golden;
+
+          img {
+            width: 25px;
+          }
         }
       }
     }
