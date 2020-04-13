@@ -99,7 +99,7 @@
   background-color: rgba($primary, .8);
 
   @include media-breakpoint-up(lg) {
-    background-color: #7d2b8c;
+    background-color: $velvet;
   }
 
   .navbar-nav {

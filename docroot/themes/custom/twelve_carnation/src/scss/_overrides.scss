@@ -2,7 +2,7 @@
   background: white;
   padding: 6px;
   border-radius: 20px;
-  color: #7d2b8c;
+  color: $velvet;
 }
 
 .page-head__top-menu .navbar-nav>li>a.coming-soon {
@@ -58,7 +58,7 @@
         padding: 0 10px 10px 10px;
 
         .btn {
-          background-color: #92278f;
+          background-color: $indigo;
           color: white;
           width: 100%;
           height: 48px;
