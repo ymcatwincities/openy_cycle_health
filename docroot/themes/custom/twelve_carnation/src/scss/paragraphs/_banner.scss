@@ -143,8 +143,13 @@
   margin-bottom: 15px !important;;
 }
 
+.paragraph--type--banner .banner-description {
+  @include cachet();
+}
+
 .wrapper-field-bottom-content {
   .banner-description {
+    @include cachet();
     font-size: 14px;
     line-height: 21px;
   }
