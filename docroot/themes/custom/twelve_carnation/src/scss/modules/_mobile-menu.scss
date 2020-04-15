@@ -11,3 +11,41 @@
     border-radius: 5px;
   }
 }
+
+.mobile-menu {
+  //background-color:  !important;
+  background: linear-gradient(123deg, $dark-blue, $dark-pink 100%) !important;
+
+  .list {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+
+    .yslogan {
+      justify-self: left;
+      padding-right: 10px;
+
+      a {
+        font-size: 13px;
+        font-family: Verdana;
+        color: $white;
+
+        &:before {
+          font-size: 13px;
+          padding: 0 10px;
+          font-family: "Font Awesome 5 Free";
+        }
+      }
+    }
+
+    .ylogo {
+      width: 60px;
+      overflow: hidden;
+      justify-self: center;
+    }
+
+    .ybutton {
+      justify-self: end;
+    }
+  }
+}
