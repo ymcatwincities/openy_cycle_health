@@ -219,7 +219,7 @@ handlers:
       sender_name: ''
   email_notification:
     id: email
-    label: 'Email notification'
+    label: '[webform_submission:values:?][webform_submission:values:?]Email notification'
     handler_id: email_notification
     status: true
     conditions: {  }
@@ -227,7 +227,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: 'betsy.grams@ymcamn.org, anatoliy@imagexnedia.com, paige.kiecker@ymcamn.org'
+      to_mail: 'betsy.grams@ymcamn.org, anatoliy@imagexmedia.com, paige.kiecker@ymcamn.org'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
@@ -237,7 +237,7 @@ handlers:
       from_options: {  }
       from_name: '[webform_submission:values:name:raw]'
       subject: '[webform_submission:values:subject:raw]'
-      body: '[webform_submission:values:message:value]'
+      body: "<p>Submitted values are:</p>\r\n{{ webform_token('[webform_submission:values]', webform_submission) }}\r\n"
       excluded_elements: {  }
       ignore_access: false
       exclude_empty: true
@@ -245,7 +245,7 @@ handlers:
       exclude_attachments: false
       html: true
       attachments: false
-      twig: false
+      twig: true
       theme_name: ''
       parameters: {  }
       debug: false
