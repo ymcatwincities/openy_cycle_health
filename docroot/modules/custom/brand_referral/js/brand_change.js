@@ -19,11 +19,17 @@
 
                 if (whiteListItems.includes(brand)) {
                     $('.site-name span').text(brand);
+                    $('.yslogan a')
+                      .text(brand)
+                      .addClass(['fas','fa-chevron-left'])
+                      .attr('href', 'https://' + brand);
                 } else {
                     $('.site-name span').text('12 Bursts');
+                  $('.yslogan .fa-chevron-left').text('12 Bursts');
                 }
             } else {
                 $('.site-name span').text('12 Bursts');
+                $('.yslogan .fa-chevron-left').text('12 Bursts');
             }
 
 
