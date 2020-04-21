@@ -2,13 +2,10 @@
 
 namespace Drupal\openy_focal_point\Plugin\Field\FieldWidget;
 
-use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Core\StringTranslation\TranslatableMarkup;
-use Drupal\crop\Entity\Crop;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\focal_point\Plugin\Field\FieldWidget\FocalPointImageWidget;
-use Drupal\image\Plugin\Field\FieldWidget\ImageWidget;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
+use Drupal\focal_point\Plugin\Field\FieldWidget\FocalPointImageWidget;
 
 /**
  * The difference with FocalPointImageWidget is in createPreviewLink() method
@@ -215,6 +212,22 @@ class OpenYFocalPointImageWidget extends FocalPointImageWidget {
             && in_array($subform_field_item['target_id'], $media_names)
             && isset($subform_field_item['entity_browser_widget_paragraph_info'])) {
             return $subform_field_item['entity_browser_widget_paragraph_info'];
+          }
+
+          if (is_array($subform_field_item)) {
+            foreach ($subform_field_item as $third_level_item) {
+              if (!isset($third_level_item['subform'])) {
+                continue;
+              }
+
+              foreach ($third_level_item['subform'] as $subform_field_name => $subform_field_item) {
+                if (isset($subform_field_item['target_id'])
+                  && in_array($subform_field_item['target_id'], $media_names)
+                  && isset($subform_field_item['entity_browser_widget_paragraph_info'])) {
+                  return $subform_field_item['entity_browser_widget_paragraph_info'];
+                }
+              }
+            }
           }
         }
       }

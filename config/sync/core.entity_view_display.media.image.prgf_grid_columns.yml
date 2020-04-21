@@ -1,9 +1,9 @@
-uuid: 104753ba-6cf5-4bd5-b314-f80ebf48c100
+uuid: fb2caf59-ef34-4514-8bcb-d7bc409795b9
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.media.icon
+    - core.entity_view_mode.media.prgf_grid_columns
     - field.field.media.image.field_media_caption
     - field.field.media.image.field_media_image
     - field.field.media.image.field_media_in_library
@@ -12,60 +12,38 @@ dependencies:
   module:
     - blazy
 _core:
-  default_config_hash: WuENPRO-gJdCUge4DgjBqzgph6tVTPJtYEoRi3f8yXM
-id: media.image.icon
+  default_config_hash: 4wAUllxvTjMiIAk6O2Bwa-nL7suTmqkPAfmeL7ibOS4
+id: media.image.prgf_grid_columns
 targetEntityType: media
 bundle: image
-mode: icon
+mode: prgf_grid_columns
 content:
   field_media_image:
     weight: 0
     label: hidden
     settings:
       image_style: grid_290x193_
-      thumbnail_style: ''
-      media_switch: ''
-      ratio: enforced
-      sizes: ''
-      breakpoints:
-        xs:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        sm:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        md:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        lg:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-        xl:
-          image_style: ''
-          width: ''
-          breakpoint: ''
-      current_view_mode: icon
-      background: false
-      caption:
-        title: '0'
-        alt: '0'
       iframe_lazy: true
       icon: ''
       layout: ''
+      thumbnail_style: ''
       view_mode: ''
       cache: 0
+      current_view_mode: ''
       optionset: default
       skin: ''
       style: ''
+      background: false
       box_caption: ''
       box_caption_custom: ''
       box_style: ''
       box_media_style: ''
+      breakpoints: {  }
+      caption: {  }
+      media_switch: ''
+      ratio: ''
       responsive_image_style: ''
+      sizes: ''
       grid: 0
       grid_header: ''
       grid_medium: 0

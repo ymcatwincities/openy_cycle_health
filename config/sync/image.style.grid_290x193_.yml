@@ -1,0 +1,25 @@
+uuid: b8057f26-0b6d-4c86-8239-64176cee35d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - crop.type.crop_760_400
+  module:
+    - openy_focal_point
+name: grid_290x193_
+label: 'Paragraph Grid (290x193)'
+effects:
+  4fc4eed5-a586-4b6e-bcc7-bb7ffcd1d22a:
+    uuid: 4fc4eed5-a586-4b6e-bcc7-bb7ffcd1d22a
+    id: openy_focal_point_scale_and_crop
+    weight: -9
+    data:
+      width: '290'
+      height: '193'
+      crop_type: focal_point
+  4e0b4a63-37f1-4708-a6fe-2dc86592cb88:
+    uuid: 4e0b4a63-37f1-4708-a6fe-2dc86592cb88
+    id: openy_crop_crop
+    weight: -10
+    data:
+      crop_type: crop_760_400
