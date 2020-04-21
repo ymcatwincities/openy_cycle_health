@@ -119,11 +119,12 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
           foreach ($paragraph->field_excercises as $excercise_reference) {
             /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $excercise_reference */
             $exercise_entity = $excercise_reference->entity;
-            $exercises_array[$exercise_entity->id()] = [
+            $exercises_array[] = [
               'label' => $exercise_entity->title->value,
               'description' => $exercise_entity->body->value,
               'timer' => $exercise_entity->field_timer->value,
               'gif' => $exercise_entity->field_animation->value,
+              'id' => $exercise_entity->id(),
             ];
           }
         }
@@ -137,7 +138,7 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
         $completion_page = Node::load($completion_node_id);
         $completion_node_url = $completion_page->toUrl()->toString();
       }
-
+ 
 
       return [
         '#theme' => 'today_progress',
