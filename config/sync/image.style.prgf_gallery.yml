@@ -1,17 +1,19 @@
 uuid: e8488f0f-5c95-49c2-af26-5c2983a0baf2
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - openy_focal_point
 _core:
   default_config_hash: XDqvXUYnRtJkC5TKIqamiPNRHyGjHA_q8EjNr7FOo64
 name: prgf_gallery
 label: 'Paragraph gallery'
 effects:
-  a28a3a7d-3c49-46fb-a977-0f48980df4e2:
-    uuid: a28a3a7d-3c49-46fb-a977-0f48980df4e2
-    id: image_scale
-    weight: 1
+  fe46e7e6-bad7-4961-b44c-7ad8ffeb8014:
+    uuid: fe46e7e6-bad7-4961-b44c-7ad8ffeb8014
+    id: openy_focal_point_scale_and_crop
+    weight: 2
     data:
-      width: 1920
-      height: null
-      upscale: false
+      width: '1920'
+      height: '1080'
+      crop_type: focal_point

@@ -1,0 +1,10 @@
+uuid: 9e91f8f7-f5bd-45ed-bbd9-87951b48b58f
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.prgf_grid_columns
+label: 'Paragraph Grid columns'
+targetEntityType: media
+cache: true
