@@ -216,11 +216,22 @@
 
 // pages without a banner (ex. user account page)
 .without-banner {
+  .desktop-menu {
+    .logo {
+      img:first-child {
+        display: none;
+      }
+
+      img:last-child {
+        display: initial;
+      }
+    }
+  }
 
   // @todo must be fixed with regions positions. This is a quick fix.
   &.user-logged-in {
     .layout-container {
-      padding-top: 140px;
+      padding-top: 20px;
     }
   }
 
@@ -243,7 +254,7 @@
           color: $pink;
         }
         > a {
-          color: $primary;
+          color: $white;
 
           &:hover {
             color: $pink;

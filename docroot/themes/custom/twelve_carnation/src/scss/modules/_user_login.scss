@@ -1,0 +1,76 @@
+.user-login-form, .user-register-form, .user-form {
+  display: grid;
+  grid-template-columns: 340px;
+  justify-content: center;
+
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  .form-item {
+    margin: 0 0 10px 0;
+
+    label {
+      display: block;
+      color: #1e2228;
+      font-size: 12px;
+      line-height: 1.14;
+      margin: 0 0 8px 0;
+
+      &.form-required:after {
+        background-size: 5px 6px;
+        height: 6px;
+        width: 5px;
+      }
+    }
+
+    input {
+      width: 100%;
+      padding: 1rem 1rem;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #222222;
+      border: 1px solid #b7b7b7;
+      border-radius: 0;
+
+      &:hover {
+        color: #222222;
+        background-color: #fff;
+        border-color: #222222;
+      }
+
+      &:focus {
+        border-color: #65bd6a;
+        outline: none;
+      }
+    }
+
+    .passeye-toggle {
+      display: none;
+    }
+  }
+
+  .form-actions {
+    input {
+      width: 100%;
+      margin: 0 0 20px;
+    }
+  }
+}
+
+.profile {
+  .wrapper-field-first-name {
+    padding-bottom: 20px;
+
+    .label-for-field-first-name {
+
+    }
+  }
+
+  .wrapper-field-last-name {
+    padding-bottom: 20px;
+
+    .label-for-field-last-name {
+
+    }
+  }
+}
