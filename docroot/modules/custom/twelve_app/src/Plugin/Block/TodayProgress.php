@@ -138,7 +138,7 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
         $completion_page = Node::load($completion_node_id);
         $completion_node_url = $completion_page->toUrl()->toString();
       }
- 
+
 
       return [
         '#theme' => 'today_progress',

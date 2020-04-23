@@ -1,0 +1,16 @@
+<?php
+
+use Drupal\twelve_user\Form\UserRegisterForm;
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function twelve_user_entity_type_build(array &$entity_types) {
+  // Map the Project Form view mode to the class who handle that view mode.
+  /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
+  if (isset($entity_types['user'])) {
+    $entity_types['user']
+      ->setFormClass('register', UserRegisterForm::class);
+
+  }
+}
