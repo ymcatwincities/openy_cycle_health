@@ -26,3 +26,22 @@ function twelve_carnation_preprocess_paragraph(array &$variables) {
   
 }
 
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function twelve_carnation_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+
+  // Clear original Carnation suggestions.
+  $suggestions = [];
+
+  // Adds template suggestions for 40x pages.
+  $http_error_suggestions = [
+    'system.403' => 'page__403',
+    'system.404' => 'page__404',
+  ];
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if (isset($http_error_suggestions[$route_name])) {
+    $suggestions[] = $http_error_suggestions[$route_name];
+  }
+}
+
