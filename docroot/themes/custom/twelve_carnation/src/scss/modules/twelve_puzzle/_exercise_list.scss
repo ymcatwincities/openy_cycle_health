@@ -1,0 +1,41 @@
+#twelve_puzzle_app .container {
+  display: grid;
+  margin-top: 45px;
+  padding: 0;
+
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: repeat(3, 100px);
+
+  @include media-breakpoint-up(sm) {
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: repeat(3, 200px);
+  }
+
+  @include media-breakpoint-up(xl) {
+    grid-template-columns: repeat(4, 250px);
+    grid-template-rows: repeat(3, 250px);
+  }
+
+  .today-progress-item {
+    width: 100%;
+    height: 100%;
+
+    font-family: Cachet;
+    font-size: 30px;
+
+    > div {
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      padding: 50%;
+    }
+  }
+
+  .today-progress-item.checked {
+  }
+}
