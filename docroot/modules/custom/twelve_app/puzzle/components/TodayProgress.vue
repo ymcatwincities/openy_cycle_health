@@ -105,8 +105,6 @@
                     };
                 }
 
-                console.log(options);
-
                 return options;
             }
         }
