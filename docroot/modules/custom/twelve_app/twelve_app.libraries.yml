@@ -1,6 +1,13 @@
 day_progress:
   version: 0.1
   js:
-    frontend/dist/main.js: {}
+    bursts/dist/main.js: {}
+  dependencies:
+    - openy_system/vue
+
+puzzle:
+  version: 0.1
+  js:
+    puzzle/dist/main.js: {}
   dependencies:
     - openy_system/vue

@@ -1,0 +1,17 @@
+uuid: 71b096a2-8af5-4054-b1f1-e89db6a5335b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.puzzle_app.field_puzzle_app
+    - paragraphs.paragraphs_type.puzzle_app
+id: paragraph.puzzle_app.default
+targetEntityType: paragraph
+bundle: puzzle_app
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_puzzle_app: true
+  status: true
+  uid: true

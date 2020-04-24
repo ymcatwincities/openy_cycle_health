@@ -1,0 +1,9 @@
+uuid: 616f12cf-2441-4012-8e09-b615eb26b327
+langcode: en
+status: true
+dependencies: {  }
+id: puzzle_app
+label: 'Puzzle app'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

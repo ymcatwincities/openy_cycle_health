@@ -1,0 +1,34 @@
+uuid: dd267c11-c1c7-4625-8529-e4135899408b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_puzzle_app
+    - paragraphs.paragraphs_type.puzzle_app
+  module:
+    - datalayer
+    - plugin
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_puzzle_app
+id: paragraph.puzzle_app.field_puzzle_app
+field_name: field_puzzle_app
+entity_type: paragraph
+bundle: puzzle_app
+label: 'Puzzle app'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    plugin_id: twelve_puzzle
+    plugin_configuration:
+      id: twelve_puzzle
+      label: '12 puzzle block'
+      provider: twelve_app
+      label_display: '0'
+    plugin_configuration_schema_id: block.settings.twelve_puzzle
+default_value_callback: ''
+settings: {  }
+field_type: 'plugin:block'
