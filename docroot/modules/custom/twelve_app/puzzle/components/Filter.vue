@@ -70,15 +70,10 @@
            :class="{'checked': checked.includes(item.id)}"
       >
         <template v-if="checked.includes(item.id)">
-          <img :src="item.puzzle_image_url">
+          <div :style="{ backgroundImage: `url('${item.puzzle_image_url}')` }"></div>
         </template>
         <template v-else>
-          <div
-            v-bind:class="{'checked': checked.includes(item.id)}"
-            class="checkbox"
-          ></div>
-          <div class="title">{{ item.label }}</div>
-          <div class="description" v-html="item.description"></div>
+          <div>{{ item.index_number }}</div>
         </template>
       </div>
     </div>

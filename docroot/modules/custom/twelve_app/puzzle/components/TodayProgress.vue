@@ -12,10 +12,10 @@
 
 <script>
 
-    import Spinner from '../components/Spinner.vue'
-    import MainFilter from '../components/Filter.vue'
+  import Spinner from '../components/Spinner.vue'
+  import MainFilter from '../components/Filter.vue'
 
-    const axios = require('axios');
+  const axios = require('axios');
 
     export default {
         props: ['excercises', 'current_nid', 'completion_url'],
@@ -88,25 +88,26 @@
             }
 
         },
-        computed: {
-            excercisesOptions: function () {
+      computed: {
+        excercisesOptions: function () {
+          var options = {};
+          var index = 1;
+          for (var i in this.excercises) {
+            var item = this.excercises[i];
 
-                var options = {};
+            options[i] = {
+              'label': item.label,
+              'description': item.description,
+              'timer': item.timer,
+              'gif_path': item.gif,
+              'id': item.id,
+              'puzzle_image_url': item.puzzle_image_url,
+              'index_number': index++
+            };
+          }
 
-                for (var i in this.excercises) {
-                    var item = this.excercises[i];
-                    options[i] = {
-                        'label': item.label,
-                        'description': item.description,
-                        'timer': item.timer,
-                        'gif_path': item.gif,
-                        'id': item.id,
-                        'puzzle_image_url': item.puzzle_image_url
-                    };
-                }
-
-                return options;
-            }
+          return options;
         }
+      }
     }
 </script>
