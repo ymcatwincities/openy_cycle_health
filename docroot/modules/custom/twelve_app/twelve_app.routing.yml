@@ -2,6 +2,14 @@ twelve_app.settings:
   path: '/admin/openy/twelve_app'
   defaults:
     _form: '\Drupal\twelve_app\Form\SettingsForm'
-    _title: 'Twelve App'
+    _title: 'Twelve App Settings'
+  requirements:
+    _permission: 'administer content'
+
+twelve_app.puzzle_settings:
+  path: '/admin/openy/puzzle_app'
+  defaults:
+    _form: '\Drupal\twelve_app\Form\PuzzleSettingsForm'
+    _title: 'Puzzle App Settings'
   requirements:
     _permission: 'administer content'

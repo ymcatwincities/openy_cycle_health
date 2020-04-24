@@ -16,7 +16,6 @@ function twelve_app_theme() {
       'variables' => [
         'excercises' => [],
         'current_nid' => '',
-        'completion_url' => ''
       ],
     ],
   ];

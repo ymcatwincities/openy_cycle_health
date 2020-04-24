@@ -22,7 +22,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @Block(
  *   id = "twelve_puzzle",
- *   admin_label = @Translation("12 puzzle block"),
+ *   admin_label = @Translation("Puzzle app block"),
  *   category = @Translation("Paragraph Blocks")
  * )
  */
@@ -97,7 +97,7 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
     $exercises_array = [];
 
     $items = $this->configFactory
-      ->get('twelve_app.settings')
+      ->get('puzzle_app.settings')
       ->get('items');
 
     $today = date('Y-m-d');
@@ -129,21 +129,11 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
         }
       }
 
-      $completion_node_url = '';
-      $completion_node_id = $this->configFactory
-        ->get('twelve_app.settings')
-        ->get('completion_node_id');
-      if (!empty($completion_node_id)) {
-        $completion_page = Node::load($completion_node_id);
-        $completion_node_url = $completion_page->toUrl()->toString();
-      }
-
-
       return [
-        '#theme' => 'today_progress',
+        '#theme' => 'puzzle',
         '#excercises' => $exercises_array,
         '#current_nid' => $node_id,
-        '#completion_url' => $completion_node_url,
+
         '#cache' => [
           'tags' => $this->getCacheTags(),
           'contexts' => $this->getCacheContexts(),
