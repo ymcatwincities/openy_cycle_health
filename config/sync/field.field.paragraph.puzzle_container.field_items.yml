@@ -1,0 +1,105 @@
+uuid: ecb1658a-1873-4454-9682-12a851a469e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_items
+    - paragraphs.paragraphs_type.puzzle_container
+    - paragraphs.paragraphs_type.puzzle_item
+  module:
+    - datalayer
+    - entity_reference_revisions
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_items
+id: paragraph.puzzle_container.field_items
+field_name: field_items
+entity_type: paragraph
+bundle: puzzle_container
+label: Items
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      puzzle_item: puzzle_item
+    target_bundles_drag_drop:
+      puzzle_item:
+        enabled: true
+        weight: 25
+      12_bursts_container:
+        weight: 26
+        enabled: false
+      1c:
+        weight: 27
+        enabled: false
+      2c:
+        weight: 28
+        enabled: false
+      3c:
+        weight: 29
+        enabled: false
+      4c:
+        weight: 30
+        enabled: false
+      banner:
+        weight: 31
+        enabled: false
+      branch_contacts_info:
+        weight: 32
+        enabled: false
+      code:
+        weight: 33
+        enabled: false
+      faq:
+        weight: 34
+        enabled: false
+      featured_highlights:
+        weight: 35
+        enabled: false
+      featured_news:
+        weight: 36
+        enabled: false
+      gallery:
+        weight: 37
+        enabled: false
+      grid_columns:
+        weight: 38
+        enabled: false
+      grid_content:
+        weight: 39
+        enabled: false
+      latest_news_posts:
+        weight: 40
+        enabled: false
+      promo_card:
+        weight: 41
+        enabled: false
+      puzzle_container:
+        weight: 42
+        enabled: false
+      simple_content:
+        weight: 43
+        enabled: false
+      small_banner:
+        weight: 44
+        enabled: false
+      teaser:
+        weight: 45
+        enabled: false
+      today_progress_app:
+        weight: 46
+        enabled: false
+      views:
+        weight: 47
+        enabled: false
+      webform:
+        weight: 48
+        enabled: false
+field_type: entity_reference_revisions

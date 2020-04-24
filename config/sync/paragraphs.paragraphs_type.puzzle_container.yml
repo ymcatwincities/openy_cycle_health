@@ -1,0 +1,9 @@
+uuid: bce7efbc-e4b2-4294-ab6b-990dce40be58
+langcode: en
+status: true
+dependencies: {  }
+id: puzzle_container
+label: 'Puzzle Container'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

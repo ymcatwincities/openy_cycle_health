@@ -1,0 +1,9 @@
+uuid: b6a60f7c-d036-48ab-9c66-2938e43cb46d
+langcode: en
+status: true
+dependencies: {  }
+id: puzzle_item
+label: 'Puzzle Item'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }
