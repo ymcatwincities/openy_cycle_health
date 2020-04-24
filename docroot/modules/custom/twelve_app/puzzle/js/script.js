@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import TodayProgress from '../components/TodayProgress.vue'
-import Notifications from 'vue-notification'
-import 'babel-polyfill'
+import Vue from 'vue';
+import TodayProgress from '../components/TodayProgress.vue';
+import Notifications from 'vue-notification';
+import 'babel-polyfill';
 
 Vue.use(Notifications);
 
@@ -10,6 +10,6 @@ new Vue({
   components: {
     TodayProgress
   },
-}).$mount('#twelve_day_progress_app');
+}).$mount('#twelve_puzzle_app');
 
 Vue.config.devtools = true;

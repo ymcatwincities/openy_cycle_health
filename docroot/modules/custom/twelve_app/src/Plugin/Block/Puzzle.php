@@ -115,15 +115,22 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
         /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
         $paragraph = $paragraph_ref->entity;
 
-        if ($paragraph->bundle() == '12_bursts_container') {
-          foreach ($paragraph->field_excercises as $excercise_reference) {
-            /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $excercise_reference */
-            $exercise_entity = $excercise_reference->entity;
-            $exercises_array[$exercise_entity->id()] = [
+        if ($paragraph->bundle() == 'puzzle_container') {
+          foreach ($paragraph->field_items as $puzzle_item_reference) {
+            /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $puzzle_item_reference */
+            $puzzle_item_paragraph = $puzzle_item_reference->entity;
+            $exercise_entity = $puzzle_item_paragraph->field_exercise->entity;
+            $media_entity = $puzzle_item_paragraph->field_prgf_image->entity;
+            $media_file_uri = $media_entity->field_media_image->entity->getFileUri();
+            $puzzle_image_url = file_create_url($media_file_uri);
+            /** @var \Drupal\media\Entity\Media $media_entity */
+            $exercises_array[] = [
               'label' => $exercise_entity->title->value,
               'description' => $exercise_entity->body->value,
               'timer' => $exercise_entity->field_timer->value,
               'gif' => $exercise_entity->field_animation->value,
+              'id' => $exercise_entity->id(),
+              'puzzle_image_url' => $puzzle_image_url
             ];
           }
         }

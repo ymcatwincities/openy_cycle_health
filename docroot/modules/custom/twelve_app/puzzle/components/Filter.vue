@@ -69,12 +69,12 @@
            v-on:click="openExerciseModal(item.id)"
            :class="{'checked': checked.includes(item.id)}"
       >
-        <div
-          v-bind:class="{'checked': checked.includes(item.id)}"
-          class="checkbox"
-        ></div>
-        <div class="title">{{ item.label }}</div>
-        <div class="description" v-html="item.description"></div>
+        <template v-if="checked.includes(item.id)">
+          <div :style="{ backgroundImage: `url('${item.puzzle_image_url}')` }"></div>
+        </template>
+        <template v-else>
+          <div>{{ item.index_number }}</div>
+        </template>
       </div>
     </div>
   </div>
