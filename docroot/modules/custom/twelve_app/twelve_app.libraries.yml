@@ -4,3 +4,10 @@ day_progress:
     bursts/dist/main.js: {}
   dependencies:
     - openy_system/vue
+
+puzzle:
+  version: 0.1
+  js:
+    puzzle/dist/main.js: {}
+  dependencies:
+    - openy_system/vue

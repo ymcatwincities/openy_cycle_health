@@ -12,5 +12,12 @@ function twelve_app_theme() {
         'completion_url' => ''
       ],
     ],
+    'puzzle' => [
+      'variables' => [
+        'excercises' => [],
+        'current_nid' => '',
+        'completion_url' => ''
+      ],
+    ],
   ];
 }

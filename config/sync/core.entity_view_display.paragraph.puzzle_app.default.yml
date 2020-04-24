@@ -1,0 +1,22 @@
+uuid: ca87499d-a961-4f55-87ca-64d04ef52059
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.puzzle_app.field_puzzle_app
+    - paragraphs.paragraphs_type.puzzle_app
+  module:
+    - plugin
+id: paragraph.puzzle_app.default
+targetEntityType: paragraph
+bundle: puzzle_app
+mode: default
+content:
+  field_puzzle_app:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: plugin_block_built
+    region: content
+hidden: {  }

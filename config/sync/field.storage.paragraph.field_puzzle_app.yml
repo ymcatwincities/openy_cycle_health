@@ -1,0 +1,19 @@
+uuid: 073b1165-6136-44f9-9e30-c70c19da88ad
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - plugin
+id: paragraph.field_puzzle_app
+field_name: field_puzzle_app
+entity_type: paragraph
+type: 'plugin:block'
+settings: {  }
+module: plugin
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
