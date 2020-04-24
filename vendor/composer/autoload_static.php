@@ -122,6 +122,7 @@ class ComposerStaticInitbf2a14f4ef9a514b25732c0e5c761629
         ),
         'L' => 
         array (
+            'League\\OAuth2\\Client\\' => 21,
             'League\\Csv\\' => 11,
             'League\\Container\\' => 17,
         ),
@@ -412,6 +413,12 @@ class ComposerStaticInitbf2a14f4ef9a514b25732c0e5c761629
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
+        ),
+        'League\\OAuth2\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/oauth2-client/src',
+            1 => __DIR__ . '/..' . '/league/oauth2-facebook/src',
+            2 => __DIR__ . '/..' . '/league/oauth2-google/src',
         ),
         'League\\Csv\\' => 
         array (

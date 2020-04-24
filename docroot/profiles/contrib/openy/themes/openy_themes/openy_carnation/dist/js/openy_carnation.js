@@ -29,6 +29,7 @@
       $('.alert-modal .close').on('click', function (e) {
         e.preventDefault();
         $(this).closest('.alert-modal').remove();
+        $('.modal-backdrop').remove();
       });
     }
   };

@@ -1,0 +1,5 @@
+services:
+  twelve_user.route_subscriber:
+    class: Drupal\twelve_user\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber }

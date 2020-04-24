@@ -12,3 +12,4 @@ default_langcode: en
 _core:
   default_config_hash: Ed1SDJVUEf1WvYTmCNKpAxDCUp4oJ2UveKNzJwe5xYk
 uuid: 56eb2022-1de1-4497-9ca7-74654d42024a
+mail_notification: no-reply@imagexmedia.com
