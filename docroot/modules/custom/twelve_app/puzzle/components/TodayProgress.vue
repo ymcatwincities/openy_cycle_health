@@ -100,9 +100,12 @@
                         'description': item.description,
                         'timer': item.timer,
                         'gif_path': item.gif,
-                        'id': i,
+                        'id': item.id,
+                        'puzzle_image_url': item.puzzle_image_url
                     };
                 }
+
+                console.log(options);
 
                 return options;
             }
