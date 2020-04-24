@@ -33,14 +33,21 @@
 <script>
   export default {
     data() {
+
       let name = this.loadNameFromCache();
+
+      if (drupalSettings.username !== '') {
+        name = drupalSettings.username;
+        localStorage.twelveUserName = name;
+      }
+
       return {
-        userIntroduced: this.isName(name),
+        userIntroduced: (drupalSettings.user.uid > 0) || (this.isName(name)),
         username: name,
       };
     },
     created() {
-      this
+
     },
     methods: {
       loadNameFromCache: function() {

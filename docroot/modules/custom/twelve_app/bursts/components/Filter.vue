@@ -143,7 +143,7 @@
 
           this.$notify({
             group: 'twelve_app',
-            title: 'Hooray, you have finished your excercise!',
+            title: 'Hooray, you have finished your exercise!',
             text: 'Now, lets have some rest.'
           });
         }
@@ -191,7 +191,7 @@
       },
 
       beep: function () {
-         let snd = new Audio('/modules/custom/twelve_app/frontend/disco_alarm.wav');
+         let snd = new Audio('/modules/custom/twelve_app/bursts/disco_alarm.wav');
          snd.play();
       },
 
