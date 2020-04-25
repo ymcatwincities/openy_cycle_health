@@ -100,14 +100,6 @@
 
 body:not(.user-logged-in) {
   .ps-grid_content-challenge {
-    .more-link {
-      //display: none;
-    }
-
-    > div.col-12 {
-
-    }
-
     > div.col-12 .ps-grid_columns-sign-in-required .content .inner .text {
       display: block;
       grid-column: 1;
