@@ -11,7 +11,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">BURST DETAILS</h4>
+            <h4 class="modal-title">{{ item.label }}</h4>
             <button type="button" class="close notranslate" aria-label="Close"
                     v-on:click="closeExerciseModal"
             ><span aria-hidden="true">&times;</span></button>
@@ -179,17 +179,17 @@
         this.timerIsPaused = false;
         this.exerciseModalVisible = false;
 
-        if (this.fullyCompletedTodayExercises() && this.$props.completion_url.length > 0) {
-          window.location = window.location.origin + this.$props.completion_url;
+        if (this.fullyCompletedTodayExercises()) {
+          window.location = window.location.origin + '/user';
         }
       },
 
       fullyCompletedTodayExercises: function () {
-        return (this.checked.length < Object.keys(this.$props.options).length) ? false: true;
+        return (this.checked.length >= Object.keys(this.$props.options).length);
       },
 
       beep: function () {
-         let snd = new Audio('/modules/custom/twelve_app/frontend/disco_alarm.wav');
+         let snd = new Audio('/modules/custom/twelve_app/puzzle/disco_alarm.wav');
          snd.play();
       },
 

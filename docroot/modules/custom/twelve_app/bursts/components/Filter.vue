@@ -187,11 +187,11 @@
       },
 
       fullyCompletedTodayExercises: function () {
-        return (this.checked.length < Object.keys(this.$props.options).length) ? false: true;
+        return (this.checked.length >= Object.keys(this.$props.options).length);
       },
 
       beep: function () {
-         let snd = new Audio('/modules/custom/twelve_app/frontend/disco_alarm.wav');
+         let snd = new Audio('/modules/custom/twelve_app/bursts/disco_alarm.wav');
          snd.play();
       },
 
