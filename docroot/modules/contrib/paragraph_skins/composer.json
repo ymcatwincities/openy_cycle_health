@@ -1,0 +1,13 @@
+{
+    "name": "openy/paragraph_skins",
+    "type": "drupal-module",
+    "description": "Implement skins for paragraphs by OpenY community",
+    "keywords": [
+    ],
+    "homepage": "https://github.com/ymcatwincities/paragraph_skins",
+    "minimum-stability": "dev",
+    "support": {
+        "issues": "https://github.com/ymcatwincities/paragraph_skins/issues",
+        "source": "https://github.com/ymcatwincities/paragraph_skins.git"
+    }
+}
