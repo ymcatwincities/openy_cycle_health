@@ -1,0 +1,8 @@
+twelve_app.paragraph_skins:
+  - name: challenge
+    label: 'Challenge'
+    paragraph_type: grid_content
+
+  - name: sign-in-required
+    label: 'Sign-in required'
+    paragraph_type: grid_columns
