@@ -11,17 +11,13 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">CHALLENGER NAME</h4>
-            <!--button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button-->
+            <h4 class="modal-title">Log in to start playing</h4>
           </div>
           <div class="modal-body">
-            <p>What name do you go by, challenger?</p>
-            <div class="label">Name</div>
-            <input type="text" name="username" v-model="username" class="username" v-on:keyup.enter="setLogin">
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" v-on:click="setLogin">Enter</button>
-            <button type="button" class="btn btn-white" v-on:click="setDefaultName">No thanks</button>
+            <button type="button" class="btn btn-default" v-on:click="gotoLoginPage">Login</button>
+            <button type="button" class="btn btn-default" v-on:click="gotoRegisterPage">Register</button>
           </div>
         </div>
       </div>
@@ -33,15 +29,10 @@
 <script>
   export default {
     data() {
-      let name = this.loadNameFromCache();
-
-      if (drupalSettings.username !== '') {
-        name = drupalSettings.username;
-        localStorage.twelveUserName = name;
-      }
+      let name = this.loadUserName();
 
       return {
-        userIntroduced: (drupalSettings.user.uid > 0) || (this.isName(name)),
+        userIntroduced: drupalSettings.user.uid > 0,
         username: name,
       };
     },
@@ -49,11 +40,12 @@
 
     },
     methods: {
-      loadNameFromCache: function() {
-        let name = localStorage.twelveUserName;
+      loadUserName: function() {
+        let name = drupalSettings.username;
         if(!this.isName(name)) {
           this.$emit('show-modal');
         }
+        localStorage.twelveUserName = name;
         return name;
       },
 
@@ -66,26 +58,13 @@
         this.$emit('show-modal');
       },
 
-      setDefaultName: function() {
-        this.username = 'Challenger';
-        this.setLogin();
+      gotoLoginPage: function() {
+        window.location = window.location.origin + '/user/login?destination=' + encodeURIComponent(window.location.pathname);
       },
 
-      setLogin: function () {
-        if (!this.username) {
-          e.preventDefault();
-          return;
-        }
-        localStorage.twelveUserName = this.username;
-        this.userIntroduced = true;
-        this.$emit('hide-modal');
-
-        this.$notify({
-          group: 'twelve_app',
-          title: 'You have introduced yourself',
-          text: 'Lets start training!'
-        });
-      }
+      gotoRegisterPage: function() {
+        window.location = window.location.origin + '/user/register?destination=' + encodeURIComponent(window.location.pathname);
+      },
     }
   };
 </script>
