@@ -143,7 +143,7 @@
 
           this.$notify({
             group: 'twelve_app',
-            title: 'Hooray, you have finished your excercise!',
+            title: 'Hooray, you have finished your exercise!',
             text: 'Now, lets have some rest.'
           });
         }

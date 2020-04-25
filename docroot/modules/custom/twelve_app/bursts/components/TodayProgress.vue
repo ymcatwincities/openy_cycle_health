@@ -1,13 +1,13 @@
 <template>
- <div>
- <main-filter
-         :options="excercisesOptions"
-         :current_nid="current_nid"
-         :completion_url="completion_url"
-         v-on:data-update="sendData"
- ></main-filter>
- <notifications group="twelve_app"></notifications>
- </div>
+    <div>
+        <main-filter
+                :options="excercisesOptions"
+                :current_nid="current_nid"
+                :completion_url="completion_url"
+                v-on:data-update="sendData"
+        ></main-filter>
+        <notifications group="twelve_app"></notifications>
+    </div>
 </template>
 
 <script>
@@ -60,30 +60,54 @@
                 }
 
                 axios({url: '/session/token'}).then(data => {
-                  let token = data.data;
+                    let token = data.data;
                 }).catch(function (error) {
 
                 });
 
-                axios({
-                    method: request_type,
-                    url: result_url,
-                    data: data,
-                    headers: {
+                if (typeof drupalSettings.username === "string" && drupalSettings.username > 0) {
+                    console.log('User logged setup');
+                    axios({url: '/session/token'}).then(data => {
+                        let token = data.data;
+                        axios({
+                            method: request_type,
+                            url: result_url,
+                            data: data,
+                            headers: {
+                                "X-CSRF-Token": token
+                            },
+                        }).then(function (response) {
+                            let result_key = 'result_node_id_for_' + this.$props.current_nid;
+                            let value = response.data.nid[0].value;
+                            localStorage.setItem(result_key, value);
+                        }.bind(this)).catch(function (error) {
+                            //@TODO Add error handler
+                        });
+                    }).catch(function (error) {
 
-                    },
-                    auth: {
-                        username: '12bursts_consumer',
-                        password: 'e+bMS3E)}qv(rAMa'
-                    }
-                }).
-                  then(function (response) {
-                    let result_key = 'result_node_id_for_' + this.$props.current_nid;
-                    let value = response.data.nid[0].value;
-                    localStorage.setItem(result_key, value);
-                }.bind(this)).catch(function (error) {
-                    //@TODO Add error handler
-                });
+                    });
+
+
+                } else {
+
+                    axios({
+                        method: request_type,
+                        url: result_url,
+                        data: data,
+                        headers: {},
+                        auth: {
+                            username: '12bursts_consumer',
+                            password: 'e+bMS3E)}qv(rAMa'
+                        }
+                    }).then(function (response) {
+                        let result_key = 'result_node_id_for_' + this.$props.current_nid;
+                        let value = response.data.nid[0].value;
+                        localStorage.setItem(result_key, value);
+                    }.bind(this)).catch(function (error) {
+                        //@TODO Add error handler
+                    });
+
+                }
 
             }
 
