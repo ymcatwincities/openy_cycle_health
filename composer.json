@@ -18,7 +18,8 @@
     "drupal/social_auth_google": "^2.0",
     "drupal/social_auth_facebook": "^2.0",
     "drupal/email_registration": "^1.0",
-    "drupal/rpt": "^1.0"
+    "drupal/rpt": "^1.0",
+    "openy/paragraph_skins": "dev-master"
   },
   "require-dev": {
     "ymcatwincities/openy-docksal": "dev-master",
