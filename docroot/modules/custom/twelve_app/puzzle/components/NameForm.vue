@@ -33,7 +33,6 @@
 <script>
   export default {
     data() {
-
       let name = this.loadNameFromCache();
 
       if (drupalSettings.username !== '') {

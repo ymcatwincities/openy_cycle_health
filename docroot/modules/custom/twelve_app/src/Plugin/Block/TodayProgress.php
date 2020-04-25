@@ -159,7 +159,6 @@ class TodayProgress extends BlockBase implements ContainerFactoryPluginInterface
         $first_name = $userData->field_first_name->value;
         $login = (!empty($first_name)) ? $first_name : $user->getEmail();
       }
-      $i=1;
 
       return [
         '#theme' => 'today_progress',
