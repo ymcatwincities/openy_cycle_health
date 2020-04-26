@@ -109,7 +109,7 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
     $exercises_array = [];
 
     $items = $this->configFactory
-      ->get('puzzle_app.settings')
+      ->get('twelve_app.puzzle_settings')
       ->get('items');
 
     $today = date('Y-m-d');

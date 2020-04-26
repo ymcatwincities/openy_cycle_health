@@ -15,7 +15,7 @@ class PuzzleSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'puzzle_app_admin_settings';
+    return 'twelve_app_puzzle_admin_settings';
   }
 
   /**
@@ -23,7 +23,7 @@ class PuzzleSettingsForm extends ConfigFormBase {
    */
   protected function getEditableConfigNames() {
     return [
-      'puzzle_app.settings',
+      'twelve_app.puzzle_settings',
     ];
   }
 
@@ -32,7 +32,7 @@ class PuzzleSettingsForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
 
-    $config = $this->config('puzzle_app.settings');
+    $config = $this->config('twelve_app.puzzle_settings');
 
     if (empty($form_state->get('items'))) {
       $items = $config->get('items');
@@ -172,7 +172,7 @@ class PuzzleSettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     /* @var $config \Drupal\Core\Config\Config */
-    $config = $this->configFactory->getEditable('puzzle_app.settings');
+    $config = $this->configFactory->getEditable('twelve_app.puzzle_settings');
     $config->set('items', $form_state->getValue('nodes_container'))->save();
     parent::submitForm($form, $form_state);
   }
