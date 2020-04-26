@@ -59,16 +59,13 @@
                     request_type = 'patch';
                 }
 
-                axios({url: '/session/token'}).then(data => {
-                    let token = data.data;
-                }).catch(function (error) {
+                if (drupalSettings.username !== '') {
 
-                });
-
-                if (typeof drupalSettings.username === "string" && drupalSettings.username > 0) {
-                    console.log('User logged setup');
-                    axios({url: '/session/token'}).then(data => {
-                        let token = data.data;
+                    axios({url: '/session/token'}).then(token_data => {
+                        let token = token_data.data;
+                        console.log(request_type);
+                        console.log(data);
+                        console.log(result_url);
                         axios({
                             method: request_type,
                             url: result_url,
@@ -89,6 +86,12 @@
 
 
                 } else {
+
+                    axios({url: '/session/token'}).then(data => {
+                        let token = data.data;
+                    }).catch(function (error) {
+
+                    });
 
                     axios({
                         method: request_type,
