@@ -144,6 +144,7 @@ module:
   options: 0
   page_cache: 0
   panelbutton: 0
+  paragraph_skins: 0
   path: 0
   path_alias: 0
   plugin: 0

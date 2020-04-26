@@ -187,7 +187,7 @@
       },
 
       fullyCompletedTodayExercises: function () {
-        return (this.checked.length < Object.keys(this.$props.options).length) ? false: true;
+        return (this.checked.length >= Object.keys(this.$props.options).length);
       },
 
       beep: function () {

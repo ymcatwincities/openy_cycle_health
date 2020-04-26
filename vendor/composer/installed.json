@@ -10787,6 +10787,28 @@
         "homepage": "http://www.oomphinc.com/"
     },
     {
+        "name": "openy/paragraph_skins",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ymcatwincities/paragraph_skins.git",
+            "reference": "5e896efab139891e660025425a89bc16737645de"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ymcatwincities/paragraph_skins/zipball/5e896efab139891e660025425a89bc16737645de",
+            "reference": "5e896efab139891e660025425a89bc16737645de",
+            "shasum": ""
+        },
+        "time": "2020-04-07T18:22:45+00:00",
+        "type": "drupal-module",
+        "installation-source": "source",
+        "notification-url": "https://packagist.org/downloads/",
+        "description": "Implement skins for paragraphs by OpenY community",
+        "homepage": "https://github.com/ymcatwincities/paragraph_skins"
+    },
+    {
         "name": "paragonie/random_compat",
         "version": "v9.99.99",
         "version_normalized": "9.99.99.0",

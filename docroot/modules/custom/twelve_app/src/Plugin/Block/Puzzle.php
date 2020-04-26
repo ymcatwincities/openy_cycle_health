@@ -10,11 +10,13 @@ use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Path\AliasManagerInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\openy_activity_finder\OpenyActivityFinderSolrBackend;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -57,6 +59,13 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
   protected $routeMatch;
 
   /**
+   * Current user service instance.
+   *
+   * @var AccountProxyInterface
+   */
+  protected $currentUser;
+
+  /**
    * {@inheritdoc}
    */
   public function __construct(
@@ -66,13 +75,15 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
     ConfigFactoryInterface $config_factory,
     QueryFactory $entity_query,
     AliasManagerInterface $alias_manager,
-    RouteMatchInterface $route_match
+    RouteMatchInterface $route_match,
+    AccountProxyInterface $current_user
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->configFactory = $config_factory;
     $this->entityQuery = $entity_query;
     $this->aliasManager = $alias_manager;
     $this->routeMatch = $route_match;
+    $this->currentUser = $current_user;
   }
 
   /**
@@ -86,7 +97,8 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
       $container->get('config.factory'),
       $container->get('entity.query'),
       $container->get('path.alias_manager'),
-      $container->get('current_route_match')
+      $container->get('current_route_match'),
+      $container->get('current_user')
     );
   }
 
@@ -136,6 +148,15 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
         }
       }
 
+      $user = $this->currentUser->getAccount();
+      $login = '';
+
+      if ($user->id()) {
+        $userData = User::load($user->id());
+        $first_name = $userData->field_first_name->value;
+        $login = (!empty($first_name)) ? $first_name : $user->getEmail();
+      }
+
       return [
         '#theme' => 'puzzle',
         '#excercises' => $exercises_array,
@@ -145,7 +166,12 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
           'tags' => $this->getCacheTags(),
           'contexts' => $this->getCacheContexts(),
           'max-age' => $this->getCacheMaxAge(),
-        ]
+        ],
+        '#attached' => [
+          'drupalSettings' => [
+            'username' => $login,
+          ]
+        ],
       ];
 
     } else {

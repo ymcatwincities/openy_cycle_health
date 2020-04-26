@@ -11,7 +11,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">BURST DETAILS</h4>
+            <h4 class="modal-title">{{ item.label }}</h4>
             <button type="button" class="close notranslate" aria-label="Close"
                     v-on:click="closeExerciseModal"
             ><span aria-hidden="true">&times;</span></button>
@@ -69,12 +69,10 @@
            v-on:click="openExerciseModal(item.id)"
            :class="{'checked': checked.includes(item.id)}"
       >
-        <template v-if="checked.includes(item.id)">
-          <div :style="{ backgroundImage: `url('${item.puzzle_image_url}')` }"></div>
-        </template>
-        <template v-else>
-          <div>{{ item.index_number }}</div>
-        </template>
+        <div v-if="checked.includes(item.id)"
+             :style="{ backgroundImage: `url('${item.puzzle_image_url}')` }">
+        </div>
+        <template v-else>{{ item.index_number }}</template>
       </div>
     </div>
   </div>
@@ -181,17 +179,17 @@
         this.timerIsPaused = false;
         this.exerciseModalVisible = false;
 
-        if (this.fullyCompletedTodayExercises() && this.$props.completion_url.length > 0) {
-          window.location = window.location.origin + this.$props.completion_url;
+        if (this.fullyCompletedTodayExercises()) {
+          window.location = window.location.origin + '/user';
         }
       },
 
       fullyCompletedTodayExercises: function () {
-        return (this.checked.length < Object.keys(this.$props.options).length) ? false: true;
+        return (this.checked.length >= Object.keys(this.$props.options).length);
       },
 
       beep: function () {
-         let snd = new Audio('/modules/custom/twelve_app/frontend/disco_alarm.wav');
+         let snd = new Audio('/modules/custom/twelve_app/puzzle/disco_alarm.wav');
          snd.play();
       },
 

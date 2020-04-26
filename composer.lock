@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "50593e49fc5b39d1e6302ef56c5a980a",
+    "content-hash": "84e20bdc2506ca1a441f41656f17b218",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -9458,6 +9458,26 @@
             ]
         },
         {
+            "name": "openy/paragraph_skins",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ymcatwincities/paragraph_skins.git",
+                "reference": "5e896efab139891e660025425a89bc16737645de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ymcatwincities/paragraph_skins/zipball/5e896efab139891e660025425a89bc16737645de",
+                "reference": "5e896efab139891e660025425a89bc16737645de",
+                "shasum": ""
+            },
+            "type": "drupal-module",
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Implement skins for paragraphs by OpenY community",
+            "homepage": "https://github.com/ymcatwincities/paragraph_skins",
+            "time": "2020-04-07T18:22:45+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v9.99.99",
             "source": {
@@ -13749,6 +13769,7 @@
     "stability-flags": {
         "drupal/smtp": 10,
         "drupal/swiftmailer": 10,
+        "openy/paragraph_skins": 20,
         "ymcatwincities/openy-docksal": 20,
         "drupal/tqextension": 20
     },
