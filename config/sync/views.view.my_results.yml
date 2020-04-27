@@ -156,7 +156,18 @@ display:
       title: 'My Results'
       header: {  }
       footer: {  }
-      empty: {  }
+      empty:
+        area_text_custom:
+          id: area_text_custom
+          table: views
+          field: area_text_custom
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content: "<p>Your 12Bursts progress will be stored here. Start a 12Bursts challenge to begin collecting results!</p>\r\n<p><a href=\"/challenges\" class=\"btn btn-primary'>Challenges</a></p>\r\n"
+          plugin_id: text_custom
       relationships: {  }
       arguments:
         uid:
