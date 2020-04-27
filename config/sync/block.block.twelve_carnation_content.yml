@@ -11,7 +11,7 @@ _core:
 id: twelve_carnation_content
 theme: twelve_carnation
 region: content
-weight: -7
+weight: -8
 provider: null
 plugin: system_main_block
 settings:
