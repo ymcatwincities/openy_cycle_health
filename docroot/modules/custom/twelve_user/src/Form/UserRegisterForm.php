@@ -55,6 +55,7 @@ class UserRegisterForm extends ProfileForm {
     $user = User::load($account->id());
     $user->addRole('api');
     $user->save();
+    _user_mail_notify('register_no_approval_required', $account);
     user_login_finalize($user);
   }
 
