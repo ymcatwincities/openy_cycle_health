@@ -3,7 +3,6 @@
 
     <div class="user-name-container">
       <span class="username">Hello, <template v-if="userIntroduced">{{ username }}!</template><template v-else>...</template></span>
-      <a class="change-button" v-on:click="showModal">Edit Name</a>
     </div>
 
     <div class="modal fade show d-block user-login-container" v-if="!userIntroduced">
