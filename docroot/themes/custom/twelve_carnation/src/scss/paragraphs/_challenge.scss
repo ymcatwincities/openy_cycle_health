@@ -95,6 +95,18 @@
         }
       }
     }
+
+    &:nth-child(1) {
+      .grid-item .content .inner .image-prgf-grid {
+        background-image: url("/themes/custom/twelve_carnation/dist/img/logo--daily-dozen-400.png");
+      }
+    }
+
+    &:nth-child(2) {
+      .grid-item .content .inner .image-prgf-grid {
+        background-image: url("/themes/custom/twelve_carnation/dist/img/logo--hidden-picture-400.png");
+      }
+    }
   }
 }
 

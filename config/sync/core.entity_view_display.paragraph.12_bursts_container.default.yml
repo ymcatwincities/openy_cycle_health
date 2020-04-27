@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.paragraph.12_bursts_container.field_excercises
     - field.field.paragraph.12_bursts_container.field_prgf_image
+    - image.style.large
     - paragraphs.paragraphs_type.12_bursts_container
   module:
     - media
@@ -17,7 +18,7 @@ content:
     weight: 0
     label: hidden
     settings:
-      image_style: ''
+      image_style: large
       image_link: ''
     third_party_settings: {  }
     type: media_thumbnail
