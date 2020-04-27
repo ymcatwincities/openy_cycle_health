@@ -49,9 +49,12 @@ class UserRegisterForm extends ProfileForm {
    */
   public function save(array $form, FormStateInterface $form_state) {
     $account = $this->entity;
+
     $account->save();
     $form_state->setValue('uid', $account->id());
     $user = User::load($account->id());
+    $user->addRole('api');
+    $user->save();
     user_login_finalize($user);
   }
 
