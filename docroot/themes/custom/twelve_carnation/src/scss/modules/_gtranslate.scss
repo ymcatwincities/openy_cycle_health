@@ -28,11 +28,11 @@
     padding-bottom: 21px;
     padding-left: 9px;
     padding-top: 21px;
-    color: black;
+    color: $white;
 
     select {
       @include cachet();
-      color: black;
+      color: $white;
       font-size: 18px !important;
       text-transform: uppercase;
 
