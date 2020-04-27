@@ -2,8 +2,10 @@
   <div class="introduce-form">
 
     <div class="user-name-container">
-      <span class="username">Hello, <template v-if="userIntroduced">{{ username }}!</template><template v-else>...</template></span>
-      <a class="change-button" v-on:click="showModal">Edit Name</a>
+      <span class="username">
+        Hello, <template v-if="userIntroduced">{{ username }}!</template><template v-else>...</template>
+      </span>
+      <a v-if="!isLoggedIn" class="change-button" v-on:click="showModal">Edit Name</a>
     </div>
 
     <div class="modal fade show d-block user-login-container" v-if="!userIntroduced">
@@ -41,6 +43,7 @@
       }
 
       return {
+        isLoggedIn: drupalSettings.user.uid > 0,
         userIntroduced: (drupalSettings.user.uid > 0) || (this.isName(name)),
         username: name,
       };
