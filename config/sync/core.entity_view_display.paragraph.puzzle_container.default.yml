@@ -4,21 +4,23 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.puzzle_container.field_items
+    - field.field.paragraph.puzzle_container.field_prgf_image
     - paragraphs.paragraphs_type.puzzle_container
   module:
-    - entity_reference_revisions
+    - media
 id: paragraph.puzzle_container.default
 targetEntityType: paragraph
 bundle: puzzle_container
 mode: default
 content:
-  field_items:
-    type: entity_reference_revisions_entity_view
+  field_prgf_image:
     weight: 0
-    label: above
+    label: hidden
     settings:
-      view_mode: default
-      link: ''
+      image_style: ''
+      image_link: content
     third_party_settings: {  }
+    type: media_thumbnail
     region: content
-hidden: {  }
+hidden:
+  field_items: true

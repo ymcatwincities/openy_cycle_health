@@ -1,0 +1,10 @@
+uuid: c60dfb53-e380-45f2-9f1e-6bcf18ca6d31
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.my_results_
+label: 'My Results Teaser'
+targetEntityType: node
+cache: true

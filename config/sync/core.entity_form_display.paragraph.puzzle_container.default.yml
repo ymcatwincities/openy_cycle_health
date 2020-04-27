@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.puzzle_container.field_items
+    - field.field.paragraph.puzzle_container.field_prgf_image
     - paragraphs.paragraphs_type.puzzle_container
   module:
     - paragraphs
@@ -23,6 +24,16 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
+    region: content
+  field_prgf_image:
+    weight: 1
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
     region: content
 hidden:
   created: true

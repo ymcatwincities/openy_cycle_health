@@ -4,19 +4,23 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.12_bursts_container.field_excercises
+    - field.field.paragraph.12_bursts_container.field_prgf_image
     - paragraphs.paragraphs_type.12_bursts_container
+  module:
+    - media
 id: paragraph.12_bursts_container.default
 targetEntityType: paragraph
 bundle: 12_bursts_container
 mode: default
 content:
-  field_excercises:
+  field_prgf_image:
     weight: 0
     label: hidden
     settings:
-      view_mode: teaser
-      link: false
+      image_style: ''
+      image_link: ''
     third_party_settings: {  }
-    type: entity_reference_entity_view
+    type: media_thumbnail
     region: content
-hidden: {  }
+hidden:
+  field_excercises: true

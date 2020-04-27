@@ -1,0 +1,29 @@
+uuid: 40547373-e793-4986-a52e-91b9bfdc39db
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.my_results_
+    - field.field.node.12_bursts_result.field_finished_items
+    - field.field.node.12_bursts_result.field_when
+    - node.type.12_bursts_result
+  module:
+    - user
+id: node.12_bursts_result.my_results_
+targetEntityType: node
+bundle: 12_bursts_result
+mode: my_results_
+content:
+  field_when:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: my_results_
+      link: false
+    third_party_settings: {  }
+    type: entity_reference_entity_view
+    region: content
+hidden:
+  field_finished_items: true
+  langcode: true
+  links: true
