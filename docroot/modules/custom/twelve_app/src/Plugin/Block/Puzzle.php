@@ -187,7 +187,10 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
       ->get('twelve_app.settings')
       ->get('node_id');
 
-    return Cache::mergeTags(parent::getCacheTags(), ['twelve_app' . $node_id]);
+    return Cache::mergeTags(parent::getCacheTags(), [
+      'twelve_app' . $node_id,
+      'user_id' . $this->currentUser->id()
+    ]);
   }
 
 }
