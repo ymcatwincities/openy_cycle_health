@@ -5,7 +5,7 @@ smtp_encryption: tls
 smtp_credential_provider: swiftmailer
 smtp_credentials:
   swiftmailer:
-    username: no-reply
+    username: noreply
     password: ''
 sendmail_path: /usr/sbin/sendmail
 sendmail_mode: bs
