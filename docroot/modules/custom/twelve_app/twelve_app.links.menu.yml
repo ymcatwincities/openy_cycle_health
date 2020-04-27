@@ -6,7 +6,7 @@ openy_system.twelve_app_settings:
   weight: 200
 
 openy_system.puzzle_app_settings:
-  title: 'Puzzle App Settings'
+  title: 'Hidden Picture App Settings'
   description: 'Configure Node'
   parent: openy_system.openy
   route_name: twelve_app.puzzle_settings

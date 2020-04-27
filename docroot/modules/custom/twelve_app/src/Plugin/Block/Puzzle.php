@@ -24,7 +24,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @Block(
  *   id = "twelve_puzzle",
- *   admin_label = @Translation("Puzzle app block"),
+ *   admin_label = @Translation("Hidden Picture app"),
  *   category = @Translation("Paragraph Blocks")
  * )
  */
