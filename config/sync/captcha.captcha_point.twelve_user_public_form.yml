@@ -1,0 +1,7 @@
+uuid: 1c63a651-5787-4fef-a290-6ff53805dfae
+langcode: en
+status: true
+dependencies: {  }
+formId: twelve_user_public_form
+captchaType: recaptcha/reCAPTCHA
+label: twelve_user_public_form
