@@ -1,21 +1,21 @@
 <template>
- <div>
- <main-filter
-         :options="excercisesOptions"
-         :current_nid="current_nid"
-         :completion_url="completion_url"
-         v-on:data-update="sendData"
- ></main-filter>
- <notifications group="twelve_app"></notifications>
- </div>
+    <div>
+        <main-filter
+                :options="excercisesOptions"
+                :current_nid="current_nid"
+                :completion_url="completion_url"
+                v-on:data-update="sendData"
+        ></main-filter>
+        <notifications group="twelve_app"></notifications>
+    </div>
 </template>
 
 <script>
 
-  import Spinner from '../components/Spinner.vue'
-  import MainFilter from '../components/Filter.vue'
+    import Spinner from '../components/Spinner.vue'
+    import MainFilter from '../components/Filter.vue'
 
-  const axios = require('axios');
+    const axios = require('axios');
 
     export default {
         props: ['excercises', 'current_nid', 'completion_url'],
@@ -52,62 +52,62 @@
                     'field_finished_items': checked
                 };
 
-                let result_key = 'result_node_id_for_' + this.$props.current_nid;
+                let result_key = this.getLocalStorageKey();
                 let result_nid = localStorage.getItem(result_key);
                 if (result_nid) {
                     result_url += '/' + result_nid;
                     request_type = 'patch';
                 }
 
-                axios({url: '/session/token'}).then(data => {
-                  let token = data.data;
+                axios({url: '/session/token'}).then(token_data => {
+
+                    let token = token_data.data;
+
+                    axios({
+                        method: request_type,
+                        url: result_url,
+                        data: data,
+                        headers: {
+                            "X-CSRF-Token": token
+                        },
+                    }).then(function (response) {
+                        let result_key = this.getLocalStorageKey();
+                        let value = response.data.nid[0].value;
+                        localStorage.setItem(result_key, value);
+                    }.bind(this)).catch(function (error) {
+                        //@TODO Add error handler
+                    });
+
                 }).catch(function (error) {
 
                 });
 
-                axios({
-                    method: request_type,
-                    url: result_url,
-                    data: data,
-                    headers: {
+            },
 
-                    },
-                    auth: {
-                        username: '12bursts_consumer',
-                        password: 'e+bMS3E)}qv(rAMa'
-                    }
-                }).
-                  then(function (response) {
-                    let result_key = 'result_node_id_for_' + this.$props.current_nid;
-                    let value = response.data.nid[0].value;
-                    localStorage.setItem(result_key, value);
-                }.bind(this)).catch(function (error) {
-                    //@TODO Add error handler
-                });
-
+            getLocalStorageKey: function () {
+                return 'result_puzzle_node_id_for_' + this.$props.current_nid + '_' + drupalSettings.user.uid;
             }
-
         },
-      computed: {
-        excercisesOptions: function () {
-          var options = {};
-          var index = 1;
-          for (var i in this.excercises) {
-            var item = this.excercises[i];
+        computed: {
+            excercisesOptions: function () {
+                var options = {};
+                var index = 1;
+                for (var i in this.excercises) {
+                    var item = this.excercises[i];
 
-            options[i] = {
-              'label': item.label,
-              'description': item.description,
-              'timer': item.timer,
-              'gif_path': item.gif,
-              'id': item.id,
-              'puzzle_image_url': item.puzzle_image_url,
-              'index_number': index++
-            };
-          }
+                    options[i] = {
+                        'label': item.label,
+                        'description': item.description,
+                        'timer': item.timer,
+                        'gif_path': item.gif,
+                        'id': item.id,
+                        'puzzle_image_url': item.puzzle_image_url,
+                        'index_number': index++
+                    };
+                }
 
-          return options;
+                return options;
+            }
         }
-      }
     }
 </script>

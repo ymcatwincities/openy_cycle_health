@@ -52,7 +52,7 @@
                     'field_finished_items': checked
                 };
 
-                let result_key = 'result_node_id_for_' + this.$props.current_nid;
+                let result_key = this.getLocalStorageKey();
                 let result_nid = localStorage.getItem(result_key);
                 if (result_nid) {
                     result_url += '/' + result_nid;
@@ -63,9 +63,7 @@
 
                     axios({url: '/session/token'}).then(token_data => {
                         let token = token_data.data;
-                        console.log(request_type);
-                        console.log(data);
-                        console.log(result_url);
+
                         axios({
                             method: request_type,
                             url: result_url,
@@ -74,7 +72,7 @@
                                 "X-CSRF-Token": token
                             },
                         }).then(function (response) {
-                            let result_key = 'result_node_id_for_' + this.$props.current_nid;
+                            let result_key = this.getLocalStorageKey();
                             let value = response.data.nid[0].value;
                             localStorage.setItem(result_key, value);
                         }.bind(this)).catch(function (error) {
@@ -103,7 +101,7 @@
                             password: 'e+bMS3E)}qv(rAMa'
                         }
                     }).then(function (response) {
-                        let result_key = 'result_node_id_for_' + this.$props.current_nid;
+                        let result_key = this.getLocalStorageKey();
                         let value = response.data.nid[0].value;
                         localStorage.setItem(result_key, value);
                     }.bind(this)).catch(function (error) {
@@ -112,8 +110,11 @@
 
                 }
 
-            }
+            },
 
+            getLocalStorageKey: function () {
+                return 'result_node_id_for_' + this.$props.current_nid + '_' + drupalSettings.user.uid;
+            }
         },
         computed: {
             excercisesOptions: function () {
