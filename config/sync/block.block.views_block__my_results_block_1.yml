@@ -6,13 +6,14 @@ dependencies:
     - views.view.my_results
   module:
     - system
+    - user
     - views
   theme:
     - twelve_carnation
 id: views_block__my_results_block_1
 theme: twelve_carnation
 region: content
-weight: -8
+weight: -7
 provider: null
 plugin: 'views_block:my_results-block_1'
 settings:
@@ -29,3 +30,10 @@ visibility:
     pages: '/user/*'
     negate: false
     context_mapping: {  }
+  user_role:
+    id: user_role
+    roles:
+      authenticated: authenticated
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'

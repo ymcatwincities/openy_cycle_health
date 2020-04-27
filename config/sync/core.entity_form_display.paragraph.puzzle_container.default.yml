@@ -3,10 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.images_library
     - field.field.paragraph.puzzle_container.field_items
     - field.field.paragraph.puzzle_container.field_prgf_image
     - paragraphs.paragraphs_type.puzzle_container
   module:
+    - openy_focal_point
     - paragraphs
 id: paragraph.puzzle_container.default
 targetEntityType: paragraph
@@ -28,12 +30,17 @@ content:
   field_prgf_image:
     weight: 1
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      entity_browser: images_library
+      field_widget_display: rendered_entity
+      field_widget_edit: '1'
+      field_widget_remove: '1'
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: default
+      field_widget_replace: 0
+      open: 0
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: openy_focal_point_entity_browser_entity_reference
     region: content
 hidden:
   created: true
