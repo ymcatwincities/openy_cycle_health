@@ -24,7 +24,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @Block(
  *   id = "twelve_puzzle",
- *   admin_label = @Translation("Puzzle app block"),
+ *   admin_label = @Translation("Hidden Picture app"),
  *   category = @Translation("Paragraph Blocks")
  * )
  */
@@ -109,7 +109,7 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
     $exercises_array = [];
 
     $items = $this->configFactory
-      ->get('puzzle_app.settings')
+      ->get('twelve_app.puzzle_settings')
       ->get('items');
 
     $today = date('Y-m-d');
