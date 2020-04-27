@@ -19,7 +19,8 @@
     "drupal/social_auth_facebook": "^2.0",
     "drupal/email_registration": "^1.0",
     "drupal/rpt": "^1.0",
-    "openy/paragraph_skins": "dev-master"
+    "openy/paragraph_skins": "dev-master",
+    "drupal/recaptcha": "^2.5"
   },
   "require-dev": {
     "ymcatwincities/openy-docksal": "dev-master",
