@@ -171,7 +171,8 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
         '#cache' => [
           'tags' => $this->getCacheTags(),
           'contexts' => $this->getCacheContexts(),
-          'max-age' => $this->getCacheMaxAge(),
+          // Temporary disable cache.
+          'max-age' => 0,
         ],
         '#attached' => [
           'drupalSettings' => [
