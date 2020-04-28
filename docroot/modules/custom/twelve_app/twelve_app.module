@@ -15,7 +15,8 @@ function twelve_app_theme() {
     'puzzle' => [
       'variables' => [
         'excercises' => [],
-        'current_nid' => '',
+        'game_nid' => '',
+        'progress_nid' => '',
         'finished_items' => [],
       ],
     ],

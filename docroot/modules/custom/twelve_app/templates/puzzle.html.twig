@@ -3,8 +3,8 @@
 <div id="twelve_puzzle_app">
   <today-progress
     :excercises='{{ excercises|json_encode }}'
-    :completion_url='{{ completion_url|json_encode }}'
-    :current_nid='{{ current_nid }}'
+    :game_nid='{{ game_nid }}'
+    :progress_nid='{{ progress_nid }}'
     :finished_items='{{ finished_items|json_encode }}'
   ></today-progress>
 </div>

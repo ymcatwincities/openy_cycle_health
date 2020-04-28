@@ -104,8 +104,8 @@
   export default {
     props: [
       'options',
-      'current_nid',
-      'completion_url',
+      'game_nid',
+      'progress_nid',
       'finished_items'
     ],
     components: {
@@ -202,14 +202,14 @@
        * @param {String[]} finished_items
        */
       saveTodayProgressToLocalStorage: function (finished_items) {
-        let key = "progress" + this.$props.current_nid;
+        let key = "progress_exercises_" + this.$props.progress_nid;
         let value = JSON.stringify(finished_items);
 
         localStorage.setItem(key, value);
       },
 
       loadTodayProgressFromLocalStorage: function () {
-        let key = "progress" + this.$props.current_nid;
+        let key = "progress_exercises_" + this.$props.progress_nid;
         let cache = localStorage.getItem(key);
         if (cache === null) {
           cache = [];
