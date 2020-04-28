@@ -62,6 +62,22 @@ class UserLoginForm extends DrupalUserLoginForm {
       '#markup' => '<div class="separator_second"></div>',
     ];
 
+    $form['recover'] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['user-recover'],
+      ],
+      'message' => [
+        '#markup' => t("Forgot your password? "),
+      ],
+      'link' => [
+        '#type' => 'link',
+        '#title' => $this->t('Reset password'),
+        '#url' => Url::fromRoute('user.pass'),
+      ],
+      '#access' => TRUE,
+    ];
+
     $form['register'] = [
       '#type' => 'container',
       '#attributes' => [

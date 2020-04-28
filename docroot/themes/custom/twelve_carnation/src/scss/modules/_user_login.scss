@@ -1,5 +1,6 @@
 .user-login-form,
 .user-register-form,
+.user-pass,
 .user-form {
   display: grid;
   grid-template-columns: 350px;
@@ -69,6 +70,10 @@
       font-size: 24px;
       line-height: 36px;
     }
+  }
+
+  .user-recover {
+    padding-bottom: 10px;
   }
 }
 
