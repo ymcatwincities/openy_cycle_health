@@ -4,6 +4,7 @@
                 :options="excercisesOptions"
                 :current_nid="current_nid"
                 :completion_url="completion_url"
+                :finished_items="finished_items"
                 v-on:data-update="sendData"
         ></main-filter>
         <notifications group="twelve_app"></notifications>
