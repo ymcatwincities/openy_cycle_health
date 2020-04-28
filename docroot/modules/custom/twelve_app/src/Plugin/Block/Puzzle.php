@@ -152,7 +152,7 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
       $user = $this->currentUser->getAccount();
       $login = '';
       $finished_items = [];
-      $progress_nid = NULL;
+      $progress_nid = 0;
 
       if ($user->id()) {
         $userData = User::load($user->id());
@@ -165,7 +165,6 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
           $progress_nid = $progress_node->id();
         }
       }
-
 
       return [
         '#theme' => 'puzzle',

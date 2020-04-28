@@ -57,7 +57,8 @@
                 };
 
                 let result_nid = this.getProgressNid();
-                if (result_nid) {
+          
+                if (result_nid > 0) {
                     result_url += '/' + result_nid;
                     request_type = 'patch';
                 }
