@@ -105,15 +105,17 @@
     props: [
       'options',
       'current_nid',
-      'completion_url'
+      'completion_url',
+      'finished_items'
     ],
     components: {
       NameForm,
       Countdown
     },
     data: function () {
+      this.saveTodayProgressToLocalStorage(this.$props.finished_items);
       return {
-        checked: [],
+        checked: this.$props.finished_items,
         currentExcercise: 0,
         timerIsRunning: false,
         timerIsPaused: false,
@@ -122,9 +124,11 @@
       };
     },
     created: function () {
-      let cache = this.loadTodayProgressFromLocalStorage();
-      for (let index = 0; index < cache.length; index++) {
-        this.checked.push(cache[index]);
+      if (this.checked.length === 0) {
+        let cache = this.loadTodayProgressFromLocalStorage();
+        for (let index = 0; index < cache.length; index++) {
+          this.checked.push(cache[index]);
+        }
       }
     },
     computed: {},
@@ -137,7 +141,8 @@
           this.beep();
           this.timerIsRunning = false;
 
-          this.saveTodayProgressToLocalStorage();
+
+          this.saveTodayProgressToLocalStorage(Array.from(this.checked.values()));
 
           this.$notify({
             group: 'twelve_app',
@@ -193,9 +198,12 @@
          snd.play();
       },
 
-      saveTodayProgressToLocalStorage: function () {
+      /**
+       * @param {String[]} finished_items
+       */
+      saveTodayProgressToLocalStorage: function (finished_items) {
         let key = "progress" + this.$props.current_nid;
-        let value = JSON.stringify(Array.from(this.checked.values()));
+        let value = JSON.stringify(finished_items);
 
         localStorage.setItem(key, value);
       },
