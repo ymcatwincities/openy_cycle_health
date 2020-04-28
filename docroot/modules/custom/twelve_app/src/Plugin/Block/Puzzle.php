@@ -6,6 +6,7 @@ namespace Drupal\twelve_app\Plugin\Block;
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\Path\AliasManagerInterface;
@@ -66,6 +67,13 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
   protected $currentUser;
 
   /**
+   * Entity type manager instance.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
    * {@inheritdoc}
    */
   public function __construct(
@@ -76,7 +84,8 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
     QueryFactory $entity_query,
     AliasManagerInterface $alias_manager,
     RouteMatchInterface $route_match,
-    AccountProxyInterface $current_user
+    AccountProxyInterface $current_user,
+    EntityTypeManagerInterface $entityTypeManager
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->configFactory = $config_factory;
@@ -84,6 +93,7 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
     $this->aliasManager = $alias_manager;
     $this->routeMatch = $route_match;
     $this->currentUser = $current_user;
+    $this->entityTypeManager = $entityTypeManager;
   }
 
   /**
@@ -98,7 +108,8 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
       $container->get('entity.query'),
       $container->get('path.alias_manager'),
       $container->get('current_route_match'),
-      $container->get('current_user')
+      $container->get('current_user'),
+      $container->get('entity_type.manager')
     );
   }
 
@@ -108,17 +119,7 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
   public function build() {
     $exercises_array = [];
 
-    $items = $this->configFactory
-      ->get('twelve_app.puzzle_settings')
-      ->get('items');
-
-    $today = date('Y-m-d');
-    foreach ($items as $item) {
-      if ($today == $item['date']) {
-        $node_id = $item['node_id'];
-        continue;
-      }
-    }
+    $node_id = $this->getCurrentExerciseNode();
 
     if (!empty($node_id)) {
       $landing_page = Node::load($node_id);
@@ -150,17 +151,22 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
 
       $user = $this->currentUser->getAccount();
       $login = '';
+      $finished_items = [];
 
       if ($user->id()) {
         $userData = User::load($user->id());
         $first_name = $userData->field_first_name->value;
         $login = (!empty($first_name)) ? $first_name : $user->getEmail();
+
+        $finished_items = $this->getCurrentFinishedItems($user->id(), $node_id);
       }
+
 
       return [
         '#theme' => 'puzzle',
         '#excercises' => $exercises_array,
         '#current_nid' => $node_id,
+        '#finished_items' => $finished_items,
 
         '#cache' => [
           'tags' => $this->getCacheTags(),
@@ -180,16 +186,74 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
   }
 
   /**
+   * Private function that calculates results for current user.
+   *
+   * @param $user_id
+   * @param $node_id
+   *
+   * @return array
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  private function getCurrentFinishedItems($user_id, $node_id) {
+
+    $result = [];
+
+    $nodes = $this->entityTypeManager->getStorage('node')
+      ->loadByProperties([
+        'uid' => $user_id,
+        'field_when' => $node_id
+      ]);
+
+    if (!empty($nodes)) {
+      $node = reset($nodes);
+      $finished_exercises = $node->get('field_finished_items')->getValue();
+
+      foreach ($finished_exercises as $item) {
+        $result[] = $item['target_id'];
+      }
+
+    }
+
+    return $result;
+
+  }
+
+  /**
+   * Function that calculates current schedule node.
+   *
+   * @return int
+   */
+  private function getCurrentExerciseNode() {
+
+    $node_id = 0;
+
+    $items = $this->configFactory
+      ->get('twelve_app.puzzle_settings')
+      ->get('items');
+
+    $today = date('Y-m-d');
+    foreach ($items as $item) {
+      if ($today == $item['date']) {
+        $node_id = $item['node_id'];
+        continue;
+      }
+    }
+
+    return $node_id;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function getCacheTags() {
-    $node_id = $this->configFactory
-      ->get('twelve_app.settings')
-      ->get('node_id');
+    $node_id = $this->getCurrentExerciseNode();
+    $user_id = $this->currentUser->id();
 
     return Cache::mergeTags(parent::getCacheTags(), [
-      'twelve_app' . $node_id,
-      'user_id' . $this->currentUser->id()
+      'puzzle_app' . $node_id,
+      'user_id' . $this->currentUser->id(),
+      'finished_items' . count($this->getCurrentFinishedItems($user_id, $node_id))
     ]);
   }
 

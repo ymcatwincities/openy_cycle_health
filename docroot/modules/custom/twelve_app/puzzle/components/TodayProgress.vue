@@ -18,7 +18,7 @@
     const axios = require('axios');
 
     export default {
-        props: ['excercises', 'current_nid', 'completion_url'],
+        props: ['excercises', 'current_nid', 'completion_url', 'finished_items'],
         data() {
             return {
                 checkedExcercises: [],
