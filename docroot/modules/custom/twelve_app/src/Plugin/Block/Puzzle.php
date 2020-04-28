@@ -119,10 +119,10 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
   public function build() {
     $exercises_array = [];
 
-    $node_id = $this->getCurrentExerciseNode();
+    $game_nid = $this->getCurrentGameNid();
 
-    if (!empty($node_id)) {
-      $landing_page = Node::load($node_id);
+    if (!empty($game_nid)) {
+      $landing_page = Node::load($game_nid);
 
       foreach ($landing_page->field_content as $paragraph_ref) {
         /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
@@ -152,20 +152,26 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
       $user = $this->currentUser->getAccount();
       $login = '';
       $finished_items = [];
+      $progress_nid = NULL;
 
       if ($user->id()) {
         $userData = User::load($user->id());
         $first_name = $userData->field_first_name->value;
         $login = (!empty($first_name)) ? $first_name : $user->getEmail();
 
-        $finished_items = $this->getCurrentFinishedItems($user->id(), $node_id);
+        $finished_items = $this->getCurrentFinishedItems($user->id(), $game_nid);
+        $progress_node = $this->getUserProgressNode($user->id(), $game_nid);
+        if ($progress_node !== NULL) {
+          $progress_nid = $progress_node->id();
+        }
       }
 
 
       return [
         '#theme' => 'puzzle',
         '#excercises' => $exercises_array,
-        '#current_nid' => $node_id,
+        '#game_nid' => $game_nid,
+        '#progress_nid' => $progress_nid,
         '#finished_items' => $finished_items,
 
         '#cache' => [
@@ -187,6 +193,24 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
   }
 
   /**
+   * @param $user_id
+   * @param $node_id
+   */
+  private function getUserProgressNode($user_id, $node_id) {
+    $nodes = $this->entityTypeManager->getStorage('node')
+      ->loadByProperties([
+        'uid' => $user_id,
+        'field_when' => $node_id
+      ]);
+
+    if (!empty($nodes)) {
+      return reset($nodes);
+    }
+
+    return NULL;
+  }
+
+  /**
    * Private function that calculates results for current user.
    *
    * @param $user_id
@@ -197,17 +221,10 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   private function getCurrentFinishedItems($user_id, $node_id) {
-
     $result = [];
 
-    $nodes = $this->entityTypeManager->getStorage('node')
-      ->loadByProperties([
-        'uid' => $user_id,
-        'field_when' => $node_id
-      ]);
-
-    if (!empty($nodes)) {
-      $node = reset($nodes);
+    $node = $this->getUserProgressNode($user_id, $node_id);
+    if ($node !== NULL) {
       $finished_exercises = $node->get('field_finished_items')->getValue();
 
       foreach ($finished_exercises as $item) {
@@ -217,7 +234,6 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
     }
 
     return $result;
-
   }
 
   /**
@@ -225,7 +241,7 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
    *
    * @return int
    */
-  private function getCurrentExerciseNode() {
+  private function getCurrentGameNid() {
 
     $node_id = 0;
 
@@ -248,7 +264,7 @@ class Puzzle extends BlockBase implements ContainerFactoryPluginInterface {
    * {@inheritdoc}
    */
   public function getCacheTags() {
-    $node_id = $this->getCurrentExerciseNode();
+    $node_id = $this->getCurrentGameNid();
     $user_id = $this->currentUser->id();
 
     return Cache::mergeTags(parent::getCacheTags(), [
