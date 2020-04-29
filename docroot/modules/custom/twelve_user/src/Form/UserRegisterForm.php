@@ -4,6 +4,7 @@ namespace Drupal\twelve_user\Form;
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Url;
 use Drupal\user\Entity\User;
 use Drupal\user\ProfileForm;
 
@@ -57,6 +58,7 @@ class UserRegisterForm extends ProfileForm {
     $user->save();
     _user_mail_notify('register_no_approval_required', $account);
     user_login_finalize($user);
+    $form_state->setRedirectUrl(Url::fromUserInput('/challenges'));
   }
 
 }
