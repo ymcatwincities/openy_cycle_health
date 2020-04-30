@@ -76,6 +76,15 @@ class PuzzleSettingsForm extends ConfigFormBase {
         '#default_value' => $date,
       ];
 
+      $form['nodes_container'][$i]['game_category'] = [
+        '#default_value' => isset($item['game_category']) ? $item['game_category'] : '',
+        '#empty_value' => '',
+        '#options' => $this->getGameCategoryOptions(),
+        '#required' => TRUE,
+        '#title' => t('Game Category'),
+        '#type' => 'select',
+      ];
+
       $form['nodes_container'][$i]['node_id'] = [
         '#type' => 'entity_autocomplete',
         '#target_type' => 'node',
@@ -130,6 +139,7 @@ class PuzzleSettingsForm extends ConfigFormBase {
           [
             'date' => date('Y-m-d'),
             'node' => '',
+            'game_category' => '',
           ]
         ];
       }
@@ -152,6 +162,7 @@ class PuzzleSettingsForm extends ConfigFormBase {
     $items[] = [
       'date' => '',
       'node_id' => NULL,
+      'game_category' => '',
     ];
     $form_state->set('items', $items);
     $form_state->setRebuild(TRUE);
@@ -175,5 +186,23 @@ class PuzzleSettingsForm extends ConfigFormBase {
     $config = $this->configFactory->getEditable('twelve_app.puzzle_settings');
     $config->set('items', $form_state->getValue('nodes_container'))->save();
     parent::submitForm($form, $form_state);
+  }
+
+  /**
+   * Prepare select options from vocabulary
+   * @return string[]
+   */
+  public function getGameCategoryOptions() {
+    $dropdown_vocab = \Drupal::entityManager()
+      ->getStorage('taxonomy_term')
+      ->loadTree('game_category');
+
+    $options = [];
+
+    foreach ($dropdown_vocab as $term) {
+      $options[$term->tid] = $term->name;
+    }
+
+    return $options;
   }
 }

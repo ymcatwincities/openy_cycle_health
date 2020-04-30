@@ -2,7 +2,7 @@
     <div>
         <main-filter
                 :options="excercisesOptions"
-                :current_nid="current_nid"
+                :game_nid="game_nid"
                 :completion_url="completion_url"
                 v-on:data-update="sendData"
         ></main-filter>
@@ -18,7 +18,7 @@
     const axios = require('axios');
 
     export default {
-        props: ['excercises', 'current_nid', 'completion_url'],
+        props: ['excercises', 'game_nid', 'completion_url'],
         data() {
             return {
                 checkedExcercises: [],
@@ -47,7 +47,7 @@
                         'value': localStorage.twelveUserName
                     },
                     'field_when': {
-                        'value': this.$props.current_nid,
+                        'value': this.$props.game_nid,
                     },
                     'field_finished_items': checked
                 };
@@ -113,7 +113,7 @@
             },
 
             getLocalStorageKey: function () {
-                return 'result_node_id_for_' + this.$props.current_nid + '_' + drupalSettings.user.uid;
+                return 'result_node_id_for_' + this.$props.game_nid + '_' + drupalSettings.user.uid;
             }
         },
         computed: {

@@ -10,6 +10,6 @@ twelve_app.puzzle_settings:
   path: '/admin/openy/puzzle_app'
   defaults:
     _form: '\Drupal\twelve_app\Form\PuzzleSettingsForm'
-    _title: 'Puzzle App Settings'
+    _title: 'Hidden Picture Settings'
   requirements:
     _permission: 'administer content'
