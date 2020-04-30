@@ -76,12 +76,12 @@ class SettingsForm extends ConfigFormBase {
         '#default_value' => $date,
       ];
 
-      $form['nodes_container'][$i]['user_group'] = [
-        '#default_value' => isset($item['user_group']) ? $item['user_group'] : '',
+      $form['nodes_container'][$i]['game_category'] = [
+        '#default_value' => isset($item['game_category']) ? $item['game_category'] : '',
         '#empty_value' => '',
-        '#options' => $this->getUserGroupOptions(),
+        '#options' => $this->getGameCategoryOptions(),
         '#required' => TRUE,
-        '#title' => t('User group'),
+        '#title' => t('Game Category'),
         '#type' => 'select',
       ];
 
@@ -158,7 +158,7 @@ class SettingsForm extends ConfigFormBase {
           [
             'date' => date('Y-m-d'),
             'node' => '',
-            'user_group' => '',
+            'game_category' => '',
           ]
         ];
       }
@@ -181,7 +181,7 @@ class SettingsForm extends ConfigFormBase {
     $items[] = [
       'date' => '',
       'node_id' => NULL,
-      'user_group' => '',
+      'game_category' => '',
     ];
     $form_state->set('items', $items);
     $form_state->setRebuild(TRUE);
@@ -212,10 +212,10 @@ class SettingsForm extends ConfigFormBase {
    * Prepare select options from vocabulary
    * @return string[]
    */
-  public function getUserGroupOptions() {
+  public function getGameCategoryOptions() {
     $dropdown_vocab = \Drupal::entityManager()
       ->getStorage('taxonomy_term')
-      ->loadTree('user_group');
+      ->loadTree('game_category');
 
     $options = [];
 

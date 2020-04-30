@@ -58,7 +58,7 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
    */
   protected $entityTypeManager;
 
-  protected $_userGroupId;
+  protected $_gameCategoryId;
 
   protected $_currentGameNid;
 
@@ -186,14 +186,14 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
     }
 
     $game_nid = 0;
-    $user_group_id = $this->getCurrentUserGroupId();
+    $game_category_id = $this->getCurrentGameCategoryId();
     $games = $this->configFactory
       ->get($this->getGameConfigurationName())
       ->get('items');
 
     $today = date('Y-m-d');
     foreach ($games as $game) {
-      if ($today == $game['date'] && $game['user_group'] == $user_group_id) {
+      if ($today == $game['date'] && $game['game_category'] == $game_category_id) {
         $game_nid = $game['node_id'];
         $this->_currentGameNid;
         break;
@@ -206,12 +206,12 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
   /**
    * @return string
    */
-  protected function getCurrentUserGroupId() {
-    if (isset($this->_userGroupId)) {
-      return $this->_userGroupId;
+  protected function getCurrentGameCategoryId() {
+    if (isset($this->_gameCategoryId)) {
+      return $this->_gameCategoryId;
     }
 
-    $user_group_id = 0;
+    $game_category_id = 0;
 
     if ($node = $this->routeMatch->getParameter('node')) {
       foreach ($node->field_content as $paragraph_ref) {
@@ -221,12 +221,12 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
           continue;
         }
 
-        $user_group_id = $paragraph->field_user_group->target_id;
-        $this->_userGroupId = $user_group_id;
+        $game_category_id = $paragraph->field_game_category->target_id;
+        $this->_gameCategoryId = $game_category_id;
       }
     }
 
-    return $user_group_id;
+    return $game_category_id;
   }
 
   /**
@@ -234,11 +234,11 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
    */
   public function getCacheTags() {
     $game_nid = $this->getCurrentGameNid();
-    $user_group_id = $this->getCurrentUserGroupId();
+    $game_category_id = $this->getCurrentGameCategoryId();
 
     return Cache::mergeTags(parent::getCacheTags(), [
       'game_nid' . $game_nid,
-      'user_group_id' . $user_group_id,
+      'game_category_id' . $game_category_id,
     ]);
   }
 }
