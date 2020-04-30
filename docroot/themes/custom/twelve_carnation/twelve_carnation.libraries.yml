@@ -14,3 +14,10 @@ global-styling:
     - core/jquery.ui.widget
     - core/drupal
     - core/drupalSettings
+    - twelve_carnation/alerthack
+
+alerthack:
+  version: VERSION
+
+  js:
+    dist/js/alerthack.behaviors.js: {}
