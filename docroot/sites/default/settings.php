@@ -770,4 +770,6 @@ if (file_exists($app_root . '/' . $site_path . '/prod.settings.php')) {
   include $app_root . '/' . $site_path . '/prod.settings.php';
 }
 
+$settings['config_exclude_modules'] = ['twelve_app', 'recaptcha', 'swiftmailer'];
+
 $config_directories['sync'] = '../config/sync';
