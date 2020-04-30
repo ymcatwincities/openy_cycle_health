@@ -2,7 +2,7 @@ uuid: 70ceaeca-bb93-488c-9536-e3772729691d
 langcode: en
 status: true
 dependencies: {  }
-name: 'User group'
-vid: user_group
+name: 'Game Category'
+vid: game_category
 description: ''
 weight: 0
