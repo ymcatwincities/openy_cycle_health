@@ -7,15 +7,15 @@ function twelve_app_theme() {
   return [
     'today_progress' => [
       'variables' => [
+        'game_nid' => '',
         'excercises' => [],
-        'current_nid' => '',
         'completion_url' => ''
       ],
     ],
     'puzzle' => [
       'variables' => [
-        'excercises' => [],
         'game_nid' => '',
+        'excercises' => [],
         'progress_nid' => '',
         'finished_items' => [],
       ],
