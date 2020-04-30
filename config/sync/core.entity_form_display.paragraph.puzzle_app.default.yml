@@ -3,13 +3,20 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.paragraph.puzzle_app.field_game_category
     - field.field.paragraph.puzzle_app.field_puzzle_app
     - paragraphs.paragraphs_type.puzzle_app
 id: paragraph.puzzle_app.default
 targetEntityType: paragraph
 bundle: puzzle_app
 mode: default
-content: {  }
+content:
+  field_game_category:
+    weight: -4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
 hidden:
   created: true
   field_puzzle_app: true

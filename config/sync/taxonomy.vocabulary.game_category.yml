@@ -1,0 +1,8 @@
+uuid: 160debae-c3bc-404b-ba2e-4a302a696005
+langcode: en
+status: true
+dependencies: {  }
+name: 'Game Category'
+vid: game_category
+description: ''
+weight: 0

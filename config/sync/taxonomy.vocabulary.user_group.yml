@@ -1,8 +1,0 @@
-uuid: 70ceaeca-bb93-488c-9536-e3772729691d
-langcode: en
-status: true
-dependencies: {  }
-name: 'User group'
-vid: user_group
-description: ''
-weight: 0
