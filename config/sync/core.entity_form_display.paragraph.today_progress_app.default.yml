@@ -4,12 +4,19 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.today_progress_app.field_block
+    - field.field.paragraph.today_progress_app.field_game_category
     - paragraphs.paragraphs_type.today_progress_app
 id: paragraph.today_progress_app.default
 targetEntityType: paragraph
 bundle: today_progress_app
 mode: default
-content: {  }
+content:
+  field_game_category:
+    weight: -4
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
 hidden:
   created: true
   field_block: true
