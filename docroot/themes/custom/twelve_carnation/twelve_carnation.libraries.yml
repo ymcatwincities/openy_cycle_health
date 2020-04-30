@@ -20,4 +20,4 @@ alerthack:
   version: VERSION
 
   js:
-    dist/js/alerthack.behaviors.js: {minified: true}
+    dist/js/alerthack.behaviors.js: {}
