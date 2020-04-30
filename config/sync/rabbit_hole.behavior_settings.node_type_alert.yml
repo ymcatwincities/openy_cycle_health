@@ -1,0 +1,11 @@
+uuid: 05a1da5f-6914-4e03-b219-7a605cf74baa
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: u4LjxXlbtHYi_4to33Nplyq8j0aIFAgCX4aVAssY2rI
+id: node_type_alert
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
