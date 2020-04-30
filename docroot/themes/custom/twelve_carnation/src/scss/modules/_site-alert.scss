@@ -1,0 +1,19 @@
+.header-alerts-list,
+.footer-alerts-list {
+  .site-alert__wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 8px 0;
+    align-items: center;
+
+    > div {
+      flex: 1;
+      max-width: initial;
+      width: initial;
+    }
+  }
+}
+
+#openy_alerts_header_placeholder {
+  margin-bottom: initial;
+}
