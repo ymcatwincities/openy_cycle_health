@@ -12,10 +12,10 @@ COMPOSER_MEMORY_LIMIT=-1 composer install
 
 echo "Importing config and updating database"
 
-cd $HOME
-./vendor/bin/drush cr
-./vendor/bin/drush cim -y
-./vendor/bin/drush updb -y
+cd $HOME/docroot
+../vendor/bin/drush cr
+../vendor/bin/drush cim -y
+../vendor/bin/drush updb -y
 
 echo "Building theme"
 
