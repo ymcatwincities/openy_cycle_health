@@ -23,7 +23,6 @@
     "drupal/recaptcha": "^2.5"
   },
   "require-dev": {
-    "ymcatwincities/openy-docksal": "dev-master",
     "drupal/drupal-driver": "~1.0",
     "drupal/drupal-extension": "^3.2",
     "behat/behat": "^3.0",
