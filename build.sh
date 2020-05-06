@@ -19,7 +19,7 @@ cd $HOME
 
 echo "Building theme"
 
-cd $HOME/docroot/themes/custom/twelve
+cd $HOME/docroot/themes/custom/twelve_carnation
 npm install
 npm run build
 

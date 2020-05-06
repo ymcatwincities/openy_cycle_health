@@ -11,6 +11,8 @@ settings.prod.php
 node_modules
 .composer
 .drush
+.npm
+.config
 
 # Vendors, core & contrib
 vendor/
