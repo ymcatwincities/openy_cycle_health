@@ -9,6 +9,8 @@ settings.prod.php
 # Ignore Development tool files.
 .idea
 node_modules
+.composer
+.drush
 
 # Vendors, core & contrib
 vendor/

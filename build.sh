@@ -1,6 +1,6 @@
 echo "Getting last repository update";
 
-source 'env.sh'
+source 'env_variables'
 
 cd $HOME
 git pull
