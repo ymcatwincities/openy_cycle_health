@@ -20,7 +20,8 @@
     "drupal/email_registration": "^1.0",
     "drupal/rpt": "^1.0",
     "openy/paragraph_skins": "dev-master",
-    "drupal/recaptcha": "^2.5"
+    "drupal/recaptcha": "^2.5",
+    "drupal/devel": "^2.1"
   },
   "require-dev": {
     "drupal/drupal-driver": "~1.0",
