@@ -1,0 +1,10 @@
+uuid: e227300b-7c94-456e-9635-ca22934752b8
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.family_edit
+label: 'Family Edit'
+targetEntityType: user
+cache: true

@@ -1,0 +1,31 @@
+uuid: 2cbc47b7-0b76-4ec6-aa48-520c2334d32b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.family_member
+id: node.family_member.default
+targetEntityType: node
+bundle: family_member
+mode: default
+content:
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  path: true
+  promote: true
+  publish_on: true
+  redirect: true
+  status: true
+  sticky: true
+  uid: true
+  unpublish_on: true
+  url_redirects: true

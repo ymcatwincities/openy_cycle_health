@@ -1,45 +1,44 @@
-uuid: 9276f25f-951c-4286-9ce3-0fbce1871093
+uuid: 403c903a-c6f5-475f-906e-79a461e8fc7e
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_form_mode.user.register
+    - core.entity_form_mode.user.family_edit
     - field.field.user.user.field_active_family_member
     - field.field.user.user.field_family
     - field.field.user.user.field_first_name
     - field.field.user.user.field_last_name
   module:
+    - inline_entity_form
     - user
-id: user.user.register
+id: user.user.family_edit
 targetEntityType: user
 bundle: user
-mode: register
+mode: family_edit
 content:
-  account:
-    weight: 0
-    region: content
+  field_active_family_member:
+    weight: 1
     settings: {  }
     third_party_settings: {  }
-  field_first_name:
-    weight: 1
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: string_textfield
+    type: options_select
     region: content
-  field_last_name:
-    weight: 2
+  field_family:
+    weight: 0
     settings:
-      size: 60
-      placeholder: ''
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      collapsible: false
+      collapsed: false
     third_party_settings: {  }
-    type: string_textfield
+    type: inline_entity_form_simple
     region: content
 hidden:
+  account: true
   contact: true
-  field_active_family_member: true
-  field_family: true
+  field_first_name: true
+  field_last_name: true
   google_analytics: true
   langcode: true
   language: true
