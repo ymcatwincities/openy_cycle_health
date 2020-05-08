@@ -1,0 +1,11 @@
+twelve_user.family_edit_form:
+  path: '/user/{user}/family-edit'
+  options:
+    parameters:
+      user:
+        type: entity:user
+  defaults:
+    _entity_form: 'user.family_edit'
+    _title: 'Family Edit'
+  requirements:
+    _permission: 'access content'

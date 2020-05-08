@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\twelve_user\Form\UserRegisterForm;
+use Drupal\twelve_user\Form\UserFamilyEdit;
 
 /**
  * Implements hook_entity_type_build().
@@ -10,7 +11,7 @@ function twelve_user_entity_type_build(array &$entity_types) {
   /** @var \Drupal\Core\Entity\EntityTypeInterface[] $entity_types */
   if (isset($entity_types['user'])) {
     $entity_types['user']
-      ->setFormClass('register', UserRegisterForm::class);
-
+      ->setFormClass('register', UserRegisterForm::class)
+      ->setFormClass('family_edit', UserFamilyEdit::class);
   }
 }
