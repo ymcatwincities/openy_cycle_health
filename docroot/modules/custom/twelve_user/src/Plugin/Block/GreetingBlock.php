@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * @Block(
  *   id = "greeting_block",
- *   admin_label = @Translation("User Account Menu"),
+ *   admin_label = @Translation("Greeting Menu"),
  * )
  */
 class GreetingBlock extends BlockBase implements ContainerFactoryPluginInterface {
