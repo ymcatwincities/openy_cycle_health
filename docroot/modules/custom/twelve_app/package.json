@@ -1,12 +1,13 @@
 {
-  "name": "12bursts-day",
+  "name": "twelve_app",
   "version": "1.0.0",
   "author": "Open Y",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "webpack --config webpack.dev.js",
-    "build": "webpack --config webpack.build.js"
+    "dev": "webpack --mode=development",
+    "watch": "webpack --mode=development --watch",
+    "build": "webpack --mode=production"
   },
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^1.1.5",

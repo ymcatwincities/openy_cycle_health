@@ -2,6 +2,7 @@
 
 <div id="twelve_puzzle_app">
   <today-progress
+    :debug='{{ debug|json_encode }}'
     :game_nid='{{ game_nid }}'
     :excercises='{{ excercises|json_encode }}'
     :progress_nid='{{ progress_nid }}'
