@@ -18,12 +18,7 @@
 #}
 <div{{ attributes.addClass('profile') }}>
   <div class="container">
-    {{ 'Hello'|t }}, {{ content.field_first_name }}
-  </div>
-  <div id="dashboard-menu">
-    <div id="user-hamburger" class=""></div>
-    <div>
-      {{ drupal_block('local_tasks_block') }}
-    </div>
+    <div class="greeting">{{ 'Hello'|t }}, {{ content.field_first_name }}</div>
+    {{ drupal_block('user_account_menu_block', [], FALSE) }}
   </div>
 </div>
