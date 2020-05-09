@@ -25,10 +25,6 @@ npm run build
 
 echo "Building apps"
 
-cd $HOME/docroot/modules/custom/twelve_app/bursts
-npm install
-npm run build
-
-cd $HOME/docroot/modules/custom/twelve_app/puzzle
+cd $HOME/docroot/modules/custom/twelve_app
 npm install
 npm run build

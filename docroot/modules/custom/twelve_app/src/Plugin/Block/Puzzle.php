@@ -42,7 +42,6 @@ class Puzzle extends GameAbstract {
       return [];
     }
 
-    $finished_exercises_nids = $this->getFinishedExercisesNids();
     $progress_nid = 0;
     $progress_node = $this->getUserProgressNode();
     if ($progress_node !== NULL) {
@@ -53,7 +52,7 @@ class Puzzle extends GameAbstract {
       parent::build(), [
         '#theme' => 'puzzle',
         '#progress_nid' => $progress_nid,
-        '#finished_items' => $finished_exercises_nids,
+        '#finished_items' => $this->getFinishedExercisesNids(),
       ]
     );
   }
@@ -78,7 +77,7 @@ class Puzzle extends GameAbstract {
   }
 
   /**
-   * @return string[]
+   * @return \Drupal\Core\Entity\EntityInterface|NULL
    */
   protected function getUserProgressNode() {
     $nodes = $this->entityTypeManager->getStorage('node')
@@ -94,6 +93,9 @@ class Puzzle extends GameAbstract {
     return NULL;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function prepareExercisesArray() {
     $exercises_array = [];
     $paragraph = $this->findGameExercisesParagraph();
@@ -122,6 +124,9 @@ class Puzzle extends GameAbstract {
     return $exercises_array;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getCacheTags() {
     $user_id = $this->currentUser->getAccount()->id();
 

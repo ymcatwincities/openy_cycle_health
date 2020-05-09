@@ -39,8 +39,6 @@ class TodayProgress extends GameAbstract {
    * {@inheritdoc}
    */
   public function build() {
-    $node_id = $this->getCurrentGameNid();
-
     return array_merge(
       parent::build(), [
         '#theme' => 'today_progress',

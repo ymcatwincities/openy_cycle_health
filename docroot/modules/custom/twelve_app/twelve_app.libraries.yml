@@ -1,13 +1,20 @@
+common:
+  version: 0.1
+  js:
+    dist/vendors~bursts~puzzle.bundle.js: {minified: true}
+
 day_progress:
   version: 0.1
   js:
-    bursts/dist/main.js: {}
+    dist/bursts.bundle.js: {minified: true}
   dependencies:
     - openy_system/vue
+    - twelve_app/common
 
 puzzle:
   version: 0.1
   js:
-    puzzle/dist/main.js: {}
+    dist/puzzle.bundle.js: {minified: true}
   dependencies:
     - openy_system/vue
+    - twelve_app/common

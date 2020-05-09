@@ -105,13 +105,14 @@
 
   export default {
     props: [
+      'debug',
       'options',
       'game_nid',
       'completion_url'
     ],
     components: {
       NameForm,
-      Countdown
+      Countdown,
     },
     data: function () {
       return {
