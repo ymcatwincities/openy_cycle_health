@@ -18,7 +18,7 @@
 #}
 <div{{ attributes.addClass('profile') }}>
   <div class="container">
-    <div class="greeting">{{ 'Hello'|t }}, {{ content.field_first_name }}</div>
+    {{ drupal_block('greeting_block', [], FALSE) }}
     {{ drupal_block('user_account_menu_block', [], FALSE) }}
   </div>
 </div>

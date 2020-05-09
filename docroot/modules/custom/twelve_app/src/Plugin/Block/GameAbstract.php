@@ -13,6 +13,7 @@ use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\node\Entity\Node;
 use Drupal\user\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\twelve_user\Family;
 
 abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginInterface {
 
@@ -52,6 +53,11 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
   protected $currentUser;
 
   /**
+   * @var Family
+   */
+  protected $family;
+
+  /**
    * Entity type manager instance.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
@@ -61,6 +67,8 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
   protected $_gameCategoryId;
 
   protected $_currentGameNid;
+
+
 
   /**
    * {@inheritdoc}
@@ -74,7 +82,8 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
     AliasManagerInterface $alias_manager,
     RouteMatchInterface $route_match,
     AccountProxyInterface $current_user,
-    EntityTypeManagerInterface $entityTypeManager
+    EntityTypeManagerInterface $entityTypeManager,
+    Family $family
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->configFactory = $config_factory;
@@ -83,6 +92,7 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
     $this->routeMatch = $route_match;
     $this->currentUser = $current_user;
     $this->entityTypeManager = $entityTypeManager;
+    $this->family = $family;
   }
 
   /**
@@ -98,7 +108,8 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
       $container->get('path.alias_manager'),
       $container->get('current_route_match'),
       $container->get('current_user'),
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('twelve_user.family')
     );
   }
 
@@ -131,19 +142,10 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
       return [];
     }
 
-    $exercises_array = $this->prepareExercisesArray();
-
-    $login = '';
-    $user = $this->currentUser->getAccount();
-    if ($user->id()) {
-      $userData = User::load($user->id());
-      $first_name = $userData->field_first_name->value;
-      $login = (!empty($first_name)) ? $first_name : $user->getEmail();
-    }
-
     return [
+      '#debug' => $this->isUserAdmin(),
       '#game_nid' => $game_nid,
-      '#excercises' => $exercises_array,
+      '#excercises' => $this->prepareExercisesArray(),
       '#cache' => [
         'tags' => $this->getCacheTags(),
         'contexts' => $this->getCacheContexts(),
@@ -151,10 +153,18 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
       ],
       '#attached' => [
         'drupalSettings' => [
-          'username' => $login,
+          'username' => $this->family->getActivePlayerName(),
         ],
       ],
     ];
+  }
+
+  /**
+   * @return boolean
+   */
+  function isUserAdmin() {
+    $roles = $this->currentUser->getAccount()->getRoles();
+    return in_array('administrator', $roles);
   }
 
   /**
@@ -175,6 +185,8 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
         return $paragraph;
       }
     }
+
+    return FALSE;
   }
 
   /**

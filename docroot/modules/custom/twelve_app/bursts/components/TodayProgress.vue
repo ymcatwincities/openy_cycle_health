@@ -1,6 +1,7 @@
 <template>
     <div>
         <main-filter
+                :debug="debug"
                 :options="excercisesOptions"
                 :game_nid="game_nid"
                 :completion_url="completion_url"
@@ -18,7 +19,7 @@
     const axios = require('axios');
 
     export default {
-        props: ['excercises', 'game_nid', 'completion_url'],
+        props: ['excercises', 'game_nid', 'completion_url', 'debug'],
         data() {
             return {
                 checkedExcercises: [],
