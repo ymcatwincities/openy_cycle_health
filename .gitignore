@@ -27,9 +27,7 @@ docroot/themes/custom/twelve_carnation/dist/css/style.css
 docroot/themes/custom/twelve_carnation/dist/js/main.js
 
 # App build files
-docroot/custom/twelve_app/dist/bursts.bundle.js
-docroot/custom/twelve_app/dist/puzzle.bundle.js
-docroot/custom/twelve_app/dist/vendors~bursts~puzzle.bundle.js
+docroot/custom/twelve_app/dist
 
 # Env related variables
 env_variables
