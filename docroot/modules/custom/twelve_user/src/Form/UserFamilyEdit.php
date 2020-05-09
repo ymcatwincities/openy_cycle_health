@@ -21,7 +21,7 @@ class UserFamilyEdit extends ProfileForm {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'twelve_user_public_form';
+    return 'twelve_family_edit_form';
   }
 
   /**
