@@ -26,6 +26,12 @@ class Family {
    */
   protected $currentUser;
 
+  /**
+   * Family constructor.
+   *
+   * @param \Drupal\Core\TempStore\PrivateTempStoreFactory $temp_store_factory
+   * @param \Drupal\Core\Session\AccountProxyInterface $current_user
+   */
   public function __construct(PrivateTempStoreFactory $temp_store_factory, AccountProxyInterface $current_user) {
     $this->tempStore = $temp_store_factory->get('user_family');
     $this->currentUser = $current_user;
@@ -47,6 +53,9 @@ class Family {
     $this->tempStore->set('player', $nid);
   }
 
+  /**
+   * @return string
+   */
   public function getActivePlayerName() {
     $account = $this->currentUser->getAccount();
 
