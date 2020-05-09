@@ -61,23 +61,17 @@ class UserAccountMenuBlock extends BlockBase implements ContainerFactoryPluginIn
    */
   public function build() {
     return [
-      '#type' => 'container',
-      '#attributes' => [
+      '#type' => 'container', '#attributes' => [
         'class' => ['user-account-menu'],
       ],
       [
-        '#type' => 'html_tag',
-        '#tag' => 'input',
-        '#attributes' => [
+        '#type' => 'html_tag', '#tag' => 'input', '#attributes' => [
           'type' => 'checkbox',
           'id' => 'mobile'
         ]
       ],
       [
-        '#type' => 'html_tag',
-        '#tag' => 'label',
-        '#value' => '',
-        '#attributes' => [
+        '#type' => 'html_tag', '#tag' => 'label', '#attributes' => [
           'for' => 'mobile',
           'class' => 'fa fa-th'
         ]
@@ -85,40 +79,35 @@ class UserAccountMenuBlock extends BlockBase implements ContainerFactoryPluginIn
       [
         '#type' => 'container',
         [
-          '#title' => $this->t('Switch User'),
-          '#type' => 'link',
+          '#type' => 'link', '#title' => $this->t('Switch User'),
           '#url' => Url::fromUserInput('#'),
           '#attributes' => [
             'class' => 'fas fa-random'
           ]
         ],
         [
-          '#title' => $this->t('Dashboard'),
-          '#type' => 'link',
+          '#type' => 'link', '#title' => $this->t('Dashboard'),
           '#url' => Url::fromUserInput('#'),
           '#attributes' => [
             'class' => 'fas fa-chart-line'
           ]
         ],
         [
-          '#title' => $this->t('My Family'),
-          '#type' => 'link',
+          '#type' => 'link', '#title' => $this->t('My Family'),
           '#url' => Url::fromRoute('twelve_user.family_edit_form', ['user'=> $this->currentUser->id()]),
           '#attributes' => [
             'class' => 'fas fa-user-friends'
           ]
         ],
         [
-          '#title' => $this->t('Settings'),
-          '#type' => 'link',
+          '#type' => 'link', '#title' => $this->t('Settings'),
           '#url' => Url::fromUserInput('#'),
           '#attributes' => [
             'class' => 'fas fa-cog'
           ]
         ],
         [
-          '#title' => $this->t('Log Out'),
-          '#type' => 'link',
+          '#type' => 'link', '#title' => $this->t('Log Out'),
           '#url' => Url::fromRoute('user.logout'),
           '#attributes' => [
             'class' => 'sign-out'
