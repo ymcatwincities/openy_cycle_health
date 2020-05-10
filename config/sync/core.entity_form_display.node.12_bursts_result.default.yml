@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.12_bursts_result.field_finished_items
+    - field.field.node.12_bursts_result.field_sub_user
     - field.field.node.12_bursts_result.field_when
     - node.type.12_bursts_result
 id: node.12_bursts_result.default
@@ -13,6 +14,16 @@ mode: default
 content:
   field_finished_items:
     weight: 3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_sub_user:
+    weight: 26
     settings:
       match_operator: CONTAINS
       match_limit: 10

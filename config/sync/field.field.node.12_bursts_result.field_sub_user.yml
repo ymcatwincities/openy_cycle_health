@@ -1,0 +1,34 @@
+uuid: 76d58c0d-ccca-4013-afbb-021de5ed4cac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sub_user
+    - node.type.12_bursts_result
+    - node.type.family_member
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_sub_user
+id: node.12_bursts_result.field_sub_user
+field_name: field_sub_user
+entity_type: node
+bundle: 12_bursts_result
+label: Sub-user
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      family_member: family_member
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.12_bursts_result.field_finished_items
+    - field.field.node.12_bursts_result.field_sub_user
     - field.field.node.12_bursts_result.field_when
     - node.type.12_bursts_result
   module:
@@ -21,5 +22,6 @@ content:
     region: content
 hidden:
   field_finished_items: true
+  field_sub_user: true
   field_when: true
   langcode: true
