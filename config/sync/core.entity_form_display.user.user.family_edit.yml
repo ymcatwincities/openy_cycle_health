@@ -9,7 +9,7 @@ dependencies:
     - field.field.user.user.field_first_name
     - field.field.user.user.field_last_name
   module:
-    - inline_entity_form
+    - twelve_user
     - user
 id: user.user.family_edit
 targetEntityType: user
@@ -20,19 +20,13 @@ content:
     weight: 1
     settings: {  }
     third_party_settings: {  }
-    type: options_select
+    type: twelve_family_active_member
     region: content
   field_family:
     weight: 0
-    settings:
-      form_mode: default
-      override_labels: false
-      label_singular: ''
-      label_plural: ''
-      collapsible: false
-      collapsed: false
+    settings: {  }
     third_party_settings: {  }
-    type: inline_entity_form_simple
+    type: twelve_family_list
     region: content
 hidden:
   account: true
