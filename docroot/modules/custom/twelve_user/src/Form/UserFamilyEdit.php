@@ -31,7 +31,7 @@ class UserFamilyEdit extends ProfileForm {
     $form = parent::buildForm($form, $form_state);
     $form['#attributes']['class'][] = 'user-register-form';
 
-    $form['actions']['submit']['#value'] = $this->t('Update my family');
+    $form['actions']['submit']['#access'] = FALSE;
 
     return $form;
   }
