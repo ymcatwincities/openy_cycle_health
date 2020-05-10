@@ -66,20 +66,20 @@ class UserAccountMenuBlock extends BlockBase implements ContainerFactoryPluginIn
       ],
       [
         '#type' => 'container',
-        [
-          '#type' => 'link', '#title' => $this->t('Switch User'),
-          '#url' => Url::fromUserInput('#'),
-          '#attributes' => [
-            'class' => 'fas fa-random'
-          ]
-        ],
-        [
-          '#type' => 'link', '#title' => $this->t('Dashboard'),
-          '#url' => Url::fromUserInput('#'),
-          '#attributes' => [
-            'class' => 'fas fa-chart-line'
-          ]
-        ],
+//        [
+//          '#type' => 'link', '#title' => $this->t('Switch User'),
+//          '#url' => Url::fromUserInput('#'),
+//          '#attributes' => [
+//            'class' => 'fas fa-random'
+//          ]
+//        ],
+//        [
+//          '#type' => 'link', '#title' => $this->t('Dashboard'),
+//          '#url' => Url::fromUserInput('#'),
+//          '#attributes' => [
+//            'class' => 'fas fa-chart-line'
+//          ]
+//        ],
         [
           '#type' => 'link', '#title' => $this->t('My Family'),
           '#url' => Url::fromRoute('twelve_user.family_edit_form', ['user'=> $this->currentUser->id()]),
@@ -87,13 +87,13 @@ class UserAccountMenuBlock extends BlockBase implements ContainerFactoryPluginIn
             'class' => 'fas fa-user-friends'
           ]
         ],
-        [
-          '#type' => 'link', '#title' => $this->t('Settings'),
-          '#url' => Url::fromUserInput('#'),
-          '#attributes' => [
-            'class' => 'fas fa-cog'
-          ]
-        ],
+//        [
+//          '#type' => 'link', '#title' => $this->t('Settings'),
+//          '#url' => Url::fromUserInput('#'),
+//          '#attributes' => [
+//            'class' => 'fas fa-cog'
+//          ]
+//        ],
         [
           '#type' => 'link', '#title' => $this->t('Log Out'),
           '#url' => Url::fromRoute('user.logout'),
