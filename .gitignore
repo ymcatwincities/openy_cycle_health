@@ -23,8 +23,8 @@ docroot/themes/contrib
 docroot/core
 
 # Twelve compiled theme files
-docroot/themes/custom/twelve_carnation/dist/css/style.css
-docroot/themes/custom/twelve_carnation/dist/js/main.js
+docroot/themes/custom/twelve_carnation/dist/css
+docroot/themes/custom/twelve_carnation/dist/main.js
 
 # App build files
 docroot/modules/custom/twelve_app/dist

@@ -66,20 +66,13 @@ class UserAccountMenuBlock extends BlockBase implements ContainerFactoryPluginIn
       ],
       [
         '#type' => 'container',
-        [
-          '#type' => 'link', '#title' => $this->t('Switch User'),
-          '#url' => Url::fromUserInput('#'),
-          '#attributes' => [
-            'class' => 'fas fa-random'
-          ]
-        ],
-        [
-          '#type' => 'link', '#title' => $this->t('Dashboard'),
-          '#url' => Url::fromUserInput('#'),
-          '#attributes' => [
-            'class' => 'fas fa-chart-line'
-          ]
-        ],
+//        [
+//          '#type' => 'link', '#title' => $this->t('Switch User'),
+//          '#url' => Url::fromUserInput('#'),
+//          '#attributes' => [
+//            'class' => 'fas fa-random'
+//          ]
+//        ],
         [
           '#type' => 'link', '#title' => $this->t('My Family'),
           '#url' => Url::fromRoute('twelve_user.family_edit_form', ['user'=> $this->currentUser->id()]),
@@ -88,8 +81,15 @@ class UserAccountMenuBlock extends BlockBase implements ContainerFactoryPluginIn
           ]
         ],
         [
+          '#type' => 'link', '#title' => $this->t('Dashboard'),
+          '#url' => Url::fromRoute('user.page'),
+          '#attributes' => [
+            'class' => 'fas fa-chart-line'
+          ]
+        ],
+        [
           '#type' => 'link', '#title' => $this->t('Settings'),
-          '#url' => Url::fromUserInput('#'),
+          '#url' => Url::fromRoute('entity.user.edit_form', ['user'=> $this->currentUser->id()]),
           '#attributes' => [
             'class' => 'fas fa-cog'
           ]
