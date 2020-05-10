@@ -87,13 +87,13 @@ class UserAccountMenuBlock extends BlockBase implements ContainerFactoryPluginIn
             'class' => 'fas fa-user-friends'
           ]
         ],
-//        [
-//          '#type' => 'link', '#title' => $this->t('Settings'),
-//          '#url' => Url::fromUserInput('#'),
-//          '#attributes' => [
-//            'class' => 'fas fa-cog'
-//          ]
-//        ],
+        [
+          '#type' => 'link', '#title' => $this->t('Settings'),
+          '#url' => Url::fromRoute('entity.user.edit_form', ['user'=> $this->currentUser->id()]),
+          '#attributes' => [
+            'class' => 'fas fa-cog'
+          ]
+        ],
         [
           '#type' => 'link', '#title' => $this->t('Log Out'),
           '#url' => Url::fromRoute('user.logout'),
