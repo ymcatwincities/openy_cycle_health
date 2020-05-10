@@ -101,8 +101,8 @@ class MyFamilyFieldWidget extends WidgetBase {
         'data-dialog-type' => 'modal',
         'data-dialog-options' => json_encode([
           'dialogClass' => 'add-update-form',
-          'width' => 600,
-          'height' => 550,
+          'width' => 380,
+          'height' => 350,
         ]),
       ],
       '#url' => Url::fromRoute('twelve_user.family_member_add'),

@@ -118,7 +118,6 @@ class FamilyMemberAdd extends FormBase {
 
     }
 
-
     // New content build.
     $build['items'] = [
       '#type' => 'container',
@@ -155,8 +154,8 @@ class FamilyMemberAdd extends FormBase {
           'data-dialog-type' => 'modal',
           'data-dialog-options' => json_encode([
             'dialogClass' => 'edit-update-form',
-            'width' => 600,
-            'height' => 550,
+            'width' => 380,
+            'height' => 200,
           ]),
         ],
         '#url' => Url::fromRoute('twelve_user.family_member_edit', [
