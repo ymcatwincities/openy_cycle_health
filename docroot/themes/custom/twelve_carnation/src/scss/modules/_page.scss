@@ -19,7 +19,7 @@ main {
   }
 }
 
-#block-twelve-carnation-content > .container {
+#block-twelve-carnation-content > div.container:first-child {
   margin-top: 64px;
 }
 
@@ -88,6 +88,15 @@ main {
 
 .page-title {
   text-align: center;
+  padding-top: 30px;
+  font-size: 36px;
+  line-height: 48px;
+  font-family: Cachet;
+  color: $gray-400;
+}
+
+.page-title-left {
+  text-align: left;
   padding-top: 30px;
   font-size: 36px;
   line-height: 48px;

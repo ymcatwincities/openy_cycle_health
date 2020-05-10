@@ -2,7 +2,7 @@
 .user-register-form,
 .user-pass,
 .user-pass-reset,
-.user-form {
+.user-form, form {
   display: grid;
   grid-template-columns: 350px;
   justify-content: center;
@@ -59,10 +59,10 @@
     }
   }
 
-  .form-actions {
+  .input-wrapper {
     text-align: center;
 
-    input {
+    input.form-submit {
       margin: 30px 0 20px 0;
       padding: 15px 40px;
 
@@ -70,6 +70,7 @@
       font-family: Cachet, Verdana, sans-serif;
       font-size: 24px;
       line-height: 36px;
+      color: $white;
     }
   }
 
