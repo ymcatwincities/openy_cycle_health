@@ -74,17 +74,17 @@ class UserAccountMenuBlock extends BlockBase implements ContainerFactoryPluginIn
 //          ]
 //        ],
         [
-          '#type' => 'link', '#title' => $this->t('Dashboard'),
-          '#url' => Url::fromRoute('user.page'),
-          '#attributes' => [
-            'class' => 'fas fa-chart-line'
-          ]
-        ],
-        [
           '#type' => 'link', '#title' => $this->t('My Family'),
           '#url' => Url::fromRoute('twelve_user.family_edit_form', ['user'=> $this->currentUser->id()]),
           '#attributes' => [
             'class' => 'fas fa-user-friends'
+          ]
+        ],
+        [
+          '#type' => 'link', '#title' => $this->t('Dashboard'),
+          '#url' => Url::fromRoute('user.page'),
+          '#attributes' => [
+            'class' => 'fas fa-chart-line'
           ]
         ],
         [
