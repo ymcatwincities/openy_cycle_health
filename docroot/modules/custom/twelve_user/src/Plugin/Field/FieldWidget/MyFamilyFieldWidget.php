@@ -57,7 +57,7 @@ class MyFamilyFieldWidget extends WidgetBase {
             'height' => 550,
           ]),
         ],
-        '#url' => Url::fromRoute('entity.node.edit_form', [
+        '#url' => Url::fromRoute('twelve_user.family_member_edit', [
           'node' => $nid,
         ]),
         '#title' => $this->t('Edit'),

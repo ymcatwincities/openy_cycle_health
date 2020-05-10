@@ -2,30 +2,21 @@
 
 namespace Drupal\twelve_user\Form;
 
-use Drupal\Console\Bootstrap\Drupal;
-use Drupal\Core\Ajax\InsertCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Renderer;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
-use Drupal\ifw_project\IfwStore;
 use Drupal\node\Entity\Node;
-use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\AfterCommand;
 use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\Core\Ajax\RemoveCommand;
-use Drupal\ifw_project\Ajax\ScrollTopModalCommand;
 use Drupal\Core\Ajax\CloseModalDialogCommand;
-use Drupal\ifw_notifications\Notifications\Subscribers;
-use Drupal\paragraphs\ParagraphInterface;
-use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\user\Entity\User;
 
 /**
- * Class AddFamilyMembers.
+ * Class EditFamilyMembers.
  *
  * @package Drupal\ifw_project\Form
  */
@@ -43,25 +34,32 @@ class FamilyMemberEdit extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, $user_id = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, $node = NULL) {
 
+    $i=1;
     $form['title'] = [
       '#type' => 'textfield',
       '#title' => 'Title',
       '#required' => TRUE,
+      '#default_value' => $node->getTitle(),
       '#prefix' => '<span class="family-member-add-form-messages"></span>',
       '#suffix' => '<div class="form-item--error-message"></div>',
     ];
 
     $form['submit'] = [
       '#type' => 'button',
-      '#value' => 'Add Family Member',
+      '#value' => 'Edit',
       '#attributes' => [
         'class' => ['btn', 'btn-primary'],
       ],
       '#ajax' => [
-        'callback' => [get_class($this), 'addSubmit'],
+        'callback' => [get_class($this), 'editSubmit'],
       ],
+    ];
+
+    $form['nid'] = [
+      '#type' => 'hidden',
+      '#value' => $node->id(),
     ];
 
     $form['#attached']['library'][] = 'classy/messages';
@@ -73,11 +71,13 @@ class FamilyMemberEdit extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function addSubmit(array &$form, FormStateInterface $form_state) {
+  public function editSubmit(array &$form, FormStateInterface $form_state) {
 
     $response = new AjaxResponse();
 
     // Validation.
+    $nid = $form_state->getValue('nid');
+    $node = Node::load($nid);
 
     if (empty($form_state->getValue('title'))) {
       $selector = '.twelve-user-family-member-add [name$="title"]';
@@ -97,27 +97,14 @@ class FamilyMemberEdit extends FormBase {
       return $response;
     } else {
 
-      $node = Node::create([
-        'title' => $form_state->getValue('title'),
-        'type' => 'family_member',
-        'uid' => $this->currentUser()->id(),
-      ])->save();
+      $node->set('title', $form_state->getValue('title'));
+      $node->save();
 
-      $user = User::load($this->currentUser()->id());
 
+      $user = User::load(\Drupal::currentUser()->id());
       $field_values = $user->get('field_family')->getValue();
-
-      $new_value = [
-        'target_id' => $node->id()
-      ];
-
-      $updated_field_values = array_merge($field_values, $new_value);
-
-      $user->set('field_family', $updated_field_values);
-      $user->save();
-
       $family_ids = [];
-      foreach ($updated_field_values as $field_value) {
+      foreach ($field_values as $field_value) {
         $family_ids[] = $field_value['target_id'];
       }
 
@@ -166,15 +153,25 @@ class FamilyMemberEdit extends FormBase {
             'height' => 550,
           ]),
         ],
-        '#url' => Url::fromRoute('ifw_project.project_updates_edit', [
-          'project' => $project->id(),
-          'update_id' => $family_member_id,
+        '#url' => Url::fromRoute('twelve_user.family_member_edit', [
+          'node' => $family_member_id
         ]),
         '#title' => 'Edit',
       ];
 
     }
 
+    // Replacing container containing all items with updated list.
+    $response->addCommand(
+      new ReplaceCommand(
+        '#my-family',
+        \Drupal::service('renderer')->render($build)
+      )
+    );
+
+    $response->addCommand(
+      new CloseModalDialogCommand()
+    );
 
     return $response;
   }

@@ -2,26 +2,17 @@
 
 namespace Drupal\twelve_user\Form;
 
-use Drupal\Console\Bootstrap\Drupal;
-use Drupal\Core\Ajax\InsertCommand;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Renderer;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Url;
-use Drupal\ifw_project\IfwStore;
 use Drupal\node\Entity\Node;
-use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\AfterCommand;
 use Drupal\Core\Ajax\InvokeCommand;
 use Drupal\Core\Ajax\RemoveCommand;
-use Drupal\ifw_project\Ajax\ScrollTopModalCommand;
 use Drupal\Core\Ajax\CloseModalDialogCommand;
-use Drupal\ifw_notifications\Notifications\Subscribers;
-use Drupal\paragraphs\ParagraphInterface;
-use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\user\Entity\User;
 
 /**
