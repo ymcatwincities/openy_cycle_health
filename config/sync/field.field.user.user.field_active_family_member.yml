@@ -16,7 +16,7 @@ id: user.user.field_active_family_member
 field_name: field_active_family_member
 entity_type: user
 bundle: user
-label: 'Active Family Member'
+label: 'Switch User'
 description: ''
 required: false
 translatable: false

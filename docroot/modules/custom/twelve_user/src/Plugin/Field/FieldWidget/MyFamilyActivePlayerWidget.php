@@ -64,7 +64,7 @@ class MyFamilyActivePlayerWidget extends OptionsSelectWidget {
     $response->addCommand(new RemoveCommand($selector));
 
     $selector = '#edit-field-active-family-member-0';
-    $content = '<div class="active-message">Active user has been updated.</div>';
+    $content = '<div class="active-message"> Active player updated.</div>';
 
     $response->addCommand(new AfterCommand($selector, $content));
 
