@@ -1,5 +1,10 @@
 <template>
   <div>
+    <Greeting
+      v-on:show-modal="nameModalVisible = true"
+      v-on:hide-modal="nameModalVisible = false"
+    ></Greeting>
+
     <ExerciseList
       :game_nid="game_nid"
       :progress_nid="progress_nid"
@@ -11,6 +16,7 @@
 </template>
 
 <script>
+  import Greeting from './components/Greeting.vue';
   import ExerciseList from '../components/ExerciseList.vue';
   import Spinner from '../../components/Spinner.vue'
   import twelve from '../../app/twelve';

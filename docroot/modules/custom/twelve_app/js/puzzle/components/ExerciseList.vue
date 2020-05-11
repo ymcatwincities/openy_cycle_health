@@ -1,10 +1,5 @@
 <template>
   <div>
-    <name-form
-      v-on:show-modal="nameModalVisible = true"
-      v-on:hide-modal="nameModalVisible = false"
-    ></name-form>
-
     <ExerciseModal
       v-if="selected_exercise"
       :game_nid="game_nid",
@@ -32,7 +27,6 @@
 </template>
 
 <script>
-  import NameForm from '../components/NameForm.vue';
   import ExerciseModal from "./ExerciseModal";
   import twelve from "../../app/twelve";
 
@@ -71,7 +65,7 @@
         this.selected_exercise = exercise;
       },
       exerciseClosed: function(exercise) {
-        
+
       }
     }
   }

@@ -1,60 +1,53 @@
 <template>
-  <div class="modal fade show excercise-container">
-    <div class="modal-backdrop fade in"></div>
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">{{ exercise.label }}</h4>
-          <button type="button" class="close notranslate" aria-label="Close"
-                  v-on:click="closeExerciseModal"
-          ><span aria-hidden="true">&times;</span></button>
-        </div>
-        <div class="modal-body">
-          <div class="description" v-html="exercise.description"></div>
-          <div class="animation" v-if="exercise.gif_path"><img :src="exercise.gif_path"></div>
-        </div>
-        <div class="modal-footer">
-          <div class="countdown notranslate" v-if="timerIsRunning">
-            <countdown
-              ref="countdown"
-              :time="exercise.timer * 1000"
-              @end="triggerTimerEnd(exercise.id)"
-              :emit-events="true"
-              v-if="timerIsRunning"
-            >
-              <template
-                slot-scope="props"
-              >{{ props.minutes | formatNumber }}:{{ props.seconds | formatNumber }}
-              </template>
-            </countdown>
-          </div>
-          <button type="button" class="btn btn-blue notranslate"
-                  v-if="timerIsRunning"
-                  @click="toggleTimerPause"
-          >
-            <template v-if="timerIsPaused">CONTINUE</template>
-            <template v-else>PAUSE</template>
-          </button>
-          <button type="button" class="btn btn-gold notranslate"
-                  v-if="checked.includes(item.id)"
-                  @click="closeExerciseModal"
-          >
-            <img src="/themes/custom/twelve_carnation/dist/img/task-gold.png"></img>
-            COMPLETE
-          </button>
-          <button type="button" class="btn btn-default notranslate"
-                  v-if="!timerIsRunning && !checked.includes(item.id)"
-                  @click="timerIsRunning = true"
-          >
-            READY … SET … GO!
-          </button>
-        </div>
+  <Modal
+    :title="exercise.label"
+    :close_handler="closeExerciseModal"
+  >
+    <template #body>
+      <div class="description" v-html="exercise.description"></div>
+      <div class="animation" v-if="exercise.gif_path"><img :src="exercise.gif_path"></div>
+    </template>
+    <template #footer>
+      <div class="countdown notranslate" v-if="timerIsRunning">
+        <countdown
+          ref="countdown"
+          :time="exercise.timer * 1000"
+          @end="triggerTimerEnd(exercise.id)"
+          :emit-events="true"
+          v-if="timerIsRunning"
+        >
+          <template
+            slot-scope="props"
+          >{{ props.minutes | formatNumber }}:{{ props.seconds | formatNumber }}
+          </template>
+        </countdown>
       </div>
-    </div>
-  </div>
+      <button type="button" class="btn btn-blue notranslate"
+              v-if="timerIsRunning"
+              @click="toggleTimerPause"
+      >
+        <template v-if="timerIsPaused">CONTINUE</template>
+        <template v-else>PAUSE</template>
+      </button>
+      <button type="button" class="btn btn-gold notranslate"
+              v-if="checked.includes(item.id)"
+              @click="closeExerciseModal"
+      >
+        <img src="/themes/custom/twelve_carnation/dist/img/task-gold.png"></img>
+        COMPLETE
+      </button>
+      <button type="button" class="btn btn-default notranslate"
+              v-if="!timerIsRunning && !checked.includes(item.id)"
+              @click="timerIsRunning = true"
+      >
+        READY … SET … GO!
+      </button>
+    </template>
+  </Modal>
 </template>
 
 <script>
+  import Modal from "../../components/Modal";
   import Countdown from '@chenfengyuan/vue-countdown';
   import twelve from "../../app/twelve";
 
@@ -67,6 +60,7 @@
       'exercise'
     ],
     components: {
+      Modal,
       Countdown
     },
     data: function () {
