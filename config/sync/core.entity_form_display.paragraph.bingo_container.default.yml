@@ -1,0 +1,37 @@
+uuid: 131a7037-b24c-4d35-a5ac-0712bb5a8ad1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bingo_container.field_excercises
+    - field.field.paragraph.bingo_container.field_prgf_image
+    - paragraphs.paragraphs_type.bingo_container
+id: paragraph.bingo_container.default
+targetEntityType: paragraph
+bundle: bingo_container
+mode: default
+content:
+  field_excercises:
+    weight: -4
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_prgf_image:
+    weight: -3
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

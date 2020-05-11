@@ -1,0 +1,27 @@
+uuid: 4f80462e-3bbd-491d-8936-b9c964f7d465
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bingo_container.field_excercises
+    - field.field.paragraph.bingo_container.field_prgf_image
+    - image.style.large
+    - paragraphs.paragraphs_type.bingo_container
+  module:
+    - media
+id: paragraph.bingo_container.default
+targetEntityType: paragraph
+bundle: bingo_container
+mode: default
+content:
+  field_prgf_image:
+    weight: 0
+    label: hidden
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+    type: media_thumbnail
+    region: content
+hidden:
+  field_excercises: true

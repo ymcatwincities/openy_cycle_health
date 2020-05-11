@@ -23,7 +23,7 @@ class BingoSettingsForm extends ConfigFormBase {
    */
   protected function getEditableConfigNames() {
     return [
-      'bingo_app.settings',
+      'twelve_app.bingo_settings',
     ];
   }
 
@@ -32,7 +32,7 @@ class BingoSettingsForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
 
-    $config = $this->config('bingo_app.settings');
+    $config = $this->config('twelve_app.bingo_settings');
 
     if (empty($form_state->get('items'))) {
       $items = $config->get('items');
@@ -184,7 +184,7 @@ class BingoSettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     /* @var $config \Drupal\Core\Config\Config */
-    $config = $this->configFactory->getEditable('bingo_app.settings');
+    $config = $this->configFactory->getEditable('twelve_app.bingo_settings');
     $config->set('items', $form_state->getValue('nodes_container'))->save();
     parent::submitForm($form, $form_state);
   }

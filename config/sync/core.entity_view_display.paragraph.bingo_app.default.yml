@@ -1,0 +1,24 @@
+uuid: 520c8578-d4f6-4156-8ae4-0b13665aa7ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.bingo_app.field_bingo_app
+    - field.field.paragraph.bingo_app.field_game_category
+    - paragraphs.paragraphs_type.bingo_app
+  module:
+    - plugin
+id: paragraph.bingo_app.default
+targetEntityType: paragraph
+bundle: bingo_app
+mode: default
+content:
+  field_bingo_app:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: plugin_block_built
+    region: content
+hidden:
+  field_game_category: true

@@ -1,0 +1,34 @@
+uuid: 39a5fa58-c812-48f5-a922-9af9f61a135c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_excercises
+    - node.type.excercise
+    - paragraphs.paragraphs_type.bingo_container
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_excercises
+id: paragraph.bingo_container.field_excercises
+field_name: field_excercises
+entity_type: paragraph
+bundle: bingo_container
+label: Excercises
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      excercise: excercise
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

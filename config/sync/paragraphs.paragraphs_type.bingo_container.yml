@@ -1,0 +1,9 @@
+uuid: 109db868-91b8-41d8-8a9d-e6f5e7f33aa3
+langcode: en
+status: true
+dependencies: {  }
+id: bingo_container
+label: 'Bingo Container'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

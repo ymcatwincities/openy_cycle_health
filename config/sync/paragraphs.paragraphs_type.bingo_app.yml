@@ -1,0 +1,9 @@
+uuid: f10606b5-4dc1-4e5b-9bb4-6ca654e2ba1c
+langcode: en
+status: true
+dependencies: {  }
+id: bingo_app
+label: 'Bingo App'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }
