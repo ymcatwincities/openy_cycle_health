@@ -1,0 +1,15 @@
+.greeting {
+  color: $white;
+  font-family: Cachet, Verdana, sans-serif;
+  font-size: 48px;
+  letter-spacing: -2.4px;
+  line-height: 72px;
+
+  .wrapper-field-first-name {
+    display: inline-block;
+
+    .label-for-field-first-name {
+      display: none;
+    }
+  }
+}
