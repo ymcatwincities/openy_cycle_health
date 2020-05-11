@@ -1,0 +1,19 @@
+.profile {
+  background-color: $account-green;
+  background-image: url('/themes/custom/twelve_carnation/dist/img/account-top.png');
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  padding: 54px 45px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    @import 'header/greeting';
+    @import 'header/menu';
+  }
+}

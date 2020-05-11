@@ -1,0 +1,66 @@
+.select-account {
+  padding: 20px;
+}
+
+.twelve-family-edit-form {
+  grid-template-columns: 100%;
+
+  .field--name-field-family {
+    .tabledrag-toggle-weight-wrapper, .field-multiple-table thead, .field-multiple-drag, label {
+      display: none;
+    }
+
+    .field-multiple-table > tbody {
+      display: flex;
+      flex-flow: wrap;
+      margin-right: -10px;
+
+      tr {
+        display: block;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        max-width: 50%;
+
+        legend {
+          display: none;
+        }
+      }
+    }
+
+    .input-wrapper {
+      .field-add-more-submit {
+        width: auto;
+        min-width: auto;
+        border-radius: 5px;
+        margin-top: 0;
+        padding: 5px 15px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .field--name-field-active-family-member {
+    justify-self: center;
+
+    label {
+      margin: 0;
+    }
+
+    .select-wrapper {
+      width: auto;
+
+      .form-control {
+        width: auto;
+        min-width: 300px;
+      }
+    }
+  }
+
+  .input-wrapper {
+    .form-submit {
+      min-width: 300px;
+    }
+  }
+}
+
+
