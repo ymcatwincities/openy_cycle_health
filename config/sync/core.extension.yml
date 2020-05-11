@@ -52,6 +52,7 @@ module:
   focal_point: 0
   geolocation: 0
   google_analytics: 0
+  google_optimize: 0
   google_tag: 0
   hal: 0
   help: 0

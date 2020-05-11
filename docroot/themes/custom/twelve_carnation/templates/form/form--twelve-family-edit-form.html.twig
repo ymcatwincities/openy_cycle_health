@@ -7,6 +7,10 @@
 
 <div class="page-title-left container">{{ 'My Family'|t }}</div>
 
-<form{{ attributes }}>
+<div class="container select-account">
+  <p>Select which account to use to play 12Bursts.</p>
+</div>
+
+<form{{ attributes.addClass('container') }}>
   {{ children }}
 </form>

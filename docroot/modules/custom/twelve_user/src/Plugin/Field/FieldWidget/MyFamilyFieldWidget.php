@@ -53,8 +53,8 @@ class MyFamilyFieldWidget extends WidgetBase {
           'data-dialog-type' => 'modal',
           'data-dialog-options' => json_encode([
             'dialogClass' => 'edit-family-member',
-            'width' => 600,
-            'height' => 550,
+            'width' => 'auto',
+            'height' => 'auto',
           ]),
         ],
         '#url' => Url::fromRoute('twelve_user.family_member_edit', [
@@ -88,6 +88,7 @@ class MyFamilyFieldWidget extends WidgetBase {
     foreach ($element['widget'] as $idx => &$widget) {
       if (is_numeric($idx)) {
         unset($widget['_weight']);
+        $widget['#type'] = 'container';
         $element['widget']['items'][$idx] = $widget;
         unset($element['widget'][$idx]);
       }
