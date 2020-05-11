@@ -16,5 +16,5 @@ puzzle:
   js:
     dist/puzzle.bundle.js: {minified: true}
   dependencies:
-    - openy_system/vue
+#    - openy_system/vue
     - twelve_app/common

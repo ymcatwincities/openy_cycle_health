@@ -192,7 +192,7 @@
       },
 
       beep: function () {
-         let snd = new Audio('/modules/custom/twelve_app/bursts/disco_alarm.wav');
+         let snd = new Audio('/modules/custom/twelve_app/js/app/assets/disco_alarm.wav');
          snd.play();
       },
 

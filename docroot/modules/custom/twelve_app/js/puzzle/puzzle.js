@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import TodayProgress from './components/TodayProgress.vue';
+import Puzzle from './Puzzle.vue';
 import Notifications from 'vue-notification';
 import 'babel-polyfill';
 
@@ -8,7 +8,7 @@ Vue.use(Notifications);
 new Vue({
   delimiters: ['[{', '}]'],
   components: {
-    TodayProgress
+    Puzzle
   },
 }).$mount('#twelve_puzzle_app');
 
