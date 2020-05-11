@@ -5,36 +5,58 @@
 .twelve-family-edit-form {
   grid-template-columns: 100%;
 
-  .field--name-field-family {
-    .tabledrag-toggle-weight-wrapper, .field-multiple-table thead, .field-multiple-drag, label {
-      display: none;
+  .field--name-field-family > div {
+
+    > a {
+      display: inline-block;
+      margin: 30px 0 20px 0;
+      padding: 5px 20px;
+      background-color: #92278f;
+      font-family: Cachet,Verdana,sans-serif;
+      font-size: 16px;
+      line-height: 36px;
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
     }
 
-    .field-multiple-table > tbody {
+    #my-family {
       display: flex;
       flex-flow: wrap;
       margin-right: -10px;
 
-      tr {
-        display: block;
-        padding-right: 10px;
-        padding-bottom: 10px;
-        max-width: 50%;
-
-        legend {
-          display: none;
-        }
-      }
-    }
-
-    .input-wrapper {
-      .field-add-more-submit {
-        width: auto;
-        min-width: auto;
+      > .form-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        width: 40%;
+        border: 1px solid $gray-400;
         border-radius: 5px;
-        margin-top: 0;
-        padding: 5px 15px;
-        font-size: 16px;
+
+
+        .update-title {
+          padding: 10px;
+        }
+
+        .edit-button {
+          font-size: 0;
+          display: block;
+          position: absolute;
+          width: 100%;
+
+          &:after {
+            font-family: "Font Awesome 5 Free";
+            content: '\f304';
+            font-weight: 900;
+            color: $black;
+            font-size: 20px;
+            float: right;
+            padding-right: 10px;
+          }
+        }
       }
     }
   }
@@ -56,11 +78,6 @@
     }
   }
 
-  .input-wrapper {
-    .form-submit {
-      min-width: 300px;
-    }
-  }
 }
 
 
