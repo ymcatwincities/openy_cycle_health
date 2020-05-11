@@ -19,26 +19,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_active_family_member:
-    weight: 4
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
-  field_family:
-    weight: 3
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_first_name:
     weight: 1
     settings:
@@ -57,6 +37,8 @@ content:
     region: content
 hidden:
   contact: true
+  field_active_family_member: true
+  field_family: true
   google_analytics: true
   langcode: true
   language: true
