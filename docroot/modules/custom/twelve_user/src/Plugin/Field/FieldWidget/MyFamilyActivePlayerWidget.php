@@ -5,12 +5,11 @@ namespace Drupal\twelve_user\Plugin\Field\FieldWidget;
 use Drupal\Core\Ajax\AfterCommand;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\RemoveCommand;
+use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldWidget\OptionsSelectWidget;
-use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\Entity\Node;
-use Drupal\Core\Url;
 
 /**
  *  Twelve family listing field widget.
@@ -67,6 +66,12 @@ class MyFamilyActivePlayerWidget extends OptionsSelectWidget {
     $content = '<div class="active-message">Active user has been updated.</div>';
 
     $response->addCommand(new AfterCommand($selector, $content));
+
+    $active_player_name = \Drupal::service('twelve_user.family')->getActivePlayerName();
+    $response->addCommand(new HtmlCommand(
+      '.greeting',
+      t('Hello, @name', ['@name' => $active_player_name])
+    ));
 
     return $response;
 
