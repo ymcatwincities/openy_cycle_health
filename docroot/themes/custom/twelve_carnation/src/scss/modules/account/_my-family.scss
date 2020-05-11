@@ -22,12 +22,12 @@
       border-radius: 5px;
     }
 
-    #my-family {
+    #my-family, #family-members {
       display: flex;
       flex-flow: wrap;
       margin-right: -10px;
 
-      > .form-wrapper {
+      > div {
         position: relative;
         display: flex;
         justify-content: space-between;
@@ -43,7 +43,7 @@
           padding: 10px;
         }
 
-        .edit-button {
+        > a {
           font-size: 0;
           display: block;
           position: absolute;
