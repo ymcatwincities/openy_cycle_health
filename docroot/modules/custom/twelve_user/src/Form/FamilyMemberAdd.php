@@ -154,8 +154,8 @@ class FamilyMemberAdd extends FormBase {
           'data-dialog-type' => 'modal',
           'data-dialog-options' => json_encode([
             'dialogClass' => 'edit-update-form',
-            'width' => 380,
-            'height' => 200,
+            'width' => 'auto',
+            'height' => 'auto',
           ]),
         ],
         '#url' => Url::fromRoute('twelve_user.family_member_edit', [

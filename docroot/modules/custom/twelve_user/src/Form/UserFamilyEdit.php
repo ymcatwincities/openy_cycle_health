@@ -29,8 +29,6 @@ class UserFamilyEdit extends ProfileForm {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildForm($form, $form_state);
-    $form['#attributes']['class'][] = 'user-register-form';
-
     $form['actions']['submit']['#access'] = FALSE;
 
     return $form;
