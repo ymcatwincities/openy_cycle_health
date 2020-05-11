@@ -5,37 +5,40 @@ namespace Drupal\twelve_app\Plugin\Block;
 use Drupal\Core\Cache\Cache;
 
 /**
- * Provides a 'Hidden Picture' block.
+ * Provides a 'Bingo app' block.
  *
  * @Block(
- *   id = "twelve_puzzle",
- *   admin_label = @Translation("Hidden Picture app"),
+ *   id = "twelve_bingo",
+ *   admin_label = @Translation("Bingo game app"),
  *   category = @Translation("Paragraph Blocks")
  * )
  */
-class Puzzle extends GameAbstract {
+class Bingo extends GameAbstract {
 
   /**
    * {@inheritdoc}
    */
   public function getGameConfigurationName() {
-    return 'twelve_app.puzzle_settings';
+    return 'twelve_app.bingo_settings';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getGameParagraphBundle() {
-    return 'puzzle_app';
+    return 'bingo_app';
   }
 
   /**
    * {@inheritdoc}
    */
   public function getGameExercisesParagraphBundle() {
-    return 'puzzle_container';
+    return 'bingo_container';
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function build() {
     $user = $this->currentUser->getAccount();
     if (empty($user->id())) {
@@ -50,7 +53,7 @@ class Puzzle extends GameAbstract {
 
     return array_merge(
       parent::build(), [
-        '#theme' => 'puzzle',
+        '#theme' => 'bingo',
         '#progress_nid' => $progress_nid,
         '#finished_items' => $this->getFinishedExercisesNids(),
       ]

@@ -1,0 +1,10 @@
+{{ attach_library('twelve_app/bingo') }}
+
+<div id="bingo_app">
+    <today-progress
+            :debug='{{ debug|json_encode }}'
+            :game_nid='{{ game_nid }}'
+            :excercises='{{ excercises|json_encode }}'
+            :completion_url='{{ completion_url|json_encode }}'
+    ></today-progress>
+</div>

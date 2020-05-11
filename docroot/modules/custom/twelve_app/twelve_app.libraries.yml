@@ -18,3 +18,11 @@ puzzle:
   dependencies:
     - openy_system/vue
     - twelve_app/common
+
+bingo:
+  version: 0.1
+  js:
+    dist/bingo.bundle.js: {minified: true}
+  dependencies:
+    - openy_system/vue
+    - twelve_app/common

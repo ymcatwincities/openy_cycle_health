@@ -13,3 +13,12 @@ twelve_app.puzzle_settings:
     _title: 'Hidden Picture Settings'
   requirements:
     _permission: 'administer content'
+
+twelve_app.bingo_settings:
+  path: '/admin/openy/bingo_app'
+  defaults:
+    _form: '\Drupal\twelve_app\Form\BingoSettingsForm'
+    _title: 'Bingo Settings'
+  requirements:
+    _permission: 'administer content'
+

@@ -22,5 +22,14 @@ function twelve_app_theme() {
         'finished_items' => [],
       ],
     ],
+    'bingo' => [
+      'variables' => [
+        'debug' => '',
+        'game_nid' => '',
+        'excercises' => [],
+        'progress_nid' => '',
+        'finished_items' => [],
+      ],
+    ],
   ];
 }

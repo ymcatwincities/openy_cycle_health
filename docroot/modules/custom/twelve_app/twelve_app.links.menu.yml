@@ -1,14 +1,21 @@
 openy_system.twelve_app_settings:
-  title: 'Twelve App Settings'
-  description: 'Configure Node'
+  title: 'Todays progress'
+  description: 'Twelve App Settings'
   parent: openy_system.openy
   route_name: twelve_app.settings
   weight: 200
 
 openy_system.puzzle_app_settings:
-  title: 'Hidden Picture App Settings'
-  description: 'Configure Node'
+  title: 'Hidden Picture'
+  description: 'Hidden Picture App Settings'
   parent: openy_system.openy
   route_name: twelve_app.puzzle_settings
-  weight: 200
+  weight: 201
+
+openy_system.bingo_app_settings:
+  title: 'Bingo'
+  description: 'Bingo App Settings'
+  parent: openy_system.openy
+  route_name: twelve_app.bingo_settings
+  weight: 202
 
