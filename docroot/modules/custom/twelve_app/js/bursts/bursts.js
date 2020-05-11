@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import TodayProgress from './components/TodayProgress.vue'
+import Bursts from './views/Bursts.vue'
 import Notifications from 'vue-notification'
 import 'babel-polyfill'
 
@@ -8,7 +8,7 @@ Vue.use(Notifications);
 new Vue({
   delimiters: ['[{', '}]'],
   components: {
-    TodayProgress
+    Bursts
   },
 }).$mount('#twelve_day_progress_app');
 

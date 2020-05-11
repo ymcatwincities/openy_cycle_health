@@ -5,6 +5,9 @@
       <span class="username">Hello, <template v-if="userIntroduced">{{ username }}!</template><template v-else>...</template></span>
     </div>
 
+    <Modal
+    ></Modal>
+
     <div class="modal fade show d-block user-login-container" v-if="!userIntroduced">
       <div class="modal-backdrop fade in"></div>
       <div class="modal-dialog">
@@ -26,7 +29,11 @@
 </template>
 
 <script>
+  import Modal from "./Modal";
+  import Modal from "./Modal";
+
   export default {
+    components: {Modal},
     data() {
       let name = this.loadUserName();
 
