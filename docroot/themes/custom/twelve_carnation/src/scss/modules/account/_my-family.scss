@@ -80,6 +80,14 @@
       .form-control {
         width: 100%;
       }
+
+      @include media-breakpoint-up(lg) {
+        width: auto;
+
+        .form-control {
+          width: 300px;
+        }
+      }
     }
   }
 }
