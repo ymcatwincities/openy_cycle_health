@@ -72,18 +72,13 @@
   }
 
   .field--name-field-active-family-member {
-    justify-self: center;
-
     label {
       margin: 0;
     }
 
     .select-wrapper {
-      width: auto;
-
       .form-control {
-        width: auto;
-        min-width: 300px;
+        width: 100%;
       }
     }
   }
