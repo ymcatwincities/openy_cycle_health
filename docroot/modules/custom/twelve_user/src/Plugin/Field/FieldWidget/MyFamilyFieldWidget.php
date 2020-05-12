@@ -42,7 +42,7 @@ class MyFamilyFieldWidget extends WidgetBase {
         '#value' => $node->getTitle(),
         '#attributes' => [
           'class' => 'update-title',
-          'id' => 'update-title-' . $nid,
+          'id' => 'family-member-title-' . $nid,
         ],
       ];
 
