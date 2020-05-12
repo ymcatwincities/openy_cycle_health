@@ -50,9 +50,12 @@
                     'field_when': {
                         'value': this.$props.game_nid,
                     },
-                    'field_finished_items': checked
+                    'field_finished_items': checked,
+                    'field_sub_user': {
+                        'value': drupalSettings.sub_account_id
+                    }
                 };
-
+          
                 let result_key = this.getLocalStorageKey();
                 let result_nid = localStorage.getItem(result_key);
                 if (result_nid) {

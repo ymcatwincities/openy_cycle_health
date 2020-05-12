@@ -131,13 +131,15 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
   /**
    * @return array
    */
-  protected abstract  function prepareExercisesArray();
+  protected abstract function prepareExercisesArray();
 
   /**
    * {@inheritdoc}
    */
   public function build() {
+
     $game_nid = $this->getCurrentGameNid();
+
     if (empty($game_nid)) {
       return [];
     }
@@ -154,9 +156,11 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
       '#attached' => [
         'drupalSettings' => [
           'username' => $this->family->getActivePlayerName(),
+          'sub_account_id' => $this->family->getSubAccountId()
         ],
       ],
     ];
+
   }
 
   /**

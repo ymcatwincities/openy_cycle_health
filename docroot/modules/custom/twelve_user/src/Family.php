@@ -56,6 +56,19 @@ class Family {
   }
 
   /**
+   * @return int|null
+   */
+  public function getSubAccountId() {
+
+    $user = $this->getUser();
+    if (!$user) {
+      return '';
+    }
+
+    return $user->field_active_family_member->target_id;
+  }
+
+  /**
    * @return bool|User
    */
   public function getUser() {
