@@ -6,30 +6,19 @@ dependencies:
     - field.field.paragraph.bingo_app.field_bingo_app
     - field.field.paragraph.bingo_app.field_game_category
     - paragraphs.paragraphs_type.bingo_app
-  module:
-    - plugin
 id: paragraph.bingo_app.default
 targetEntityType: paragraph
 bundle: bingo_app
 mode: default
 content:
-  field_bingo_app:
-    weight: -3
+  field_game_category:
+    weight: 0
     settings: {  }
     third_party_settings: {  }
-    type: 'plugin_selector:plugin_select_list'
-    region: content
-  field_game_category:
-    weight: -4
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: options_select
     region: content
 hidden:
   created: true
+  field_bingo_app: true
   status: true
   uid: true
