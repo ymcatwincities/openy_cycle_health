@@ -10,11 +10,11 @@
     <template #footer>
       <div class="countdown notranslate" v-if="timerIsRunning">
         <countdown
+          v-if="timerIsRunning"
           ref="countdown"
           :time="exercise.timer * 1000"
           @end="triggerTimerEnd(exercise.id)"
           :emit-events="true"
-          v-if="timerIsRunning"
         >
           <template
             slot-scope="props"

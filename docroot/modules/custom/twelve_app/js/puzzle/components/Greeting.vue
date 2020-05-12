@@ -1,10 +1,12 @@
 <template>
   <div class="introduce-form">
     <div class="user-name-container">
-      <span class="username">Hello, <template v-if="userIntroduced">{{ username }}!</template><template v-else>...</template></span>
+      <span class="username">Hello, {{ userIntroduced ? username : '...' }}</span>
     </div>
 
-    <Modal title="Log in to start playing" class="user-login-container">
+    <Modal title="Log in to start playing" class="user-login-container"
+      v-if="!userIntroduced"
+    >
       <template #footer>
         <button type="button" class="btn btn-default" v-on:click="gotoLoginPage">Login</button>
         <button type="button" class="btn btn-default" v-on:click="gotoRegisterPage">Register</button>
@@ -15,36 +17,21 @@
 
 <script>
   import Modal from "./Modal";
+  import twelve from "../../app/twelve";
 
   export default {
     components: {Modal},
-    data() {
-      let name = this.loadUserName();
-
-      return {
-        userIntroduced: drupalSettings.user.uid > 0,
-        username: name,
-      };
+    props: {
+      username: {
+        type: String,
+        default: ''
+      },
+      canEdit: {
+        type: Boolean,
+        default: false
+      }
     },
     methods: {
-      loadUserName: function() {
-        let name = drupalSettings.username;
-        if(!this.isName(name)) {
-          this.$emit('show-modal');
-        }
-        localStorage.twelveUserName = name;
-        return name;
-      },
-
-      isName: function(name) {
-        return typeof name === "string" && name.length > 0;
-      },
-
-      showModal: function () {
-        this.userIntroduced = false;
-        this.$emit('show-modal');
-      },
-
       gotoLoginPage: function() {
         window.location = window.location.origin + '/user/login?destination=' + encodeURIComponent(window.location.pathname);
       },
@@ -52,6 +39,11 @@
       gotoRegisterPage: function() {
         window.location = window.location.origin + '/user/register?destination=' + encodeURIComponent(window.location.pathname);
       },
+    },
+    computed: {
+      userIntroduced: function() {
+        return twelve.user.validate_name(this.$props.username);
+      }
     }
   };
 </script>

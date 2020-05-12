@@ -1,14 +1,5 @@
 <template>
   <div>
-    <ExerciseModal
-      v-if="selected_exercise"
-      :game_nid="game_nid",
-      :progress_nid="progress_nid",
-      :exercise_list="exercise_list",
-      :finished_exercises="finished_exercises"
-      :exercise="selected_exercise"
-    ></ExerciseModal>
-
     <div class="message">Click an activity below. Keep going until you've clicked them all!</div>
 
     <div class="container" v-bind:class="{'visually-disabled': nameModalVisible || selected_exercise}">
@@ -27,7 +18,6 @@
 </template>
 
 <script>
-  import ExerciseModal from "./ExerciseModal";
   import twelve from "../../app/twelve";
 
   export default {

@@ -1,9 +1,19 @@
 <template>
   <div>
     <Greeting
+      :username="username"
       v-on:show-modal="nameModalVisible = true"
       v-on:hide-modal="nameModalVisible = false"
     ></Greeting>
+
+    <ExerciseModal
+      v-if="selected_exercise"
+      :game_nid="game_nid",
+      :progress_nid="progress_nid",
+      :exercise_list="exercise_list",
+      :finished_exercises="finished_exercises"
+      :exercise="selected_exercise"
+    ></ExerciseModal>
 
     <ExerciseList
       :game_nid="game_nid"
@@ -17,6 +27,7 @@
 
 <script>
   import Greeting from './components/Greeting.vue';
+  import ExerciseModal from './components/ExerciseModal';
   import ExerciseList from '../components/ExerciseList.vue';
   import Spinner from '../../components/Spinner.vue'
   import twelve from '../../app/twelve';
@@ -36,10 +47,15 @@
       twelve.local_storage.set_progress_nid(drupalSettings.user.uid, this.$props.game_nid, this.$props.progress_nid);
     },
     components: {
+      Greeting,
+      ExerciseModal,
       ExerciseList,
       Spinner,
     },
     computed: {
+      username: function() {
+        return twelve.user.get_active_player_name();
+      },
       excercisesOptions: function () {
         var options = {};
         var index = 1;

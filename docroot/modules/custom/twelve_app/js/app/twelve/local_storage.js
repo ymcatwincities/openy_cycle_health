@@ -44,9 +44,22 @@ function load_today_progress(progress_nid) {
   return cache;
 }
 
+function get_user_name() {
+  localStorage.getItem('twelveUserName');
+}
+
+/**
+ * @param {String} name
+ */
+function set_user_name(name) {
+  localStorage.setItem('twelveUserName', name);
+}
+
 export default {
   get_progress_nid,
   set_progress_nid,
   save_today_progress,
-  load_today_progress
+  load_today_progress,
+  get_user_name,
+  set_user_name
 }
