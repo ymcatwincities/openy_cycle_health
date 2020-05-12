@@ -1,7 +1,7 @@
 common:
   version: 0.1
   js:
-    dist/vendors~bursts~puzzle.bundle.js: {minified: true}
+    dist/vendors~bingo~bursts~puzzle.bundle.js: {minified: true}
 
 day_progress:
   version: 0.1
@@ -16,7 +16,7 @@ puzzle:
   js:
     dist/puzzle.bundle.js: {minified: true}
   dependencies:
-#    - openy_system/vue
+    - openy_system/vue
     - twelve_app/common
 
 bingo:
