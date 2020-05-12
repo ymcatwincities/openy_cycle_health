@@ -95,14 +95,14 @@ class FamilyMemberAdd extends FormBase {
       ]);
 
       $node->save();
-
+      
       $user = User::load(\Drupal::currentUser()->id());
 
       $field_values = $user->get('field_family')->getValue();
 
-      $new_value = [
+      $new_value = [[
         'target_id' => $node->id()
-      ];
+      ]];
 
       $updated_field_values = array_merge($field_values, $new_value);
 
