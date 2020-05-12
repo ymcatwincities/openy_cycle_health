@@ -1,0 +1,22 @@
+//ie only hack
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .today-progress-item {
+    margin-bottom: 10px;
+
+    .checkbox {
+      display: none;
+    }
+
+    .title, .description {
+      margin-left: 20px;
+    }
+  }
+
+  #block-twelve-carnation-main-menu .navbar {
+    float: right;
+  }
+
+  .user-login-container .modal-dialog {
+    width: 343px;
+  }
+}

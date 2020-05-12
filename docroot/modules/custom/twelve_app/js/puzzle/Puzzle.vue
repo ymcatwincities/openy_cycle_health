@@ -97,7 +97,7 @@
         });
       },
       beep: function () {
-        let snd = new Audio('/modules/custom/twelve_app/helper/app/assets/disco_alarm.wav');
+        let snd = new Audio('/modules/custom/twelve_app/assets/disco_alarm.wav');
         snd.play();
       },
       fullyCompletedTodayExercises: function () {

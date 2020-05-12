@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Bursts from './views/Bursts.vue'
+import Bursts from './Bursts.vue'
 import Notifications from 'vue-notification'
 import 'babel-polyfill'
 

@@ -13,8 +13,8 @@
 
 <script>
 
-    import Spinner from '../../components/Spinner.vue'
-    import MainFilter from '../components/Filter.vue'
+    import Spinner from '../components/Spinner.vue'
+    import MainFilter from './components/Filter.vue'
 
     const axios = require('axios');
 

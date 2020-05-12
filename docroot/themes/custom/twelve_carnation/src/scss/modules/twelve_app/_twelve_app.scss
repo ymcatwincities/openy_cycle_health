@@ -1,0 +1,28 @@
+@import 'common/iehack';
+@import 'common/introduce_form';
+@import 'common/exercise_timer';
+
+@import 'bursts/exercise_list';
+@import 'puzzle/exercise_list';
+
+.paragraph--type--today-progress-app {
+  .label-for-field-block {
+    display: none;
+  }
+}
+
+#twelve_puzzle_app, #twelve_day_progress_app {
+  padding-top: 20px;
+
+  .message {
+    padding-top: 30px;
+  }
+
+  .visually-disabled {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+  }
+}
