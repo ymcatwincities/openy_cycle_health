@@ -40,31 +40,31 @@ class Family {
   /**
    * @return string
    */
-  public function getActivePlayerNid() {
-    return $this->tempStore->get('player');
-  }
-
-  /**
-   * @param $nid integer
-   *
-   * @throws \Drupal\Core\TempStore\TempStoreException
-   */
-  public function setActivePlayerNid($nid) {
-    $this->tempStore->set('player', $nid);
-  }
-
-  /**
-   * @return string
-   */
   public function getActivePlayerName() {
-    $account = $this->currentUser->getAccount();
-
-    if (!$account->id()) {
+    $user = $this->getUser();
+    if (!$user) {
       return '';
     }
 
-    $userData = User::load($account->id());
-    $first_name = $userData->field_first_name->value;
-    return (!empty($first_name)) ? $first_name : $account->getEmail();
+    $sub_account = $user->get('field_active_family_member')->entity;
+    if ($sub_account) {
+      return $sub_account->title->value;
+    }
+
+    $first_name = $user->field_first_name->value;
+    return (!empty($first_name)) ? $first_name : $user->field_email->value;
+  }
+
+  /**
+   * @return bool|User
+   */
+  public function getUser() {
+    $account = $this->currentUser->getAccount();
+    if (!$account->id()) {
+      return FALSE;
+    }
+
+    $user = User::load($account->id());
+    return $user;
   }
 }

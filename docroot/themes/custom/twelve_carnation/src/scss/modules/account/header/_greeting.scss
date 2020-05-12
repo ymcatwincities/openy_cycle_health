@@ -1,15 +1,13 @@
 .greeting {
   color: $white;
   font-family: Cachet, Verdana, sans-serif;
-  font-size: 48px;
-  letter-spacing: -2.4px;
-  line-height: 72px;
+  font-size: 20px;
+  letter-spacing: -1.4px;
+  line-height: 30px;
 
-  .wrapper-field-first-name {
-    display: inline-block;
-
-    .label-for-field-first-name {
-      display: none;
-    }
+  @include media-breakpoint-up(lg) {
+    font-size: 48px;
+    letter-spacing: -2.4px;
+    line-height: 72px;
   }
 }
