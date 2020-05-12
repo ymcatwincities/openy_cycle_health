@@ -45,7 +45,7 @@ function load_today_progress(progress_nid) {
 }
 
 function get_user_name() {
-  localStorage.getItem('twelveUserName');
+  return localStorage.getItem('twelveUserName');
 }
 
 /**

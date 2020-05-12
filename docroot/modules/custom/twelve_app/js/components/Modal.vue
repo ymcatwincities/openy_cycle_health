@@ -6,7 +6,8 @@
         <div class="modal-header">
           <h4 class="modal-title">{{ title }}</h4>
           <button type="button" class="close notranslate" aria-label="Close"
-                  v-on:click="close_handler"
+            v-if="show_close_button"
+            v-on:click="close_handler"
           ><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">

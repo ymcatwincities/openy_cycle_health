@@ -1,66 +1,115 @@
 <template>
   <div>
     <Greeting
-      :username="username"
+      :login-required="true"
+      :name-modal-visible="nameModalVisible"
       v-on:show-modal="nameModalVisible = true"
       v-on:hide-modal="nameModalVisible = false"
     ></Greeting>
 
     <ExerciseModal
-      v-if="selected_exercise"
-      :game_nid="game_nid",
-      :progress_nid="progress_nid",
-      :exercise_list="exercise_list",
-      :finished_exercises="finished_exercises"
-      :exercise="selected_exercise"
+      :exercise="current_exercise"
+      :exercise-modal-visible="exerciseModalVisible"
+      :is-exercise-finished="isExerciseFinished"
+      :on-exercise-finished="onExerciseFinished"
+      :on-exercise-closed="onExerciseClosed"
     ></ExerciseModal>
 
     <ExerciseList
-      :game_nid="game_nid"
-      :progress_nid="progress_nid"
-      :exercise_list="excercisesOptions"
-      :finished_exercises="finished_exercises"
+      :exercise-list="exercisesOptions"
+      :is-exercise-finished="isExerciseFinished"
+      :on-exercise-selected="onExerciseSelected"
+      :disabled="nameModalVisible || exerciseModalVisible"
     ></ExerciseList>
+
     <notifications group="twelve_app"></notifications>
   </div>
 </template>
 
 <script>
-  import Greeting from './components/Greeting.vue';
-  import ExerciseModal from './components/ExerciseModal';
-  import ExerciseList from '../components/ExerciseList.vue';
-  import Spinner from '../../components/Spinner.vue'
-  import twelve from '../../app/twelve';
+  import Greeting from '../components/Greeting.vue';
+  import ExerciseModal from '../components/ExerciseModal.vue';
+  import ExerciseList from './components/ExerciseList.vue';
+  import Spinner from '../components/Spinner.vue'
+  import twelve from '../helper/twelve';
 
   export default {
-    props: ['game_nid', 'progress_nid', 'excercise_list', 'finished_exercises', 'completion_url'],
-    data() {
-      return {
-        checkedExcercises: [],
-        userData: {
-          'name': '',
-        },
-        isStepNextDisabled: true
-      };
-    },
-    created: function () {
-      twelve.local_storage.set_progress_nid(drupalSettings.user.uid, this.$props.game_nid, this.$props.progress_nid);
-    },
     components: {
       Greeting,
       ExerciseModal,
       ExerciseList,
       Spinner,
     },
-    computed: {
-      username: function() {
-        return twelve.user.get_active_player_name();
+    props: ['game_nid', 'progress_nid', 'exercise_list', 'finished_exercises', 'completion_url'],
+    data() {
+      twelve.local_storage.save_today_progress(this.$props.progress_nid, this.$props.finished_exercises);
+      return {
+        current_exercise: {},
+        exerciseModalVisible: false,
+        nameModalVisible: false,
+        isStepNextDisabled: true
+      };
+    },
+    created: function () {
+      twelve.local_storage.set_progress_nid(drupalSettings.user.uid, this.$props.game_nid, this.$props.progress_nid);
+      if (this.$props.finished_exercises.length === 0) {
+        let cache = twelve.local_storage.load_today_progress(this.$props.progress_nid);
+        for (let index = 0; index < cache.length; index++) {
+          this.$props.finished_exercises.push(cache[index]);
+        }
+      }
+    },
+    methods: {
+      onExerciseSelected: function (exercise) {
+        if (this.$props.finished_exercises.includes(exercise.id)) {
+          return;
+        }
+
+        this.current_exercise = exercise;
+        this.exerciseModalVisible = true;
       },
-      excercisesOptions: function () {
+      onExerciseClosed: function () {
+        this.exerciseModalVisible = false;
+
+        if (this.fullyCompletedTodayExercises()) {
+          window.location = window.location.origin + '/user';
+        }
+      },
+      isExerciseFinished: function(exercise) {
+        return this.$props.finished_exercises.includes(exercise.id);
+      },
+      onExerciseFinished(exercise) {
+        this.$props.finished_exercises.push(exercise.id);
+        this.beep();
+
+        twelve.local_storage.save_today_progress(this.$props.progress_nid, Array.from(this.$props.finished_exercises.values()));
+        twelve.send_progress(
+          drupalSettings.user.uid,
+          this.$props.game_nid,
+          this.$props.progress_nid,
+          this.$props.finished_exercises,
+        );
+
+        this.$notify({
+          group: 'twelve_app',
+          title: 'Hooray, you have finished your exercise!',
+          text: 'Now, lets have some rest.'
+        });
+      },
+      beep: function () {
+        let snd = new Audio('/modules/custom/twelve_app/helper/app/assets/disco_alarm.wav');
+        snd.play();
+      },
+      fullyCompletedTodayExercises: function () {
+        return (this.$props.finished_exercises.length >= Object.keys(this.$props.exercise_list).length);
+      },
+    },
+    computed: {
+      exercisesOptions: function () {
         var options = {};
         var index = 1;
-        for (var i in this.excercise_list) {
-          var item = this.excercise_list[i];
+        for (var i in this.exercise_list) {
+          var item = this.exercise_list[i];
 
           options[i] = {
             'label': item.label,
