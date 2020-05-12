@@ -7,10 +7,9 @@
            v-on:click="onExerciseSelected(exercise)"
            :class="{'checked': isExerciseFinished(exercise)}"
       >
-        <div v-if="isExerciseFinished(exercise)"
-             :style="{ backgroundImage: `url('${exercise.puzzle_image_url}')` }">
-        </div>
-        <template v-else>{{ exercise.index_number }}</template>
+        <template v-if="!isExerciseFinished(exercise)">
+          {{ captions[exercise.index_number] }}
+        </template>
       </div>
     </div>
   </div>
@@ -24,5 +23,23 @@
       onExerciseSelected: Function,
       disabled: Boolean
     },
+    data: function () {
+      return {
+        captions: this.getBingoCaptions(),
+      }
+    },
+    methods: {
+      getBingoCaptions: function () {
+        let captions = [];
+        let word = ['B','I','N','G','O'];
+        for (let i = 1; i < 6; i++) {
+          for (let j = 0; j < 5; j++) {
+            let val = word[j] + String(i);
+            captions.push(val);
+          }
+        }
+        return captions;
+      }
+    }
   }
 </script>

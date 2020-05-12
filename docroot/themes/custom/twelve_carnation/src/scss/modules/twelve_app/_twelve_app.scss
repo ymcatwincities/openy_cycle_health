@@ -4,6 +4,7 @@
 
 @import 'bursts/exercise_list';
 @import 'puzzle/exercise_list';
+@import 'bingo/exercise_list';
 
 .paragraph--type--today-progress-app {
   .label-for-field-block {
@@ -11,7 +12,7 @@
   }
 }
 
-#twelve_puzzle_app, #twelve_day_progress_app {
+#twelve_puzzle_app, #twelve_day_progress_app, #bingo_app {
   padding-top: 20px;
 
   .message {

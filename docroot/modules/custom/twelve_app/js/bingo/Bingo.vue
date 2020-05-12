@@ -107,7 +107,7 @@
     computed: {
       exercisesOptions: function () {
         var options = {};
-        var index = 1;
+        var index = 0;
         for (var i in this.exercise_list) {
           var item = this.exercise_list[i];
 
