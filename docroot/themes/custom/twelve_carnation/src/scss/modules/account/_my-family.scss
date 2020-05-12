@@ -80,8 +80,8 @@
       .form-control {
         width: 100%;
       }
-      
-      @include media-breakpoint-up(md) {
+
+      @include media-breakpoint-up(lg) {
         width: auto;
 
         .form-control {
