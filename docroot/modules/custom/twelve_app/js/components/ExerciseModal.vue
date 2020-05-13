@@ -1,5 +1,6 @@
 <template>
   <Modal :title="exercise.label" :close_handler="onModalClosed"
+    v-bind:class="[customClass]"
     v-if="exerciseModalVisible"
   >
     <template #body>
@@ -64,6 +65,7 @@
       isExerciseFinished: Function,
       onExerciseFinished: Function,
       onExerciseClosed: Function,
+      customClass: String,
       debug: Boolean
     },
     components: {

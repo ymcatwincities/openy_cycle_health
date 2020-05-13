@@ -1,11 +1,11 @@
-@import 'common/iehack';
 @import 'common/introduce_form';
-@import 'common/exercise_timer';
+
 
 @import 'bursts/exercise_list';
 @import 'puzzle/exercise_list';
 @import 'bingo/exercise_list';
 @import 'bingo/badge';
+@import 'common/iehack';
 
 .paragraph--type--today-progress-app {
   .label-for-field-block {
@@ -14,6 +14,8 @@
 }
 
 #twelve_puzzle_app, #twelve_day_progress_app, #bingo_app {
+  @import 'common/exercise_timer';
+
   padding-top: 20px;
 
   .message {
