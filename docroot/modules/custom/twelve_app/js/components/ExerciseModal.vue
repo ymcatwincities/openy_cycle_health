@@ -42,7 +42,7 @@
         <img src="/themes/custom/twelve_carnation/dist/img/task-gold.png"></img>
         COMPLETE
       </button>
-      <button type="button" class="btn btn-blue notranslate mt-3"
+      <button type="button" class="btn btn-blue"
               v-if="debug"
               @click="debugTimer = !debugTimer"
       >

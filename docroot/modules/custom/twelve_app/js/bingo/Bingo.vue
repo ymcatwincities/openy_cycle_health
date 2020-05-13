@@ -7,13 +7,22 @@
       v-on:hide-greeting-modal="nameModalVisible = false"
     ></Greeting>
 
+    <button type="button" class="btn btn-blue notranslate mt-3"
+      v-if="debug"
+      @click="showBModal"
+    >debug: show badge</button>
+
     <BadgeModal
+      :type="badgeType"
+      :text="badgeText"
+      :button-text="badgeButtonText"
+      :goto-url="badgeUrl"
       :badge-modal-visible="badgeModalVisible"
       v-on:hide-badge-modal="badgeModalVisible = false"
     ></BadgeModal>
 
     <ExerciseModal
-      :exercise="current_exercise"
+      :exercise="currentExercise"
       :exercise-modal-visible="exerciseModalVisible"
       :is-exercise-finished="isExerciseFinished"
       :on-exercise-finished="onExerciseFinished"
@@ -52,14 +61,17 @@
     data() {
       twelve.local_storage.save_today_progress(this.$props.progress_nid, this.$props.finished_exercises);
       let bingo = twelve.bingo.search(this.exercise_list, this.$props.finished_exercises, []);
-      console.log(bingo);
       return {
-        current_exercise: {},
+        currentExercise: {},
         exerciseModalVisible: false,
         nameModalVisible: false,
-        badgeModalVisible: false,
         isStepNextDisabled: true,
-        bingoBools: bingo.bingo_bools
+        bingoBools: bingo.bingo_bools,
+        badgeModalVisible: false,
+        badgeType: '',
+        badgeText: '',
+        badgeButtonText: '',
+        badgeUrl: ''
       };
     },
     created: function () {
@@ -77,13 +89,13 @@
           return;
         }
 
-        this.current_exercise = exercise;
+        this.currentExercise = exercise;
         this.exerciseModalVisible = true;
       },
       onExerciseClosed: function () {
         this.exerciseModalVisible = false;
 
-        if (this.fullyCompletedTodayExercises()) {
+        if (this.fullyCompletedTodayExercises() && !this.badgeModalVisible) {
           window.location = window.location.origin + '/user';
         }
       },
@@ -119,15 +131,31 @@
       },
       checkForBingo: function() {
         let bingo = twelve.bingo.search(this.exercise_list, this.$props.finished_exercises, this.bingoBools);
-        console.log(bingo);
         this.bingoBools = bingo.bingo_bools;
         if (bingo.full_bingo) {
+          this.badgeType = 'full-bingo';
+          this.badgeText = 'You earned a Black Out Badge!';
+          this.badgeUrl = '/challenges';
+          this.badgeButtonText = 'FIND MORE BURSTS';
           this.badgeModalVisible = true;
-        }
-        if (bingo.found_new_bingo) {
+          this.onExerciseClosed();
+        } else if (bingo.found_new_bingo) {
+          this.badgeType = 'bingo';
+          this.badgeUrl = '';
+          this.badgeText = 'You earned a Bingo Badge!';
+          this.badgeButtonText = 'GO FOR A BLOCKOUT';
           this.badgeModalVisible = true;
+          this.onExerciseClosed();
         }
       },
+
+      showBModal: function() {
+        this.badgeType = 'bingo';
+        this.badgeUrl = '';
+        this.badgeText = 'You earned a Bingo Badge!';
+        this.badgeButtonText = 'GO FOR A BLOCKOUT';
+        this.badgeModalVisible = true;
+      }
     },
     computed: {
       exercisesOptions: function () {

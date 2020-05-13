@@ -8,7 +8,7 @@
     ></Greeting>
 
     <ExerciseModal
-      :exercise="current_exercise"
+      :exercise="currentExercise"
       :exercise-modal-visible="exerciseModalVisible"
       :is-exercise-finished="isExerciseFinished"
       :on-exercise-finished="onExerciseFinished"
@@ -44,7 +44,7 @@
     data() {
       twelve.local_storage.save_today_progress(this.$props.progress_nid, this.$props.finished_exercises);
       return {
-        current_exercise: {},
+        currentExercise: {},
         exerciseModalVisible: false,
         nameModalVisible: false,
         isStepNextDisabled: true
@@ -65,7 +65,7 @@
           return;
         }
 
-        this.current_exercise = exercise;
+        this.currentExercise = exercise;
         this.exerciseModalVisible = true;
       },
       onExerciseClosed: function () {

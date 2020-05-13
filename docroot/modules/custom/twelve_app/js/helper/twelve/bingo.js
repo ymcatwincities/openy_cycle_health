@@ -1,16 +1,18 @@
 /**
+ * Search {exercises_list} for bingo lines: 2 diagonal and 5 row lines
+ * Result is represented by {bingo_bools} array with 7 indexes
+ * Also {found_new_bingo} and {full_bingo} booleans are returned.
  *
  * @param {Exercise[]} exercises_list
  * @param {Integer[]} finished_list
  * @param {Boolean[]} old_bingo_bools
- * @returns {number[]}
+ * @returns {Object}
  */
 function search(exercises_list, finished_list, old_bingo_bools) {
   let bingos = [0, 0, 0, 0, 0, 0, 0];
   for (let i = 0; i < 5; i++) {
     for (let j = 0; j < 5; j++) {
       let index = 5 * i + j;
-
       let fin = finished_list.includes(exercises_list[index].id);
 
       if (!fin) {
@@ -27,6 +29,7 @@ function search(exercises_list, finished_list, old_bingo_bools) {
         bingos[1]++;
       }
 
+      //rows
       bingos[i+2]++;
     }
   }

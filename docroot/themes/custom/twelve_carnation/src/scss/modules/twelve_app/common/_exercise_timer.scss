@@ -3,41 +3,43 @@
   justify-content: center;
 }
 
-.modal-dialog {
-  width: 340px;
+.modal {
+  .modal-dialog {
+    width: 340px;
 
-  .modal-content {
-    .modal-body {
-      .description {
-        font-size: 12px;
-        line-height: 18px;
-        color: $gray-900;
-      }
-    }
-
-    .modal-footer {
-      .countdown {
-        border: 2px solid $dark-blue;
-        width: 100%;
-        border-radius: .25rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        color: $dark-blue;
-        height: 48px;
+    .modal-content {
+      .modal-body {
+        .description {
+          font-size: 12px;
+          line-height: 18px;
+          color: $gray-900;
+        }
       }
 
-      .btn {
-        margin-top: 10px;
-      }
+      .modal-footer {
+        .countdown {
+          border: 2px solid $dark-blue;
+          width: 100%;
+          border-radius: .25rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 18px;
+          color: $dark-blue;
+          height: 48px;
+        }
 
-      .btn-gold {
-        background-color: $golden;
-        border-color: $golden;
+        .btn {
+          margin-top: 10px;
+        }
 
-        img {
-          width: 25px;
+        .btn-gold {
+          background-color: $golden !important;
+          border-color: $golden;
+
+          img {
+            width: 25px;
+          }
         }
       }
     }
