@@ -293,6 +293,42 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
   }
 
   /**
+   * @return \Drupal\Core\Entity\EntityInterface|NULL
+   */
+  protected function getUserProgressNode() {
+    $nodes = $this->entityTypeManager->getStorage('node')
+      ->loadByProperties([
+        'uid' => $this->currentUser->getAccount()->id(),
+        'field_when' => $this->getCurrentGameNid(),
+      ]);
+
+    if (!empty($nodes)) {
+      return reset($nodes);
+    }
+
+    return NULL;
+  }
+
+  /**
+   * @return string[]
+   */
+  protected function getFinishedExercisesNids() {
+    $result = [];
+
+    $progress_node = $this->getUserProgressNode();
+    if ($progress_node !== NULL) {
+      $finished_exercises = $progress_node
+        ->get('field_finished_items')->getValue();
+
+      foreach ($finished_exercises as $item) {
+        $result[] = $item['target_id'];
+      }
+    }
+
+    return $result;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function getCacheTags() {

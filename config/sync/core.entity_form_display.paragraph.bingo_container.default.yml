@@ -6,6 +6,8 @@ dependencies:
     - field.field.paragraph.bingo_container.field_excercises
     - field.field.paragraph.bingo_container.field_prgf_image
     - paragraphs.paragraphs_type.bingo_container
+  module:
+    - openy_focal_point
 id: paragraph.bingo_container.default
 targetEntityType: paragraph
 bundle: bingo_container
@@ -24,12 +26,16 @@ content:
   field_prgf_image:
     weight: -3
     settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+      entity_browser: null
+      open: false
+      field_widget_display: label
+      field_widget_edit: true
+      field_widget_remove: true
+      field_widget_replace: false
+      field_widget_display_settings: {  }
+      selection_mode: selection_append
     third_party_settings: {  }
-    type: entity_reference_autocomplete
+    type: openy_focal_point_entity_browser_entity_reference
     region: content
 hidden:
   created: true

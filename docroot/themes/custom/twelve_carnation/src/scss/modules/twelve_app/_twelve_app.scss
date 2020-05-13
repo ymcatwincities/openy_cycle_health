@@ -1,0 +1,32 @@
+@import 'common/introduce_form';
+
+
+@import 'bursts/exercise_list';
+@import 'puzzle/exercise_list';
+@import 'bingo/exercise_list';
+@import 'bingo/badge';
+@import 'common/iehack';
+
+.paragraph--type--today-progress-app {
+  .label-for-field-block {
+    display: none;
+  }
+}
+
+#twelve_puzzle_app, #twelve_day_progress_app, #bingo_app {
+  @import 'common/exercise_timer';
+
+  padding-top: 20px;
+
+  .message {
+    padding-top: 30px;
+  }
+
+  .visually-disabled {
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+  }
+}

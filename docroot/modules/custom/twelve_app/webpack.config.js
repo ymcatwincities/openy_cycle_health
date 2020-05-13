@@ -3,8 +3,9 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   entry: {
-    bursts: './bursts/bursts.js',
-    puzzle: './puzzle/puzzle.js'
+    bursts: './js/bursts/bursts.js',
+    puzzle: './js/puzzle/puzzle.js',
+    bingo:  './js/bingo/bingo.js'
   },
   output: {
     filename: '[name].bundle.js',

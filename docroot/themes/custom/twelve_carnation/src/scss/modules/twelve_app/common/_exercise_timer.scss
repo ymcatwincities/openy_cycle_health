@@ -1,9 +1,9 @@
-#twelve_puzzle_app {
-  .modal.show {
-    display: flex !important;
-    justify-content: center;
-  }
+.modal.show {
+  display: flex !important;
+  justify-content: center;
+}
 
+.modal {
   .modal-dialog {
     width: 340px;
 
@@ -34,7 +34,7 @@
         }
 
         .btn-gold {
-          background-color: $golden;
+          background-color: $golden !important;
           border-color: $golden;
 
           img {

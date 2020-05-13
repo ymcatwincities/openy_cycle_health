@@ -29,6 +29,7 @@
     color: white;
 
     font-size: 20px;
+    cursor: pointer;
 
     @include media-breakpoint-up(sm) {
       font-size: 30px;

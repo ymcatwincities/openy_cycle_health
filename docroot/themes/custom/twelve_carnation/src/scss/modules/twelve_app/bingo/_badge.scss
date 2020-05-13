@@ -1,0 +1,57 @@
+.modal.badge {
+  z-index: 1500;
+
+  .modal-dialog {
+    .modal-content {
+      border: 2px solid $golden;
+      min-width: 350px;
+
+      .modal-header {
+        border: none;
+
+        .close {
+          color: $gray-400;
+          background-color: $white;
+          padding: 13px;
+        }
+      }
+      .modal-body {
+        @include cachet();
+        font-size: 18px;
+        line-height: 27px;
+        color: $gray-400;
+        padding-top: 0;
+
+        .badge-image {
+          width: 160px;
+          height: 160px;
+          background-size: contain;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 10px;
+        }
+      }
+
+      .modal-footer {
+        padding-bottom: 50px;
+
+        .btn {
+          background-color: $dark-blue;
+        }
+      }
+    }
+  }
+
+}
+
+.badge.bingo {
+  .badge-image {
+    background-image: url('/themes/custom/twelve_carnation/dist/img/badge/BadgeBingo.png');
+  }
+}
+
+.badge.full-bingo {
+  .badge-image {
+    background-image: url('/themes/custom/twelve_carnation/dist/img/badge/BadgeBlackout.png');
+  }
+}

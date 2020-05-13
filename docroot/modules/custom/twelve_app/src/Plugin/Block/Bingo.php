@@ -61,42 +61,6 @@ class Bingo extends GameAbstract {
   }
 
   /**
-   * @return string[]
-   */
-  protected function getFinishedExercisesNids() {
-    $result = [];
-
-    $progress_node = $this->getUserProgressNode();
-    if ($progress_node !== NULL) {
-      $finished_exercises = $progress_node
-        ->get('field_finished_items')->getValue();
-
-      foreach ($finished_exercises as $item) {
-        $result[] = $item['target_id'];
-      }
-    }
-
-    return $result;
-  }
-
-  /**
-   * @return \Drupal\Core\Entity\EntityInterface|NULL
-   */
-  protected function getUserProgressNode() {
-    $nodes = $this->entityTypeManager->getStorage('node')
-      ->loadByProperties([
-        'uid' => $this->currentUser->getAccount()->id(),
-        'field_when' => $this->getCurrentGameNid(),
-      ]);
-
-    if (!empty($nodes)) {
-      return reset($nodes);
-    }
-
-    return NULL;
-  }
-
-  /**
    * {@inheritdoc}
    */
   protected function prepareExercisesArray() {
@@ -106,21 +70,15 @@ class Bingo extends GameAbstract {
       return $exercises_array;
     }
 
-    foreach ($paragraph->field_items as $puzzle_part_reference) {
+    foreach ($paragraph->field_excercises as $exercise_reference) {
       /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $puzzle_part_reference */
-      $puzzle_part_paragraph = $puzzle_part_reference->entity;
-      $exercise_entity = $puzzle_part_paragraph->field_exercise->entity;
-      $media_entity = $puzzle_part_paragraph->field_prgf_image->entity;
-      /** @var \Drupal\media\Entity\Media $media_entity */
-      $media_file_uri = $media_entity->field_media_image->entity->getFileUri();
-      $puzzle_image_url = file_create_url($media_file_uri);
+      $exercise_entity = $exercise_reference->entity;
       $exercises_array[] = [
         'label' => $exercise_entity->title->value,
         'description' => $exercise_entity->body->value,
         'timer' => $exercise_entity->field_timer->value,
         'gif' => $exercise_entity->field_animation->value,
         'id' => $exercise_entity->id(),
-        'puzzle_image_url' => $puzzle_image_url,
       ];
     }
 
