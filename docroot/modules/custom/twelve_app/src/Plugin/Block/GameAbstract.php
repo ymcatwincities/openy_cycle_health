@@ -134,6 +134,53 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
   protected abstract function prepareExercisesArray();
 
   /**
+   * Helper method that finds results for the current user.
+   *
+   * @return \Drupal\Core\Entity\EntityInterface|mixed|null
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  protected function getUserProgressNode() {
+
+    $query_arr = [
+      'uid' => $this->currentUser->getAccount()->id(),
+      'field_when' => $this->getCurrentGameNid(),
+    ];
+
+    if (!empty($this->family->getSubAccountId())) {
+      $query_arr['field_sub_user'] = $this->family->getSubAccountId();
+    }
+
+    $nodes = $this->entityTypeManager->getStorage('node')
+      ->loadByProperties($query_arr);
+
+    if (!empty($nodes)) {
+      return reset($nodes);
+    }
+
+    return NULL;
+  }
+
+  /**
+   * @return string[]
+   */
+  public function getFinishedExercisesNids() {
+    $result = [];
+
+    $progress_node = $this->getUserProgressNode();
+    if ($progress_node !== NULL) {
+      $finished_exercises = $progress_node
+        ->get('field_finished_items')->getValue();
+
+      foreach ($finished_exercises as $item) {
+        $result[] = $item['target_id'];
+      }
+    }
+
+    return $result;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function build() {

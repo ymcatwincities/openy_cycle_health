@@ -3,6 +3,7 @@
 namespace Drupal\twelve_app\Plugin\Block;
 
 use Drupal\Core\Cache\Cache;
+use Drupal\user\Entity\User;
 
 /**
  * Provides a 'Hidden Picture' block.
@@ -55,42 +56,6 @@ class Puzzle extends GameAbstract {
         '#finished_items' => $this->getFinishedExercisesNids(),
       ]
     );
-  }
-
-  /**
-   * @return string[]
-   */
-  protected function getFinishedExercisesNids() {
-    $result = [];
-
-    $progress_node = $this->getUserProgressNode();
-    if ($progress_node !== NULL) {
-      $finished_exercises = $progress_node
-        ->get('field_finished_items')->getValue();
-
-      foreach ($finished_exercises as $item) {
-        $result[] = $item['target_id'];
-      }
-    }
-
-    return $result;
-  }
-
-  /**
-   * @return \Drupal\Core\Entity\EntityInterface|NULL
-   */
-  protected function getUserProgressNode() {
-    $nodes = $this->entityTypeManager->getStorage('node')
-      ->loadByProperties([
-        'uid' => $this->currentUser->getAccount()->id(),
-        'field_when' => $this->getCurrentGameNid(),
-      ]);
-
-    if (!empty($nodes)) {
-      return reset($nodes);
-    }
-
-    return NULL;
   }
 
   /**
