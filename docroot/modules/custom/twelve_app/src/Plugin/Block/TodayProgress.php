@@ -39,11 +39,27 @@ class TodayProgress extends GameAbstract {
    * {@inheritdoc}
    */
   public function build() {
+
+    $build = [
+      '#theme' => 'today_progress',
+      '#completion_url' => $this->getCompletionUrl(),
+    ];
+
+    $user = $this->currentUser->getAccount();
+
+    // Prepare data for authenticated user.
+    if (empty($user->id())) {
+      $progress_nid = 0;
+      $progress_node = $this->getUserProgressNode();
+      if ($progress_node !== NULL) {
+        $progress_nid = $progress_node->id();
+        $build['#progress_nid'] = $progress_nid;
+        $build['#finished_items'] = $this->getFinishedExercisesNids();
+      }
+    }
+
     return array_merge(
-      parent::build(), [
-        '#theme' => 'today_progress',
-        '#completion_url' => $this->getCompletionUrl(),
-      ]
+      parent::build(), $build
     );
   }
 
