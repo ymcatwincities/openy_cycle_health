@@ -2,7 +2,7 @@
 
 namespace Drupal\twelve_user\Form;
 
-use Drupal\Core\Ajax\ReplaceCommand;
+use Drupal\Core\Ajax\HtmlCommand;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
@@ -100,9 +100,9 @@ class FamilyMemberAdd extends FormBase {
 
       $field_values = $user->get('field_family')->getValue();
 
-      $new_value = [
+      $new_value = [[
         'target_id' => $node->id()
-      ];
+      ]];
 
       $updated_field_values = array_merge($field_values, $new_value);
 
@@ -118,36 +118,36 @@ class FamilyMemberAdd extends FormBase {
 
     }
 
-    // New content build.
-    $build['items'] = [
-      '#type' => 'container',
-      '#attributes' => [
-        'id' => 'family-members',
-      ],
+    // Update active user select data.
+    $options = [
+      '_none' => 'Me'
     ];
 
     // Building list of paragraphs including newly created.
     foreach ($family as $family_member) {
+
       $family_member_id = $family_member->id();
 
-      $build['items'][$family_member_id] = [
+      $options[$family_member_id] = $family_member->getTitle();
+
+      $build[$family_member_id] = [
         '#type' => 'container',
         '#attributes' => [
-          'id' => 'project-update-' . $family_member_id,
+          'id' => 'family-member-' . $family_member_id,
         ],
       ];
 
-      $build['items'][$family_member_id]['title'] = [
+      $build[$family_member_id]['title'] = [
         '#type' => 'html_tag',
         '#tag' => 'div',
         '#value' => $family_member->getTitle(),
         '#attributes' => [
           'class' => 'update-title',
-          'id' => 'update-title-' . $family_member_id,
+          'id' => 'family-member-title-' . $family_member_id,
         ],
       ];
 
-      $build['items'][$family_member_id]['edit'] = [
+      $build[$family_member_id]['edit'] = [
         '#type' => 'link',
         '#attributes' => [
           'class' => ['use-ajax'],
@@ -166,11 +166,25 @@ class FamilyMemberAdd extends FormBase {
 
     }
 
+    $options_markup = '';
+    foreach ($options as $id => $option) {
+      $options_markup .= '<option value="' . $id . '">' . $option . '</option>';
+    }
+
+    $render = \Drupal::service('renderer')->render($build);
+
+    $response->addCommand(
+      new HtmlCommand(
+        '#edit-field-active-family-member-0',
+                $options_markup
+      )
+    );
+
     // Replacing container containing all items with updated list.
     $response->addCommand(
-      new ReplaceCommand(
+      new HtmlCommand(
         '#my-family',
-        \Drupal::service('renderer')->render($build)
+        $render
       )
     );
 
@@ -178,8 +192,8 @@ class FamilyMemberAdd extends FormBase {
       new CloseModalDialogCommand()
     );
 
-
     return $response;
+
   }
 
   public function submitForm(array &$form, FormStateInterface $form_state) {

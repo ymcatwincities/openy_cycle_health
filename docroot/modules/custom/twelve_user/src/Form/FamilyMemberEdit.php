@@ -36,7 +36,6 @@ class FamilyMemberEdit extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state, $node = NULL) {
 
-    $i=1;
     $form['title'] = [
       '#type' => 'textfield',
       '#title' => 'Title',
@@ -117,7 +116,7 @@ class FamilyMemberEdit extends FormBase {
     $build['items'] = [
       '#type' => 'container',
       '#attributes' => [
-        'id' => 'family-members',
+        'id' => 'my-family',
       ],
     ];
 

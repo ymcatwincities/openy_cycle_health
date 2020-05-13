@@ -8,13 +8,12 @@
   grid-template-columns: 100%;
 
   .field--name-field-family > div {
-
     > a {
+      @include cachet();
       display: inline-block;
       margin: 30px 0 20px 0;
       padding: 5px 20px;
       background-color: #92278f;
-      font-family: Cachet,Verdana,sans-serif;
       font-size: 16px;
       line-height: 36px;
       color: #fff;
@@ -24,8 +23,14 @@
 
     #my-family, #family-members {
       display: flex;
-      flex-flow: wrap;
-      margin-right: -10px;
+      flex-direction: column;
+      flex-flow: column;
+
+      @include media-breakpoint-up(lg) {
+        flex-direction: row;
+        flex-flow: wrap;
+        margin-right: -10px;
+      }
 
       > div {
         position: relative;
@@ -34,10 +39,13 @@
         align-items: center;
         margin-right: 10px;
         margin-bottom: 10px;
-        width: 40%;
+        width: 100%;
         border: 1px solid $gray-400;
         border-radius: 5px;
 
+        @include media-breakpoint-up(lg) {
+          width: 40%;
+        }
 
         .update-title {
           padding: 10px;
@@ -64,22 +72,24 @@
   }
 
   .field--name-field-active-family-member {
-    justify-self: center;
-
     label {
       margin: 0;
     }
 
     .select-wrapper {
-      width: auto;
-
       .form-control {
+        width: 100%;
+      }
+
+      @include media-breakpoint-up(lg) {
         width: auto;
-        min-width: 300px;
+
+        .form-control {
+          width: 300px;
+        }
       }
     }
   }
-
 }
 
 

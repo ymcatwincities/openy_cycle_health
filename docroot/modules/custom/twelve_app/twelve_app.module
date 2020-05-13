@@ -10,7 +10,9 @@ function twelve_app_theme() {
         'debug' => '',
         'game_nid' => '',
         'excercises' => [],
-        'completion_url' => ''
+        'completion_url' => '',
+        'progress_nid' => '',
+        'finished_items' => [],
       ],
     ],
     'puzzle' => [

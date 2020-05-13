@@ -3,6 +3,7 @@
 namespace Drupal\twelve_app\Plugin\Block;
 
 use Drupal\Core\Cache\Cache;
+use Drupal\user\Entity\User;
 
 /**
  * Provides a 'Hidden Picture' block.
