@@ -301,6 +301,7 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
     return Cache::mergeTags(parent::getCacheTags(), [
       'game_nid' . $game_nid,
       'game_category_id' . $game_category_id,
+      'sub_account_id' . $this->family->getSubAccountId()
     ]);
   }
 }
