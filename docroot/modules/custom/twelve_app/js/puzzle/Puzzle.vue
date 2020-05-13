@@ -3,8 +3,8 @@
     <Greeting
       :login-required="true"
       :name-modal-visible="nameModalVisible"
-      v-on:show-modal="nameModalVisible = true"
-      v-on:hide-modal="nameModalVisible = false"
+      v-on:show-greeting-modal="nameModalVisible = true"
+      v-on:hide-greeting-modal="nameModalVisible = false"
     ></Greeting>
 
     <ExerciseModal
@@ -61,7 +61,7 @@
     },
     methods: {
       onExerciseSelected: function (exercise) {
-        if (this.$props.finished_exercises.includes(exercise.id)) {
+        if (this.isExerciseFinished(exercise)) {
           return;
         }
 

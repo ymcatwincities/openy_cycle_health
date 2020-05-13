@@ -59,11 +59,11 @@
 
       showModal: function () {
         this.userIntroduced = false;
-        this.$emit('show-modal');
+        this.$emit('show-greeting-modal');
       },
 
       closeModal: function() {
-        this.$emit('hide-modal');
+        this.$emit('hide-greeting-modal');
       },
 
       setDefaultName: function() {
@@ -77,7 +77,7 @@
           return;
         }
         twelve.local_storage.set_user_name(this.username);
-        this.$emit('hide-modal');
+        this.$emit('hide-greeting-modal');
 
         this.$notify({
           group: 'twelve_app',

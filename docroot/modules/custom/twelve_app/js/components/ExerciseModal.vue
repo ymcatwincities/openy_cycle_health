@@ -13,7 +13,7 @@
         <countdown
           v-if="timerIsRunning"
           ref="countdown"
-          :time="exercise.timer * 1000"
+          :time="time"
           @end="triggerTimerEnd(exercise.id)"
           :emit-events="true"
         >
@@ -42,6 +42,12 @@
         <img src="/themes/custom/twelve_carnation/dist/img/task-gold.png"></img>
         COMPLETE
       </button>
+      <button type="button" class="btn btn-blue notranslate mt-3"
+              v-if="debug"
+              @click="debugTimer = !debugTimer"
+      >
+        {{ debugTimer ? 'Type: Short time' : 'Type: Full time' }}
+      </button>
 
     </template>
   </Modal>
@@ -57,7 +63,8 @@
       exerciseModalVisible: Boolean,
       isExerciseFinished: Function,
       onExerciseFinished: Function,
-      onExerciseClosed: Function
+      onExerciseClosed: Function,
+      debug: Boolean
     },
     components: {
       Modal,
@@ -67,6 +74,7 @@
       return {
         timerIsRunning: false,
         timerIsPaused: false,
+        debugTimer: false
       };
     },
     methods: {
@@ -87,7 +95,12 @@
           this.$refs.countdown.abort();
           this.timerIsPaused = true;
         }
-      },
+      }
+    },
+    computed: {
+      time: function () {
+        return this.debugTimer ? 3000 : this.exercise.timer * 1000;
+      }
     },
     filters: {
       appendLeadingZero: function (n) {
