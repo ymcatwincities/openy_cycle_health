@@ -142,20 +142,22 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
    */
   protected function getUserProgressNode() {
 
-    $query_arr = [
-      'uid' => $this->currentUser->getAccount()->id(),
-      'field_when' => $this->getCurrentGameNid(),
-    ];
+    $query = $this->entityQuery->get('node')
+      ->condition('status', 1)
+      ->condition('type', '12_bursts_result')
+      ->condition('uid', $this->currentUser->getAccount()->id())
+      ->condition('field_when', $this->getCurrentGameNid())
+      ->sort('nid', 'DESC');
 
     if (!empty($this->family->getSubAccountId())) {
-      $query_arr['field_sub_user'] = $this->family->getSubAccountId();
+      $query->condition('field_sub_user', $this->family->getSubAccountId());
     }
 
-    $nodes = $this->entityTypeManager->getStorage('node')
-      ->loadByProperties($query_arr);
+    $nids = $query->execute();
+    $last_result = reset($nids);
 
-    if (!empty($nodes)) {
-      return reset($nodes);
+    if (!empty($last_result)) {
+      return Node::load($last_result);
     }
 
     return NULL;
