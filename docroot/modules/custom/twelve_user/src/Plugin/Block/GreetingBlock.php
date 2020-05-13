@@ -3,6 +3,7 @@
 namespace Drupal\twelve_user\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
+use Drupal\Core\Cache\Cache;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\twelve_user\Family;
@@ -24,8 +25,11 @@ class GreetingBlock extends BlockBase implements ContainerFactoryPluginInterface
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition,
-                              Family $family
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    Family $family
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->family = $family;
@@ -48,13 +52,25 @@ class GreetingBlock extends BlockBase implements ContainerFactoryPluginInterface
    */
   public function build() {
     return [
-      '#type' => 'container', '#attributes' => [
+      '#type' => 'container',
+      '#attributes' => [
         'class' => ['greeting'],
       ],
       [
         '#markup' => $this->t('Hello, @name', ['@name' => $this->family->getActivePlayerName()])
       ]
     ];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheContexts() {
+    $contexts = parent::getCacheContexts();
+
+    $contexts[] = 'user';
+
+    return $contexts;
   }
 
 }
