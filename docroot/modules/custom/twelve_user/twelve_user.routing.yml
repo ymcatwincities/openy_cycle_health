@@ -8,7 +8,7 @@ twelve_user.family_edit_form:
     _entity_form: 'user.family_edit'
     _title: 'Family Edit'
   requirements:
-    _permission: 'access content'
+    _user_is_logged_in: 'TRUE'
 
 twelve_user.family_member_add:
   path: '/user/family-member-add'
@@ -16,7 +16,7 @@ twelve_user.family_member_add:
     _form: '\Drupal\twelve_user\Form\FamilyMemberAdd'
     _title: 'Add Family Member'
   requirements:
-    _permission: 'access content'
+    _user_is_logged_in: 'TRUE'
 
 twelve_user.family_member_edit:
   path: '/user/family-member-edit/{node}'
@@ -28,4 +28,5 @@ twelve_user.family_member_edit:
     _form: '\Drupal\twelve_user\Form\FamilyMemberEdit'
     _title: 'Edit Family Member'
   requirements:
-    _permission: 'access content'
+    _user_is_logged_in: 'TRUE'
+
