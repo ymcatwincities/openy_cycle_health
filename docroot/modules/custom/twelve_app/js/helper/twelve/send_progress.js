@@ -23,7 +23,10 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
     'field_when': {
       'value': game_nid,
     },
-    'field_finished_items': exercise_progress_list
+    'field_finished_items': exercise_progress_list,
+    'field_sub_user': {
+      'value': drupalSettings.sub_account_id
+    }
   };
 
   axios({url: '/session/token'}).then(token_data => {
