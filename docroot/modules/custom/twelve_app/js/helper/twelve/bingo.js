@@ -30,7 +30,7 @@ function search(exercises_list, finished_list, old_bingo_bools) {
       }
 
       //rows
-      bingos[i+2]++;
+      bingos[2+i]++;
 
       //column
       bingos[7+j]++;
