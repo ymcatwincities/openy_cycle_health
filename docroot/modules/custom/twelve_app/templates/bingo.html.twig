@@ -1,11 +1,16 @@
 {{ attach_library('twelve_app/bingo') }}
 
+{% if debug %}
+  {{ error_message }}
+{% endif %}
+
 <div id="bingo_app">
   <Bingo
     :debug='{{ debug|json_encode }}'
+    :error_message='{{ error_message|json_encode }}'
     :game_nid='{{ game_nid }}'
     :progress_nid='{{ progress_nid }}'
-    :exercise_list='{{ excercises|json_encode }}'
     :finished_exercises='{{ finished_items|json_encode }}'
+    :exercise_list='{{ exercises|json_encode }}'
   ></Bingo>
 </div>

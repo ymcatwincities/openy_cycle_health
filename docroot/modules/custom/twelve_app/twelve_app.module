@@ -5,11 +5,12 @@
  */
 function twelve_app_theme() {
   return [
-    'today_progress' => [
+    'bursts' => [
       'variables' => [
         'debug' => '',
+        'error_message' => '',
         'game_nid' => '',
-        'excercises' => [],
+        'exercises' => [],
         'completion_url' => '',
         'progress_nid' => '',
         'finished_items' => [],
@@ -18,8 +19,9 @@ function twelve_app_theme() {
     'puzzle' => [
       'variables' => [
         'debug' => '',
+        'error_message' => '',
         'game_nid' => '',
-        'excercises' => [],
+        'exercises' => [],
         'progress_nid' => '',
         'finished_items' => [],
       ],
@@ -27,8 +29,9 @@ function twelve_app_theme() {
     'bingo' => [
       'variables' => [
         'debug' => '',
+        'error_message' => '',
         'game_nid' => '',
-        'excercises' => [],
+        'exercises' => [],
         'progress_nid' => '',
         'finished_items' => [],
       ],

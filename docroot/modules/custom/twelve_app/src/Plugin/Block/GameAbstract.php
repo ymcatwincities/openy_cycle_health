@@ -68,7 +68,10 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
 
   protected $_currentGameNid;
 
-
+  /**
+   * @var Node
+   */
+  protected $_userProgressNode;
 
   /**
    * {@inheritdoc}
@@ -114,6 +117,39 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
   }
 
   /**
+   * {@inheritdoc}
+   */
+  public function build() {
+    $game_nid = $this->getCurrentGameNid();
+
+    if (empty($game_nid)) {
+      return [
+        '#debug' => $this->isUserAdmin(),
+        '#error_message' => 'Game not found. Check schedule, please.'
+      ];
+    }
+
+    return [
+      '#debug' => $this->isUserAdmin(),
+      '#game_nid' => $game_nid,
+      '#exercises' => $this->prepareExercisesArray(),
+      '#progress_nid' => $this->getUserProgressNid(),
+      '#finished_items' => $this->getFinishedExercisesNids(),
+      '#cache' => [
+        'tags' => $this->getCacheTags(),
+        'contexts' => $this->getCacheContexts(),
+        'max-age' => $this->getCacheMaxAge(),
+      ],
+      '#attached' => [
+        'drupalSettings' => [
+          'username' => $this->family->getActivePlayerName(),
+          'sub_account_id' => $this->family->getSubAccountId()
+        ],
+      ],
+    ];
+  }
+
+  /**
    * @return string
    */
   public abstract function getGameConfigurationName();
@@ -141,6 +177,13 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   protected function getUserProgressNode() {
+    if (empty($this->currentUser->getAccount()->id())) {
+      return NULL;
+    }
+
+    if (!is_null($this->_userProgressNode)) {
+      return $this->_userProgressNode;
+    }
 
     $query = $this->entityQuery->get('node')
       ->condition('status', 1)
@@ -159,10 +202,18 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
     $last_result = reset($nids);
 
     if (!empty($last_result)) {
-      return Node::load($last_result);
+      $this->_userProgressNode = Node::load($last_result);
     }
 
-    return NULL;
+    return $this->_userProgressNode;
+  }
+
+  protected function getUserProgressNid() {
+    if ($node = $this->getUserProgressNode()) {
+      return $node->id();
+    } else {
+      return 0;
+    }
   }
 
   /**
@@ -182,36 +233,6 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
     }
 
     return $result;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function build() {
-
-    $game_nid = $this->getCurrentGameNid();
-
-    if (empty($game_nid)) {
-      return [];
-    }
-
-    return [
-      '#debug' => $this->isUserAdmin(),
-      '#game_nid' => $game_nid,
-      '#excercises' => $this->prepareExercisesArray(),
-      '#cache' => [
-        'tags' => $this->getCacheTags(),
-        'contexts' => $this->getCacheContexts(),
-        'max-age' => $this->getCacheMaxAge(),
-      ],
-      '#attached' => [
-        'drupalSettings' => [
-          'username' => $this->family->getActivePlayerName(),
-          'sub_account_id' => $this->family->getSubAccountId()
-        ],
-      ],
-    ];
-
   }
 
   /**

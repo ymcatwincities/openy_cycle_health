@@ -1,16 +1,17 @@
 <template>
   <div>
+    <DebugBar
+      :debug="debug"
+      :error_message="error_message"
+      :debug-show-badge-modal="debugShowBadgeModal"
+    ></DebugBar>
+
     <Greeting
       :login-required="true"
       :name-modal-visible="nameModalVisible"
       v-on:show-greeting-modal="nameModalVisible = true"
       v-on:hide-greeting-modal="nameModalVisible = false"
     ></Greeting>
-
-    <button type="button" class="btn btn-blue notranslate mt-3"
-      v-if="debug"
-      @click="showBModal"
-    >debug: show badge</button>
 
     <BadgeModal
       :type="badgeType"
@@ -31,7 +32,7 @@
     ></ExerciseModal>
 
     <ExerciseList
-      :exercise-list="exercisesOptions"
+      :exercise-list="exercise_list"
       :is-exercise-finished="isExerciseFinished"
       :on-exercise-selected="onExerciseSelected"
       :disabled="nameModalVisible || exerciseModalVisible || badgeModalVisible"
@@ -42,6 +43,7 @@
 </template>
 
 <script>
+  import DebugBar from "../components/DebugBar.vue";
   import Greeting from '../components/Greeting.vue';
   import ExerciseModal from '../components/ExerciseModal.vue';
   import ExerciseList from './components/ExerciseList.vue';
@@ -51,14 +53,15 @@
 
   export default {
     components: {
+      DebugBar,
       BadgeModal,
       Greeting,
       ExerciseModal,
       ExerciseList,
       Spinner,
     },
-    props: ['debug', 'game_nid', 'progress_nid', 'exercise_list', 'finished_exercises'],
-    data() {
+    props: ['debug', 'error_message', 'game_nid', 'progress_nid', 'exercise_list', 'finished_exercises'],
+    data: function() {
       twelve.local_storage.save_today_progress(this.$props.progress_nid, this.$props.finished_exercises);
       let bingo = twelve.bingo.search(this.exercise_list, this.$props.finished_exercises, []);
       return {
@@ -152,32 +155,12 @@
         }
       },
 
-      showBModal: function() {
+      debugShowBadgeModal: function() {
         this.badgeType = 'bingo';
         this.badgeUrl = '';
         this.badgeText = 'You earned a Bingo Badge!';
         this.badgeButtonText = 'GO FOR A BLOCKOUT';
         this.badgeModalVisible = true;
-      }
-    },
-    computed: {
-      exercisesOptions: function () {
-        var options = [];
-        var index = 0;
-        for (var i in this.exercise_list) {
-          var item = this.exercise_list[i];
-
-          options[i] = {
-            'label': item.label,
-            'description': item.description,
-            'timer': item.timer,
-            'gif_path': item.gif,
-            'id': item.id,
-            'index_number': index++
-          };
-        }
-
-        return options;
       }
     }
   }

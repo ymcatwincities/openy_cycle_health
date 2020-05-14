@@ -13,10 +13,11 @@
       :is-exercise-finished="isExerciseFinished"
       :on-exercise-finished="onExerciseFinished"
       :on-exercise-closed="onExerciseClosed"
+      :debug="debug"
     ></ExerciseModal>
 
     <ExerciseList
-      :exercise-list="exercisesOptions"
+      :exercise-list="exercise_list"
       :is-exercise-finished="isExerciseFinished"
       :on-exercise-selected="onExerciseSelected"
       :disabled="nameModalVisible || exerciseModalVisible"
@@ -40,7 +41,7 @@
       ExerciseList,
       Spinner,
     },
-    props: ['game_nid', 'progress_nid', 'exercise_list', 'finished_exercises', 'completion_url'],
+    props: ['debug', 'error_message', 'game_nid', 'progress_nid', 'exercise_list', 'finished_exercises', 'completion_url'],
     data() {
       twelve.local_storage.save_today_progress(this.$props.progress_nid, this.$props.finished_exercises);
       return {
@@ -107,26 +108,5 @@
         return (this.$props.finished_exercises.length >= Object.keys(this.$props.exercise_list).length);
       },
     },
-    computed: {
-      exercisesOptions: function () {
-        var options = {};
-        var index = 1;
-        for (var i in this.exercise_list) {
-          var item = this.exercise_list[i];
-
-          options[i] = {
-            'label': item.label,
-            'description': item.description,
-            'timer': item.timer,
-            'gif_path': item.gif,
-            'id': item.id,
-            'puzzle_image_url': item.puzzle_image_url,
-            'index_number': index++
-          };
-        }
-
-        return options;
-      }
-    }
   }
 </script>
