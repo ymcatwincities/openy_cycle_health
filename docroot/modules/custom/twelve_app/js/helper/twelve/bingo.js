@@ -37,8 +37,6 @@ function search(exercises_list, finished_list, old_bingo_bools) {
     }
   }
 
-  console.log(bingos);
-
   let found_new_bingo = false;
   let bingo_bools = [];
   let full_bingo = true;
