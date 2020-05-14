@@ -14,7 +14,7 @@
       <template #body v-if="canChangeName">
         <p>What name do you go by, challenger?</p>
         <div class="label">Name</div>
-        <input type="text" name="username" v-model="username" class="username" v-on:keyup.enter="setLogin">
+        <input type="text" name="username" v-model="formUsername" class="username" v-on:keyup.enter="setLogin">
       </template>
       <template #footer>
         <template v-if="canChangeName">
@@ -45,7 +45,8 @@
     },
     data: function() {
       return {
-        username: twelve.user.get_active_player_name()
+        username: twelve.user.get_active_player_name(),
+        formUsername: twelve.user.get_active_player_name(),
       }
     },
     methods: {
@@ -72,11 +73,12 @@
       },
 
       setLogin: function () {
-        if (!this.username) {
+        if (!this.formUsername) {
           e.preventDefault();
           return;
         }
-        twelve.local_storage.set_user_name(this.username);
+        twelve.local_storage.set_user_name(this.formUsername);
+        this.username = this.formUsername;
         this.$emit('hide-greeting-modal');
 
         this.$notify({

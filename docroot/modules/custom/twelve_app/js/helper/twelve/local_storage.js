@@ -1,8 +1,8 @@
 /**
  * @returns {string}
  */
-function get_progress_nid(user_id, game_nid, sub_user_id) {
-  let result_key = get_progress_nid_key(user_id, game_nid, sub_user_id);
+function get_progress_nid(user_id, game_nid, sub_account_id) {
+  let result_key = get_progress_nid_key(user_id, game_nid, sub_account_id);
   return localStorage.getItem(result_key);
 }
 
@@ -10,10 +10,10 @@ function get_progress_nid(user_id, game_nid, sub_user_id) {
  * @param {int} user_id
  * @param {int} game_nid
  * @param {int} progress_nid
- * @param {int} sub_user_id
+ * @param {int} sub_account_id
  */
-function set_progress_nid(user_id, game_nid, progress_nid, sub_user_id) {
-  let result_key = get_progress_nid_key(user_id, game_nid, sub_user_id);
+function set_progress_nid(user_id, game_nid, progress_nid, sub_account_id) {
+  let result_key = get_progress_nid_key(user_id, game_nid, sub_account_id);
   localStorage.setItem(result_key, progress_nid);
 }
 
@@ -21,11 +21,11 @@ function set_progress_nid(user_id, game_nid, progress_nid, sub_user_id) {
  *
  * @param user_id
  * @param game_nid
- * @param sub_user_id
+ * @param sub_account_id
  * @returns {string}
  */
-function get_progress_nid_key(user_id, game_nid, sub_user_id) {
-  return 'progress_nid_for_' + game_nid + '_' + user_id + '_' + sub_user_id;
+function get_progress_nid_key(user_id, game_nid, sub_account_id) {
+  return 'progress_nid_for_' + game_nid + '_' + user_id + '_' + sub_account_id;
 }
 
 /**
