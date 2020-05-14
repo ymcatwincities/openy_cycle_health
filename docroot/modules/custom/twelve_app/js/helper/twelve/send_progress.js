@@ -8,6 +8,13 @@ import local_storage from "./local_storage";
  * @param {[]} exercise_progress_list
  */
 function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) {
+
+  let local_storage_progress_id = local_storage.get_progress_nid(user_id, game_nid, drupalSettings.sub_account_id);
+
+  if (!progress_nid && (local_storage_progress_id > 0)) {
+    progress_nid = local_storage_progress_id;
+  }
+
   let url = window.location.origin + '/node';
   let request_type = 'post';
   if (progress_nid > 0) {
