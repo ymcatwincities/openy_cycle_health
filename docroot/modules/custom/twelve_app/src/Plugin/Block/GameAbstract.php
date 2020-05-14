@@ -194,6 +194,8 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
 
     if (!empty($this->family->getSubAccountId())) {
       $query->condition('field_sub_user', $this->family->getSubAccountId());
+    } else {
+      $query->condition('field_sub_user', NULL, 'IS NULL');
     }
 
     $nids = $query->execute();
