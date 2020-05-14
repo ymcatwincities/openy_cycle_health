@@ -2,6 +2,9 @@
   display: grid;
   grid-gap: 30px;
 
+  padding-top: 50px;
+  padding-bottom: 30px;
+
   grid-template-columns: repeat(1, 300px);
   grid-auto-rows: 300px;
 
@@ -105,6 +108,12 @@
     &:nth-child(2) {
       .grid-item .content .inner .image-prgf-grid {
         background-image: url("/themes/custom/twelve_carnation/dist/img/logo--hidden-picture-400.png");
+      }
+    }
+
+    &:nth-child(3) {
+      .grid-item .content .inner .image-prgf-grid {
+        background-image: url("/themes/custom/twelve_carnation/dist/img/logo--bingo.png");
       }
     }
   }

@@ -53,7 +53,7 @@
     },
     created: function () {
 
-      twelve.local_storage.set_progress_nid(drupalSettings.user.uid, this.$props.game_nid, this.$props.progress_nid);
+      twelve.local_storage.set_progress_nid(drupalSettings.user.uid, this.$props.game_nid, this.$props.progress_nid, drupalSettings.sub_account_id);
       twelve.local_storage.set_user_name(drupalSettings.username);
 
       if (this.$props.finished_exercises.length === 0) {
