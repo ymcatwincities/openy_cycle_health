@@ -1,16 +1,17 @@
 <template>
   <div>
+    <DebugBar
+      :debug="debug"
+      :error_message="error_message"
+      :debug-show-badge-modal="debugShowBadgeModal"
+    ></DebugBar>
+
     <Greeting
       :login-required="true"
       :name-modal-visible="nameModalVisible"
       v-on:show-greeting-modal="nameModalVisible = true"
       v-on:hide-greeting-modal="nameModalVisible = false"
     ></Greeting>
-
-    <button type="button" class="btn btn-blue notranslate mt-3"
-      v-if="debug"
-      @click="showBModal"
-    >debug: show badge</button>
 
     <BadgeModal
       :type="badgeType"
@@ -42,6 +43,7 @@
 </template>
 
 <script>
+  import DebugBar from "../components/DebugBar.vue";
   import Greeting from '../components/Greeting.vue';
   import ExerciseModal from '../components/ExerciseModal.vue';
   import ExerciseList from './components/ExerciseList.vue';
@@ -51,13 +53,14 @@
 
   export default {
     components: {
+      DebugBar,
       BadgeModal,
       Greeting,
       ExerciseModal,
       ExerciseList,
       Spinner,
     },
-    props: ['debug', 'game_nid', 'progress_nid', 'exercise_list', 'finished_exercises'],
+    props: ['debug', 'error_message', 'game_nid', 'progress_nid', 'exercise_list', 'finished_exercises'],
     data() {
       twelve.local_storage.save_today_progress(this.$props.progress_nid, this.$props.finished_exercises);
       let bingo = twelve.bingo.search(this.exercise_list, this.$props.finished_exercises, []);
@@ -149,7 +152,7 @@
         }
       },
 
-      showBModal: function() {
+      debugShowBadgeModal: function() {
         this.badgeType = 'bingo';
         this.badgeUrl = '';
         this.badgeText = 'You earned a Bingo Badge!';

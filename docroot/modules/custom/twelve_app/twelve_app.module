@@ -8,6 +8,7 @@ function twelve_app_theme() {
     'today_progress' => [
       'variables' => [
         'debug' => '',
+        'error_message' => '',
         'game_nid' => '',
         'excercises' => [],
         'completion_url' => '',
@@ -18,6 +19,7 @@ function twelve_app_theme() {
     'puzzle' => [
       'variables' => [
         'debug' => '',
+        'error_message' => '',
         'game_nid' => '',
         'excercises' => [],
         'progress_nid' => '',
@@ -27,6 +29,7 @@ function twelve_app_theme() {
     'bingo' => [
       'variables' => [
         'debug' => '',
+        'error_message' => '',
         'game_nid' => '',
         'excercises' => [],
         'progress_nid' => '',

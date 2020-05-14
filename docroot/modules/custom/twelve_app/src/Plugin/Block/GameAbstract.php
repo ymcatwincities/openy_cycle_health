@@ -190,7 +190,10 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
     $game_nid = $this->getCurrentGameNid();
 
     if (empty($game_nid)) {
-      return [];
+      return [
+        '#debug' => $this->isUserAdmin(),
+        '#error_message' => 'Game not found. Check schedule, please.'
+      ];
     }
 
     return [
