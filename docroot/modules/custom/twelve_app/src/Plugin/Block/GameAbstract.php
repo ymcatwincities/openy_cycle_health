@@ -293,6 +293,7 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
 
     return $game_category_id;
   }
+
   /**
    * {@inheritdoc}
    */
@@ -306,4 +307,12 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
       'sub_account_id' . $this->family->getSubAccountId()
     ]);
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheMaxAge() {
+    return 0;
+  }
+
 }
