@@ -1,17 +1,17 @@
-{{ attach_library('twelve_app/day_progress') }}
+{{ attach_library('twelve_app/bursts') }}
 
 {% if debug %}
   {{ error_message }}
 {% endif %}
 
 <div id="twelve_day_progress_app">
-  <today-progress
+  <Bursts
     :debug='{{ debug|json_encode }}'
     :error_message='{{ error_message|json_encode }}'
-    :game_nid='{{ game_nid }}'
-    :excercises='{{ excercises|json_encode }}'
     :completion_url='{{ completion_url|json_encode }}'
+    :game_nid='{{ game_nid }}'
     :progress_nid='{{ progress_nid }}'
-    :finished_items='{{ finished_items|json_encode }}'
-  ></today-progress>
+    :finished_exercises='{{ finished_items|json_encode }}'
+    :exercise_list='{{ exercises|json_encode }}'
+  ></Bursts>
 </div>

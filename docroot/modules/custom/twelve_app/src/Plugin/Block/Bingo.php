@@ -40,24 +40,9 @@ class Bingo extends GameAbstract {
    * {@inheritdoc}
    */
   public function build() {
-    $user = $this->currentUser->getAccount();
-    if (empty($user->id())) {
-      return [];
-    }
-
-    $progress_nid = 0;
-    $progress_node = $this->getUserProgressNode();
-    if ($progress_node !== NULL) {
-      $progress_nid = $progress_node->id();
-    }
-
-    return array_merge(
-      parent::build(), [
-        '#theme' => 'bingo',
-        '#progress_nid' => $progress_nid,
-        '#finished_items' => $this->getFinishedExercisesNids(),
-      ]
-    );
+    return array_merge(parent::build(), [
+      '#theme' => 'bingo',
+    ]);
   }
 
   /**
@@ -70,6 +55,7 @@ class Bingo extends GameAbstract {
       return $exercises_array;
     }
 
+    $index_number = 1;
     foreach ($paragraph->field_excercises as $exercise_reference) {
       /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $puzzle_part_reference */
       $exercise_entity = $exercise_reference->entity;
@@ -77,8 +63,9 @@ class Bingo extends GameAbstract {
         'label' => $exercise_entity->title->value,
         'description' => $exercise_entity->body->value,
         'timer' => $exercise_entity->field_timer->value,
-        'gif' => $exercise_entity->field_animation->value,
+        'gif_path' => $exercise_entity->field_animation->value,
         'id' => $exercise_entity->id(),
+        'index_number' => $index_number++
       ];
     }
 

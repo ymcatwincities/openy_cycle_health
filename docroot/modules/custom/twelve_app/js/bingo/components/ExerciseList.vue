@@ -8,7 +8,7 @@
            :class="{'checked': isExerciseFinished(exercise)}"
       >
         <template v-if="!isExerciseFinished(exercise)">
-          {{ captions[exercise.index_number] }}
+          {{ captions[exercise.index_number-1] }}
         </template>
       </div>
     </div>

@@ -32,7 +32,7 @@
     ></ExerciseModal>
 
     <ExerciseList
-      :exercise-list="exercisesOptions"
+      :exercise-list="exercise_list"
       :is-exercise-finished="isExerciseFinished"
       :on-exercise-selected="onExerciseSelected"
       :disabled="nameModalVisible || exerciseModalVisible || badgeModalVisible"
@@ -61,7 +61,7 @@
       Spinner,
     },
     props: ['debug', 'error_message', 'game_nid', 'progress_nid', 'exercise_list', 'finished_exercises'],
-    data() {
+    data: function() {
       twelve.local_storage.save_today_progress(this.$props.progress_nid, this.$props.finished_exercises);
       let bingo = twelve.bingo.search(this.exercise_list, this.$props.finished_exercises, []);
       return {
@@ -158,26 +158,6 @@
         this.badgeText = 'You earned a Bingo Badge!';
         this.badgeButtonText = 'GO FOR A BLOCKOUT';
         this.badgeModalVisible = true;
-      }
-    },
-    computed: {
-      exercisesOptions: function () {
-        var options = [];
-        var index = 0;
-        for (var i in this.exercise_list) {
-          var item = this.exercise_list[i];
-
-          options[i] = {
-            'label': item.label,
-            'description': item.description,
-            'timer': item.timer,
-            'gif_path': item.gif,
-            'id': item.id,
-            'index_number': index++
-          };
-        }
-
-        return options;
       }
     }
   }

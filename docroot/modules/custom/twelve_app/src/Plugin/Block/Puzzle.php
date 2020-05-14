@@ -38,24 +38,9 @@ class Puzzle extends GameAbstract {
   }
 
   public function build() {
-    $user = $this->currentUser->getAccount();
-    if (empty($user->id())) {
-      return [];
-    }
-
-    $progress_nid = 0;
-    $progress_node = $this->getUserProgressNode();
-    if ($progress_node !== NULL) {
-      $progress_nid = $progress_node->id();
-    }
-
-    return array_merge(
-      parent::build(), [
+    return array_merge(parent::build(), [
         '#theme' => 'puzzle',
-        '#progress_nid' => $progress_nid,
-        '#finished_items' => $this->getFinishedExercisesNids(),
-      ]
-    );
+    ]);
   }
 
   /**
@@ -68,6 +53,7 @@ class Puzzle extends GameAbstract {
       return $exercises_array;
     }
 
+    $index_number = 1;
     foreach ($paragraph->field_items as $puzzle_part_reference) {
       /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $puzzle_part_reference */
       $puzzle_part_paragraph = $puzzle_part_reference->entity;
@@ -76,13 +62,14 @@ class Puzzle extends GameAbstract {
       /** @var \Drupal\media\Entity\Media $media_entity */
       $media_file_uri = $media_entity->field_media_image->entity->getFileUri();
       $puzzle_image_url = file_create_url($media_file_uri);
-      $exercises_array[] = [
+      $exercises_array[$index_number] = [
         'label' => $exercise_entity->title->value,
         'description' => $exercise_entity->body->value,
         'timer' => $exercise_entity->field_timer->value,
-        'gif' => $exercise_entity->field_animation->value,
+        'gif_path' => $exercise_entity->field_animation->value,
         'id' => $exercise_entity->id(),
         'puzzle_image_url' => $puzzle_image_url,
+        'index_number' => $index_number++
       ];
     }
 

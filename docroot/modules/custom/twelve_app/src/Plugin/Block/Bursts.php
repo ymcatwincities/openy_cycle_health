@@ -8,11 +8,11 @@ use Drupal\node\Entity\Node;
  *
  * @Block(
  *   id = "today_progress",
- *   admin_label = @Translation("12 bursts today progress"),
+ *   admin_label = @Translation("Bursts app"),
  *   category = @Translation("Paragraph Blocks")
  * )
  */
-class TodayProgress extends GameAbstract {
+class Bursts extends GameAbstract {
 
   /**
    * {@inheritdoc}
@@ -39,24 +39,10 @@ class TodayProgress extends GameAbstract {
    * {@inheritdoc}
    */
   public function build() {
-
     $build = [
-      '#theme' => 'today_progress',
+      '#theme' => 'bursts',
       '#completion_url' => $this->getCompletionUrl(),
     ];
-
-    $user = $this->currentUser->getAccount();
-
-    // Prepare data for authenticated user.
-    if (empty($user->id())) {
-      $progress_nid = 0;
-      $progress_node = $this->getUserProgressNode();
-      if ($progress_node !== NULL) {
-        $progress_nid = $progress_node->id();
-        $build['#progress_nid'] = $progress_nid;
-        $build['#finished_items'] = $this->getFinishedExercisesNids();
-      }
-    }
 
     return array_merge(
       parent::build(), $build
@@ -70,6 +56,7 @@ class TodayProgress extends GameAbstract {
       return $exercises_array;
     }
 
+    $index_number = 1;
     foreach ($paragraph->field_excercises as $exercise_reference) {
       /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $puzzle_part_reference */
       $exercise_entity = $exercise_reference->entity;
@@ -77,8 +64,9 @@ class TodayProgress extends GameAbstract {
         'label' => $exercise_entity->title->value,
         'description' => $exercise_entity->body->value,
         'timer' => $exercise_entity->field_timer->value,
-        'gif' => $exercise_entity->field_animation->value,
+        'gif_path' => $exercise_entity->field_animation->value,
         'id' => $exercise_entity->id(),
+        'index_number' => $index_number++
       ];
     }
 

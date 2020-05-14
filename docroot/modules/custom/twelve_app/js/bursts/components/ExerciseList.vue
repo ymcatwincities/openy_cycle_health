@@ -7,10 +7,12 @@
            v-on:click="onExerciseSelected(exercise)"
            :class="{'checked': isExerciseFinished(exercise)}"
       >
-        <div v-if="isExerciseFinished(exercise)"
-             :style="{ backgroundImage: `url('${exercise.puzzle_image_url}')` }">
-        </div>
-        <template v-else>{{ exercise.index_number }}</template>
+        <div
+          v-bind:class="{'checked': isExerciseFinished(exercise)}"
+          class="checkbox"
+        ></div>
+        <div class="title">{{ exercise.label }}</div>
+        <div class="description" v-html="exercise.description"></div>
       </div>
     </div>
   </div>
@@ -19,7 +21,7 @@
 <script>
   export default {
     props: {
-      exerciseList: Object,
+      exerciseList: Array,
       isExerciseFinished: Function,
       onExerciseSelected: Function,
       disabled: Boolean
