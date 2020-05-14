@@ -39,7 +39,7 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
       },
     }).then(function (response) {
       let progress_nid = response.data.nid[0].value;
-      local_storage.set_progress_nid(user_id, game_nid, progress_nid)
+      local_storage.set_progress_nid(user_id, game_nid, progress_nid, drupalSettings.sub_account_id)
     }).catch(function (error) {
       //@TODO Add error handler
     });

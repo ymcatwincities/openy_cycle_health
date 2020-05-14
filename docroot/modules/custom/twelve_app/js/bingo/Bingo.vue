@@ -75,7 +75,10 @@
       };
     },
     created: function () {
+
       twelve.local_storage.set_progress_nid(drupalSettings.user.uid, this.$props.game_nid, this.$props.progress_nid);
+      twelve.local_storage.set_user_name(drupalSettings.username);
+
       if (this.$props.finished_exercises.length === 0) {
         let cache = twelve.local_storage.load_today_progress(this.$props.progress_nid);
         for (let index = 0; index < cache.length; index++) {
