@@ -9,7 +9,7 @@ dependencies:
 id: openygoogletranslate_2
 theme: twelve_carnation
 region: top_menu
-weight: 0
+weight: -8
 provider: null
 plugin: openy_gtranslate_block
 settings:
