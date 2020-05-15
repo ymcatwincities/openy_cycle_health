@@ -35,6 +35,9 @@ class MyFamilyFieldWidget extends WidgetBase {
 
       $nid = $list[$delta]['target_id'];
       $node = Node::load($nid);
+      if (!$node) {
+        return $build;
+      }
 
       $build['row']['title'] = [
         '#type' => 'html_tag',
@@ -109,6 +112,8 @@ class MyFamilyFieldWidget extends WidgetBase {
       '#url' => Url::fromRoute('twelve_user.family_member_add'),
       '#title' => $this->t('Add'),
     ];
+    $element['widget']['#prefix'] = '<div id="field-family-add-more-wrapper">';
+    $element['widget']['#suffix'] = '</div>';
 
     $element['#attached']['library'][] = 'core/drupal.dialog.ajax';
 

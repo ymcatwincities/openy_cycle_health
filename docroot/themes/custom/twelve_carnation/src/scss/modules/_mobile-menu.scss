@@ -51,3 +51,15 @@
     }
   }
 }
+
+.mobile-sidebar {
+  .user-account-menu--mobile {
+    border-bottom: 1px solid $gray-300;
+
+    .nav-item {
+      .nav-link {
+        text-transform: uppercase;
+      }
+    }
+  }
+}
