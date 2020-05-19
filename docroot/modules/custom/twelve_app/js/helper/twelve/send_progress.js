@@ -36,22 +36,52 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
     }
   };
 
-  axios({url: '/session/token'}).then(token_data => {
+  if (drupalSettings.username !== '') {
+
+    axios({url: '/session/token'}).then(token_data => {
+      axios({
+        method: request_type,
+        url: url,
+        data: data,
+        headers: {
+          "X-CSRF-Token": token_data.data
+        },
+      }).then(function (response) {
+        let progress_nid = response.data.nid[0].value;
+        local_storage.set_progress_nid(user_id, game_nid, progress_nid, drupalSettings.sub_account_id)
+      }).catch(function (error) {
+        //@TODO Add error handler
+      });
+    }).catch(function (error) {
+    });
+
+  } else {
+
+    axios({url: '/session/token'}).then(data => {
+      let token = data.data;
+    }).catch(function (error) {
+    });
+
     axios({
       method: request_type,
-      url: url,
+      url: result_url,
       data: data,
-      headers: {
-        "X-CSRF-Token": token_data.data
-      },
+      headers: {},
+      auth: {
+        username: '12bursts_consumer',
+        password: 'e+bMS3E)}qv(rAMa'
+      }
     }).then(function (response) {
-      let progress_nid = response.data.nid[0].value;
-      local_storage.set_progress_nid(user_id, game_nid, progress_nid, drupalSettings.sub_account_id)
-    }).catch(function (error) {
+      let result_key = this.getLocalStorageKey();
+      let value = response.data.nid[0].value;
+      localStorage.setItem(result_key, value);
+    }.bind(this)).catch(function (error) {
       //@TODO Add error handler
     });
-  }).catch(function (error) {
-  });
+
+  }
+
+
 }
 
 export default send_progress
