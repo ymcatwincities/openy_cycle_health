@@ -17,9 +17,14 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
 
   let url = window.location.origin + '/node';
   let request_type = 'post';
+  
   if (progress_nid > 0) {
     url += '/' + progress_nid;
     request_type = 'patch';
+  }
+
+  if (drupalSettings.sub_account_id === '') {
+    drupalSettings.sub_account_id = null;
   }
 
   let data = {
@@ -56,7 +61,7 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
     });
 
   } else {
-    
+
     axios({url: '/session/token'}).then(data => {
       let token = data.data;
     }).catch(function (error) {
