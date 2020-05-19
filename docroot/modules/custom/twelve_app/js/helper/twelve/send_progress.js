@@ -56,8 +56,7 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
     });
 
   } else {
-    console.log('Anonymous');
-
+    
     axios({url: '/session/token'}).then(data => {
       let token = data.data;
     }).catch(function (error) {
@@ -65,7 +64,7 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
 
     axios({
       method: request_type,
-      url: result_url,
+      url: url,
       data: data,
       headers: {},
       auth: {
