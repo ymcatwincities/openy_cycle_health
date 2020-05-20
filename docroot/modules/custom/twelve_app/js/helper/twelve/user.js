@@ -10,10 +10,13 @@ function validate_name(name) {
 
 function get_active_player_name() {
   let name = drupalSettings.username;
+  let local_name = local_storage.get_user_name();
   if(validate_name(name)) {
     return name;
-  } else {
+  } else if (validate_name(local_name)) {
     return local_storage.get_user_name();
+  } else {
+    return '';
   }
 }
 

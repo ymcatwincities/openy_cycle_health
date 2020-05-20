@@ -1,18 +1,14 @@
 const axios = require('axios');
 import local_storage from "./local_storage";
+import user from "./user";
 
 /**
- * @param {int} user_id
  * @param {int} game_nid
  * @param {int} progress_nid
  * @param {[]} exercise_progress_list
  */
-function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) {
-  if (drupalSettings.sub_account_id === '') {
-    drupalSettings.sub_account_id = null;
-  }
-
-  let local_storage_progress_id = local_storage.get_progress_nid(user_id, game_nid, drupalSettings.sub_account_id);
+function send_progress(game_nid, progress_nid, exercise_progress_list) {
+  let local_storage_progress_id = local_storage.get_progress_nid(game_nid);
 
   if (!progress_nid && (local_storage_progress_id > 0)) {
     progress_nid = local_storage_progress_id;
@@ -26,17 +22,22 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
     request_type = 'patch';
   }
 
+  let field_sub_user = null;
+  if (typeof drupalSettings.sub_account_id === 'string' && drupalSettings.sub_account_id.length > 0) {
+    field_sub_user = drupalSettings.sub_account_id;
+  }
+
   let data = {
     'type': '12_bursts_result',
     'title': {
-      'value': localStorage.twelveUserName
+      'value': user.get_active_player_name()
     },
     'field_when': {
       'value': game_nid,
     },
     'field_finished_items': exercise_progress_list,
     'field_sub_user': {
-      'value': drupalSettings.sub_account_id
+      'value': field_sub_user
     }
   };
 
@@ -52,7 +53,7 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
         },
       }).then(function (response) {
         let progress_nid = response.data.nid[0].value;
-        local_storage.set_progress_nid(user_id, game_nid, progress_nid, drupalSettings.sub_account_id);
+        local_storage.set_progress_nid(game_nid, progress_nid);
       }).catch(function (error) {
         //@TODO Add error handler
       });
@@ -77,7 +78,7 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
       }
     }).then(function (response) {
       let progress_nid = response.data.nid[0].value;
-      local_storage.set_progress_nid(0, game_nid, progress_nid, drupalSettings.sub_account_id);
+      local_storage.set_progress_nid(game_nid, progress_nid);
     }.bind(this)).catch(function (error) {
       //@TODO Add error handler
     });

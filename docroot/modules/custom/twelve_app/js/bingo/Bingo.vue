@@ -78,7 +78,7 @@
       };
     },
     created: function () {
-      twelve.local_storage.set_user_name(drupalSettings.username);
+      twelve.local_storage.set_user_name(twelve.user.get_active_player_name());
 
       if (this.$props.finished_exercises.length === 0) {
         let cache = twelve.local_storage.load_today_progress(this.$props.progress_nid);
@@ -112,7 +112,6 @@
 
         twelve.local_storage.save_today_progress(this.$props.progress_nid, Array.from(this.$props.finished_exercises.values()));
         twelve.send_progress(
-          drupalSettings.user.uid,
           this.$props.game_nid,
           this.$props.progress_nid,
           this.$props.finished_exercises,
