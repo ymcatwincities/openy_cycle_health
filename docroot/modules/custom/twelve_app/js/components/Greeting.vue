@@ -59,7 +59,6 @@
       },
 
       showModal: function () {
-        this.userIntroduced = false;
         this.$emit('show-greeting-modal');
       },
 
@@ -69,12 +68,15 @@
 
       setDefaultName: function() {
         this.username = 'Challenger';
+        this.formUsername = 'Challenger';
         this.setLogin();
       },
 
       setLogin: function () {
         if (!this.formUsername) {
-          e.preventDefault();
+          if (typeof e !== 'undefined') {
+            e.preventDefault();
+          }
           return;
         }
         twelve.local_storage.set_user_name(this.formUsername);

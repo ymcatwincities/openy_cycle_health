@@ -8,6 +8,9 @@ import local_storage from "./local_storage";
  * @param {[]} exercise_progress_list
  */
 function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) {
+  if (drupalSettings.sub_account_id === '') {
+    drupalSettings.sub_account_id = null;
+  }
 
   let local_storage_progress_id = local_storage.get_progress_nid(user_id, game_nid, drupalSettings.sub_account_id);
 
@@ -17,14 +20,10 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
 
   let url = window.location.origin + '/node';
   let request_type = 'post';
-  
+
   if (progress_nid > 0) {
     url += '/' + progress_nid;
     request_type = 'patch';
-  }
-
-  if (drupalSettings.sub_account_id === '') {
-    drupalSettings.sub_account_id = null;
   }
 
   let data = {
@@ -53,7 +52,7 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
         },
       }).then(function (response) {
         let progress_nid = response.data.nid[0].value;
-        local_storage.set_progress_nid(user_id, game_nid, progress_nid, drupalSettings.sub_account_id)
+        local_storage.set_progress_nid(user_id, game_nid, progress_nid, drupalSettings.sub_account_id);
       }).catch(function (error) {
         //@TODO Add error handler
       });
@@ -77,9 +76,8 @@ function send_progress(user_id, game_nid, progress_nid, exercise_progress_list) 
         password: 'e+bMS3E)}qv(rAMa'
       }
     }).then(function (response) {
-      let result_key = this.getLocalStorageKey();
-      let value = response.data.nid[0].value;
-      localStorage.setItem(result_key, value);
+      let progress_nid = response.data.nid[0].value;
+      local_storage.set_progress_nid(0, game_nid, progress_nid, drupalSettings.sub_account_id);
     }.bind(this)).catch(function (error) {
       //@TODO Add error handler
     });

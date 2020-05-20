@@ -2,7 +2,7 @@ common:
   version: 0.1
   js:
     dist/vendors~bingo~bursts~puzzle.bundle.js: {minified: true}
-    dist/bingo~bursts~puzzle.bundle.js: {minified: true}
+#    dist/bingo~bursts~puzzle.bundle.js: {minified: true}
 
 bursts:
   version: 0.1
