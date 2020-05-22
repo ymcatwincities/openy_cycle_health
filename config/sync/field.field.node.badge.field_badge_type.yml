@@ -1,0 +1,35 @@
+uuid: 99ee09f0-4af8-4099-97c3-cd8e3003590c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_badge_type
+    - node.type.badge
+    - taxonomy.vocabulary.badges
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_badge_type
+id: node.badge.field_badge_type
+field_name: field_badge_type
+entity_type: node
+bundle: badge
+label: 'Badge Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      badges: badges
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

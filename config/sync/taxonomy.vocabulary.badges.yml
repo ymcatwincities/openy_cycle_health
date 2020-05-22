@@ -1,0 +1,8 @@
+uuid: c701cd46-c0f7-4088-957e-bc00572c9850
+langcode: en
+status: true
+dependencies: {  }
+name: Badges
+vid: badges
+description: ''
+weight: 0
