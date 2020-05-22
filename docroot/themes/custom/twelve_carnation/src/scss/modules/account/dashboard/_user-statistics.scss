@@ -1,0 +1,76 @@
+.user-statistics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 20px 0 40px;
+
+  > div {
+    background-color: $light-white;
+    border-radius: 10px;
+    padding: 11px 10px;
+
+    .number {
+      @include cachet();
+      font-size: 48px;
+      line-height: 48px;
+      color: $gray-900;
+      text-align: center;
+      padding-bottom: 13px;
+    }
+
+    .image {
+      width: 100%;
+      background-size: contain;
+
+      &:after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+    }
+
+    &:nth-child(1) .image {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/dashboard/lifetime-bursts.png");
+    }
+
+    &:nth-child(2) .image {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/dashboard/signin-streak.png");
+    }
+
+    &:nth-child(3) .image {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/dashboard/art-collector.png");
+    }
+
+    &:nth-child(4) .image {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/dashboard/bingo-champion.png");
+    }
+
+    @include media-breakpoint-up(md) {
+      &:nth-child(1) .image {
+        background-image: url("/themes/custom/twelve_carnation/dist/img/dashboard/lifetime-bursts@2x.png");
+      }
+
+      &:nth-child(2) .image {
+        background-image: url("/themes/custom/twelve_carnation/dist/img/dashboard/signin-streak@2x.png");
+      }
+
+      &:nth-child(3) .image {
+        background-image: url("/themes/custom/twelve_carnation/dist/img/dashboard/art-collector@2x.png");
+      }
+
+      &:nth-child(4) .image {
+        background-image: url("/themes/custom/twelve_carnation/dist/img/dashboard/bingo-champion@2x.png");
+      }
+    }
+
+    .record {
+      padding-top: 21px;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 18px;
+      color: $black;
+      text-align: center;
+    }
+  }
+}

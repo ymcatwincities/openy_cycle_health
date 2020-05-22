@@ -4,6 +4,23 @@ use Drupal\twelve_user\Form\UserRegisterForm;
 use Drupal\twelve_user\Form\UserFamilyEdit;
 
 /**
+ * Implements hook_theme().
+ */
+function twelve_user_theme() {
+  return [
+    'user-statistics' => [
+      'variables' => [
+        'lifetime_bursts' => '',
+        'signin_streak' => '',
+        'max_signin_streak' => '',
+        'art_collector' => '',
+        'bingo_champion' => ''
+      ]
+    ]
+  ];
+}
+
+/**
  * Implements hook_entity_type_build().
  */
 function twelve_user_entity_type_build(array &$entity_types) {
