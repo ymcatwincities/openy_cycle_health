@@ -6,4 +6,4 @@ services:
 
   twelve_user.family:
     class: Drupal\twelve_user\Family
-    arguments: ['@tempstore.private', '@current_user']
+    arguments: ['@current_user', '@database', '@entity_type.manager']

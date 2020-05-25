@@ -1,0 +1,25 @@
+uuid: 24b6a52a-71b0-441f-97cb-481f016bcfad
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.badge.field_badge_type
+    - field.field.node.badge.field_results
+    - node.type.badge
+  module:
+    - user
+id: node.badge.teaser
+targetEntityType: node
+bundle: badge
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_badge_type: true
+  field_results: true
+  langcode: true

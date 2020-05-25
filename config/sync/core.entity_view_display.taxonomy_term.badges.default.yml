@@ -1,0 +1,32 @@
+uuid: 88612429-b6cd-4c4b-973a-d48ae2510feb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.badges.field_image
+    - taxonomy.vocabulary.badges
+  module:
+    - text
+id: taxonomy_term.badges.default
+targetEntityType: taxonomy_term
+bundle: badges
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    type: entity_reference_entity_view
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

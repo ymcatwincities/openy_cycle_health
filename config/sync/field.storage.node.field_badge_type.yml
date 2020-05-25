@@ -1,18 +1,19 @@
-uuid: 73735843-95a5-4aa6-a9ea-0d034e75e890
+uuid: 80cfb3f4-4337-4717-a9b0-80702682f842
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.field_when
-field_name: field_when
+    - taxonomy
+id: node.field_badge_type
+field_name: field_badge_type
 entity_type: node
 type: entity_reference
 settings:
-  target_type: node
+  target_type: taxonomy_term
 module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

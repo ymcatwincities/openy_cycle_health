@@ -1,0 +1,39 @@
+{#
+/**
+ * @file
+ * Theme to render user statistics.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - lifetime_bursts
+ * - signin_streak
+ * - max_signin_streak
+ * - art_collector
+ * - bingo_champion
+ * - uid
+ */
+#}
+
+<div class="user-statistics container">
+  <div>
+    <div class="number">{{ lifetime_bursts }}</div>
+    <div class="image"></div>
+  </div>
+  <div>
+    <div class="number">{{ signin_streak }}</div>
+    <div class="image"></div>
+    <div class="record">My Record: {{ max_signin_streak }} Days</div>
+  </div>
+  <div>
+    <div class="number">{{ art_collector }}</div>
+    <div class="image"></div>
+    <div class="record"><a href="/user/{{ uid }}/collection">My Collection</a></div>
+  </div>
+  <div>
+    <div class="number">{{ bingo_champion }}</div>
+    <div class="image"></div>
+  </div>
+</div>
+
