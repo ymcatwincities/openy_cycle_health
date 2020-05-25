@@ -2,6 +2,7 @@
 namespace Drupal\twelve_user;
 
 use Drupal\Core\Database\Connection;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\user\Entity\User;
 
@@ -24,20 +25,26 @@ class Family {
    */
   protected $database;
 
+  protected $entity_type_manager;
+
   /**
    * @var int
    */
   protected $_subAccountId = null;
+
+  protected $_badge_types = null;
 
   /**
    * Family constructor.
    *
    * @param \Drupal\Core\Session\AccountProxyInterface $current_user
    * @param \Drupal\Core\Database\Connection $database
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  public function __construct(AccountProxyInterface $current_user, Connection $database) {
+  public function __construct(AccountProxyInterface $current_user, Connection $database, EntityTypeManagerInterface $entity_type_manager) {
     $this->currentUser = $current_user;
     $this->database = $database;
+    $this->entity_type_manager = $entity_type_manager;
   }
 
   /**
@@ -169,13 +176,25 @@ class Family {
    * @return int
    */
   public function hiddenImageBadgeCount() {
+    $tid = null;
+    $badge_types = $this->getBadgeTypes();
+    foreach ($badge_types as $term) {
+      if ($term->name == 'Hidden Picture') {
+        $tid = $term->tid;
+      }
+    }
+
+    if (is_null($tid)) {
+      return 0;
+    }
+
     $query = $this->database->select('node__field_results', 't1');
     $query->leftJoin('node__field_badge_type', 't2', 't1.entity_id = t2.entity_id');
     $query->leftJoin('node', 'n', 'n.nid=t1.entity_id');
     $query->leftJoin('node_revision', 'nr', 'n.vid = nr.vid');
     $query->leftJoin('taxonomy_term_field_data', 'term', 'term.tid = t2.field_badge_type_target_id');
     $query->where('nr.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
-    $query->where('term.name = :term', [':term' => 'Hidden Picture']);
+    $query->where('term.tid = :tid', [':tid' => $tid]);
 
     if ($sub_account_id = $this->getSubAccountId()) {
       $query->leftJoin('node__field_sub_user', 'su',
@@ -192,13 +211,25 @@ class Family {
    * @return int
    */
   public function bingoBadgeCount() {
+    $tid = null;
+    $badge_types = $this->getBadgeTypes();
+    foreach ($badge_types as $term) {
+      if ($term->name == 'Bingo') {
+        $tid = $term->tid;
+      }
+    }
+
+    if (is_null($tid)) {
+      return 0;
+    }
+
     $query = $this->database->select('node__field_results', 't1');
     $query->leftJoin('node__field_badge_type', 't2', 't1.entity_id = t2.entity_id');
     $query->leftJoin('node', 'n', 'n.nid=t1.entity_id');
     $query->leftJoin('node_revision', 'nr', 'n.vid = nr.vid');
     $query->leftJoin('taxonomy_term_field_data', 'term', 'term.tid = t2.field_badge_type_target_id');
     $query->where('nr.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
-    $query->where('term.name = :term', [':term' => 'Bingo']);
+    $query->where('term.tid = :tid', [':tid' => $tid]);
 
     if ($sub_account_id = $this->getSubAccountId()) {
       $query->leftJoin('node__field_sub_user', 'su',
@@ -208,5 +239,15 @@ class Family {
     }
 
     return $query->countQuery()->execute()->fetchField();
+  }
+
+  public function getBadgeTypes() {
+    if (!is_null($this->_badge_types)) {
+      return $this->_badge_types;
+    }
+
+    $vid = 'badges';
+    $this->_badge_types = $this->entity_type_manager->getStorage('taxonomy_term')->loadTree($vid);
+    return $this->_badge_types;
   }
 }
