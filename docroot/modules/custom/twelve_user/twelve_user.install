@@ -37,7 +37,6 @@ function twelve_user_update_8002() {
 
   foreach ($list as $item) {
     if ($item->game_type == 'puzzle_container' && $item->ex_count >= 12) {
-      // Create node object with attached file.
       $node = \Drupal\node\Entity\Node::create([
         'type'        => 'badge',
         'title'       => 'Hidden Picture Badge',
@@ -53,7 +52,6 @@ function twelve_user_update_8002() {
 
     if ($item->game_type == 'bingo_container' && $item->ex_count >= 5) {
       for ($i=1; $i < floor($item->ex_count / 5); $i++) {
-        // Create node object with attached file.
         $node = \Drupal\node\Entity\Node::create([
           'type'        => 'badge',
           'title'       => 'Bingo Badge',
