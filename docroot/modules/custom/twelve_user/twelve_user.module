@@ -14,7 +14,8 @@ function twelve_user_theme() {
         'signin_streak' => '',
         'max_signin_streak' => '',
         'art_collector' => '',
-        'bingo_champion' => ''
+        'bingo_champion' => '',
+        'uid' => ''
       ]
     ]
   ];

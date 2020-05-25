@@ -24,15 +24,24 @@ class UserStatisticsBlock extends BlockBase implements ContainerFactoryPluginInt
   protected $family;
 
   /**
+   * Current user service instance.
+   *
+   * @var AccountProxyInterface
+   */
+  protected $currentUser;
+
+  /**
    * {@inheritdoc}
    */
   public function __construct(
     array $configuration,
     $plugin_id,
     $plugin_definition,
+    AccountProxyInterface $current_user,
     Family $family
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->currentUser = $current_user;
     $this->family = $family;
   }
 
@@ -44,6 +53,7 @@ class UserStatisticsBlock extends BlockBase implements ContainerFactoryPluginInt
       $configuration,
       $plugin_id,
       $plugin_definition,
+      $container->get('current_user'),
       $container->get('twelve_user.family')
     );
   }
@@ -60,6 +70,7 @@ class UserStatisticsBlock extends BlockBase implements ContainerFactoryPluginInt
       '#max_signin_streak' => $streaks['max_streak'],
       '#art_collector' => $this->family->hiddenImageBadgeCount(),
       '#bingo_champion' => $this->family->bingoBadgeCount(),
+      '#uid' => $this->currentUser->id(),
       '#cache' => [
         'max-age' => 0
       ]
