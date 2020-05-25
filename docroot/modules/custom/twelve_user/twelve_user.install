@@ -1,0 +1,71 @@
+<?php
+
+/**
+ * Create badges for existing games
+ */
+function twelve_user_update_8002() {
+  \Drupal::database()->query('SET @mode := @@SESSION.sql_mode;');
+  \Drupal::database()->query('SET SESSION sql_mode = \'\';');
+  $query = \Drupal::database()->select('node__field_finished_items', 't1', ['strict' => false]);
+  $query->leftJoin('node__field_when', 't2', 't1.entity_id=t2.entity_id');
+  $query->leftJoin('node__field_content', 'fc', 't2.field_when_target_id=fc.entity_id');
+  $query->leftJoin('paragraphs_item', 'pi', 'fc.field_content_target_id=pi.id');
+  $query->groupBy('t1.entity_id');
+  $query->addExpression('t1.entity_id','result_nid');
+  $query->addExpression('t2.field_when_target_id', 'game_nid');
+  $query->addExpression('count(t1.field_finished_items_target_id)', 'ex_count');
+  $query->addExpression('pi.type', 'game_type');
+  $list = $query->execute()->fetchAll();
+  \Drupal::database()->query('SET SESSION sql_mode = @mode;');
+
+  $hidden_picture_tid = false;
+  $bingo_tid = false;
+  $vid = 'badges';
+  $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+  foreach ($terms as $term) {
+    if ($term->name == 'Hidden Picture') {
+      $hidden_picture_tid = $term->tid;
+    }
+    if ($term->name == 'Bingo') {
+      $bingo_tid = $term->tid;
+    }
+  }
+
+  if (!$hidden_picture_tid || !$bingo_tid) {
+    return;
+  }
+
+  foreach ($list as $item) {
+    if ($item->game_type == 'puzzle_container' && $item->ex_count >= 12) {
+      // Create node object with attached file.
+      $node = \Drupal\node\Entity\Node::create([
+        'type'        => 'badge',
+        'title'       => 'Hidden Picture Badge',
+        'field_badge_type' => [
+          'target_id' => $hidden_picture_tid,
+        ],
+        'field_results' => [
+          'target_id' => $item->result_nid
+        ]
+      ]);
+      $node->save();
+    }
+
+    if ($item->game_type == 'bingo_container' && $item->ex_count >= 5) {
+      for ($i=1; $i < floor($item->ex_count / 5); $i++) {
+        // Create node object with attached file.
+        $node = \Drupal\node\Entity\Node::create([
+          'type'        => 'badge',
+          'title'       => 'Bingo Badge',
+          'field_badge_type' => [
+            'target_id' => $bingo_tid,
+          ],
+          'field_results' => [
+            'target_id' => $item->result_nid
+          ]
+        ]);
+        $node->save();
+      }
+    }
+  }
+}
