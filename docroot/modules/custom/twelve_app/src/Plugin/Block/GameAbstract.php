@@ -129,6 +129,12 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
       ];
     }
 
+    $badges = $this->family->getBadgeTypes();
+    $badge_list = [];
+    foreach ($badges as $badge) {
+      $badge_list[$badge->name] = $badge->tid;
+    }
+
     return [
       '#debug' => $this->isUserAdmin(),
       '#game_nid' => $game_nid,
@@ -143,7 +149,8 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
       '#attached' => [
         'drupalSettings' => [
           'username' => $this->family->getActivePlayerName(),
-          'sub_account_id' => $this->family->getSubAccountId()
+          'sub_account_id' => $this->family->getSubAccountId(),
+          'badges' => $badge_list,
         ],
       ],
     ];

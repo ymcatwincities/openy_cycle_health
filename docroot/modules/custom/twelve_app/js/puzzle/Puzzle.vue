@@ -33,6 +33,7 @@
   import ExerciseList from './components/ExerciseList.vue';
   import Spinner from '../components/Spinner.vue'
   import twelve from '../helper/twelve';
+  import BadgeHelper from '../helper/twelve/user/badge';
 
   export default {
     components: {
@@ -90,6 +91,8 @@
           this.$props.progress_nid,
           this.$props.finished_exercises,
         );
+
+        BadgeHelper.create_hidden_image(this.$props.game_nid);
 
         this.$notify({
           group: 'twelve_app',

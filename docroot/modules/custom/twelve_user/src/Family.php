@@ -4,6 +4,7 @@ namespace Drupal\twelve_user;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\taxonomy\Entity\Term;
 use Drupal\user\Entity\User;
 
 /**
@@ -12,6 +13,11 @@ use Drupal\user\Entity\User;
  * @package Drupal\twelve_user
  */
 class Family {
+
+  /**
+   * Badge vocabulary.
+   */
+  const BADGE_VID = 'badges';
 
   /**
    * Current user service instance.
@@ -31,6 +37,7 @@ class Family {
    * @var int
    */
   protected $_subAccountId = null;
+
 
   protected $_badge_types = null;
 
@@ -241,13 +248,22 @@ class Family {
     return $query->countQuery()->execute()->fetchField();
   }
 
+  /**
+   * Get badge types from vocabulary.
+   *
+   * @return |array
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
   public function getBadgeTypes() {
+
     if (!is_null($this->_badge_types)) {
       return $this->_badge_types;
     }
 
-    $vid = 'badges';
+    $vid = self::BADGE_VID;
     $this->_badge_types = $this->entity_type_manager->getStorage('taxonomy_term')->loadTree($vid);
+
     return $this->_badge_types;
   }
 }
