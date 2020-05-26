@@ -17,6 +17,12 @@ function twelve_user_theme() {
         'bingo_champion' => '',
         'uid' => ''
       ]
+    ],
+    'recent-achievements' => [
+      'variables' => [
+        'badges_list' => [],
+        'uid' => ''
+      ]
     ]
   ];
 }
