@@ -5,6 +5,7 @@ Thumbs.db
 files
 settings.local.php
 settings.prod.php
+Library
 
 # Ignore Development tool files.
 .idea
