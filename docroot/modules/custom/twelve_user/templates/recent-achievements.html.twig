@@ -1,0 +1,29 @@
+{#
+/**
+ * @file
+ * Theme to render user recent achievements.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123. 123 being the user's ID.
+ *
+ * Available variables:
+ * - badges_list
+ * - uid
+ */
+#}
+<div class="container">
+  <div class="recent-achievements">
+    <div class="header">
+      RECENT ACHIEVEMENTS
+    </div>
+
+    {% for badge in badges_list %}
+    <div class="list-item">
+      <div class="image {{ badge.field_badge_type.entity.name.value | replace({' ':'-'})| lower }}"></div>
+      <div class="badge-name">{{ badge.field_badge_type.entity.name.value }} Badge</div>
+      <div class="game-name">{{ badge.field_results.entity.field_when.entity.title.value }}</div>
+      <div class="date">{{ badge.createdtime|format_date('medium') }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
