@@ -170,6 +170,13 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
    */
   protected abstract function prepareExercisesArray();
 
+  /**
+   * Prepare list of available badge types loaded from vocabulary 'badges'.
+   *
+   * @return array
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
   function getBadgesList() {
     $terms_array = [];
     $vid = 'badges';
