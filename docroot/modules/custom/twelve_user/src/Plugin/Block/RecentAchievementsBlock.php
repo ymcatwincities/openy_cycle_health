@@ -3,21 +3,29 @@ namespace Drupal\twelve_user\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Session\AccountProxyInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\twelve_user\Family;
 
 /**
  * @Block(
- *   id = "greeting_block",
- *   admin_label = @Translation("Greeting Menu"),
+ *   id = "recent_achievements_block",
+ *   admin_label = @Translation("Recent Achievements Block"),
  * )
  */
-class GreetingBlock extends BlockBase implements ContainerFactoryPluginInterface {
+class RecentAchievementsBlock extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
    * @var Family
    */
   protected $family;
+
+  /**
+   * Current user service instance.
+   *
+   * @var AccountProxyInterface
+   */
+  protected $currentUser;
 
   /**
    * {@inheritdoc}
@@ -26,9 +34,11 @@ class GreetingBlock extends BlockBase implements ContainerFactoryPluginInterface
     array $configuration,
     $plugin_id,
     $plugin_definition,
+    AccountProxyInterface $current_user,
     Family $family
   ) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->currentUser = $current_user;
     $this->family = $family;
   }
 
@@ -40,6 +50,7 @@ class GreetingBlock extends BlockBase implements ContainerFactoryPluginInterface
       $configuration,
       $plugin_id,
       $plugin_definition,
+      $container->get('current_user'),
       $container->get('twelve_user.family')
     );
   }
@@ -48,13 +59,13 @@ class GreetingBlock extends BlockBase implements ContainerFactoryPluginInterface
    * {@inheritdoc}
    */
   public function build() {
+    $streaks = $this->family->signInStreaks();
     return [
-      '#type' => 'container',
-      '#attributes' => [
-        'class' => ['greeting'],
-      ],
-      [
-        '#markup' => $this->t('Hello, @name', ['@name' => $this->family->getActivePlayerName()])
+      '#theme' => 'recent-achievements',
+      '#badges_list' => $this->family->getUserRecentsBadges(4),
+      '#uid' => $this->currentUser->id(),
+      '#cache' => [
+        'max-age' => 0
       ]
     ];
   }
@@ -64,9 +75,7 @@ class GreetingBlock extends BlockBase implements ContainerFactoryPluginInterface
    */
   public function getCacheContexts() {
     $contexts = parent::getCacheContexts();
-
     $contexts[] = 'user';
-
     return $contexts;
   }
 

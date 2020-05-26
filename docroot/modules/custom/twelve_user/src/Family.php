@@ -4,6 +4,7 @@ namespace Drupal\twelve_user;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\node\Entity\Node;
 use Drupal\user\Entity\User;
 
 /**
@@ -249,5 +250,35 @@ class Family {
     $vid = 'badges';
     $this->_badge_types = $this->entity_type_manager->getStorage('taxonomy_term')->loadTree($vid);
     return $this->_badge_types;
+  }
+
+  protected function getUserRecentBadgesIds($amount) {
+    $query = $this->database->select('node__field_results', 't1');
+    $query->leftJoin('node__field_badge_type', 't2', 't1.entity_id = t2.entity_id');
+    $query->leftJoin('node', 'n', 'n.nid=t1.entity_id');
+    $query->leftJoin('node_revision', 'nr', 'n.vid = nr.vid');
+    $query->where('nr.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
+
+    if ($sub_account_id = $this->getSubAccountId()) {
+      $query->leftJoin('node__field_sub_user', 'su',
+        'su.entity_id=t1.entity_id'
+      );
+      $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
+    }
+
+    $query->fields('t1', ['entity_id']);
+    $query->range(0, $amount);
+    $query->orderBy('t1.entity_id', 'DESC');
+
+    return $query->execute()->fetchCol();
+  }
+
+  /**
+   * @param $amount
+   * @return \Drupal\Core\Entity\EntityBase[]|\Drupal\Core\Entity\EntityInterface[]
+   */
+  function getUserRecentsBadges($amount) {
+    $ids = $this->getUserRecentBadgesIds($amount);
+    return Node::loadMultiple($ids);
   }
 }

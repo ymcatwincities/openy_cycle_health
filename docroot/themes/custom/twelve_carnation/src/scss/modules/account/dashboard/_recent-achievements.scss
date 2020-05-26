@@ -1,0 +1,75 @@
+.recent-achievements {
+  max-width: 340px;
+  float: left;
+  margin-bottom: 50px;
+
+  .header {
+    @include cachet();
+    padding-bottom: 20px;
+    font-size: 18px/27px;
+    color: $gray-400;
+    text-align: center;
+  }
+
+  > .list-item {
+    padding: 10px;
+    margin-bottom: 10px;
+
+    border: 1px solid $light-white;
+
+    display: grid;
+    grid-template-columns: 90px auto;
+    grid-template-rows: max-content max-content min-content;
+
+    .image {
+      grid-row: 1/ span 3;
+
+      width: 90px;
+      height: 90px;
+
+      background-size: contain;
+
+      &.hidden-picture {
+        background-image: url("/themes/custom/twelve_carnation/dist/img/badge/BadgeHiddenPicture@2x.png");
+      }
+
+      &.bingo {
+        background-image: url("/themes/custom/twelve_carnation/dist/img/badge/BadgeBingo.png");
+      }
+
+      &.blackout-bingo {
+        background-image: url("/themes/custom/twelve_carnation/dist/img/badge/BadgeBlackout.png");
+      }
+    }
+
+    .badge-name {
+      grid-column: 2;
+      padding-bottom: 5px;
+      padding-left: 10px;
+      font-family: $font-family-base;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: bold;
+      color: $gray-900;
+    }
+
+    .game-name {
+      grid-column: 2;
+      padding-left: 10px;
+      font-family: $font-family-base;
+      font-size: 12px;
+      line-height: 18px;
+      font-weight: bold;
+      color: $gray-900;
+    }
+
+    .date {
+      grid-column: 2;
+      padding-left: 10px;
+      font-family: $font-family-base;
+      font-size: 10px;
+      line-height: 15px;
+      color: $gray-900;
+    }
+  }
+}
