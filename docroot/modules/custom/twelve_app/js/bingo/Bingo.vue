@@ -60,7 +60,10 @@
       ExerciseList,
       Spinner,
     },
-    props: ['debug', 'error_message', 'game_nid', 'progress_nid', 'exercise_list', 'finished_exercises'],
+    props: [
+      'debug', 'error_message', 'game_nid', 'progress_nid',
+      'exercise_list', 'finished_exercises', 'badges_list'
+    ],
     data: function() {
       twelve.local_storage.save_today_progress(this.$props.progress_nid, this.$props.finished_exercises);
       let bingo = twelve.bingo.search(this.exercise_list, this.$props.finished_exercises, []);
@@ -136,6 +139,7 @@
         let bingo = twelve.bingo.search(this.exercise_list, this.$props.finished_exercises, this.bingoBools);
         this.bingoBools = bingo.bingo_bools;
         if (bingo.full_bingo) {
+          twelve.user.badge.create_full_bingo(this.$props.badges_list, this.$props.game_nid);
           this.badgeType = 'full-bingo';
           this.badgeText = 'You earned a Black Out Badge!';
           this.badgeUrl = '/challenges';
@@ -143,6 +147,7 @@
           this.badgeModalVisible = true;
           this.onExerciseClosed();
         } else if (bingo.found_new_bingo) {
+          twelve.user.badge.create_bingo(this.$props.badges_list, this.$props.game_nid);
           this.badgeType = 'bingo';
           this.badgeUrl = '';
           this.badgeText = 'You earned a Bingo Badge!';

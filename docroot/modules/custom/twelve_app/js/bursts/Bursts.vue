@@ -36,7 +36,10 @@
 
   export default {
     components: {Greeting, ExerciseModal, ExerciseList, Spinner },
-    props: ['debug', 'error_message', 'game_nid', 'progress_nid', 'exercise_list', 'finished_exercises', 'completion_url'],
+    props: [
+      'debug', 'error_message', 'game_nid', 'progress_nid',
+      'exercise_list', 'finished_exercises', 'completion_url', 'badges_list'
+    ],
     data() {
       return {
         currentExercise: {},

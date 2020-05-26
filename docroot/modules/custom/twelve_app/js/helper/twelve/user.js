@@ -1,4 +1,5 @@
 import local_storage from "./local_storage";
+import badge from "./user/badge";
 
 /**
  *
@@ -27,5 +28,6 @@ function is_guest() {
 export default {
   validate_name,
   get_active_player_name,
-  is_guest
+  is_guest,
+  badge
 }

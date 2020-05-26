@@ -14,6 +14,7 @@ function twelve_app_theme() {
         'completion_url' => '',
         'progress_nid' => '',
         'finished_items' => [],
+        'badges' => []
       ],
     ],
     'puzzle' => [
@@ -24,6 +25,7 @@ function twelve_app_theme() {
         'exercises' => [],
         'progress_nid' => '',
         'finished_items' => [],
+        'badges' => []
       ],
     ],
     'bingo' => [
@@ -34,6 +36,7 @@ function twelve_app_theme() {
         'exercises' => [],
         'progress_nid' => '',
         'finished_items' => [],
+        'badges' => []
       ],
     ],
   ];

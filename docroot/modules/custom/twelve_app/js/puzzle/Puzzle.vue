@@ -41,7 +41,10 @@
       ExerciseList,
       Spinner,
     },
-    props: ['debug', 'error_message', 'game_nid', 'progress_nid', 'exercise_list', 'finished_exercises', 'completion_url'],
+    props: [
+      'debug', 'error_message', 'game_nid', 'progress_nid', 'exercise_list',
+      'finished_exercises', 'completion_url', 'badges_list'
+    ],
     data() {
       twelve.local_storage.save_today_progress(this.$props.progress_nid, this.$props.finished_exercises);
       return {
@@ -96,6 +99,10 @@
           title: 'Hooray, you have finished your exercise!',
           text: 'Now, lets have some rest.'
         });
+
+        if (this.fullyCompletedTodayExercises()) {
+          twelve.user.badge.create_hidden_image(this.$props.badges_list, this.$props.game_nid);
+        }
       },
       beep: function () {
         let snd = new Audio('/modules/custom/twelve_app/assets/disco_alarm.wav');

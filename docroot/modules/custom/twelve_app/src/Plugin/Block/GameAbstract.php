@@ -135,6 +135,7 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
       '#exercises' => $this->prepareExercisesArray(),
       '#progress_nid' => $this->getUserProgressNid(),
       '#finished_items' => $this->getFinishedExercisesNids(),
+      '#badges' => $this->getBadgesList(),
       '#cache' => [
         'tags' => $this->getCacheTags(),
         'contexts' => $this->getCacheContexts(),
@@ -168,6 +169,20 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
    * @return array
    */
   protected abstract function prepareExercisesArray();
+
+  function getBadgesList() {
+    $terms_array = [];
+    $vid = 'badges';
+    $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+    foreach ($terms as $term) {
+      $machine_name = str_replace(' ','-', strtolower($term->name));
+      $terms_array[$machine_name] = [
+        'id'   => $term->tid,
+        'name' => $term->name
+      ];
+    }
+    return $terms_array;
+  }
 
   /**
    * Helper method that finds results for the current user.
