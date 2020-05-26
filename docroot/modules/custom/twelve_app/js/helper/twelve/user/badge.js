@@ -1,18 +1,43 @@
 import axios from 'axios';
 import local_storage from '../local_storage';
 
+/**
+ * Create bingo badge
+ *
+ * @param badges_list
+ * @param game_nid
+ */
 function create_bingo(badges_list, game_nid) {
   create('bingo', badges_list, game_nid);
 }
 
+/**
+ * Create full bingo badge
+ *
+ * @param badges_list
+ * @param game_nid
+ */
 function create_full_bingo(badges_list, game_nid) {
   create('blackout-bingo', badges_list, game_nid);
 }
 
+/**
+ * Create hidden image badge
+ *
+ * @param badges_list
+ * @param game_nid
+ */
 function create_hidden_image(badges_list, game_nid) {
   create('hidden-picture', badges_list, game_nid);
 }
 
+/**
+ * Create badge with provided type
+ *
+ * @param badge_type
+ * @param badges_list
+ * @param game_nid
+ */
 function create(badge_type, badges_list, game_nid) {
   let local_storage_progress_id = local_storage.get_progress_nid(game_nid);
 
