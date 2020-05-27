@@ -34,6 +34,12 @@ class Dashboard extends ControllerBase {
     );
   }
 
+  /**
+   * Render method for /user/{user}/achievements
+   *
+   * @param \Drupal\user\UserInterface $user
+   * @return array
+   */
   public function getUserAchievements(UserInterface $user) {
     return [
       '#theme' => 'user-achievements',
@@ -42,6 +48,12 @@ class Dashboard extends ControllerBase {
     ];
   }
 
+  /**
+   * Render method for /user/{user}/art-collection
+   *
+   * @param \Drupal\user\UserInterface $user
+   * @return array
+   */
   public function getUserArtCollection(UserInterface $user) {
     return [
       '#theme' => 'user-art-collection',
