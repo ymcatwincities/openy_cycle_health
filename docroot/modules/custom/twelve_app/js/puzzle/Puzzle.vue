@@ -75,6 +75,7 @@
         this.exerciseModalVisible = false;
 
         if (this.fullyCompletedTodayExercises()) {
+          BadgeHelper.create_hidden_image(this.$props.game_nid);
           window.location = window.location.origin + '/user';
         }
       },
@@ -91,8 +92,6 @@
           this.$props.progress_nid,
           this.$props.finished_exercises,
         );
-
-        BadgeHelper.create_hidden_image(this.$props.game_nid);
 
         this.$notify({
           group: 'twelve_app',
