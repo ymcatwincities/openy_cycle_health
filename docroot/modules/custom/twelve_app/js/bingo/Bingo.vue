@@ -50,6 +50,7 @@
   import Spinner from '../components/Spinner.vue'
   import twelve from '../helper/twelve';
   import BadgeModal from "../components/BadgeModal.vue";
+  import BadgeHelper from '../helper/twelve/user/badge';
 
   export default {
     components: {
@@ -142,6 +143,7 @@
           this.badgeButtonText = 'FIND MORE BURSTS';
           this.badgeModalVisible = true;
           this.onExerciseClosed();
+          BadgeHelper.create_full_bingo(this.$props.game_nid);
         } else if (bingo.found_new_bingo) {
           this.badgeType = 'bingo';
           this.badgeUrl = '';
@@ -149,6 +151,7 @@
           this.badgeButtonText = 'GO FOR A BLOCKOUT';
           this.badgeModalVisible = true;
           this.onExerciseClosed();
+          BadgeHelper.create_bingo(this.$props.game_nid);
         }
       },
 

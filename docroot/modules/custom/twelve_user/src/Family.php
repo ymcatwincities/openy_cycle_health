@@ -15,6 +15,11 @@ use Drupal\user\Entity\User;
 class Family {
 
   /**
+   * Badge vocabulary.
+   */
+  const BADGE_VID = 'badges';
+
+  /**
    * Current user service instance.
    *
    * @var AccountProxyInterface
@@ -32,6 +37,7 @@ class Family {
    * @var int
    */
   protected $_subAccountId = null;
+
 
   protected $_badge_types = null;
 
@@ -265,24 +271,29 @@ class Family {
   }
 
   /**
-   * Return list of badge taxonomy terms
-   * @return array|null
+   * Get badge types from vocabulary.
+   *
+   * @return |array
    * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function getBadgeTypes() {
+
     if (!is_null($this->_badge_types)) {
       return $this->_badge_types;
     }
 
-    $vid = 'badges';
+    $vid = self::BADGE_VID;
     $this->_badge_types = $this->entity_type_manager->getStorage('taxonomy_term')->loadTree($vid);
+
     return $this->_badge_types;
   }
 
   /**
-   * Load User Recent Badges Ids
+   *
+   * Helper function to get last achieved badges.
    * @param $amount
+   *
    * @return mixed
    */
   protected function getUserRecentBadgesIds($amount) {
