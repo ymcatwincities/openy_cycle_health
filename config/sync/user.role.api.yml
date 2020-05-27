@@ -8,7 +8,9 @@ weight: 5
 is_admin: null
 permissions:
   - 'create 12_bursts_result content'
+  - 'create badge content'
   - 'create family_member content'
   - 'delete own family_member content'
   - 'edit own 12_bursts_result content'
+  - 'edit own badge content'
   - 'edit own family_member content'
