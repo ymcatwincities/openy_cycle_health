@@ -1,8 +1,13 @@
 .user-statistics {
+  padding: 20px 15px 40px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  @include media-breakpoint-up(md) {
+    grid-template-columns: repeat(4, 1fr);
+    padding-left: 0;
+    padding-right: 0;
+  }
   grid-gap: 20px;
-  padding: 20px 0 40px;
 
   > div {
     background-color: $light-white;

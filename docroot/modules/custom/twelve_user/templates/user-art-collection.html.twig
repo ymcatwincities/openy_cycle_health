@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Theme to render user achievements.
+ *
+ * This template is used when viewing a registered user's page,
+ * e.g., example.com/user/123/achievements. 123 being the user's ID.
+ *
+ * Available variables:
+ * - badges_list
+ * - uid
+ */
+#}
+
+<div class="profile">
+  <div class="container">
+    {{ drupal_block('greeting_block', [], FALSE) }}
+    {{ drupal_block('user_account_menu_block', [], FALSE) }}
+  </div>
+</div>
+
+<div class="user-art-collection container">
+  <div class="header">
+    <a class="fas fa-arrow-left" href="/user/{{ uid }}"></a> {{ 'My Collection'|t  }}
+  </div>
+
+  {% if badges_list is empty %}
+    <div class="empty">
+      {{ 'Collection currently is empty.'|t  }}
+    </div>
+  {% else %}
+    <div class="list">
+    {% for badge in badges_list %}
+      <div class="list-item">
+        {% set field_media = badge.field_results.entity.field_when.entity.field_content.entity.field_prgf_image %}
+        <div class="image"><img
+            src="{{ field_media.entity.field_media_image.entity.fileuri | image_style('medium') }}"
+            alt="{{ field_media.entity.thumbnail.alt }}"
+          /></div>
+        <div class="badge-name">{{ field_media.entity.name.value }}</div>
+        <div class="game-name">{{ badge.field_results.entity.field_when.entity.title.value }}</div>
+        <div class="date">{{ badge.createdtime|format_date('medium') }}</div>
+      </div>
+    {% endfor %}
+    </div>
+  {% endif %}
+
+</div>
