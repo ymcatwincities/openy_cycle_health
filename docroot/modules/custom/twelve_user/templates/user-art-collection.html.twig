@@ -21,7 +21,7 @@
 
 <div class="user-art-collection container">
   <div class="header">
-    <a class="fas fa-arrow-left" href="/user/{{ uid }}"></a> {{ 'My Collection'|t  }}
+    <a class="fas fa-arrow-left" href="{{  path('entity.user.canonical', {'user': uid}) }}"></a> {{ 'My Collection'|t  }}
   </div>
 
   {% if badges_list is empty %}
