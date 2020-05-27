@@ -1,5 +1,4 @@
 <?php
-
 namespace Drupal\twelve_user;
 
 use Drupal\Core\Database\Connection;
@@ -114,9 +113,11 @@ class Family {
     $query->leftJoin('node_revision', NULL, 'node.vid = node_revision.vid');
     $query->where('node_revision.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
 
+    $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id=fin_items.entity_id');
     if ($sub_account_id = $this->getSubAccountId()) {
-      $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id=fin_items.entity_id');
       $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
+    } else {
+      $query->where('su.field_sub_user_target_id is NULL');
     }
 
     return $query->countQuery()->execute()->fetchField();
@@ -137,6 +138,13 @@ class Family {
     $query->orderBy('date_formatted', 'DESC');
     $query->addExpression('DATE_FORMAT(FROM_UNIXTIME(nr.revision_timestamp), \'%e %b %Y\')', 'date_formatted');
     $query->groupBy('date_formatted');
+
+    $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id=node.nid');
+    if ($sub_account_id = $this->getSubAccountId()) {
+      $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
+    } else {
+      $query->where('su.field_sub_user_target_id is NULL');
+    }
 
     $date_list = $query->execute()->fetchCol();
 
@@ -184,6 +192,10 @@ class Family {
    * @return int
    */
   public function hiddenImageBadgeCount() {
+    return count($this->getHiddenImageBadgeIds());
+  }
+
+  public function getHiddenImageBadgeIds() {
     $tid = null;
     $badge_types = $this->getBadgeTypes();
     foreach ($badge_types as $term) {
@@ -204,14 +216,23 @@ class Family {
     $query->where('nr.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
     $query->where('term.tid = :tid', [':tid' => $tid]);
 
+    $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id=t1.entity_id');
     if ($sub_account_id = $this->getSubAccountId()) {
-      $query->leftJoin('node__field_sub_user', 'su',
-        'su.entity_id=t1.entity_id'
-      );
       $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
+    } else {
+      $query->where('su.field_sub_user_target_id is NULL');
     }
+    $query->fields('t1', ['entity_id']);
 
-    return $query->countQuery()->execute()->fetchField();
+    return $query->execute()->fetchCol();
+  }
+
+  /**
+   * @return \Drupal\Core\Entity\EntityBase[]|\Drupal\Core\Entity\EntityInterface[]
+   */
+  function getUserHiddenImageBadges() {
+    $ids = $this->getHiddenImageBadgeIds();
+    return Node::loadMultiple($ids);
   }
 
   /**
@@ -239,11 +260,11 @@ class Family {
     $query->where('nr.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
     $query->where('term.tid = :tid', [':tid' => $tid]);
 
+    $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id=t1.entity_id');
     if ($sub_account_id = $this->getSubAccountId()) {
-      $query->leftJoin('node__field_sub_user', 'su',
-        'su.entity_id=t1.entity_id'
-      );
       $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
+    } else {
+      $query->where('su.field_sub_user_target_id is NULL');
     }
 
     return $query->countQuery()->execute()->fetchField();
@@ -290,7 +311,9 @@ class Family {
     }
 
     $query->fields('t1', ['entity_id']);
-    $query->range(0, $amount);
+    if ($amount > 0) {
+      $query->range(0, $amount);
+    }
     $query->orderBy('t1.entity_id', 'DESC');
 
     return $query->execute()->fetchCol();
@@ -300,7 +323,7 @@ class Family {
    * @param $amount
    * @return \Drupal\Core\Entity\EntityBase[]|\Drupal\Core\Entity\EntityInterface[]
    */
-  function getUserRecentsBadges($amount) {
+  function getUserRecentsBadges($amount = NULL) {
     $ids = $this->getUserRecentBadgesIds($amount);
     return Node::loadMultiple($ids);
   }

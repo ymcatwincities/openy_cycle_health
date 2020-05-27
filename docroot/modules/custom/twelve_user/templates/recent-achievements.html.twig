@@ -14,8 +14,14 @@
 <div class="container">
   <div class="recent-achievements">
     <div class="header">
-      RECENT ACHIEVEMENTS
+      {{ 'RECENT ACHIEVEMENTS'|t  }}
     </div>
+
+    {% if badges_list is empty %}
+    <div class="empty">
+      {{ 'No badges yet.'|t  }}
+    </div>
+    {% endif %}
 
     {% for badge in badges_list %}
     <div class="list-item">
@@ -25,5 +31,11 @@
       <div class="date">{{ badge.createdtime|format_date('medium') }}</div>
     </div>
     {% endfor %}
+
+    {% if badges_list is not empty %}
+      <div class="all_badges">
+        <a href="{{  path('twelve_user.achievements', {'user': uid}) }}">{{ 'All My Achievements'|t  }}</a>
+      </div>
+    {% endif %}
   </div>
 </div>

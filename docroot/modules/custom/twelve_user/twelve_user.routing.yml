@@ -30,3 +30,26 @@ twelve_user.family_member_edit:
   requirements:
     _user_is_logged_in: 'TRUE'
 
+twelve_user.achievements:
+  path: '/user/{user}/achievements'
+  defaults:
+    _controller: '\Drupal\twelve_user\Controller\Dashboard::getUserAchievements'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      user:
+        type: entity:user
+    no_cache: TRUE
+
+twelve_user.art_collection:
+  path: '/user/{user}/art-collection'
+  defaults:
+    _controller: '\Drupal\twelve_user\Controller\Dashboard::getUserArtCollection'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    parameters:
+      user:
+        type: entity:user
+    no_cache: TRUE

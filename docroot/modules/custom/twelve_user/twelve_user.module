@@ -23,6 +23,18 @@ function twelve_user_theme() {
         'badges_list' => [],
         'uid' => ''
       ]
+    ],
+    'user-achievements' => [
+      'variables' => [
+        'badges_list' => [],
+        'uid' => ''
+      ]
+    ],
+    'user-art-collection' => [
+      'variables' => [
+        'badges_list' => [],
+        'uid' => ''
+      ]
     ]
   ];
 }
