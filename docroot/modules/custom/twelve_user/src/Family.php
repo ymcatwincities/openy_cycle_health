@@ -298,24 +298,23 @@ class Family {
    * @return mixed
    */
   protected function getUserRecentBadgesIds($amount) {
-    $query = $this->database->select('node__field_results', 't1');
-    $query->leftJoin('node__field_badge_type', 't2', 't1.entity_id = t2.entity_id');
-    $query->leftJoin('node', 'n', 'n.nid=t1.entity_id');
-    $query->leftJoin('node_revision', 'nr', 'n.vid = nr.vid');
-    $query->where('nr.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
+    $query = $this->database->select('node__field_results', 'results');
+    $query->innerJoin('node__field_badge_type', 'badge', 'results.entity_id = badge.entity_id');
+    $query->innerJoin('node_field_data', 'n', 'n.nid = results.entity_id');
+    $query->where('n.uid = :uid', [':uid' => $this->currentUser->id()]);
 
     if ($sub_account_id = $this->getSubAccountId()) {
       $query->leftJoin('node__field_sub_user', 'su',
-        'su.entity_id=t1.entity_id'
+        'su.entity_id=results.field_results_target_id'
       );
       $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
     }
 
-    $query->fields('t1', ['entity_id']);
+    $query->fields('results', ['entity_id']);
     if ($amount > 0) {
       $query->range(0, $amount);
     }
-    $query->orderBy('t1.entity_id', 'DESC');
+    $query->orderBy('results.entity_id', 'DESC');
 
     return $query->execute()->fetchCol();
   }
