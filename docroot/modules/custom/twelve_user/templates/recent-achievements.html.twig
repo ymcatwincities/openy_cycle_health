@@ -34,7 +34,7 @@
 
     {% if badges_list is not empty %}
       <div class="all_badges">
-        <a href="/user/{{ uid }}/achievements">{{ 'All My Achievements'|t  }}</a>
+        <a href="{{  path('twelve_user.achievements', {'user': uid}) }}">{{ 'All My Achievements'|t  }}</a>
       </div>
     {% endif %}
   </div>
