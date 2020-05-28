@@ -113,7 +113,7 @@ class Family {
     $query->innerJoin('node_field_data', 'n', 'n.nid = fin_items.entity_id');
     $query->innerJoin('node__field_when', 'w', 'w.entity_id=fin_items.entity_id');
     $query->innerJoin('paragraphs_item_field_data', 'p', 'p.parent_id = w.field_when_target_id');
-    $query->innerJoin('node__field_sub_user', 'su', 'su.entity_id = fin_items.entity_id');
+    $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id = fin_items.entity_id');
     $query->where('n.uid = :uid', [':uid' => $this->currentUser->id()]);
     $query->where('p.type = :type', [':type' => '12_bursts_container']);
     $query->where('p.parent_type = :ptype', [':ptype' => 'node']);
