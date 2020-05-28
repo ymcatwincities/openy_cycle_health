@@ -107,18 +107,25 @@ class Family {
    * @return int
    */
   public function lifeTimeBurstsCount() {
+
     $query = $this->database->select('node__field_finished_items', 'fin_items');
     $query->fields('fin_items', ['field_finished_items_target_id']);
-    $query->leftJoin('node', NULL, 'fin_items.entity_id = node.nid');
-    $query->leftJoin('node_revision', NULL, 'node.vid = node_revision.vid');
-    $query->where('node_revision.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
-
-    $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id=fin_items.entity_id');
+    $query->innerJoin('node_field_data', 'n', 'n.nid = fin_items.entity_id');
+    $query->innerJoin('node__field_when', 'w', 'w.entity_id=fin_items.entity_id');
+    $query->innerJoin('paragraphs_item_field_data', 'p', 'p.parent_id = w.field_when_target_id');
+    $query->innerJoin('node__field_sub_user', 'su', 'su.entity_id = fin_items.entity_id');
+    $query->where('n.uid = :uid', [':uid' => $this->currentUser->id()]);
+    $query->where('p.type = :type', [':type' => '12_bursts_container']);
+    $query->where('p.parent_type = :ptype', [':ptype' => 'node']);
+    $query->where('p.parent_field_name = :field_name', [':field_name' => 'field_content']);
+    $query->fields('n', ['nid', 'title']);
     if ($sub_account_id = $this->getSubAccountId()) {
       $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
     } else {
       $query->where('su.field_sub_user_target_id is NULL');
     }
+    $query->groupBy('n.nid');
+    $query->groupBy('fin_items.field_finished_items_target_id');
 
     return $query->countQuery()->execute()->fetchField();
   }
@@ -303,11 +310,14 @@ class Family {
     $query->innerJoin('node_field_data', 'n', 'n.nid = results.entity_id');
     $query->where('n.uid = :uid', [':uid' => $this->currentUser->id()]);
 
+    $query->leftJoin('node__field_sub_user', 'su',
+      'su.entity_id=results.field_results_target_id'
+    );
+
     if ($sub_account_id = $this->getSubAccountId()) {
-      $query->leftJoin('node__field_sub_user', 'su',
-        'su.entity_id=results.field_results_target_id'
-      );
       $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
+    } else {
+      $query->where('su.field_sub_user_target_id is NULL');
     }
 
     $query->fields('results', ['entity_id']);
