@@ -11,8 +11,7 @@
  * - uid
  */
 #}
-<div class="container">
-  <div class="recent-achievements">
+<div class="recent-achievements container">
     <div class="header">
       {{ 'RECENT ACHIEVEMENTS'|t  }}
     </div>
@@ -23,6 +22,7 @@
     </div>
     {% endif %}
 
+    <div class="list">
     {% for badge in badges_list %}
     <div class="list-item">
       <div class="image {{ badge.field_badge_type.entity.name.value | replace({' ':'-'})| lower }}"></div>
@@ -31,11 +31,11 @@
       <div class="date">{{ badge.createdtime|format_date('medium') }}</div>
     </div>
     {% endfor %}
+    </div>
 
     {% if badges_list is not empty %}
       <div class="all_badges">
         <a href="{{  path('twelve_user.achievements', {'user': uid}) }}">{{ 'All My Achievements'|t  }}</a>
       </div>
     {% endif %}
-  </div>
 </div>

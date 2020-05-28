@@ -1,15 +1,16 @@
 .recent-achievements {
-  min-width: 340px;
-  max-width: 540px;
-  float: left;
+  @include media-breakpoint-up(md) {
+    padding-left: 0;
+    padding-right: 0;
+  }
   margin-bottom: 50px;
 
   .header {
     @include cachet();
     padding-bottom: 20px;
-    font-size: 18px/27px;
+    font-size: 18px;
+    line-height: 27px;
     color: $gray-400;
-    text-align: center;
   }
 
   .empty {
@@ -20,6 +21,26 @@
   }
 
   @import "badge_list/item";
+
+  .list {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    grid-gap: 15px;
+
+    .list-item {
+      margin: 0;
+    }
+  }
+
 
   .all_badges {
     padding: 20px;
