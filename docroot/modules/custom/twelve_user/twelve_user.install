@@ -2,10 +2,33 @@
 
 use Drupal\taxonomy\Entity\Term;
 
+
+/**
+ * Create Badges terms during release.
+ */
+function twelve_user_update_8004() {
+
+  $term = Term::create([
+    'name' => 'Bingo',
+    'vid' => 'badges',
+  ])->save();
+
+  $term = Term::create([
+    'name' => 'Blackout Bingo',
+    'vid' => 'badges',
+  ])->save();
+
+  $term = Term::create([
+    'name' => 'Hidden Picture',
+    'vid' => 'badges',
+  ])->save();
+
+}
+
 /**
  * Create badges for existing games
  */
-function twelve_user_update_8002() {
+function twelve_user_update_8005() {
   \Drupal::database()->query('SET @mode := @@SESSION.sql_mode;');
   \Drupal::database()->query('SET SESSION sql_mode = \'\';');
   $query = \Drupal::database()->select('node__field_finished_items', 't1', ['strict' => false]);
@@ -68,26 +91,4 @@ function twelve_user_update_8002() {
       }
     }
   }
-}
-
-/**
- * Create Badges terms during release.
- */
-function twelve_user_update_8004() {
-
-  $term = Term::create([
-    'name' => 'Bingo',
-    'vid' => 'badges',
-  ])->save();
-
-  $term = Term::create([
-    'name' => 'Blackout Bingo',
-    'vid' => 'badges',
-  ])->save();
-
-  $term = Term::create([
-    'name' => 'Hidden Picture',
-    'vid' => 'badges',
-  ])->save();
-
 }

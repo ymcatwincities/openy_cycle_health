@@ -124,6 +124,8 @@ class Family {
     } else {
       $query->where('su.field_sub_user_target_id is NULL');
     }
+    $query->groupBy('n.nid');
+    $query->groupBy('fin_items.field_finished_items_target_id');
 
     return $query->countQuery()->execute()->fetchField();
   }
