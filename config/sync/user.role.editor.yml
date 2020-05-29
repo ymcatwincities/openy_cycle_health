@@ -29,6 +29,7 @@ permissions:
   - 'administer taxonomy'
   - 'create alert content'
   - 'create announcement content'
+  - 'create badge content'
   - 'create blog content'
   - 'create blog_post content'
   - 'create branch content'

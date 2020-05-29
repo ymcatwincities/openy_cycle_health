@@ -24,8 +24,6 @@ function create_hidden_image(game_nid) {
 
 function create(game_nid, badge_type) {
 
-  console.log('ping');
-
   let local_storage_progress_id = local_storage.get_progress_nid(game_nid);
 
   let badge_type_id = '';

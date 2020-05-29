@@ -107,18 +107,25 @@ class Family {
    * @return int
    */
   public function lifeTimeBurstsCount() {
+
     $query = $this->database->select('node__field_finished_items', 'fin_items');
     $query->fields('fin_items', ['field_finished_items_target_id']);
-    $query->leftJoin('node', NULL, 'fin_items.entity_id = node.nid');
-    $query->leftJoin('node_revision', NULL, 'node.vid = node_revision.vid');
-    $query->where('node_revision.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
-
-    $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id=fin_items.entity_id');
+    $query->innerJoin('node_field_data', 'n', 'n.nid = fin_items.entity_id');
+    $query->innerJoin('node__field_when', 'w', 'w.entity_id=fin_items.entity_id');
+    $query->innerJoin('paragraphs_item_field_data', 'p', 'p.parent_id = w.field_when_target_id');
+    $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id = fin_items.entity_id');
+    $query->where('n.uid = :uid', [':uid' => $this->currentUser->id()]);
+    $query->where('p.type = :type', [':type' => '12_bursts_container']);
+    $query->where('p.parent_type = :ptype', [':ptype' => 'node']);
+    $query->where('p.parent_field_name = :field_name', [':field_name' => 'field_content']);
+    $query->fields('n', ['nid', 'title']);
     if ($sub_account_id = $this->getSubAccountId()) {
       $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
     } else {
       $query->where('su.field_sub_user_target_id is NULL');
     }
+    $query->groupBy('n.nid');
+    $query->groupBy('fin_items.field_finished_items_target_id');
 
     return $query->countQuery()->execute()->fetchField();
   }
@@ -188,43 +195,25 @@ class Family {
   }
 
   /**
-   * Returns hiddgen image badge count
+   * Get count of hidden image badges.
+   *
    * @return int
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function hiddenImageBadgeCount() {
     return count($this->getHiddenImageBadgeIds());
   }
 
+  /**
+   * Get list of hidden picture badges
+   *
+   * @return int
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
   public function getHiddenImageBadgeIds() {
-    $tid = null;
-    $badge_types = $this->getBadgeTypes();
-    foreach ($badge_types as $term) {
-      if ($term->name == 'Hidden Picture') {
-        $tid = $term->tid;
-      }
-    }
-
-    if (is_null($tid)) {
-      return 0;
-    }
-
-    $query = $this->database->select('node__field_results', 't1');
-    $query->leftJoin('node__field_badge_type', 't2', 't1.entity_id = t2.entity_id');
-    $query->leftJoin('node', 'n', 'n.nid=t1.entity_id');
-    $query->leftJoin('node_revision', 'nr', 'n.vid = nr.vid');
-    $query->leftJoin('taxonomy_term_field_data', 'term', 'term.tid = t2.field_badge_type_target_id');
-    $query->where('nr.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
-    $query->where('term.tid = :tid', [':tid' => $tid]);
-
-    $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id=t1.entity_id');
-    if ($sub_account_id = $this->getSubAccountId()) {
-      $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
-    } else {
-      $query->where('su.field_sub_user_target_id is NULL');
-    }
-    $query->fields('t1', ['entity_id']);
-
-    return $query->execute()->fetchCol();
+     return $this->badgeListQuery('Hidden Picture');
   }
 
   /**
@@ -232,18 +221,31 @@ class Family {
    */
   function getUserHiddenImageBadges() {
     $ids = $this->getHiddenImageBadgeIds();
-    return Node::loadMultiple($ids);
+    $nids = [];
+    foreach ($ids as $id_arr) {
+      $nids[] = $id_arr->nid;
+    }
+
+    if (empty($nids)) {
+      return [];
+    }
+
+    return Node::loadMultiple($nids);
   }
 
   /**
-   * Returns bingo badge count
+   * @param $name
+   *
    * @return int
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  public function bingoBadgeCount() {
+  private function badgeListQuery($name) {
+
     $tid = null;
     $badge_types = $this->getBadgeTypes();
     foreach ($badge_types as $term) {
-      if ($term->name == 'Bingo') {
+      if ($term->name == $name) {
         $tid = $term->tid;
       }
     }
@@ -252,22 +254,28 @@ class Family {
       return 0;
     }
 
-    $query = $this->database->select('node__field_results', 't1');
-    $query->leftJoin('node__field_badge_type', 't2', 't1.entity_id = t2.entity_id');
-    $query->leftJoin('node', 'n', 'n.nid=t1.entity_id');
-    $query->leftJoin('node_revision', 'nr', 'n.vid = nr.vid');
-    $query->leftJoin('taxonomy_term_field_data', 'term', 'term.tid = t2.field_badge_type_target_id');
-    $query->where('nr.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
-    $query->where('term.tid = :tid', [':tid' => $tid]);
+    $query = $this->database->select('node__field_results', 'results');
+    $query->innerJoin('node__field_badge_type', 'badge', 'results.entity_id = badge.entity_id');
+    $query->innerJoin('node_field_data', 'n', 'n.nid=results.entity_id');
+    $query->where('n.uid = :uid', [':uid' => $this->currentUser->id()]);
+    $query->where('badge.field_badge_type_target_id = :tid', [':tid' => $tid]);
+    $query->fields('n', ['nid', 'title']);
 
-    $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id=t1.entity_id');
+    $query->leftJoin('node__field_sub_user', 'su', 'su.entity_id=results.field_results_target_id');
     if ($sub_account_id = $this->getSubAccountId()) {
       $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
     } else {
       $query->where('su.field_sub_user_target_id is NULL');
     }
+    return $query->execute()->fetchAllAssoc('nid');
+  }
 
-    return $query->countQuery()->execute()->fetchField();
+  /**
+   * Returns bingo badge count
+   * @return int
+   */
+  public function bingoBadgeCount() {
+    return count($this->badgeListQuery('Bingo'));
   }
 
   /**
@@ -297,24 +305,26 @@ class Family {
    * @return mixed
    */
   protected function getUserRecentBadgesIds($amount) {
-    $query = $this->database->select('node__field_results', 't1');
-    $query->leftJoin('node__field_badge_type', 't2', 't1.entity_id = t2.entity_id');
-    $query->leftJoin('node', 'n', 'n.nid=t1.entity_id');
-    $query->leftJoin('node_revision', 'nr', 'n.vid = nr.vid');
-    $query->where('nr.revision_uid = :uid', [':uid' => $this->currentUser->id()]);
+    $query = $this->database->select('node__field_results', 'results');
+    $query->innerJoin('node__field_badge_type', 'badge', 'results.entity_id = badge.entity_id');
+    $query->innerJoin('node_field_data', 'n', 'n.nid = results.entity_id');
+    $query->where('n.uid = :uid', [':uid' => $this->currentUser->id()]);
+
+    $query->leftJoin('node__field_sub_user', 'su',
+      'su.entity_id=results.field_results_target_id'
+    );
 
     if ($sub_account_id = $this->getSubAccountId()) {
-      $query->leftJoin('node__field_sub_user', 'su',
-        'su.entity_id=t1.entity_id'
-      );
       $query->where('su.field_sub_user_target_id=:suid', [':suid' => $sub_account_id]);
+    } else {
+      $query->where('su.field_sub_user_target_id is NULL');
     }
 
-    $query->fields('t1', ['entity_id']);
+    $query->fields('results', ['entity_id']);
     if ($amount > 0) {
       $query->range(0, $amount);
     }
-    $query->orderBy('t1.entity_id', 'DESC');
+    $query->orderBy('results.entity_id', 'DESC');
 
     return $query->execute()->fetchCol();
   }

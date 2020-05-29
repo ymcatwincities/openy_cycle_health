@@ -59,7 +59,7 @@ class RecentAchievementsBlock extends BlockBase implements ContainerFactoryPlugi
    * {@inheritdoc}
    */
   public function build() {
-    $streaks = $this->family->signInStreaks();
+
     return [
       '#theme' => 'recent-achievements',
       '#badges_list' => $this->family->getUserRecentsBadges(4),

@@ -25,6 +25,7 @@ permissions:
   - 'create activity content'
   - 'create alert content'
   - 'create announcement content'
+  - 'create badge content'
   - 'create blog_post content'
   - 'create branch content'
   - 'create camp content'
