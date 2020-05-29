@@ -30,7 +30,6 @@ function create(game_nid, badge_type) {
 
   if (badge_type in drupalSettings.badges) {
     badge_type_id = drupalSettings.badges[badge_type];
-    console.log(badge_type_id);
   } else {
     return;
   }
@@ -50,8 +49,6 @@ function create(game_nid, badge_type) {
     },
   };
 
-  console.log(data);
-
   axios({url: '/session/token'}).then(token_data => {
     axios({
       method: 'post',
@@ -61,7 +58,7 @@ function create(game_nid, badge_type) {
         "X-CSRF-Token": token_data.data
       },
     }).then(function (response) {
-      console.log(response);
+
     }).catch(function (error) {
       //@TODO Add error handler
     });
