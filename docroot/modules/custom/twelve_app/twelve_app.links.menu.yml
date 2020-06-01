@@ -19,3 +19,9 @@ openy_system.bingo_app_settings:
   route_name: twelve_app.bingo_settings
   weight: 202
 
+openy_system.seven_summits_app_settings:
+  title: 'Seven Summits'
+  description: 'Seven Summits App Settings'
+  parent: openy_system.openy
+  route_name: twelve_app.seven_summits_settings
+  weight: 202

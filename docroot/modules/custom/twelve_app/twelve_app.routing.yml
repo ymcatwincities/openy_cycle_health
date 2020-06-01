@@ -22,3 +22,10 @@ twelve_app.bingo_settings:
   requirements:
     _permission: 'administer content'
 
+twelve_app.seven_summits_settings:
+  path: '/admin/openy/seven_summits_app'
+  defaults:
+    _form: '\Drupal\twelve_app\Form\SevenSummitsSettingsForm'
+    _title: 'Seven Summits Settings'
+  requirements:
+    _permission: 'administer content'
