@@ -1,0 +1,26 @@
+uuid: 2445eaab-61e9-451e-940a-358983a665fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_geolocation
+    - paragraphs.paragraphs_type.mountain_schedule
+  module:
+    - datalayer
+    - geolocation
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_geolocation
+id: paragraph.mountain_schedule.field_geolocation
+field_name: field_geolocation
+entity_type: paragraph
+bundle: mountain_schedule
+label: Geolocation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geolocation

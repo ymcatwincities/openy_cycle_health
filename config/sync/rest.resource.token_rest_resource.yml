@@ -1,0 +1,20 @@
+uuid: d710ec64-9dc6-45d4-8a60-af3809cbd8f0
+langcode: en
+status: true
+dependencies:
+  module:
+    - hal
+    - jwt
+    - serialization
+    - twelve_user
+id: token_rest_resource
+plugin_id: token_rest_resource
+granularity: resource
+configuration:
+  methods:
+    - POST
+  formats:
+    - hal_json
+    - json
+  authentication:
+    - jwt_auth

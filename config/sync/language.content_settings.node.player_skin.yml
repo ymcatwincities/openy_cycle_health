@@ -1,0 +1,11 @@
+uuid: 0a82dc06-5d4b-47a3-84bb-c7675c536a23
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.player_skin
+id: node.player_skin
+target_entity_type_id: node
+target_bundle: player_skin
+default_langcode: site_default
+language_alterable: false

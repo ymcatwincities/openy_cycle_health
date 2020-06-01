@@ -1,0 +1,25 @@
+uuid: 2318d88d-4c3c-47e4-8461-5edc618c8a73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_jaket_color
+    - node.type.player_skin
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_jaket_color
+id: node.player_skin.field_jaket_color
+field_name: field_jaket_color
+entity_type: node
+bundle: player_skin
+label: 'Jaket color'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

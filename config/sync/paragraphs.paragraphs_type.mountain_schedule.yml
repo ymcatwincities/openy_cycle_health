@@ -1,0 +1,9 @@
+uuid: 689a0c1b-7719-421a-8a37-1da72c06a81d
+langcode: en
+status: true
+dependencies: {  }
+id: mountain_schedule
+label: 'Mountain schedule'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

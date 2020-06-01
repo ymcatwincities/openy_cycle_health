@@ -1,0 +1,24 @@
+uuid: 4eef64d3-85a3-4fc7-9390-3051ca49c592
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.7_summits_app.field_sevensummits
+    - paragraphs.paragraphs_type.7_summits_app
+  module:
+    - plugin
+id: paragraph.7_summits_app.default
+targetEntityType: paragraph
+bundle: 7_summits_app
+mode: default
+content:
+  field_sevensummits:
+    weight: -4
+    settings: {  }
+    third_party_settings: {  }
+    type: 'plugin_selector:plugin_select_list'
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

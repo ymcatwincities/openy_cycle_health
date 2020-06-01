@@ -1,0 +1,25 @@
+uuid: 08474e39-b210-463b-bb6d-0e33e81a41ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_country
+    - paragraphs.paragraphs_type.mountain_schedule
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_country
+id: paragraph.mountain_schedule.field_country
+field_name: field_country
+entity_type: paragraph
+bundle: mountain_schedule
+label: Country
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

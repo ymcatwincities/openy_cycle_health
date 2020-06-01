@@ -1,0 +1,9 @@
+uuid: 90117a0b-7557-4f58-a1e6-76403d137766
+langcode: en
+status: true
+dependencies: {  }
+id: 7_summits_app
+label: '7 Summits app'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

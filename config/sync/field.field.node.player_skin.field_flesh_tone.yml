@@ -1,0 +1,25 @@
+uuid: 78aa140e-fab0-46d3-ad77-b0cd9c4b3316
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_flesh_tone
+    - node.type.player_skin
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_flesh_tone
+id: node.player_skin.field_flesh_tone
+field_name: field_flesh_tone
+entity_type: node
+bundle: player_skin
+label: 'Flesh tone'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,85 @@
+uuid: 89d8085a-00ae-4246-8c07-f8755b87d0d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.mountain_schedule.field_continent
+    - field.field.paragraph.mountain_schedule.field_country
+    - field.field.paragraph.mountain_schedule.field_elevation
+    - field.field.paragraph.mountain_schedule.field_excercises
+    - field.field.paragraph.mountain_schedule.field_geolocation
+    - field.field.paragraph.mountain_schedule.field_prgf_description
+    - field.field.paragraph.mountain_schedule.field_prgf_images
+    - field.field.paragraph.mountain_schedule.field_range
+    - paragraphs.paragraphs_type.mountain_schedule
+  module:
+    - geolocation
+    - text
+id: paragraph.mountain_schedule.default
+targetEntityType: paragraph
+bundle: mountain_schedule
+mode: default
+content:
+  field_continent:
+    weight: 1
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_country:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_elevation:
+    weight: 4
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_excercises:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_geolocation:
+    weight: 7
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: geolocation_latlng
+    region: content
+  field_prgf_description:
+    weight: 5
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_prgf_images:
+    weight: 6
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_range:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

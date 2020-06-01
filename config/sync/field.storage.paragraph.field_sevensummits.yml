@@ -1,0 +1,19 @@
+uuid: bc4f12e7-3f6e-434b-9868-36fae583d05a
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - plugin
+id: paragraph.field_sevensummits
+field_name: field_sevensummits
+entity_type: paragraph
+type: 'plugin:block'
+settings: {  }
+module: plugin
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
