@@ -36,5 +36,15 @@ function twelve_app_theme() {
         'finished_items' => [],
       ],
     ],
+    'seven_summits' => [
+      'variables' => [
+        'debug' => '',
+        'error_message' => '',
+        'game_nid' => '',
+        'exercises' => [],
+        'progress_nid' => '',
+        'finished_items' => [],
+      ],
+    ],
   ];
 }

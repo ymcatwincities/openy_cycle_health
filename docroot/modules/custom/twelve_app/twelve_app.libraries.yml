@@ -27,3 +27,11 @@ bingo:
   dependencies:
     - openy_system/vue
     - twelve_app/common
+    -
+seven_summits:
+  version: 0.1
+  js:
+    dist/seven_summits.bundle.js: {minified: true}
+  dependencies:
+    - openy_system/vue
+    - twelve_app/common
