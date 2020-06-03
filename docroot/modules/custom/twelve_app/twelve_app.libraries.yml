@@ -37,11 +37,6 @@ seven_summits:
     - openy_system/vuex
     - twelve_app/vuex-persist
 
-vue-development:
-  version: 2.6.11
-  js:
-    https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js: { type: external, minified: true }
-
 vuex-persist:
   version: 2.2.0
   js:
