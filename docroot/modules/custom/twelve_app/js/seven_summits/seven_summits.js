@@ -1,15 +1,21 @@
 import Vue from 'vue';
-import SevenSummits from './SevenSummits.vue';
+import Sevensummits from './Sevensummits.vue';
 import Notifications from 'vue-notification';
-import 'babel-polyfill';
+import router from './router';
+import store from './store';
 
 Vue.use(Notifications);
 
 new Vue({
   delimiters: ['[{', '}]'],
+  router,
+  store,
   components: {
-    SevenSummits
+    Sevensummits
   },
 }).$mount('#seven_summits_app');
 
-Vue.config.devtools = true;
+if (process.env.DEBUG) {
+  console.log('Vue devtools enabled.');
+  Vue.config.devtools = true;
+}

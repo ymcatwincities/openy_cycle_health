@@ -40,24 +40,79 @@ class SevenSummits extends GameAbstract {
    * {@inheritdoc}
    */
   public function build() {
-    return array_merge(parent::build(), [
+    $badges = $this->family->getBadgeTypes();
+    $badge_list = [];
+    foreach ($badges as $badge) {
+      $badge_list[$badge->name] = $badge->tid;
+    }
+
+    return [
       '#theme' => 'seven_summits',
-    ]);
+      '#debug' => $this->isUserAdmin(),
+      '#cache' => [
+        'max-age' => 0,
+      ],
+      '#summits' => $this->getSummits(),
+      '#attached' => [
+        'drupalSettings' => [
+          'username' => $this->family->getActivePlayerName(),
+          'sub_account_id' => $this->family->getSubAccountId(),
+          'badges' => $badge_list,
+        ],
+      ],
+    ];
   }
 
   /**
-   * {@inheritdoc}
+   * Returns seven summits information
+   * @return array
    */
-  protected function prepareExercisesArray() {
+  function getSummits() {
+    $games = $this->configFactory
+      ->get($this->getGameConfigurationName())
+      ->get('items');
+
+    $summits = [];
+    foreach ($games as $game) {
+      $paragraph = $this->findGameExercisesParagraph($game['node_id']);
+
+      $finished_exercises = [];
+      if ($user_progress_node = $this->getUserProgressNode($game['node_id'])) {
+        $finished_exercises = $this->getFinishedExercisesNids($user_progress_node);
+      }
+      $summit = [
+        'game_id' => $game['node_id'],
+        'progress_nid' => !is_null($user_progress_node) ? $user_progress_node->id() : 0,
+        'exercises' => $this->prepareExercisesArray($paragraph),
+        'finished_exercises' => $finished_exercises,
+        'mountain' => $paragraph->field_mountain->value,
+        'continent' => $paragraph->field_continent->value,
+        'country' => $paragraph->field_country->value,
+        'range' => $paragraph->field_range->value,
+        'elevation' => $paragraph->field_elevation->value,
+        'description' => $paragraph->field_prgf_description->value,
+        'geolocation' => $paragraph->field_geolocation->value,
+        'images'
+      ];
+
+      $summits[] = $summit;
+    }
+
+    return $summits;
+  }
+
+  /**
+   * @inheritDoc
+   */
+  function prepareExercisesArray($game_paragraph = NULL) {
     $exercises_array = [];
-    $paragraph = $this->findGameExercisesParagraph();
-    if (empty($paragraph)) {
+    if (empty($game_paragraph)) {
       return $exercises_array;
     }
 
     $index_number = 1;
-    foreach ($paragraph->field_excercises as $exercise_reference) {
-      /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $puzzle_part_reference */
+    foreach ($game_paragraph->field_excercises as $exercise_reference) {
+      /** @var \Drupal\Core\Field\Plugin\Field\FieldType\EntityReferenceItem $exercise_reference */
       $exercise_entity = $exercise_reference->entity;
       $exercises_array[] = [
         'label' => $exercise_entity->title->value,
@@ -71,17 +126,4 @@ class SevenSummits extends GameAbstract {
 
     return $exercises_array;
   }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getCacheTags() {
-    $user_id = $this->currentUser->getAccount()->id();
-
-    return Cache::mergeTags(parent::getCacheTags(), [
-      'user_id' . $user_id,
-      'finished_items' . count($this->getFinishedExercisesNids()),
-    ]);
-  }
-
 }

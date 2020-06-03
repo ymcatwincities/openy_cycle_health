@@ -40,11 +40,27 @@ function twelve_app_theme() {
       'variables' => [
         'debug' => '',
         'error_message' => '',
-        'game_nid' => '',
-        'exercises' => [],
-        'progress_nid' => '',
-        'finished_items' => [],
+        'summits' => [],
       ],
     ],
+  ];
+}
+
+/**
+ * For development environment replace vue.min.js with vue.js
+ * Implements hook_library_info_alter().
+ */
+function twelve_app_library_info_alter(&$libraries, $extension) {
+  if (getenv('ENVIRONMENT') != 'development') {
+    return;
+  }
+
+  if ($extension != 'openy_system') {
+    return;
+  }
+
+  unset($libraries['vue']['js']['https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js']);
+  $libraries['vue']['js']['https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js'] = [
+    'type' => 'external'
   ];
 }
