@@ -22,7 +22,7 @@
     "openy/paragraph_skins": "dev-master",
     "drupal/recaptcha": "^2.5",
     "drupal/devel": "^2.1",
-    "drupal/jwt": "^1.0"
+    "drupal/jwt": "^1.0@beta"
   },
   "require-dev": {
     "drupal/drupal-driver": "~1.0",
