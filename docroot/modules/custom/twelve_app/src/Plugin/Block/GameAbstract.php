@@ -71,7 +71,7 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
   /**
    * @var Node
    */
-  protected $_userProgressNode;
+  protected $_userProgressNodes = [];
 
   /**
    * {@inheritdoc}
@@ -172,31 +172,38 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
   public abstract function getGameExercisesParagraphBundle();
 
   /**
+   * @param int $game_paragraph
    * @return array
    */
-  protected abstract function prepareExercisesArray();
+  protected abstract function prepareExercisesArray($game_paragraph = NULL);
 
   /**
    * Helper method that finds results for the current user.
    *
+   * @param null $game_nid
    * @return \Drupal\Core\Entity\EntityInterface|mixed|null
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
-  protected function getUserProgressNode() {
+  protected function getUserProgressNode($game_nid = NULL) {
     if (empty($this->currentUser->getAccount()->id())) {
       return NULL;
     }
 
-    if (!is_null($this->_userProgressNode)) {
-      return $this->_userProgressNode;
+    if (is_null($game_nid)) {
+      $game_nid = $this->getCurrentGameNid();
     }
+
+    if (isset($this->_userProgressNodes[$game_nid])
+      && !is_null($this->_userProgressNodes[$game_nid])) {
+      return $this->_userProgressNode[$game_nid];
+    }
+
+    $this->_userProgressNodes[$game_nid] = NULL;
 
     $query = $this->entityQuery->get('node')
       ->condition('status', 1)
       ->condition('type', '12_bursts_result')
       ->condition('uid', $this->currentUser->getAccount()->id())
-      ->condition('field_when', $this->getCurrentGameNid())
+      ->condition('field_when', $game_nid)
       ->sort('nid', 'DESC');
 
     if (!empty($this->family->getSubAccountId())) {
@@ -209,10 +216,10 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
     $last_result = reset($nids);
 
     if (!empty($last_result)) {
-      $this->_userProgressNode = Node::load($last_result);
+      $this->_userProgressNodes[$game_nid] = Node::load($last_result);
     }
 
-    return $this->_userProgressNode;
+    return $this->_userProgressNode[$game_nid];
   }
 
   protected function getUserProgressNid() {
@@ -226,10 +233,13 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
   /**
    * @return string[]
    */
-  public function getFinishedExercisesNids() {
+  public function getFinishedExercisesNids($progress_node = NULL) {
     $result = [];
 
-    $progress_node = $this->getUserProgressNode();
+    if (is_null($progress_node)) {
+      $progress_node = $this->getUserProgressNode();
+    }
+
     if ($progress_node !== NULL) {
       $finished_exercises = $progress_node
         ->get('field_finished_items')->getValue();
@@ -251,10 +261,13 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
   }
 
   /**
+   * @param int $game_nid
    * @return \Drupal\paragraphs\Entity\Paragraph|FALSE
    */
-  function findGameExercisesParagraph() {
-    $game_nid = $this->getCurrentGameNid();
+  function findGameExercisesParagraph($game_nid = null) {
+    if (is_null($game_nid)) {
+      $game_nid = $this->getCurrentGameNid();
+    }
 
     if (empty($game_nid)) {
       return FALSE;

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab6d7cdc75556c472e7904b549922085",
+    "content-hash": "1f8f8f7519bf35e4788c3cdd488bae7e",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1424,9 +1424,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/doctrine/cache/doctrine-cache-382e7f4db9a12dc6c19431743a2b096041bcdd62-zip-84ba93.zip",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/382e7f4db9a12dc6c19431743a2b096041bcdd62",
                 "reference": "382e7f4db9a12dc6c19431743a2b096041bcdd62",
-                "shasum": "992c9fbdcb9c37bfe76eb31e18317664dd1c8131"
+                "shasum": ""
             },
             "require": {
                 "php": "~7.1"
@@ -1506,9 +1506,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "http://openy.cibox.tools:4680/dist/doctrine/collections/doctrine-collections-6b1e4b2b66f6d6e49983cebfe23a21b7ccc5b0d7-zip-2eb57e.zip",
+                "url": "https://api.github.com/repos/doctrine/collections/zipball/6b1e4b2b66f6d6e49983cebfe23a21b7ccc5b0d7",
                 "reference": "6b1e4b2b66f6d6e49983cebfe23a21b7ccc5b0d7",
-                "shasum": "e29efcb6537e9b83417c7e2bb1844f2a34718417"
+                "shasum": ""
             },
             "require": {
                 "php": "^7.1.3"
@@ -4998,17 +4998,17 @@
         },
         {
             "name": "drupal/jwt",
-            "version": "1.0.0-beta2",
+            "version": "1.0.0-beta3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/jwt.git",
-                "reference": "8.x-1.0-beta2"
+                "reference": "8.x-1.0-beta3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/jwt-8.x-1.0-beta2.zip",
-                "reference": "8.x-1.0-beta2",
-                "shasum": "458848de31fca43b739493b69814cd53ac030ad5"
+                "url": "https://ftp.drupal.org/files/projects/jwt-8.x-1.0-beta3.zip",
+                "reference": "8.x-1.0-beta3",
+                "shasum": "c82be8ac290f7b23ab7137b92324da3823bb9b89"
             },
             "require": {
                 "drupal/core": "^8.7.12 || ^9.0",
@@ -5019,8 +5019,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-beta2",
-                    "datestamp": "1587947704",
+                    "version": "8.x-1.0-beta3",
+                    "datestamp": "1589986032",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Beta releases are not covered by Drupal security advisories."
@@ -14034,7 +14034,6 @@
         "drupal/smtp": 10,
         "drupal/swiftmailer": 10,
         "openy/paragraph_skins": 20,
-        "drupal/jwt": 10,
         "drupal/tqextension": 20
     },
     "prefer-stable": true,

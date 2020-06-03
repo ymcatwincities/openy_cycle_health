@@ -46,7 +46,7 @@ class Puzzle extends GameAbstract {
   /**
    * {@inheritdoc}
    */
-  protected function prepareExercisesArray() {
+  protected function prepareExercisesArray($game_paragraph = NULL) {
     $exercises_array = [];
     $paragraph = $this->findGameExercisesParagraph();
     if (empty($paragraph)) {

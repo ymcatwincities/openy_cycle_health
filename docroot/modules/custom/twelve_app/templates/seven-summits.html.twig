@@ -1,0 +1,13 @@
+{{ attach_library('twelve_app/seven_summits') }}
+
+{% if debug %}
+  {{ error_message }}
+{% endif %}
+
+<div id="seven_summits_app">
+  <Sevensummits
+    :debug='{{ debug|json_encode }}'
+    :error_message='{{ error_message|json_encode }}'
+    :summits='{{ summits|json_encode }}'
+  ></Sevensummits>
+</div>
