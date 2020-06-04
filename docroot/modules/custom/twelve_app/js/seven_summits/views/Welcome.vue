@@ -1,6 +1,8 @@
 <template>
   <div>
     Welcome
+
+    <router-link :to="{ name: 'Hero' }">Hero</router-link>
   </div>
 </template>
 

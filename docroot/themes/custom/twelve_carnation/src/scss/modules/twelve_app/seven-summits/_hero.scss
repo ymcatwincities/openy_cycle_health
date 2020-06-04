@@ -1,0 +1,142 @@
+.views-hero {
+  @import "hero/choice-colors";
+
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 25px;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr auto auto auto 1fr;
+
+  background-size: cover;
+  background: #ffffff00;
+  background-image: url('/themes/custom/twelve_carnation/dist/img/seven-summits/Background.png');
+  background-image: linear-gradient(180deg, #ffffff00 0%, #ffffff 70%),
+  url('/themes/custom/twelve_carnation/dist/img/seven-summits/Background.png');
+  @include media-breakpoint-up(md) {
+    background-image: url('/themes/custom/twelve_carnation/dist/img/seven-summits/Background@2x.png');
+    background-image: linear-gradient(180deg, #ffffff00 0%, #ffffff 70%),
+    url('/themes/custom/twelve_carnation/dist/img/seven-summits/Background@2x.png');
+  }
+
+  .hero {
+    grid-column: 1;
+    grid-row: 1/-1;
+    background-image: url('/themes/custom/twelve_carnation/dist/img/seven-summits/climber.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 0;
+    padding-top: 65%; /* (img-height / img-width * width) = 1.3 * width*/
+    align-self: end;
+    justify-self: center;
+    background-position: bottom;
+    margin-bottom: 10px;
+    @include media-breakpoint-up(md) {
+      background-position: center;
+    }
+  }
+
+  .jacket-title {
+    align-self: end;
+  }
+
+  .jacket-title,
+  .flesh-title,
+  a {
+    @include cachet();
+    grid-column: 2;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    padding-bottom: 5px;
+    color: #636466;
+
+    @include media-breakpoint-up(md) {
+      font-size: 24px;
+      line-height: 36px;
+      padding-bottom: 20px;
+    }
+  }
+
+  .jacket-colors {
+    padding-bottom: 20px;
+    @include media-breakpoint-up(md) {
+      padding-bottom: 40px;
+    }
+  }
+
+  .flesh-colors {
+    padding-bottom: 40px;
+    @include media-breakpoint-up(md) {
+      padding-bottom: 80px;
+    }
+  }
+
+  .jacket-colors,
+  .flesh-colors {
+    grid-column: 2;
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 19px;
+    grid-template-columns: 1fr repeat(3, auto) 1fr;
+
+    > div:first-child {
+      justify-self: end;
+    }
+
+    > div {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+
+      @include media-breakpoint-up(md) {
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+      }
+    }
+  }
+
+  a {
+    grid-column: 2;
+    padding: 11px 20px;
+    border-radius: 20px;
+    color: white;
+    background-color: #92278f;
+    //height: 75px;
+    text-transform: uppercase;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+
+    @include media-breakpoint-up(md) {
+      padding: 20px 40px;
+      border-radius: 35px;
+    }
+  }
+
+  @media (orientation: portrait) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto auto auto auto;
+
+    .hero,
+    .jacket-title,
+    .jacket-colors,
+    .flesh-title,
+    .flesh-colors,
+    a {
+      grid-column: 1;
+      grid-row: initial;
+    }
+
+    .hero {
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+  }
+
+}
