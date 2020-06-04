@@ -62,6 +62,8 @@ module:
   image_widget_crop: 0
   inline_entity_form: 0
   jquery_colorpicker: 0
+  jwt: 0
+  key: 0
   language: 0
   libraries: 0
   link: 0
@@ -154,7 +156,6 @@ module:
   quickedit: 0
   rabbit_hole: 0
   rdf: 0
-  recaptcha: 0
   redirect: 0
   rest: 0
   restui: 0
@@ -171,7 +172,6 @@ module:
   social_auth: 0
   social_auth_facebook: 0
   social_auth_google: 0
-  swiftmailer: 0
   system: 0
   taxonomy: 0
   telephone: 0
@@ -180,7 +180,6 @@ module:
   token_filter: 0
   toolbar: 0
   tour: 0
-  twelve_app: 0
   twelve_user: 0
   twig_tweak: 0
   update: 0
