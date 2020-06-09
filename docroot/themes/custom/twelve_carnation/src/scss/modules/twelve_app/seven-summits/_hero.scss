@@ -1,15 +1,15 @@
 .views-hero {
   display: grid;
   margin-bottom: 25px;
-  background: #ffffff00;
+  background: $mine-shaft;
   background-image: url('/themes/custom/twelve_carnation/dist/img/seven-summits/Background.png');
-  background-image: linear-gradient(180deg, #ffffff00 0%, #ffffff 70%), url('/themes/custom/twelve_carnation/dist/img/seven-summits/Background.png');
+  background-image: linear-gradient(180deg, $mine-shaft 0%, $white 70%), url('/themes/custom/twelve_carnation/dist/img/seven-summits/Background.png');
   background-size: cover;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 1fr auto auto auto 1fr;
   @include media-breakpoint-up(md) {
     background-image: url('/themes/custom/twelve_carnation/dist/img/seven-summits/Background@2x.png');
-    background-image: linear-gradient(180deg, #ffffff00 0%, #ffffff 70%), url('/themes/custom/twelve_carnation/dist/img/seven-summits/Background@2x.png');
+    background-image: linear-gradient(180deg, $mine-shaft 0%, $white 70%), url('/themes/custom/twelve_carnation/dist/img/seven-summits/Background@2x.png');
   }
 
   .hero {
@@ -18,12 +18,6 @@
     grid-column: 1;
     grid-row: 1/-1;
     justify-self: center;
-
-    &.new {
-      .st5 {
-        fill: red !important;
-      }
-    }
   }
 
   @import "hero/climber";
@@ -39,7 +33,7 @@
     padding-bottom: 5px;
     text-align: center;
     line-height: 21px;
-    color: #636466;
+    color: $shuttle-gray;
     font-size: 14px;
     grid-column: 2;
 
@@ -109,7 +103,7 @@
     margin-bottom: 30px;
     margin-left: auto;
     border-radius: 20px;
-    background-color: #92278f;
+    background-color: $plum;
     cursor: pointer;
     padding: 11px 20px;
     text-transform: uppercase;
