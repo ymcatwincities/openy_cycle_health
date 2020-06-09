@@ -1,0 +1,211 @@
+// Main style for first pages.
+#seven_summits_app {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  .seven-summits {
+    // Overlay for background image.
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(180deg, rgba($white, 0.6) 0%, rgba($white, 1) 50%);
+      z-index: 1;
+    }
+
+    // App background image.
+    &__bg-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 0;
+      background-image: url("/themes/custom/twelve_carnation/dist/img/seven_summits.png");
+      background-position: 50% -10px;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+
+    // Heading styles.
+    &__heading {
+      margin-top: 20px;
+      font-family: $cachet;
+      font-size: 56px;
+      line-height: 96px;
+      font-weight: bold;
+      color: $shuttle-gray;
+
+      @include media-breakpoint-up(md) {
+        font-size: 72px;
+        line-height: 96px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        font-size: 140px;
+        line-height: 175px;
+      }
+    }
+
+    // Climbers styles.
+    &__climbers {
+      position: relative;
+      height: 190px;
+
+      @include media-breakpoint-up(lg) {
+        margin-top: -15px;
+        height: 284px;
+      }
+
+      @include media-breakpoint-up(xl) {
+        height: 380px;
+      }
+    }
+
+    // SubHeading styles.
+    &__sub-heading {
+      margin: 5px 0 0;
+      font-family: $cachet-book;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 27px;
+      color: $thunder;
+      align-items: center;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 36px;
+        line-height: 54px;
+        align-items: normal;
+      }
+    }
+
+    // Start button styles.
+    &__start {
+      @include btn-7summits();
+    }
+  }
+
+  // Content container.
+  .container {
+    position: relative;
+    z-index: 2;
+
+    @include media-breakpoint-up(lg) {
+      height: 770px;
+    }
+  }
+
+  // Style for climbers.
+  .climber {
+    height: 190px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @include media-breakpoint-up(lg) {
+      height: 284px;
+    }
+
+    @include media-breakpoint-up(xl) {
+      height: 380px;
+    }
+
+    &-l1 {
+      width: 25%;
+      background-size: 100% 50%;
+      z-index: 1;
+    }
+
+    &-l2 {
+      width: 27%;
+      background-size: 100% 76%;
+      z-index: 2;
+    }
+
+    &-l3 {
+      width: 292px;
+      background-size: 100% 100%;
+      z-index: 3;
+    }
+
+    &-1a {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-1a.svg");
+      left: -5%;
+
+      @include media-breakpoint-up(md) {
+        left: 7%;
+      }
+
+      @include media-breakpoint-up(lg) {
+        left: 4%;
+      }
+
+      @include media-breakpoint-up(xl) {
+        left: 0;
+      }
+    }
+
+    &-1b {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-1b.svg");
+      left: 10%;
+
+      @include media-breakpoint-up(md) {
+        left: 19%;
+      }
+
+      @include media-breakpoint-up(lg) {
+        left: 17%;
+      }
+
+      @include media-breakpoint-up(xl) {
+        left: 15%;
+      }
+    }
+
+    &-1c {
+      left: calc(50% - 146px);
+      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-1c.svg");
+    }
+
+    &-1d {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-1d.svg");
+      left: auto;
+      right: 10%;
+
+      @include media-breakpoint-up(md) {
+        right: 19%;
+      }
+
+      @include media-breakpoint-up(lg) {
+        right: 17%;
+      }
+
+      @include media-breakpoint-up(xl) {
+        right: 15%;
+      }
+    }
+
+    &-1e {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-1e.svg");
+      left: auto;
+      right: -5%;
+
+      @include media-breakpoint-up(md) {
+        right: 7%;
+      }
+
+      @include media-breakpoint-up(lg) {
+        right: 4%;
+      }
+
+      @include media-breakpoint-up(xl) {
+        right: 0;
+      }
+    }
+  }
+}
