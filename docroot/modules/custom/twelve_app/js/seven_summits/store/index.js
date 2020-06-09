@@ -36,7 +36,6 @@ export default new Vuex.Store({
         method: 'get',
         url: `/seven-summits/save-hero/${context.state.jacketColor}/${context.state.fleshTone}`
       }).then(function (response) {
-        console.log(response);
         if (response.data.status === 'ok') {
           router.push('Mountains');
         }
