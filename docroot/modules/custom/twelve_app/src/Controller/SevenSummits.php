@@ -3,6 +3,7 @@ namespace Drupal\twelve_app\Controller;
 
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Driver\Exception\Exception;
 use Drupal\twelve_user\Family;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
@@ -41,8 +42,16 @@ class SevenSummits extends ControllerBase {
    * @return AjaxResponse
    */
   public function saveHero($jacketColor, $fleshTone) {
-    $this->family->save7SummitsHeroConfig($jacketColor, $fleshTone);
-    return new AjaxResponse();
+    try {
+      $this->family->save7SummitsHeroConfig($jacketColor, $fleshTone);
+      return new AjaxResponse([
+        'status' => 'ok'
+      ]);
+    } catch (Exception $e) {
+      return new AjaxResponse([
+        'status' => 'error'
+      ], AjaxResponse::HTTP_INTERNAL_SERVER_ERROR);
+    }
   }
 
 }
