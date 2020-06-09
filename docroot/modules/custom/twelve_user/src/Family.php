@@ -353,6 +353,11 @@ class Family {
     return Node::loadMultiple($ids);
   }
 
+  /**
+   * Update Hero for Seven Summits
+   * @param $jacketColor
+   * @param $fleshTone
+   */
   public function save7SummitsHeroConfig($jacketColor, $fleshTone) {
     $subAccId = $this->getSubAccountId();
     $this->userData->set('twelve_app', $this->currentUser->id(), 'hero'.$subAccId, [
@@ -361,6 +366,10 @@ class Family {
     ]);
   }
 
+  /**
+   * Hero Config for Seven Summits game
+   * @return array
+   */
   public function get7SummitsHeroConfig() {
     $subAccId = $this->getSubAccountId();
     $hero = $this->userData->get('twelve_app', $this->currentUser->id(), 'hero'.$subAccId);
