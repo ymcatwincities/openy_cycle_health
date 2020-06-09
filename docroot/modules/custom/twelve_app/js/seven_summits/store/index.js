@@ -35,11 +35,11 @@ export default new Vuex.Store({
       Axios({
         method: 'get',
         url: `/seven-summits/save-hero/${context.state.jacketColor}/${context.state.fleshTone}`
-      }).then(function (response) {
+      }).then((response) => {
         if (response.data.status === 'ok') {
           router.push('Mountains');
         }
-      }).catch(function (error) {
+      }).catch((error) => {
         if (process.env.DEBUG) {
           console.log(error);
         }
