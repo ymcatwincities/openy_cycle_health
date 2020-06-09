@@ -1,0 +1,72 @@
+.hero {
+  .st0{fill:#603913;} //face
+  .st1{fill:#ffffff;}//puff
+  .st2{fill:#0089cf;} //hand
+  .st3{fill:#0061af;} //hand
+  .st4{fill:#8b5e3c;} //pants
+  .st5{fill:#00ab95;} //jacket
+  .st6{fill:#006a6b;} //jacket curve
+  .st7{fill:url(#SVGID_green_);}
+
+  &.green {
+    .st2 {fill:#0089cf;}
+    .st3 {fill:#0061af;}
+    .st5 {fill:#00ab95;}
+    .st6 {fill:#006a6b;}
+    .st7 {fill:url(#SVGID_green_);}
+  }
+
+  &.blue {
+    .st2{fill:#92278f;}
+    .st3{fill:#5c2d91;}
+    .st5{fill:#0089cf;}
+    .st6{fill:#0061af;}
+    .st7 {fill:url(#SVGID_blue_);}
+  }
+
+  &.lilac {
+    .st2{fill:#ed1c24;stroke:#a92c31;stroke-miterlimit:10;}
+    .st3{fill:#a92c31;}
+    .st5{fill:#92278f;}
+    .st6{fill:#5c2d91;}
+    .st7 {fill:url(#SVGID_lilac_);}
+  }
+
+  &.red {
+    .st2{fill:#fcaf17;}
+    .st3{fill:#f47920;}
+    .st4{fill:#8b5e3c;}
+    .st5{fill:#ed1c24;stroke:#a92c31;stroke-miterlimit:10;}
+    .st6{fill:#a92c31;}
+    .st7 {fill:url(#SVGID_red_);}
+  }
+
+  &.orange {
+    .st2{fill:#00ab95;}
+    .st3{fill:#006a6b;}
+    .st4{fill:#8b5e3c;}
+    .st5{fill:#fcaf17;stroke:#f47920;stroke-miterlimit:10;}
+    .st6{fill:#f47920;}
+    .st7 {fill:url(#SVGID_yellow_);}
+  }
+
+  &.tone-1 {
+    .st0{fill:#603913;} //face
+  }
+
+  &.tone-2 {
+    .st0{fill:#8b5e3c;}
+  }
+
+  &.tone-3 {
+    .st0{fill:#a97c50;}
+  }
+
+  &.tone-4 {
+    .st0{fill:#c49a6c;}
+  }
+
+  &.tone-5 {
+    .st0{fill:#cd8d78;}
+  }
+}

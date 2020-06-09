@@ -6,4 +6,4 @@ services:
 
   twelve_user.family:
     class: Drupal\twelve_user\Family
-    arguments: ['@current_user', '@database', '@entity_type.manager']
+    arguments: ['@current_user', '@database', '@entity_type.manager', '@user.data']

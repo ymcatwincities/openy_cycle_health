@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\node\Entity\Node;
 use Drupal\user\Entity\User;
+use Drupal\user\UserDataInterface;
 
 /**
  * Service Class Family
@@ -31,7 +32,15 @@ class Family {
    */
   protected $database;
 
-  protected $entity_type_manager;
+  /**
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
+   * @var \Drupal\user\UserDataInterface
+   */
+  protected $userData;
 
   /**
    * @var int
@@ -48,10 +57,16 @@ class Family {
    * @param \Drupal\Core\Database\Connection $database
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface
    */
-  public function __construct(AccountProxyInterface $current_user, Connection $database, EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(
+    AccountProxyInterface $current_user,
+    Connection $database,
+    EntityTypeManagerInterface $entity_type_manager,
+    UserDataInterface $user_data
+  ) {
     $this->currentUser = $current_user;
     $this->database = $database;
-    $this->entity_type_manager = $entity_type_manager;
+    $this->entityTypeManager = $entity_type_manager;
+    $this->userData = $user_data;
   }
 
   /**
@@ -292,7 +307,7 @@ class Family {
     }
 
     $vid = self::BADGE_VID;
-    $this->_badge_types = $this->entity_type_manager->getStorage('taxonomy_term')->loadTree($vid);
+    $this->_badge_types = $this->entityTypeManager->getStorage('taxonomy_term')->loadTree($vid);
 
     return $this->_badge_types;
   }
@@ -336,5 +351,26 @@ class Family {
   function getUserRecentsBadges($amount = NULL) {
     $ids = $this->getUserRecentBadgesIds($amount);
     return Node::loadMultiple($ids);
+  }
+
+  public function save7SummitsHeroConfig($jacketColor, $fleshTone) {
+    $subAccId = $this->getSubAccountId();
+    $this->userData->set('twelve_app', $this->currentUser->id(), 'hero'.$subAccId, [
+      'jacketColor' => $jacketColor,
+      'fleshTone' => $fleshTone,
+    ]);
+  }
+
+  public function get7SummitsHeroConfig() {
+    $subAccId = $this->getSubAccountId();
+    $hero = $this->userData->get('twelve_app', $this->currentUser->id(), 'hero'.$subAccId);
+    if (is_null($hero)) {
+      $hero = [
+        'jacketColor' => null,
+        'fleshTone' => null
+      ];
+    }
+
+    return $hero;
   }
 }

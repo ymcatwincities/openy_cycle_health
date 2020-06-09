@@ -1,0 +1,87 @@
+.twelve-app-seven-summits {
+  padding-top: 0 !important;
+
+  .fixed-top.show {
+    top: 37px;
+  }
+
+  .mobile-menu {
+    background: transparent !important;
+
+    &.menu-in {
+      background-color: $blue !important;
+      transition: opacity .15s linear;
+    }
+
+    .navbar {
+      padding: 0;
+    }
+  }
+
+  .fixed-top.mobile-sidebar {
+    top: 78px !important;
+  }
+
+  .mobile-logo img {
+    height: 20px;
+  }
+
+  .openy-page-tabs {
+    display: none;
+  }
+
+  main {
+    margin-top: 0;
+  }
+
+  @media (min-width: 1060px) {
+    main {
+      margin-top: 135px;
+    }
+  }
+
+  #block-twelve-carnation-content {
+    > .banner {
+      display: none;
+    }
+
+    .breadcrumbs-wrapper {
+      display: none !important;
+    }
+
+    > article {
+      //padding-top: 129px;
+    }
+  }
+
+}
+
+.toolbar-horizontal.twelve-app-seven-summits {
+  main {
+    margin-top: 0;
+  }
+
+  @media (min-width: 768px) {
+    main {
+      margin-top: 0;
+    }
+  }
+
+  @media (min-width: 1060px) {
+    main {
+      margin-top: 174px;
+    }
+  }
+}
+
+.toolbar-vertical.twelve-app-seven-summits.with-banner {
+  padding-top: 0 !important;
+
+  .mobile-menu {
+    margin-top: 0;
+  }
+
+  main {
+    margin-top: 39px;
+  }
+}

@@ -52,6 +52,7 @@ class SevenSummits extends GameAbstract {
       '#cache' => [
         'max-age' => 0,
       ],
+      '#hero_config' => $this->family->get7SummitsHeroConfig(),
       '#summits' => $this->getSummits(),
       '#attached' => [
         'drupalSettings' => [

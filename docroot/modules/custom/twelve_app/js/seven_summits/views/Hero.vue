@@ -1,36 +1,34 @@
 <template>
   <div class="views-hero">
-    <div class="hero"></div>
+    <div :class="['hero', $store.state.jacketColor, $store.state.fleshTone]">
+      <Climber></Climber>
+    </div>
     <div class="jacket-title">Jacket color</div>
-    <div class="jacket-colors">
-      <div class="green"></div>
-      <div class="blue"></div>
-      <div class="lilac"></div>
-      <div class="red"></div>
-      <div class="orange"></div>
-    </div>
+    <ButtonsList
+      class="jacket-colors"
+      :buttonsClasses="['green', 'blue', 'lilac', 'red', 'orange']"
+      :mutation="'updateJacketColor'"
+      :selected="$store.state.jacketColor"
+    ></ButtonsList>
     <div class="flesh-title">Flesh tone</div>
-    <div class="flesh-colors">
-      <div class="tone-1"></div>
-      <div class="tone-2"></div>
-      <div class="tone-3"></div>
-      <div class="tone-4"></div>
-      <div class="tone-5"></div>
-    </div>
-    <a>Save & continue</a>
+    <ButtonsList
+      class="flesh-colors"
+      :buttonsClasses="['tone-1', 'tone-2', 'tone-3', 'tone-4', 'tone-5']"
+      :mutation="'updateFleshTone'"
+      :selected="$store.state.fleshTone"
+    ></ButtonsList>
+    <a @click="$store.dispatch('saveHero')">Save & continue</a>
   </div>
 </template>
 
 <script>
-
+  import ButtonsList from "../components/ButtonsList.vue";
+  import Climber from "../components/Climber.vue";
 
   export default {
-    components: {},
-    data() {
-      return {};
+    components: {
+      ButtonsList,
+      Climber
     },
-    created: function () {
-    },
-    methods: {},
   }
 </script>
