@@ -38,6 +38,10 @@ export default new Vuex.Store({
       }).then((response) => {
         if (response.data.status === 'ok') {
           router.push('Mountains');
+        } else {
+          if (process.env.DEBUG) {
+            console.log(error);
+          }
         }
       }).catch((error) => {
         if (process.env.DEBUG) {
