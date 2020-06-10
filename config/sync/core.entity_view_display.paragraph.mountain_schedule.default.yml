@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.mountain_schedule.field_elevation
     - field.field.paragraph.mountain_schedule.field_excercises
     - field.field.paragraph.mountain_schedule.field_geolocation
+    - field.field.paragraph.mountain_schedule.field_mountain
     - field.field.paragraph.mountain_schedule.field_prgf_description
     - field.field.paragraph.mountain_schedule.field_prgf_images
     - field.field.paragraph.mountain_schedule.field_range
@@ -58,6 +59,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: geolocation_latlng
+    region: content
+  field_mountain:
+    weight: 8
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
     region: content
   field_prgf_description:
     weight: 5

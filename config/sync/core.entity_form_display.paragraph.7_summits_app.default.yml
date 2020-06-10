@@ -5,20 +5,13 @@ dependencies:
   config:
     - field.field.paragraph.7_summits_app.field_sevensummits
     - paragraphs.paragraphs_type.7_summits_app
-  module:
-    - plugin
 id: paragraph.7_summits_app.default
 targetEntityType: paragraph
 bundle: 7_summits_app
 mode: default
-content:
-  field_sevensummits:
-    weight: -4
-    settings: {  }
-    third_party_settings: {  }
-    type: 'plugin_selector:plugin_select_list'
-    region: content
+content: {  }
 hidden:
   created: true
+  field_sevensummits: true
   status: true
   uid: true
