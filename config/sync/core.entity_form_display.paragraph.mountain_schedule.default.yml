@@ -3,11 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
+    - entity_browser.browser.media_directories_modal
     - field.field.paragraph.mountain_schedule.field_continent
     - field.field.paragraph.mountain_schedule.field_country
     - field.field.paragraph.mountain_schedule.field_elevation
     - field.field.paragraph.mountain_schedule.field_excercises
     - field.field.paragraph.mountain_schedule.field_geolocation
+    - field.field.paragraph.mountain_schedule.field_mountain
     - field.field.paragraph.mountain_schedule.field_prgf_description
     - field.field.paragraph.mountain_schedule.field_prgf_images
     - field.field.paragraph.mountain_schedule.field_range
@@ -21,6 +23,7 @@ third_party_settings:
   field_group:
     group_mountain_info:
       children:
+        - field_mountain
         - field_continent
         - field_country
         - field_range
@@ -59,7 +62,7 @@ bundle: mountain_schedule
 mode: default
 content:
   field_continent:
-    weight: 2
+    weight: 18
     settings:
       size: 60
       placeholder: ''
@@ -67,7 +70,7 @@ content:
     type: string_textfield
     region: content
   field_country:
-    weight: 3
+    weight: 19
     settings:
       size: 60
       placeholder: ''
@@ -75,7 +78,7 @@ content:
     type: string_textfield
     region: content
   field_elevation:
-    weight: 5
+    weight: 21
     settings:
       size: 60
       placeholder: ''
@@ -93,13 +96,21 @@ content:
     type: entity_reference_autocomplete
     region: content
   field_geolocation:
-    weight: 8
+    weight: 24
     settings: {  }
     third_party_settings: {  }
     type: geolocation_latlng
     region: content
+  field_mountain:
+    weight: 17
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
   field_prgf_description:
-    weight: 6
+    weight: 22
     settings:
       rows: 5
       placeholder: ''
@@ -107,21 +118,22 @@ content:
     type: text_textarea
     region: content
   field_prgf_images:
-    weight: 7
+    weight: 23
     settings:
-      entity_browser: null
-      open: false
-      field_widget_display: label
-      field_widget_edit: true
-      field_widget_remove: true
-      field_widget_replace: false
-      field_widget_display_settings: {  }
+      entity_browser: media_directories_modal
+      field_widget_display: rendered_entity
+      field_widget_edit: '1'
+      field_widget_remove: '1'
       selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: embedded_half
+      field_widget_replace: 0
+      open: 0
     third_party_settings: {  }
     type: openy_focal_point_entity_browser_entity_reference
     region: content
   field_range:
-    weight: 4
+    weight: 20
     settings:
       size: 60
       placeholder: ''

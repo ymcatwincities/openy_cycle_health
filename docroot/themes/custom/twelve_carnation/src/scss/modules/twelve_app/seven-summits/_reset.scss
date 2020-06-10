@@ -12,18 +12,10 @@
       background-color: $blue !important;
       transition: opacity .15s linear;
     }
-
-    .navbar {
-      padding: 0;
-    }
   }
 
   .fixed-top.mobile-sidebar {
-    top: 78px !important;
-  }
-
-  .mobile-logo img {
-    height: 20px;
+    top: 75px !important;
   }
 
   .openy-page-tabs {

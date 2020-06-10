@@ -1,0 +1,25 @@
+uuid: 6cdfae63-d6bd-4a48-bb02-4e5f9cff7325
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_mountain
+    - paragraphs.paragraphs_type.mountain_schedule
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_mountain
+id: paragraph.mountain_schedule.field_mountain
+field_name: field_mountain
+entity_type: paragraph
+bundle: mountain_schedule
+label: Mountain
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
