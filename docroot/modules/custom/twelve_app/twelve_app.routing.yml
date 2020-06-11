@@ -29,3 +29,14 @@ twelve_app.seven_summits_settings:
     _title: 'Seven Summits Settings'
   requirements:
     _permission: 'administer content'
+
+twelve_app.save_hero:
+  path: '/seven-summits/save-hero/{jacketColor}/{fleshTone}'
+  defaults:
+    _controller: '\Drupal\twelve_app\Controller\SevenSummits::saveHero'
+  requirements:
+    _user_is_logged_in: 'TRUE'
+    jacketColor: '[a-z]+'
+    fleshTone: '[a-z0-9\-]+'
+  options:
+    no_cache: TRUE
