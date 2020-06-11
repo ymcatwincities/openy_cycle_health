@@ -18,5 +18,4 @@
       console.log(this.summits);
     },
   }
-
 </script>

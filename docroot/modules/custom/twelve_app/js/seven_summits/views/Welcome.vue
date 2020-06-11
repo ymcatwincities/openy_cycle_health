@@ -19,7 +19,7 @@
 
         <div class="seven-summits__sub-heading d-flex flex-column flex-sm-row flex-lg-column">
           Get ready to climb the highest mountain on each continent!
-          <router-link to="/hero" class="seven-summits__start">Start</router-link>
+          <router-link to="/mountain/1" class="seven-summits__start">Start</router-link>
         </div>
       </div>
     </div>
