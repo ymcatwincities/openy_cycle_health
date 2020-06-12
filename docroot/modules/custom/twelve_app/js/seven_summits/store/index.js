@@ -20,7 +20,8 @@ const vuexLocalStorage = new VuexPersistence({
 export default new Vuex.Store({
   state: {
     jacketColor: '',
-    fleshTone: ''
+    fleshTone: '',
+    summits: ''
   },
   mutations: {
     updateJacketColor(state, color) {

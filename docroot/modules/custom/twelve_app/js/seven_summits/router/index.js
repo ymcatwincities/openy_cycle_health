@@ -4,6 +4,7 @@ import Store from '../store';
 import Welcome from "../views/Welcome.vue";
 import Hero from "../views/Hero.vue";
 import Mountains from "../views/Mountains.vue";
+import Mountain from "../views/Mountain.vue";
 import Game from "../views/Game.vue";
 import MountainInfo from "../views/MountainInfo.vue";
 import NotFound from "../views/NotFound.vue";
@@ -27,6 +28,13 @@ const routes = [
     path: '/mountains',
     name: 'Mountains',
     component: Mountains,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/mountain/:id',
+    name: 'Mountain',
+    component: Mountain,
+    props: true,
     meta: { requiresAuth: true },
   },
   {
