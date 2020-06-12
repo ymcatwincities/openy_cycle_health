@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mountain">
+    <div class="views-mountain">
       <div class="seven-summits__overlay"></div>
       <div class="seven-summits__bg-image"></div>
 
@@ -24,7 +24,7 @@
                   <Climber :class="['hero', $store.state.jacketColor, $store.state.fleshTone]"></Climber>
                 </div>
 
-                <div class="mountain__view-wrap text">
+                <div v-if="summits.finished_exercises.length !== 0 && summits.exercises.length === summits.finished_exercises.length" class="mountain__view-wrap text">
                   <span>YOU REACHED THE SUMMIT!</span>
                 </div>
 
@@ -38,27 +38,27 @@
                   <line x1="17.5659" y1="186.752" x2="121.566" y2="4.75193" stroke="white"/>
                   <line x1="227" y1="188.5" x2="18" y2="188.5" stroke="white"/>
                   <line x1="122.434" y1="2.75218" x2="227.434" y2="186.752" stroke="white"/>
-                  <circle cx="18" cy="187" r="4.5"  :fill="typeof summits.finished_exercises[0] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="26" cy="172" r="4.5"  :fill="typeof summits.finished_exercises[1] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="35" cy="157" r="4.5" :fill="typeof summits.finished_exercises[2] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="43" cy="142" r="4.5" :fill="typeof summits.finished_exercises[3] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="52" cy="127" r="4.5" :fill="typeof summits.finished_exercises[4] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="60" cy="112" r="4.5" :fill="typeof summits.finished_exercises[5] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="68" cy="98" r="4.5" :fill="typeof summits.finished_exercises[6] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="77" cy="83" r="4.5" :fill="typeof summits.finished_exercises[7] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="85" cy="68" r="4.5" :fill="typeof summits.finished_exercises[8] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="94" cy="53" r="4.5" :fill="typeof summits.finished_exercises[9] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="103" cy="38" r="4.5" :fill="typeof summits.finished_exercises[10] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="111" cy="23" r="4.5" :fill="typeof summits.finished_exercises[11] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="122" cy="5" r="4.5" :fill="typeof summits.finished_exercises[12] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="138" cy="29" r="4.5" :fill="typeof summits.finished_exercises[13] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="150" cy="51" r="4.5" :fill="typeof summits.finished_exercises[14] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="163" cy="73" r="4.5" :fill="typeof summits.finished_exercises[15] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="176" cy="96" r="4.5" :fill="typeof summits.finished_exercises[16] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="190" cy="120" r="4.5" :fill="typeof summits.finished_exercises[17] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="202" cy="142" r="4.5" :fill="typeof summits.finished_exercises[18] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="214" cy="163" r="4.5" :fill="typeof summits.finished_exercises[19] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
-                  <circle cx="227" cy="187" r="4.5" :fill="typeof summits.finished_exercises[20] !== 'undefined' ? finished_color : 'white'" stroke="white"/>
+                  <circle cx="18" cy="187" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[0] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="26" cy="172" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[1] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="35" cy="157" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[2] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="43" cy="142" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[3] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="52" cy="127" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[4] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="60" cy="112" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[5] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="68" cy="98" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[6] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="77" cy="83" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[7] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="85" cy="68" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[8] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="94" cy="53" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[9] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="103" cy="38" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[10] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="111" cy="23" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[11] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="122" cy="5" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[12] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="138" cy="29" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[13] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="150" cy="51" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[14] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="163" cy="73" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[15] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="176" cy="96" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[16] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="190" cy="120" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[17] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="202" cy="142" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[18] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="214" cy="163" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[19] !== 'undefined'}" fill="white" stroke="white"/>
+                  <circle cx="227" cy="187" r="4.5" :class="{'finished_color': typeof summits.finished_exercises[20] !== 'undefined'}" fill="white" stroke="white"/>
                 </svg>
               </div>
             </div>
@@ -67,7 +67,7 @@
               <div class="burst-label">UP NEXT ...</div>
               <div class="burst-name">{{ burst['name'] }}</div>
               <div class="burst-text">Regular Burst</div>
-              <router-link to="{{ burst['url'] }}" class="burst-btn"><span>Let's</span> go</router-link>
+              <router-link to="burst['url']" class="burst-btn"><span>Let's</span> go</router-link>
             </div>
 
           </div>
@@ -90,7 +90,6 @@
         mountain: [1, 'Aconcagua', 0], // TODO: Remove it after improving.
         summits: null,
         burst: {name: 'Burst Name', url: '/'},
-        finished_color: '#92278f',
         number_exercises: 21,
       };
     },

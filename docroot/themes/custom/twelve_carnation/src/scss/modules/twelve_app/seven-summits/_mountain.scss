@@ -1,5 +1,10 @@
 #seven_summits_app {
-  .mountain {
+
+  .views-mountain {
+    .seven-summits__overlay {
+      background: rgb(0,96,175);
+      background: linear-gradient(90deg, rgba(0,96,175,1) 0%, rgba(146,39,143,1) 100%);
+    }
 
     .container {
       margin-top: 80px;
@@ -8,12 +13,58 @@
       @include media-breakpoint-up(xl) {
         margin-top: 0;
       }
+
+      @include media-breakpoint-up(xl) {
+        margin-top: 0;
+      }
     }
 
-    .seven-summits__overlay {
-      background: rgb(0,96,175);
-      background: linear-gradient(90deg, rgba(0,96,175,1) 0%, rgba(146,39,143,1) 100%);
+    .progress {
+      background-color: $white;
+      border-radius: 8px;
+      padding: 1px;
+      height: 10px;
+      z-index: 1;
+
+      &-bar {
+        background-color: $pink;
+        height: 8px;
+        border-radius: 5px;
+        transition: width 1s ease-in-out;
+      }
+
+      &-count {
+        margin-top: 10px;
+        font-family: $cachet;
+        font-size: 12px;
+        line-height: 18px;
+        color: $white;
+
+        @include media-breakpoint-up(lg) {
+          font-size: 14px;
+          line-height: 21px;
+        }
+      }
+
+      &-info {
+        font-family: $cachet-book;
+        font-size: 10px;
+        line-height: 15px;
+        color: $white;
+
+        @include media-breakpoint-up(lg) {
+          font-size: 14px;
+          line-height: 21px;
+        }
+      }
     }
+
+    .finished_color {
+      fill: $plum !important;
+    }
+  }
+
+  .mountain {
 
     &-wrap {
       display: flex;
@@ -297,46 +348,6 @@
               display: inline;
             }
           }
-        }
-      }
-    }
-
-    .progress {
-      background-color: $white;
-      border-radius: 8px;
-      padding: 1px;
-      height: 10px;
-      z-index: 1;
-
-      &-bar {
-        background-color: $pink;
-        height: 8px;
-        border-radius: 5px;
-        transition: width 1s ease-in-out;
-      }
-
-      &-count {
-        margin-top: 10px;
-        font-family: $cachet;
-        font-size: 12px;
-        line-height: 18px;
-        color: $white;
-
-        @include media-breakpoint-up(lg) {
-          font-size: 14px;
-          line-height: 21px;
-        }
-      }
-
-      &-info {
-        font-family: $cachet-book;
-        font-size: 10px;
-        line-height: 15px;
-        color: $white;
-
-        @include media-breakpoint-up(lg) {
-          font-size: 14px;
-          line-height: 21px;
         }
       }
     }
