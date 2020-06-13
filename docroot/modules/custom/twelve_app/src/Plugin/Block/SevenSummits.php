@@ -73,6 +73,9 @@ class SevenSummits extends GameAbstract {
       ->get($this->getGameConfigurationName())
       ->get('items');
 
+    $imageStyleStorage = \Drupal::service('entity_type.manager')->getStorage('image_style');
+    $style = $imageStyleStorage->load('mountain');
+
     $summits = [];
     foreach ($games as $game) {
       $paragraph = $this->findGameExercisesParagraph($game['node_id']);
@@ -81,6 +84,13 @@ class SevenSummits extends GameAbstract {
       if ($user_progress_node = $this->getUserProgressNode($game['node_id'])) {
         $finished_exercises = $this->getFinishedExercisesNids($user_progress_node);
       }
+
+
+      $main_image_url = '';
+      if ($mediaImage = $paragraph->field_main_image->entity) {
+        $main_image_url = $style->buildUrl($mediaImage->field_media_image->entity->uri->value);
+      }
+
       $summit = [
         'game_id' => $game['node_id'],
         'progress_nid' => !is_null($user_progress_node) ? $user_progress_node->id() : 0,
@@ -93,6 +103,7 @@ class SevenSummits extends GameAbstract {
         'elevation' => $paragraph->field_elevation->value,
         'description' => $paragraph->field_prgf_description->value,
         'geolocation' => $paragraph->field_geolocation->value,
+        'main_image' => $main_image_url,
         'images'
       ];
 
