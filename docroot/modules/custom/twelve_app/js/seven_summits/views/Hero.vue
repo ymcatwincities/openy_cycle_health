@@ -1,5 +1,5 @@
 <template>
-  <div class="views-hero">
+  <div class="views-layout views-hero">
     <div :class="['hero', $store.state.jacketColor, $store.state.fleshTone]">
       <Climber></Climber>
     </div>
