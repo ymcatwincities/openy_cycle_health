@@ -28,7 +28,7 @@
               v-if="!timerIsRunning && !isExerciseFinished(exercise)"
               @click="timerIsRunning = true"
       >
-        READY … SET … GO!
+        {{ btnText }}
       </button>
       <button type="button" class="btn btn-blue notranslate"
         v-if="timerIsRunning"
@@ -66,6 +66,7 @@
       onExerciseFinished: Function,
       onExerciseClosed: Function,
       customClass: String,
+      btnText: String,
       debug: Boolean
     },
     components: {

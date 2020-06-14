@@ -28,6 +28,7 @@
       :is-exercise-finished="isExerciseFinished"
       :on-exercise-finished="onExerciseFinished"
       :on-exercise-closed="onExerciseClosed"
+      :btn-text="btnText"
       :debug="debug"
     ></ExerciseModal>
 
@@ -67,6 +68,7 @@
       let bingo = twelve.bingo.search(this.exercise_list, this.$props.finished_exercises, []);
       return {
         currentExercise: {},
+        btnText: 'READY … SET … GO!',
         exerciseModalVisible: false,
         nameModalVisible: false,
         isStepNextDisabled: true,

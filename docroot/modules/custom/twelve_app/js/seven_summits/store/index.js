@@ -21,7 +21,9 @@ export default new Vuex.Store({
   state: {
     jacketColor: '',
     fleshTone: '',
-    summits: ''
+    summits: '',
+    finishes: '',
+    debug: ''
   },
   mutations: {
     updateJacketColor(state, color) {
