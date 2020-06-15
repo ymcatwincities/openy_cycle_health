@@ -20,7 +20,6 @@
       };
     },
     created: function () {
-      this.$store.commit('modalMountainInfo/showModal', this.summits[0]);
     },
     computed: {
       summits() {

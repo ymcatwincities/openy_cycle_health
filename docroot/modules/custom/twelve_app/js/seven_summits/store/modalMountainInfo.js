@@ -7,6 +7,7 @@ export default {
   mutations: {
     showModal(state, mountain) {
       state.mountain = mountain;
+      console.log(mountain);
       state.modal = true;
     },
     hideModal(state) {

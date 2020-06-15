@@ -1,6 +1,31 @@
-.flag-color{
-  fill:#006a6b;
-}
 .flag-y{
   fill:#ffffff;
 }
+.flag {
+  &.green {
+    .flag-color{
+      fill:#00ab95;
+    }
+  }
+  &.blue {
+    .flag-color{
+      fill:#0089cf;
+    }
+  }
+  &.lilac {
+    .flag-color{
+      fill:#92278f;
+    }
+  }
+  &.red {
+    .flag-color{
+      fill:#ed1c24;
+    }
+  }
+  &.orange {
+    .flag-color{
+      fill:#fcaf17;
+    }
+  }
+}
+

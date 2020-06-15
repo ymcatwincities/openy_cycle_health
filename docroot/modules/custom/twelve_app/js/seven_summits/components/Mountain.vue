@@ -13,7 +13,10 @@
       <image v-bind:xlink:href="summit.main_image" clip-path="url(#triangleView)"></image>
       <polygon points="0,600 400,10 800,600" style="stroke:white;stroke-width:10;" fill="url(#mountainGradient)"></polygon>
     </svg>
-    <Flag v-if="progress == 100 || ['Elbrus','Everest'].includes(summit.mountain)"></Flag>
+    <Flag
+      v-if="progress == 100 || ['Elbrus','Everest'].includes(summit.mountain)"
+      :class="$store.state.jacketColor"
+    ></Flag>
     <ProgressRing v-else radius="50" :progress="progress" stroke="6"></ProgressRing>
     <div class="info">
       <p>{{ summit.mountain }}</p>

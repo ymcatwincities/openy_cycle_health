@@ -21,11 +21,7 @@
             <span>Elevation</span> <span>{{ mountain.elevation }}</span>
           </span>
         </div>
-        <div class="description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi consequat cursus nisl, et elementum arcu pellentesque ut. Curabitur elementum, arcu ac semper porttitor, urna eros condimentum massa, et accumsan massa neque id diam. Morbi aliquam dignissim molestie. Aliquam varius eget ligula vitae eleifend. Etiam eget dolor non justo malesuada tristique. Aliquam dictum diam eu tempus pharetra. Nulla massa tellus, lobortis non porta id, egestas vel tellus.
-
-          Integer quam massa, sodales volutpat cursus ac, convallis id sem. Nulla lobortis ligula enim, nec pulvinar metus mattis ac. Nulla sed maximus erat. Aliquam sit amet tortor sed justo hendrerit ultricies. Phasellus magna enim, cursus non sollicitudin euismod, bibendum eu nibh. Nam tortor eros, vehicula ut turpis eu, rutrum condimentum lectus. Donec convallis mi odio, id porta neque mollis sed.
-        </div>
+        <div class="description" v-html="mountain.description"></div>
         <div class="links">
           <p>Mountain Information</p>
           <p>Image Gallery</p>
@@ -54,6 +50,8 @@
   export default {
     components: { Modal },
     mixins: [ MountainMixin ],
+    created() {
+    },
     computed: {
       ...mapState('modalMountainInfo', [
         'modal',
