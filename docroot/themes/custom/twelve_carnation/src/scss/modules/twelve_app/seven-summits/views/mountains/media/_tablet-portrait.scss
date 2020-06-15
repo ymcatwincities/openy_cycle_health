@@ -1,0 +1,40 @@
+@media only screen
+and (min-device-width: 1024px)
+and (max-device-width: 1366px)
+and (orientation: portrait) {
+  .mountains-layout {
+    padding-top: 32vh;
+    grid-template-rows: 37% 19% 0%;
+
+    .mountain {
+      .progress-ring {
+        top: 5vh !important;
+      }
+
+      .info {
+        top: 200px;
+
+        p:nth-child(1) {
+          line-height: 72px !important;
+          font-size: 36px !important;
+        }
+
+        p:nth-child(2) {
+          line-height: 27px !important;
+          font-size: 18px !important;
+        }
+
+        p:nth-child(3) {
+          line-height: 21px !important;
+          font-size: 14px !important;
+        }
+      }
+
+      &:nth-child(4) {
+      }
+
+      &:nth-child(n+3):nth-child(-n+5) {
+      }
+    }
+  }
+}

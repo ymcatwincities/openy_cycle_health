@@ -1,6 +1,9 @@
 <template>
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-         viewBox="0 0 144 90" style="enable-background:new 0 0 144 90;" xml:space="preserve">
+         viewBox="0 0 144 90"
+         style="enable-background:new 0 0 144 90;"
+         class="flag"
+         xml:space="preserve">
       <g>
     <g>
       <polygon class="flag-color" points="144,90 72,90 0,90 0,45 0,0 72,0 144,0 126,45 		"/>

@@ -13,10 +13,6 @@
   }
 
   .modal-body {
-    > div {
-
-    }
-
     .info {
       > span {
         padding-bottom: 5px;
@@ -43,7 +39,10 @@
     }
 
     .description {
-
+      line-height: 27px;
+      color: $gray-900;
+      font-family: $cachet-book;
+      font-size: 18px;
     }
 
     .links {
@@ -130,6 +129,35 @@
         line-height: 21px;
         color: $gray-400;
         font-size: 14px;
+      }
+    }
+
+    @media only screen and (max-device-width: 823px) {
+      justify-content: space-between;
+      background-color: $indigo;
+      padding: 14px;
+      text-transform: uppercase;
+
+      > p:nth-child(1) {
+        line-height: 18px;
+        color: $white;
+        font-family: $cachet;
+        font-size: 12px;
+      }
+
+      > p:nth-child(2) {
+        padding: 0;
+        line-height: 27px;
+        color: $white;
+        font-family: $cachet;
+        font-size: 18px;
+      }
+
+      > p:nth-child(3) {
+        line-height: 15px;
+        color: $white;
+        font-family: $cachet;
+        font-size: 10px;
       }
     }
   }

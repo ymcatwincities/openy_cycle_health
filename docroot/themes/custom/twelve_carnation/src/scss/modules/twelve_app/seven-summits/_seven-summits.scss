@@ -1,10 +1,14 @@
 @import 'reset';
 @import 'svg/flag';
 @import 'views-layout';
-@import 'hero';
+@import 'views/hero';
 @import 'hero/climber';
-@import 'mountains-layout';
-@import 'mountains-fonts';
+@import 'views/mountains/mountains-layout';
+@import 'views/mountains/media/mobile-landscape';
+@import 'views/mountains/media/mobile-portrait';
+@import 'views/mountains/media/mobile-portrait-small';
+@import 'views/mountains/media/tablet-portrait';
+@import 'views/mountains/mountains-fonts';
 @import 'views/mountains/mountain-info-modal-layout';
 @import 'views/mountains/mountain-info-modal-fonts';
 @import 'mountain';

@@ -1,0 +1,38 @@
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 823px)
+and (orientation: landscape) {
+  .mountains-layout {
+    padding-top: 0;
+
+    .mountain {
+      margin-top: -30px;
+
+      .flag {
+        top: 80px;
+        left: calc(50% - 5%);
+        width: 10%;
+      }
+
+      &:nth-child(-n+2) {
+        .progress-ring {
+          top: 5vh !important;
+        }
+
+        .info {
+          top: 130px;
+        }
+      }
+
+      &:nth-child(n+3) {
+        .progress-ring {
+          top: 8vh !important;
+        }
+
+        .info {
+          top: 148px;
+        }
+      }
+    }
+  }
+}

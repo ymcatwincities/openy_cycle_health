@@ -22,9 +22,9 @@
       position: absolute;
     }
 
-    > svg:nth-child(2) {
+    > .flag, .progress-ring {
       position: absolute;
-      top: 12vh;
+      top: 110px;
       left: calc(50% - 7.5%);
       width: 15%;
     }
@@ -35,9 +35,13 @@
 
     .info {
       position: absolute;
-      top: 20vh;
+      top: 195px;
       z-index: 4;
       width: 100%;
+
+      @include media-breakpoint-up(lg) {
+        top: 20vh;
+      }
     }
 
     .click-base {

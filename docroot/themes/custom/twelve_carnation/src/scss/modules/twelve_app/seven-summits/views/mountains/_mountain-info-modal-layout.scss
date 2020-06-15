@@ -1,4 +1,6 @@
 #seven_summits_app .mountain-info-modal .modal-dialog {
+  margin-right: auto;
+  margin-left: auto;
   width: 80vw;
   max-width: 80vw;
 
@@ -13,7 +15,7 @@
       background-color: $light-white;
 
       .close {
-        margin-right: 5px;
+        margin-right: 20px;
         border-radius: 30px;
         background-color: $white;
         padding: 10px;
@@ -35,15 +37,21 @@
       }
 
       .info {
-        display: inline-flex;
-        flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
         padding-left: 10px;
         > span {
           display: flex;
+          width: 50%;
           > span {
             width: 50%;
             white-space: nowrap;
           }
+        }
+
+        @media only screen
+        and (min-width: 900px) {
+          padding-right: 30px;
         }
       }
 
@@ -54,10 +62,6 @@
         padding: 20px;
         max-height: 256px;
         overflow: scroll;
-        line-height: 27px;
-        color: $gray-900;
-        font-family: $cachet-book;
-        font-size: 18px;
         overflow-x: auto;
       }
 
@@ -81,4 +85,48 @@
       cursor: pointer;
     }
   }
+
+  @media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 823px)
+  and (orientation: portrait) {
+    .modal-content {
+      .modal-body {
+        flex-direction: column;
+
+        > div:first-child {
+          width: 100%;
+
+          .description {
+            margin: 0;
+            max-height: 20vh;
+          }
+        }
+
+        > div:last-child {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  @media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 823px)
+  and (orientation: landscape) {
+    margin-top: auto;
+
+    .modal-content {
+      .modal-body {
+        > div:first-child {
+          .description {
+            margin: 5px;
+            max-height: 20vh;
+          }
+        }
+      }
+    }
+  }
+
+
 }

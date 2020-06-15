@@ -1,5 +1,5 @@
 <template>
-  <svg>
+  <svg class="progress-ring">
     <circle
       stroke="white"
       stroke-opacity="0.3"
