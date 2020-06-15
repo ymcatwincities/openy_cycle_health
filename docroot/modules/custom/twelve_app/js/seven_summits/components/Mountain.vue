@@ -13,30 +13,38 @@
       <image v-bind:xlink:href="summit.main_image" clip-path="url(#triangleView)"></image>
       <polygon points="0,600 400,10 800,600" style="stroke:white;stroke-width:10;" fill="url(#mountainGradient)"></polygon>
     </svg>
-    <Flag v-if="['Elbrus','Everest'].includes(summit.mountain)"></Flag>
-    <ProgressRing v-else class="progress-ring" radius="50" progress="70" stroke="6"></ProgressRing>
+    <Flag v-if="progress == 100"></Flag>
+    <ProgressRing v-else class="progress-ring" radius="50" :progress="progress" stroke="6"></ProgressRing>
     <div class="info">
       <p>{{ summit.mountain }}</p>
       <p>{{ summit.elevation }}</p>
       <p>{{ summit.continent }}</p>
     </div>
-    <div @click="onClick" class="click-base"></div>
+    <div @click="showMountainInfoModal(summit)" class="click-base"></div>
   </div>
 </template>
 
 <script>
   import Flag from "./Flag";
   import ProgressRing from "./ProgressRing";
+  import { mapMutations } from 'vuex';
+  import MountainMixin from "../mixins/Mountain";
+
   export default {
     components: {ProgressRing, Flag},
+    mixins: [ MountainMixin ],
     props: ['summit'],
     created() {
-      console.log(this.summit);
+    },
+    computed: {
+      progress() {
+        return this.getProgress(this.summit);
+      }
     },
     methods: {
-      onClick() {
-        console.log(this.summit);
-      },
+      ...mapMutations('modalMountainInfo', {
+        showMountainInfoModal: 'showModal',
+      })
     }
   }
 </script>

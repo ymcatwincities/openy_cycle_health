@@ -1,0 +1,84 @@
+#seven_summits_app .mountain-info-modal .modal-dialog {
+  width: 80vw;
+  max-width: 80vw;
+
+  .modal-content {
+    border-radius: 11px;
+
+    .modal-header {
+      align-items: center;
+      border: none;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      background-color: $light-white;
+
+      .close {
+        margin-right: 5px;
+        border-radius: 30px;
+        background-color: $white;
+        padding: 10px;
+        color: $gray-400;
+      }
+    }
+
+    .modal-body {
+      display: flex;
+      padding: 0;
+
+      > div {
+        padding: 20px 10px;
+        width: 50%;
+
+        &:last-of-type {
+          padding: 0;
+        }
+      }
+
+      .info {
+        display: inline-flex;
+        flex-direction: column;
+        padding-left: 10px;
+        > span {
+          display: flex;
+          > span {
+            width: 50%;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      .description {
+        margin: 40px 20px 6px;
+        border: 1px solid $dove-gray;
+        border-radius: 5px;
+        padding: 20px;
+        max-height: 256px;
+        overflow: scroll;
+        line-height: 27px;
+        color: $gray-900;
+        font-family: $cachet-book;
+        font-size: 18px;
+        overflow-x: auto;
+      }
+
+      .links {
+        display: none;
+      }
+
+      .image {
+
+      }
+
+      .preview {
+
+      }
+    }
+
+    .modal-footer {
+      justify-content: space-between;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      cursor: pointer;
+    }
+  }
+}

@@ -10,6 +10,7 @@
       cy="50%"
     />
     <circle
+      v-if="progress > 0"
       stroke="white"
       fill="transparent"
       :stroke-dasharray="circumference + ' ' + circumference"
@@ -19,7 +20,7 @@
       cx="50%"
       cy="50%"
     />
-    <text class="progress-ring__percentage" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">{{ progress }}%</text>
+    <text class="progress-ring__percentage" x="50%" y="51%" dominant-baseline="middle" text-anchor="middle">{{ progress }}</text>
   </svg>
 </template>
 

@@ -1,0 +1,136 @@
+#seven_summits_app .mountain-info-modal .modal-dialog .modal-content {
+  .modal-header {
+    .modal-title {
+      line-height: 27px;
+      font-family: $cachet;
+      font-size: 18px;
+
+      @include media-breakpoint-up(md) {
+        line-height: 54px;
+        font-size: 36px;
+      }
+    }
+  }
+
+  .modal-body {
+    > div {
+
+    }
+
+    .info {
+      > span {
+        padding-bottom: 5px;
+        line-height: 18px;
+        font-size: 12px;
+
+        @include media-breakpoint-up(md) {
+          line-height: 27px;
+          font-size: 18px;
+        }
+
+        > span:first-child {
+          padding-right: 10px;
+          text-align: right;
+          color: $gray-400;
+          font-family: $cachet-book;
+        }
+
+        > span:last-child {
+          color: $gray-900;
+          font-family: $cachet;
+        }
+      }
+    }
+
+    .description {
+
+    }
+
+    .links {
+      line-height: 18px;
+      color: $dark-blue;
+      font-family: $cachet;
+      font-size: 12px;
+
+      > p {
+        padding-top: 26px;
+
+        &:before {
+          padding: 16px;
+
+          color: $gray-400;
+          font-family: "Font Awesome 5 Free";
+          font-size: 20px;
+          font-weight: 900;
+        }
+
+        &:first-child:before {
+          content: "\f5da";
+        }
+
+        &:last-child:before {
+          content: "\f302";
+        }
+      }
+    }
+
+    .image {
+
+    }
+
+    .preview {
+
+    }
+  }
+
+  .modal-footer {
+    background-color: $indigo;
+    padding: 14px;
+    text-transform: uppercase;
+    color: $white;
+
+    @include media-breakpoint-up(md) {
+      justify-content: center;
+      background-color: $light-white;
+    }
+
+    > p:nth-child(1) {
+      line-height: 18px;
+      font-family: $cachet;
+      font-size: 12px;
+
+      @include media-breakpoint-up(md) {
+        line-height: 27px;
+        color: $gray-400;
+        font-size: 18px;
+      }
+    }
+
+    > p:nth-child(2) {
+      line-height: 27px;
+      font-family: $cachet;
+      font-size: 18px;
+
+      @include media-breakpoint-up(md) {
+        margin: 0 20px;
+        border-radius: 35px;
+        background-color: $indigo;
+        padding: 20px 40px;
+        line-height: 36px;
+        font-size: 24px;
+      }
+    }
+
+    > p:nth-child(3) {
+      line-height: 15px;
+      font-family: $cachet;
+      font-size: 10px;
+
+      @include media-breakpoint-up(md) {
+        line-height: 21px;
+        color: $gray-400;
+        font-size: 14px;
+      }
+    }
+  }
+}

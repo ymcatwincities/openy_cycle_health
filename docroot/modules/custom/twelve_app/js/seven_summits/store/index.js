@@ -3,21 +3,15 @@ import Vuex from 'vuex';
 import VuexPersistence from 'vuex-persist';
 import Axios from "axios";
 import router from "../router";
+import modalMountainInfo from "./modalMountainInfo";
 
 Vue.use(Vuex);
 
-const vuexLocalStorage = new VuexPersistence({
-  key: 'vuex',
-  storage: window.localStorage,
-  // reducer: (state) => ({
-  //   auth: {
-  //     user: state.auth.user,
-  //     loggedIn: state.auth.loggedIn,
-  //   },
-  // }),
-});
-
 export default new Vuex.Store({
+  modules: {
+    modalMountainInfo,
+  },
+
   state: {
     jacketColor: '',
     fleshTone: '',
@@ -51,5 +45,4 @@ export default new Vuex.Store({
       });
     }
   },
-  plugins: [vuexLocalStorage.plugin],
 });

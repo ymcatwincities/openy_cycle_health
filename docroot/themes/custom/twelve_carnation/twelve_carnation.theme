@@ -23,7 +23,7 @@ function twelve_carnation_preprocess_paragraph(array &$variables) {
     }
 
   }
-  
+
 }
 
 /**
@@ -42,6 +42,23 @@ function twelve_carnation_theme_suggestions_page_alter(array &$suggestions, arra
   $route_name = \Drupal::routeMatch()->getRouteName();
   if (isset($http_error_suggestions[$route_name])) {
     $suggestions[] = $http_error_suggestions[$route_name];
+  }
+
+  /**
+   * Update FontAwesome version.
+   *
+   * Implements hook_library_info_alter().
+   */
+  function twelve_carnation_library_info_alter(&$libraries, $extension) {
+    if ($extension !== 'openy_carnation') {
+      return;
+    }
+
+    unset($libraries['global-styling']['css']['base']['//use.fontawesome.com/releases/v5.1.0/css/all.css']);
+    $libraries['global-styling']['css']['base']['//use.fontawesome.com/releases/v5.13.0/css/all.css'] = [
+      'type' => 'external',
+      'attributes' => [ 'defer' => true, 'async' => true]
+    ];
   }
 }
 

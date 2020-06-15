@@ -9,6 +9,7 @@
 
 <script>
   import Mountain from "../components/Mountain";
+  import { mapState, mapMutations } from 'vuex';
 
   export default {
     components: {
@@ -19,11 +20,17 @@
       };
     },
     created: function () {
+      this.$store.commit('modalMountainInfo/showModal', this.summits[0]);
     },
     computed: {
       summits() {
         return this.$store.state.summits;
-      }
-    }
+      },
+
+      ...mapState({
+        modal: state => state.modalMountainInfo.modal
+      })
+    },
+
   }
 </script>
