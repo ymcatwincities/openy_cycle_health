@@ -31,6 +31,5 @@
         modal: state => state.modalMountainInfo.modal
       })
     },
-
   }
 </script>
