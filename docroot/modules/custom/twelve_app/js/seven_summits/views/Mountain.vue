@@ -169,8 +169,7 @@
         this.exerciseModalVisible = false;
 
         if (this.fullyCompletedTodayExercises()) {
-          BadgeHelper.create_hidden_image(this.summit.game_nid);
-          window.location = window.location.origin + '/user';
+          this.$router.push({ name: "Mountains"})
         }
       },
       isExerciseFinished: function(exercise) {
