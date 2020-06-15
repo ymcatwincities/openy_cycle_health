@@ -1,0 +1,17 @@
+uuid: b46de461-4b88-42da-98e1-d714dfbc7a37
+langcode: en
+status: true
+dependencies:
+  module:
+    - openy_focal_point
+name: mountain
+label: Mountain
+effects:
+  b6975362-7f77-429e-909f-2ccffbb994ba:
+    uuid: b6975362-7f77-429e-909f-2ccffbb994ba
+    id: openy_focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: '800'
+      height: '800'
+      crop_type: focal_point

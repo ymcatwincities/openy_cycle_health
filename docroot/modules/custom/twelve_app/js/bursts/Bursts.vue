@@ -13,6 +13,7 @@
       :is-exercise-finished="isExerciseFinished"
       :on-exercise-finished="onExerciseFinished"
       :on-exercise-closed="onExerciseClosed"
+      :btn-text="btnText"
       :debug="debug"
     ></ExerciseModal>
 
@@ -40,6 +41,7 @@
     data() {
       return {
         currentExercise: {},
+        btnText: 'READY … SET … GO!',
         exerciseModalVisible: false,
         nameModalVisible: false,
         isStepNextDisabled: true

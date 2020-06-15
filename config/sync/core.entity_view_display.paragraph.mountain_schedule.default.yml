@@ -8,13 +8,16 @@ dependencies:
     - field.field.paragraph.mountain_schedule.field_elevation
     - field.field.paragraph.mountain_schedule.field_excercises
     - field.field.paragraph.mountain_schedule.field_geolocation
+    - field.field.paragraph.mountain_schedule.field_main_image
     - field.field.paragraph.mountain_schedule.field_mountain
     - field.field.paragraph.mountain_schedule.field_prgf_description
     - field.field.paragraph.mountain_schedule.field_prgf_images
     - field.field.paragraph.mountain_schedule.field_range
+    - image.style.mountain
     - paragraphs.paragraphs_type.mountain_schedule
   module:
     - geolocation
+    - media
     - text
 id: paragraph.mountain_schedule.default
 targetEntityType: paragraph
@@ -59,6 +62,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: geolocation_latlng
+    region: content
+  field_main_image:
+    type: media_thumbnail
+    weight: 9
+    label: above
+    settings:
+      image_style: mountain
+      image_link: ''
+    third_party_settings: {  }
     region: content
   field_mountain:
     weight: 8

@@ -13,6 +13,7 @@
       :is-exercise-finished="isExerciseFinished"
       :on-exercise-finished="onExerciseFinished"
       :on-exercise-closed="onExerciseClosed"
+      :btn-text="btnText"
       :debug="debug"
     ></ExerciseModal>
 
@@ -47,6 +48,7 @@
       twelve.local_storage.save_today_progress(this.$props.progress_nid, this.$props.finished_exercises);
       return {
         currentExercise: {},
+        btnText: 'READY … SET … GO!',
         exerciseModalVisible: false,
         nameModalVisible: false,
         isStepNextDisabled: true
