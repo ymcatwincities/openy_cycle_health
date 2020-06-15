@@ -13,6 +13,7 @@ export default new Vuex.Store({
   },
 
   state: {
+    heroSelected: false,
     jacketColor: '',
     fleshTone: '',
     summits: '',
