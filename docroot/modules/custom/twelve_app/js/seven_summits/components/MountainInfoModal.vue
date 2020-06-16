@@ -3,7 +3,7 @@
     :close_handler="hideMountainInfoModal"
     :title="mountain.mountain"
     class="mountain-info-modal"
-    v-if="modal"
+    v-show="modal"
   >
     <template #body>
       <div>
@@ -27,11 +27,15 @@
           <p>Image Gallery</p>
         </div>
       </div>
-      <div>
-        <div class="image"></div>
-        <div class="preview">
-          <div></div>
-        </div>
+      <div class="image-gallery">
+        <Gallery
+          :width = "gallery_width"
+          :height = "gallery_height"
+          :responsive="gallery_responsive"
+          :showControls="gallery_showControls"
+          :accentColor="gallery_accentColor"
+          :items="mountain.images"
+        />
       </div>
     </template>
     <template #footer>
@@ -46,10 +50,20 @@
   import Modal from '../../components/Modal';
   import { mapMutations, mapState, mapActions } from 'vuex';
   import MountainMixin from "../mixins/Mountain";
+  import Gallery from '../../components/Gallery';
 
   export default {
-    components: { Modal },
+    components: { Modal, Gallery },
     mixins: [ MountainMixin ],
+    data() {
+      return {
+        gallery_width: 480,
+        gallery_height: 480,
+        gallery_responsive: true,
+        gallery_showControls: false,
+        gallery_accentColor: '#92278f',
+      }
+    },
     created() {
     },
     computed: {
