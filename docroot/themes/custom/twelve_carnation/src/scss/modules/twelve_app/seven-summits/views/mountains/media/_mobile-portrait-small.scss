@@ -1,0 +1,21 @@
+@media only screen
+and (max-height: 730px)
+and (orientation: portrait) {
+  .mountains-layout {
+    grid-template-rows: 32% 29% 10% 30%;
+
+    .mountain {
+      .progress-ring {
+        top: 3vh !important;
+      }
+
+      .info {
+        top: 130px;
+      }
+
+      &:nth-child(6) {
+        align-self: center;
+      }
+    }
+  }
+}

@@ -5,8 +5,6 @@ import Welcome from "../views/Welcome.vue";
 import Hero from "../views/Hero.vue";
 import Mountains from "../views/Mountains.vue";
 import Mountain from "../views/Mountain.vue";
-import Game from "../views/Game.vue";
-import MountainInfo from "../views/MountainInfo.vue";
 import NotFound from "../views/NotFound.vue";
 
 Vue.use(VueRouter);
@@ -38,20 +36,6 @@ const routes = [
     meta: { requiresAuth: true },
   },
   {
-    path: '/game/:id',
-    name: 'Game',
-    component: Game,
-    props: true,
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/mountain-info/:id',
-    name: 'MountainInfo',
-    component: MountainInfo,
-    props: true,
-    meta: { requiresAuth: true },
-  },
-  {
     path: '*',
     component: NotFound,
   },
@@ -62,6 +46,9 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  if (to.name === 'Hero' && Store.state.heroSelected) {
+    return next({name: 'Mountains'});
+  }
   // if (to.meta.requiresAuth && !Store.getters.isLoggedIn) {
   //   return next({ name: 'Login' });
   // }

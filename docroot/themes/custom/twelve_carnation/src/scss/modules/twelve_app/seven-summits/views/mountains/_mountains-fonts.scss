@@ -1,0 +1,61 @@
+.mountains-layout {
+  .mountain {
+    .progress-ring__percentage {
+      line-height: 27px;
+      font-family: $cachet-book;
+      font-size: 18px;
+      font-weight: 400;
+      fill: white;
+
+      //@include media-breakpoint-up(md) {
+      //  line-height: 36px;
+      //  font-size: 24px;
+      //}
+    }
+
+    .info {
+      text-align: center;
+      color: #fff;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      p:nth-child(1) {
+        line-height: 27px;
+        font-family: $cachet;
+        font-size: 18px;
+        font-weight: 400;
+
+        @include media-breakpoint-up(lg) {
+          line-height: 72px;
+          font-size: 36px;
+        }
+      }
+
+      p:nth-child(2) {
+        line-height: 18px;
+        font-family: $cachet-book;
+        font-size: 12px;
+        font-weight: 400;
+
+        @include media-breakpoint-up(lg) {
+          line-height: 27px;
+          font-size: 18px;
+        }
+      }
+
+      p:nth-child(3) {
+        line-height: 15px;
+        font-family: $cachet-book;
+        font-size: 10px;
+        font-weight: 400;
+
+        @include media-breakpoint-up(lg) {
+          line-height: 21px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

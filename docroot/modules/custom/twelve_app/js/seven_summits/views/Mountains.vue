@@ -1,22 +1,19 @@
 <template>
-  <div>
-    <div>
-      <div class="seven-summits__overlay"></div>
-      <div class="seven-summits__bg-image"></div>
-
-      <div class="container">
-        <div class="d-flex flex-column h-100 text-center">
-
-          <div>mountains</div>
-        </div>
-      </div>
-    </div>
+  <div class="views-layout mountains-layout">
+    <Mountain
+      v-for="summit in summits"
+      :summit="summit"
+    ></Mountain>
   </div>
 </template>
 
 <script>
+  import Mountain from "../components/Mountain";
+  import { mapState, mapMutations } from 'vuex';
+
   export default {
     components: {
+      Mountain
     },
     data() {
       return {
@@ -24,7 +21,14 @@
     },
     created: function () {
     },
-    methods: {
+    computed: {
+      summits() {
+        return this.$store.state.summits;
+      },
+
+      ...mapState({
+        modal: state => state.modalMountainInfo.modal
+      })
     },
   }
 </script>

@@ -27,8 +27,6 @@
 </template>
 
 <script>
-
-
   export default {
     components: {
     },
@@ -38,7 +36,6 @@
       };
     },
     created: function () {
-      console.log('welcome created');
     },
     methods: {
     },
