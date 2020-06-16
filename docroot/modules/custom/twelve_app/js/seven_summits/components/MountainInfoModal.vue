@@ -50,12 +50,10 @@
   import Modal from '../../components/Modal';
   import { mapMutations, mapState, mapActions } from 'vuex';
   import MountainMixin from "../mixins/Mountain";
-  // Documentation for gallery: https://github.com/ChristophAnastasiades/Lingallery
-  import Lingallery from 'lingallery';
   import Gallery from '../../components/Gallery';
 
   export default {
-    components: { Modal, Lingallery, Gallery },
+    components: { Modal, Gallery },
     mixins: [ MountainMixin ],
     data() {
       return {

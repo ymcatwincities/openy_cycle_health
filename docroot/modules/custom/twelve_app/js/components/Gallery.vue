@@ -109,6 +109,7 @@
 </template>
 
 <script>
+  // Documentation for gallery: https://github.com/ChristophAnastasiades/Lingallery
   import Lingallery from 'lingallery';
 
   export default {
