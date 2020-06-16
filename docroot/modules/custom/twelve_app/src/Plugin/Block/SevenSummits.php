@@ -79,7 +79,7 @@ class SevenSummits extends GameAbstract {
       ->load('mountain_thumbnail');
 
     $summits = [];
-    foreach ($games as $game) {
+    foreach ($games as $index => $game) {
       $paragraph = $this->findGameExercisesParagraph($game['node_id']);
 
       $finished_exercises = [];
@@ -116,6 +116,7 @@ class SevenSummits extends GameAbstract {
         'geolocation' => $paragraph->field_geolocation->value,
         'main_image' => $main_image_url,
         'images' => $images,
+        'id' => $index,
       ];
 
       $summits[] = $summit;

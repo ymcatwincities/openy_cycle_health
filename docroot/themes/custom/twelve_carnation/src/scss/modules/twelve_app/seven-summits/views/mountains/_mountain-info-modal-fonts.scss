@@ -105,10 +105,11 @@
       }
     }
 
-    > p:nth-child(2) {
+    > .start_climbing {
       line-height: 27px;
       font-family: $cachet;
       font-size: 18px;
+      color: $white;
 
       @include media-breakpoint-up(md) {
         margin: 0 20px;
