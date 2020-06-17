@@ -84,5 +84,7 @@ function create(game_nid, badge_type) {
 export default {
   create_bingo,
   create_full_bingo,
-  create_hidden_image
+  create_hidden_image,
+  create_summit_reached,
+  create_conquered_mountain
 }
