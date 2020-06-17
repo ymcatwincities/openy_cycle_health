@@ -8,11 +8,6 @@
 
     .container {
       margin-top: 80px;
-      min-height: 64vh;
-
-      @include media-breakpoint-up(xl) {
-        margin-top: 0;
-      }
 
       @include media-breakpoint-up(xl) {
         margin-top: 0;
@@ -66,6 +61,28 @@
 
   .mountain {
 
+    &-btn-back {
+      top: 0;
+      left: 0;
+      z-index: 100;
+      width: 25px;
+      height: 20px;
+      background-image: url("/themes/custom/twelve_carnation/dist/img/back-arrow.svg");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 25px;
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      flex-direction: column;
+      text-align: center;
+
+      @include media-breakpoint-up(lg) {
+        top: 5%;
+        left: 3%;
+      }
+    }
+
     &-wrap {
       display: flex;
       flex-direction: column;
@@ -77,7 +94,7 @@
 
     &__progress {
       left: 0;
-      top: 11%;
+      top: 12%;
       width: 190px;
       margin: 20px auto 0;
       text-align: center;
@@ -386,6 +403,7 @@
       }
 
       .modal-body {
+        min-height: 100px;
         text-align: left;
         font-family: $cachet-book;
         font-size: 12px;
@@ -406,6 +424,7 @@
           line-height: 90px;
           text-align: center;
           color: $gray-900;
+          margin: 0 auto;
         }
 
         .btn-default,

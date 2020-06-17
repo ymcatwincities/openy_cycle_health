@@ -8,6 +8,8 @@
         <div class="d-flex flex-column h-100">
           <div class="mountain-wrap position-relative w-100">
 
+            <router-link to="/mountains" class="mountain-btn-back position-absolute"></router-link>
+
             <div class="mountain__progress">
               <h4>{{ summit.mountain }}</h4>
               <div class="progress">

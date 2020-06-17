@@ -25,14 +25,14 @@
       width: 100%;
       z-index: 0;
       background-image: url("/themes/custom/twelve_carnation/dist/img/seven_summits.png");
-      background-position: 50% -10px;
+      background-position: 50% 0;
       background-repeat: no-repeat;
       background-size: 100%;
     }
 
     // Heading styles.
     &__heading {
-      margin-top: 20px;
+      margin-top: 10vh;
       font-family: $cachet;
       font-size: 56px;
       line-height: 96px;
@@ -92,9 +92,11 @@
   .container {
     position: relative;
     z-index: 2;
+    min-height: 420px;
+    height: 100vh;
 
     @include media-breakpoint-up(lg) {
-      height: 770px;
+      height: calc(100vh - 85px - 50px);
     }
   }
 
