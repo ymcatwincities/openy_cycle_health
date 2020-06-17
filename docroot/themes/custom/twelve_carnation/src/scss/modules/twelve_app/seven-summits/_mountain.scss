@@ -353,70 +353,76 @@
       }
     }
 
-    .modal-content {
-      background: $white;
-      border-radius: 10px;
-      border: none;
-      position: relative;
-    }
-
-    .modal-title {
-      font-family: $cachet;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 27px;
-      color: $gray-400;
-    }
-
-    .modal-header {
-      border-radius: 10px 10px 0 0;
-      background: $light-white;
-      border-bottom: none;
-
-      button {
-        margin: auto 10px auto 0;
-        padding: 10px;
-        line-height: .8;
-        font-weight: 200;
-        color: $gray-400;
+    .exercise-modal {
+      .modal-content {
         background: $white;
-        border-radius: 100%;
+        border-radius: 10px;
+        border: none;
+        position: relative;
       }
-    }
 
-    .modal-body {
-      min-height: 100px;
-      text-align: left;
-      font-family: $cachet-book;
-      font-size: 12px;
-      line-height: 18px;
-      color: $thunder;
-
-      .description {
-        padding: 10px;
+      .modal-title {
+        font-family: $cachet;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 27px;
+        color: $gray-400;
       }
-    }
 
-    .modal-footer {
-      padding: 0;
+      .modal-header {
+        border-radius: 10px 10px 0 0;
+        background: $light-white;
+        border-bottom: none;
 
-      .countdown {
+        button {
+          margin: auto 10px auto 0;
+          padding: 10px;
+          line-height: .8;
+          font-weight: 200;
+          color: $gray-400;
+          background: $white;
+          border-radius: 100%;
+        }
+      }
+
+      .modal-body {
+        min-height: 100px;
+        text-align: left;
         font-family: $cachet-book;
-        font-size: 60px;
-        line-height: 90px;
-        text-align: center;
-        color: $gray-900;
-        margin: 0 auto;
+        font-size: 12px;
+        line-height: 18px;
+        color: $thunder;
+
+        .description {
+          padding: 10px;
+        }
       }
 
-      .btn-default,
-      .btn-blue {
-        border-radius: 0 0 10px 10px;
-      }
+      .modal-footer {
+        justify-content: center;
 
-      .btn-gold {
-        img {
-          display: none;
+        .countdown {
+          font-family: $cachet-book;
+          font-size: 60px;
+          line-height: 90px;
+          text-align: center;
+          color: $gray-900;
+          margin: 0 auto;
+        }
+
+        .btn-default,
+        .btn-blue {
+
+          &:last-of-type {
+            margin: 0;
+            border-radius: 0 0 10px 10px;
+          }
+        }
+
+        .btn-gold {
+          img {
+            display: none;
+          }
         }
       }
     }

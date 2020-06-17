@@ -11,9 +11,9 @@
             <div class="mountain__progress">
               <h4>{{ summit.mountain }}</h4>
               <div class="progress">
-                <div class="progress-bar" role="progressbar" :style="{width: progressComplited()}" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" :style="{width: `${progress}%`}" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
-              <div class="progress-count">{{ progressComplited() }} Complete</div>
+              <div class="progress-count">{{ progress }}% Complete</div>
               <div class="progress-info">{{ mountain_number }} Summit | {{ finishes }} Finishes</div>
             </div>
 
@@ -75,6 +75,7 @@
       </div>
 
       <ExerciseModal
+        class="exercise-modal"
         :exercise="currentExercise"
         :exercise-modal-visible="exerciseModalVisible"
         :is-exercise-finished="isExerciseFinished"
@@ -93,6 +94,7 @@
   import ExerciseModal from '../../components/ExerciseModal.vue';
   import Spinner from '../../components/Spinner.vue'
   import BadgeHelper from '../../helper/twelve/user/badge';
+  import MountainMixin from "../mixins/Mountain";
 
   export default {
     components: {
@@ -100,6 +102,7 @@
       ExerciseModal,
       Spinner,
     },
+    mixins: [ MountainMixin ],
     data() {
       twelve.local_storage.save_today_progress(this.$store.state.summits[this.$route.params.id].progress_nid, this.$store.state.summits[this.$route.params.id].finished_exercises);
 
@@ -134,17 +137,8 @@
           break;
         }
       }
-
-      let cache = twelve.local_storage.load_today_progress(this.summit.progress_nid);
-      for (let index = 0; index < cache.length; index++) {
-        this.summit.finished_exercises.push(cache[index]);
-      }
     },
     methods: {
-      progressComplited: function () {
-        const complited = this.summit.finished_exercises.length / this.number_exercises * 100
-        return Math.round(complited) + '%'
-      },
       onExerciseSelected: function () {
 
         let exercise = this.summit.exercises[0];
@@ -171,6 +165,7 @@
         this.exerciseModalVisible = false;
 
         if (this.fullyCompletedTodayExercises()) {
+          BadgeHelper.create_conquered_mountain(this.summit.game_id);
           this.$router.push({ name: "Mountains"})
         }
       },
@@ -200,11 +195,17 @@
           this.summit.finished_exercises,
         );
 
+        if (this.summit.finished_exercises.length === 13) {
+          BadgeHelper.create_summit_reached(this.summit.game_id);
+        }
+
         this.$notify({
           group: 'twelve_app',
           title: 'Hooray, you have finished your exercise!',
           text: 'Now, lets have some rest.'
         });
+
+        this.onExerciseClosed();
       },
       beep: function () {
         let snd = new Audio('/modules/custom/twelve_app/assets/disco_alarm.wav');

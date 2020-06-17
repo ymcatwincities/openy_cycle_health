@@ -15,12 +15,6 @@
     components: {
       Mountain
     },
-    data() {
-      return {
-      };
-    },
-    created: function () {
-    },
     computed: {
       summits() {
         return this.$store.state.summits;
@@ -28,7 +22,7 @@
 
       ...mapState({
         modal: state => state.modalMountainInfo.modal
-      })
+      }),
     },
   }
 </script>
