@@ -134,6 +134,7 @@
         for (let i = 0; i < this.summit.exercises; i++) {
           if (!this.isExerciseFinished(this.summit.exercises[i])) {
             this.currentExercise = this.summit.exercises[i];
+            break;
           }
         }
       }
