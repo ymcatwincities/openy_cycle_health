@@ -75,9 +75,11 @@ class SevenSummits extends GameAbstract {
 
     $image_style = $this->entityTypeManager->getStorage('image_style')
       ->load('mountain');
+    $image_style_thumbnail = $this->entityTypeManager->getStorage('image_style')
+      ->load('mountain_thumbnail');
 
     $summits = [];
-    foreach ($games as $game) {
+    foreach ($games as $index => $game) {
       $paragraph = $this->findGameExercisesParagraph($game['node_id']);
 
       $finished_exercises = [];
@@ -93,7 +95,10 @@ class SevenSummits extends GameAbstract {
       $images = [];
       if ($mediaImages = $paragraph->field_prgf_images->referencedEntities()) {
         foreach ($mediaImages as $mediaImage) {
-          $images[] = $image_style->buildUrl($mediaImage->field_media_image->entity->uri->value);
+          $images[] = [
+            'src' => $image_style->buildUrl($mediaImage->field_media_image->entity->uri->value),
+            'thumbnail' => $image_style_thumbnail->buildUrl($mediaImage->field_media_image->entity->uri->value)
+          ];
         }
       }
 
@@ -111,6 +116,7 @@ class SevenSummits extends GameAbstract {
         'geolocation' => $paragraph->field_geolocation->value,
         'main_image' => $main_image_url,
         'images' => $images,
+        'id' => $index,
       ];
 
       $summits[] = $summit;
