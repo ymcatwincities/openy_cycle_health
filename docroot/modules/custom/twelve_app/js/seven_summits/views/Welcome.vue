@@ -28,16 +28,5 @@
 
 <script>
   export default {
-    components: {
-    },
-    data() {
-      return {
-        showMenu: false,
-      };
-    },
-    created: function () {
-    },
-    methods: {
-    },
   }
 </script>
