@@ -75,6 +75,7 @@
       </div>
 
       <ExerciseModal
+        class="exercise-modal"
         :exercise="currentExercise"
         :exercise-modal-visible="exerciseModalVisible"
         :is-exercise-finished="isExerciseFinished"
@@ -205,6 +206,8 @@
           title: 'Hooray, you have finished your exercise!',
           text: 'Now, lets have some rest.'
         });
+
+        this.onExerciseClosed();
       },
       beep: function () {
         let snd = new Audio('/modules/custom/twelve_app/assets/disco_alarm.wav');
