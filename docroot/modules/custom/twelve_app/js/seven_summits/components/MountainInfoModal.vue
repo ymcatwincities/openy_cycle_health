@@ -39,8 +39,12 @@
       </div>
     </template>
     <template #footer>
-      <p>{{ getProgress(mountain) }} complete</p>
-      <router-link :to="{ name: 'Mountain', params: {id: mountain.id } }" @click="" class="start_climbing">Start climbing</router-link>
+      <p>{{ getProgress(mountain) }}% complete</p>
+      <a
+        @click="gotoMountain"
+        class="start_climbing"
+        :class="{disabled: isConquered}"
+      >{{ isConquered ? 'The mountain is conquered' : 'Start climbing' }}</a>
       <p>{{ mountain.id }} summit / {{ finishes }} finishes</p>
     </template>
   </Modal>
@@ -51,6 +55,7 @@
   import { mapMutations, mapState, mapActions } from 'vuex';
   import MountainMixin from "../mixins/Mountain";
   import Gallery from '../../components/Gallery';
+  import router from "../router";
 
   export default {
     components: { Modal, Gallery },
@@ -69,16 +74,27 @@
       this.finishes = this.$store.state.finishes.length;
     },
     computed: {
+      isConquered() {
+        return this.getProgress(this.mountain) === 100;
+      },
+
       ...mapState('modalMountainInfo', [
         'modal',
         'mountain'
-      ])
+      ]),
     },
     methods: {
       ...mapMutations('modalMountainInfo', {
         hideMountainInfoModal: 'hideModal',
       }),
 
+      gotoMountain() {
+        if (!this.isConquered) {
+          router.push({ name: 'Mountain', params: {id: this.mountain.id } })
+        }
+
+        this.hideMountainInfoModal();
+      },
     }
   }
 </script>

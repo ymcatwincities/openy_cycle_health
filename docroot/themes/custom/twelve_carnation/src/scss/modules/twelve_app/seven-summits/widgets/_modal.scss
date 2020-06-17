@@ -1,0 +1,81 @@
+#seven_summits_app {
+
+  .modal-dialog {
+    margin-right: auto;
+    margin-left: auto;
+
+    .modal-content {
+      position: relative;
+      border: none;
+      border-radius: 10px;
+      background: $white;
+
+      .modal-header {
+        border-bottom: none;
+        border-radius: 10px 10px 0 0;
+        background: $light-white;
+
+        button {
+          margin: auto 10px auto 0;
+          border-radius: 100%;
+          background: $white;
+          padding: 10px;
+          line-height: .8;
+          color: $gray-400;
+          font-weight: 200;
+        }
+
+        .modal-title {
+          line-height: 27px;
+          color: $gray-400;
+          font-family: $cachet;
+          font-size: 18px;
+          font-weight: 400;
+        }
+      }
+
+      .modal-body {
+        padding: 0;
+        text-align: left;
+        line-height: 18px;
+        color: $thunder;
+        font-family: $cachet-book;
+        font-size: 12px;
+
+        .description {
+          padding: 10px;
+        }
+      }
+
+      .modal-footer {
+        padding: 0;
+
+        .countdown {
+          position: absolute;
+          top: 55px;
+          right: 27px;
+          text-align: center;
+          line-height: 90px;
+          color: $gray-900;
+          font-family: $cachet-book;
+          font-size: 60px;
+        }
+
+        .btn-default,
+        .btn-blue {
+          margin: 10px;
+
+          &:last-of-type {
+            margin: 0 10px 10px;
+          }
+        }
+
+        .btn-gold {
+          img {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
