@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import VuexPersistence from 'vuex-persist';
 import Axios from "axios";
 import router from "../router";
 import modalMountainInfo from "./modalMountainInfo";

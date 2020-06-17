@@ -72,9 +72,11 @@ function twelve_app_library_info_alter(&$libraries, $extension) {
  */
 function twelve_app_preprocess_html(&$variables) {
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
-    if ($paragraph = $node->field_content->entity) {
-      if ($paragraph->bundle() == '7_summits_app') {
-        $variables['attributes']['class'][] = 'twelve-app-seven-summits';
+    if ($node->hasField('field_content')) {
+      if ($paragraph = $node->field_content->entity) {
+        if ($paragraph->bundle() == '7_summits_app') {
+          $variables['attributes']['class'][] = 'twelve-app-seven-summits';
+        }
       }
     }
   }
