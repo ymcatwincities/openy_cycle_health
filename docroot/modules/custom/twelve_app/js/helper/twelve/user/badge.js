@@ -30,7 +30,7 @@ function create_summit_reached(game_nid) {
 }
 
 /**
- * Function that creates Summit Reached node.
+ * Function that creates Summit Conquered node.
  */
 function create_conquered_mountain(game_nid) {
   create(game_nid, 'Conquered the Mountain');
