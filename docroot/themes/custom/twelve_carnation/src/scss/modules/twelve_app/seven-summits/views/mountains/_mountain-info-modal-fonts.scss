@@ -110,6 +110,10 @@
         padding: 20px 40px;
         line-height: 36px;
         font-size: 24px;
+
+        &.disabled {
+          background-color: $gray-400;
+        }
       }
     }
 
