@@ -128,8 +128,6 @@
 
       twelve.local_storage.set_user_name(twelve.user.get_active_player_name());
 
-      console.log(this.summit);
-
       if (this.summit.finished_exercises.length === 0) {
         this.currentExercise = this.summit.exercises[0];
       } else {
