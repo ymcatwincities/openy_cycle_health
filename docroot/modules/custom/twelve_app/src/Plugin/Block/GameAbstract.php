@@ -219,7 +219,7 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
       $this->_userProgressNodes[$game_nid] = Node::load($last_result);
     }
 
-    return $this->_userProgressNode[$game_nid];
+    return $this->_userProgressNodes[$game_nid];
   }
 
   protected function getUserProgressNid() {

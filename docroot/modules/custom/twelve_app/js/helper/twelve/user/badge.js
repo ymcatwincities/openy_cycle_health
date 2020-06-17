@@ -22,6 +22,20 @@ function create_hidden_image(game_nid) {
   create(game_nid, 'Hidden Picture');
 }
 
+/**
+ * Function that creates Summit Reached node.
+ */
+function create_summit_reached(game_nid) {
+  create(game_nid, 'Summit Reached');
+}
+
+/**
+ * Function that creates Summit Reached node.
+ */
+function create_conquered_mountain(game_nid) {
+  create(game_nid, 'Conquered the Mountain');
+}
+
 function create(game_nid, badge_type) {
 
   let local_storage_progress_id = local_storage.get_progress_nid(game_nid);

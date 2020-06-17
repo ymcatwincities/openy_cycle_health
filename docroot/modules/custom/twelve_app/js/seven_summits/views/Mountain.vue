@@ -99,7 +99,6 @@
       Climber,
       ExerciseModal,
       Spinner,
-      BadgeHelper
     },
     data() {
       twelve.local_storage.save_today_progress(this.$store.state.summits[this.$route.params.id].progress_nid, this.$store.state.summits[this.$route.params.id].finished_exercises);
@@ -129,13 +128,21 @@
 
       twelve.local_storage.set_user_name(twelve.user.get_active_player_name());
 
-      if (this.$store.state.summits[this.$route.params.id].finished_exercises.length === 0) {
-        this.currentExercise = this.$store.state.summits[this.$route.params.id].exercises[0];
+      console.log(this.summit);
 
-        let cache = twelve.local_storage.load_today_progress(this.$store.state.summits[this.$route.params.id].progress_nid);
-        for (let index = 0; index < cache.length; index++) {
-          this.$store.state.summits[this.$route.params.id].finished_exercises.push(cache[index]);
+      if (this.summit.finished_exercises.length === 0) {
+        this.currentExercise = this.summit.exercises[0];
+      } else {
+        for (let i = 0; i < this.summit.exercises; i++) {
+          if (!this.isExerciseFinished(this.summit.exercises[i])) {
+            this.currentExercise = this.summit.exercises[i];
+          }
         }
+      }
+
+      let cache = twelve.local_storage.load_today_progress(this.summit.progress_nid);
+      for (let index = 0; index < cache.length; index++) {
+        this.summit.finished_exercises.push(cache[index]);
       }
     },
     methods: {
@@ -193,7 +200,7 @@
 
         twelve.local_storage.save_today_progress(this.summit.progress_nid, Array.from(this.summit.finished_exercises.values()));
         twelve.send_progress(
-          this.summit.game_nid,
+          this.summit.game_id,
           this.summit.progress_nid,
           this.summit.finished_exercises,
         );
