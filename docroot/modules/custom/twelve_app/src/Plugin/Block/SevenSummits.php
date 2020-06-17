@@ -40,28 +40,34 @@ class SevenSummits extends GameAbstract {
    * {@inheritdoc}
    */
   public function build() {
-    $badges = $this->family->getBadgeTypes();
-    $badge_list = [];
-    foreach ($badges as $badge) {
-      $badge_list[$badge->name] = $badge->tid;
+
+    $result = &drupal_static(__FUNCTION__);
+    if (empty($result)) {
+      $badges = $this->family->getBadgeTypes();
+      $badge_list = [];
+      foreach ($badges as $badge) {
+        $badge_list[$badge->name] = $badge->tid;
+      }
+
+      $result =  [
+        '#theme' => 'seven_summits',
+        '#debug' => $this->isUserAdmin(),
+        '#cache' => [
+          'max-age' => 0,
+        ],
+        '#hero_config' => $this->family->get7SummitsHeroConfig(),
+        '#summits' => $this->getSummits(),
+        '#attached' => [
+          'drupalSettings' => [
+            'username' => $this->family->getActivePlayerName(),
+            'sub_account_id' => $this->family->getSubAccountId(),
+            'badges' => $badge_list,
+          ],
+        ],
+      ];
     }
 
-    return [
-      '#theme' => 'seven_summits',
-      '#debug' => $this->isUserAdmin(),
-      '#cache' => [
-        'max-age' => 0,
-      ],
-      '#hero_config' => $this->family->get7SummitsHeroConfig(),
-      '#summits' => $this->getSummits(),
-      '#attached' => [
-        'drupalSettings' => [
-          'username' => $this->family->getActivePlayerName(),
-          'sub_account_id' => $this->family->getSubAccountId(),
-          'badges' => $badge_list,
-        ],
-      ],
-    ];
+    return $result;
   }
 
   /**
@@ -69,6 +75,7 @@ class SevenSummits extends GameAbstract {
    * @return array
    */
   function getSummits() {
+
     $games = $this->configFactory
       ->get($this->getGameConfigurationName())
       ->get('items');
@@ -102,7 +109,7 @@ class SevenSummits extends GameAbstract {
         }
       }
 
-      $summit = [
+      $summits[] = [
         'game_id' => $game['node_id'],
         'progress_nid' => !is_null($user_progress_node) ? $user_progress_node->id() : 0,
         'exercises' => $this->prepareExercisesArray($paragraph),
@@ -118,8 +125,6 @@ class SevenSummits extends GameAbstract {
         'images' => $images,
         'id' => $index,
       ];
-
-      $summits[] = $summit;
     }
 
     return $summits;

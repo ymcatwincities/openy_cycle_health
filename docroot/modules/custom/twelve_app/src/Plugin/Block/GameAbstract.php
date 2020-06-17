@@ -184,6 +184,7 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
    * @return \Drupal\Core\Entity\EntityInterface|mixed|null
    */
   protected function getUserProgressNode($game_nid = NULL) {
+
     if (empty($this->currentUser->getAccount()->id())) {
       return NULL;
     }
@@ -194,7 +195,7 @@ abstract class GameAbstract extends BlockBase implements ContainerFactoryPluginI
 
     if (isset($this->_userProgressNodes[$game_nid])
       && !is_null($this->_userProgressNodes[$game_nid])) {
-      return $this->_userProgressNode[$game_nid];
+      return $this->_userProgressNodes[$game_nid];
     }
 
     $this->_userProgressNodes[$game_nid] = NULL;
