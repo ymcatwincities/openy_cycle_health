@@ -1,5 +1,6 @@
 <template>
   <div>
+    <LoginRequiredModal></LoginRequiredModal>
     <MountainInfoModal></MountainInfoModal>
 
     <router-view/>
@@ -8,9 +9,12 @@
 
 <script>
   import MountainInfoModal from "./components/MountainInfoModal";
+  import LoginRequiredModal from "./components/LoginRequiredModal";
+
   export default {
     name: 'Sevensummits',
     components: {
+      LoginRequiredModal,
       MountainInfoModal
     },
     props: ['debug', 'error_message', 'summits', 'hero_config'],

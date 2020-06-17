@@ -13,11 +13,12 @@
       <image v-bind:xlink:href="summit.main_image" clip-path="url(#triangleView)"></image>
       <polygon points="0,600 400,10 800,600" style="stroke:white;stroke-width:10;" fill="url(#mountainGradient)"></polygon>
     </svg>
+    <ProgressRing
+      v-if="progress < 100" :progress="progress" radius="50" stroke="6"
+    ></ProgressRing>
     <Flag
-      v-if="progress == 100 || ['Elbrus','Everest'].includes(summit.mountain)"
-      :class="$store.state.jacketColor"
+      v-else :class="$store.state.jacketColor"
     ></Flag>
-    <ProgressRing v-else radius="50" :progress="progress" stroke="6"></ProgressRing>
     <div class="info">
       <p>{{ summit.mountain }}</p>
       <p>{{ summit.elevation }}</p>
@@ -34,11 +35,9 @@
   import MountainMixin from "../mixins/Mountain";
 
   export default {
-    components: {ProgressRing, Flag},
+    components: { ProgressRing, Flag },
     mixins: [ MountainMixin ],
     props: ['summit'],
-    created() {
-    },
     computed: {
       progress() {
         return this.getProgress(this.summit);

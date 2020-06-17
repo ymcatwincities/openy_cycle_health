@@ -3,12 +3,13 @@
 @import 'views-layout';
 @import 'views/hero';
 @import 'hero/climber';
+@import 'widgets/modal';
 @import 'views/mountains/mountains-layout';
+@import 'views/mountains/mountains-fonts';
 @import 'views/mountains/media/mobile-landscape';
 @import 'views/mountains/media/mobile-portrait';
 @import 'views/mountains/media/mobile-portrait-small';
 @import 'views/mountains/media/tablet-portrait';
-@import 'views/mountains/mountains-fonts';
 @import 'views/mountains/mountain-info-modal-layout';
 @import 'views/mountains/mountain-info-modal-fonts';
 @import 'mountain';
