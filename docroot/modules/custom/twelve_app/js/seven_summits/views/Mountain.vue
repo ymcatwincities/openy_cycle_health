@@ -75,6 +75,7 @@
       </div>
 
       <ExerciseModal
+        class="exercise-modal"
         :exercise="currentExercise"
         :exercise-modal-visible="exerciseModalVisible"
         :is-exercise-finished="isExerciseFinished"
