@@ -6,7 +6,7 @@
     v-if="modal"
   >
     <template #body>
-      <div>
+      <div :class="{ 'w-100': !mountain.images.length }">
         <div class="info">
           <span>
             <span>Continent</span> <span>{{ mountain.continent }}</span>

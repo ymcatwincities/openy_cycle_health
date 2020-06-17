@@ -2,7 +2,7 @@
   margin-right: auto;
   margin-left: auto;
   width: 90vw;
-  max-width: 90vw;
+  max-width: 1001px;
 
   .modal-content {
     border-radius: 11px;
@@ -15,17 +15,45 @@
       background-color: $light-white;
 
       .close {
+        font-size: 1.5rem;
+        line-height: .8;
+        font-weight: 200;
+        border-radius: 100%;
         margin-right: 20px;
-        border-radius: 30px;
         background-color: $white;
-        padding: 10px;
         color: $gray-400;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+
+        @include media-breakpoint-up(md) {
+          font-size: 2.5rem;
+          width: 60px;
+          height: 60px;
+        }
+
+        span {
+          margin-top: -7px;
+
+          @include media-breakpoint-up(md) {
+            margin-top: -3px;
+          }
+        }
       }
     }
 
     .modal-body {
       display: flex;
+      flex-direction: column;
       padding: 0;
+      overflow: auto;
+      max-height: 66vh;
+
+      @include media-breakpoint-up(md) {
+        flex-direction: row;
+      }
 
       > div {
         padding: 20px 10px;
@@ -38,31 +66,62 @@
 
       .info {
         display: flex;
+        flex-direction: column;
         flex-wrap: wrap;
+        padding-top: 15px;
+        padding-bottom: 25px;
         padding-left: 10px;
+
+        @include media-breakpoint-up(md) {
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex-direction: row;
+        }
+
         > span {
           display: flex;
           width: 50%;
           > span {
             width: 50%;
-            white-space: nowrap;
+            white-space: normal;
           }
         }
 
-        @media only screen
-        and (min-width: 900px) {
+        @include media-breakpoint-up(lg) {
           padding-right: 30px;
         }
       }
 
       .description {
-        margin: 40px 20px 6px;
+        margin: 0 20px 20px;
         border: 1px solid $dove-gray;
         border-radius: 5px;
         padding: 20px;
         max-height: 256px;
         overflow: scroll;
         overflow-x: auto;
+        font-family: $cachet-book;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0;
+        color: $gray-900;
+
+        @include media-breakpoint-up(sm) {
+          font-size: 18px;
+          line-height: 27px;
+        }
+
+        @include media-breakpoint-up(lg) {
+          margin: 40px 20px 6px;
+        }
+
+        p {
+          font-size: inherit;
+          line-height: inherit;
+        }
       }
 
       .links {
@@ -92,13 +151,11 @@
   and (orientation: portrait) {
     .modal-content {
       .modal-body {
-        flex-direction: column;
 
         > div:first-child {
           width: 100%;
 
           .description {
-            margin: 0;
             max-height: 20vh;
           }
         }

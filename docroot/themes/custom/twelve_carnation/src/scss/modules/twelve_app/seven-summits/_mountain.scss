@@ -386,7 +386,6 @@
 
     .modal-body {
       min-height: 100px;
-      padding: 0 250px 0 0;
       text-align: left;
       font-family: $cachet-book;
       font-size: 12px;
@@ -402,14 +401,12 @@
       padding: 0;
 
       .countdown {
-        position: absolute;
-        top: 55px;
-        right: 27px;
         font-family: $cachet-book;
         font-size: 60px;
         line-height: 90px;
         text-align: center;
         color: $gray-900;
+        margin: 0 auto;
       }
 
       .btn-default,
