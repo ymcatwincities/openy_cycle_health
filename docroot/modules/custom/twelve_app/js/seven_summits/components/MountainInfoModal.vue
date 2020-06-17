@@ -3,7 +3,7 @@
     :close_handler="hideMountainInfoModal"
     :title="mountain.mountain"
     class="mountain-info-modal"
-    v-show="modal"
+    v-if="modal"
   >
     <template #body>
       <div>
@@ -27,7 +27,7 @@
           <p>Image Gallery</p>
         </div>
       </div>
-      <div class="image-gallery">
+      <div class="image-gallery" v-if="mountain.images.length > 0">
         <Gallery
           :width = "gallery_width"
           :height = "gallery_height"
@@ -40,8 +40,8 @@
     </template>
     <template #footer>
       <p>{{ getProgress(mountain) }} complete</p>
-      <p>start climbing</p>
-      <p>1 summit / 0 finishes</p>
+      <router-link :to="{ name: 'Mountain', params: {id: mountain.id } }" @click="" class="start_climbing">Start climbing</router-link>
+      <p>{{ mountain.id }} summit / {{ finishes }} finishes</p>
     </template>
   </Modal>
 </template>
@@ -62,9 +62,11 @@
         gallery_responsive: true,
         gallery_showControls: false,
         gallery_accentColor: '#92278f',
+        finishes: 0
       }
     },
-    created() {
+    created: function() {
+      this.finishes = this.$store.state.finishes.length;
     },
     computed: {
       ...mapState('modalMountainInfo', [
@@ -76,6 +78,7 @@
       ...mapMutations('modalMountainInfo', {
         hideMountainInfoModal: 'hideModal',
       }),
+
     }
   }
 </script>

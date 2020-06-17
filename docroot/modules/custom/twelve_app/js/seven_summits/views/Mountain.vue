@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="views-mountain">
+    <div class="views-mountain mountain">
       <div class="seven-summits__overlay"></div>
       <div class="seven-summits__bg-image"></div>
 
@@ -73,17 +73,17 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <ExerciseModal
-      :exercise="currentExercise"
-      :exercise-modal-visible="exerciseModalVisible"
-      :is-exercise-finished="isExerciseFinished"
-      :on-exercise-finished="onExerciseFinished"
-      :on-exercise-closed="onExerciseClosed"
-      :btn-text="btnText"
-      :debug="debug"
-    ></ExerciseModal>
+      <ExerciseModal
+        :exercise="currentExercise"
+        :exercise-modal-visible="exerciseModalVisible"
+        :is-exercise-finished="isExerciseFinished"
+        :on-exercise-finished="onExerciseFinished"
+        :on-exercise-closed="onExerciseClosed"
+        :btn-text="btnText"
+        :debug="debug"
+      ></ExerciseModal>
+    </div>
   </div>
 </template>
 
