@@ -38,11 +38,6 @@
     components: { ProgressRing, Flag },
     mixins: [ MountainMixin ],
     props: ['summit'],
-    computed: {
-      progress() {
-        return this.getProgress(this.summit);
-      }
-    },
     methods: {
       ...mapMutations('modalMountainInfo', {
         showMountainInfoModal: 'showModal',

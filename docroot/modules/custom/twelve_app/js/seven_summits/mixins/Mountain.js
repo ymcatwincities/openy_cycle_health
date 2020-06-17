@@ -1,4 +1,9 @@
 export default {
+  computed: {
+    progress() {
+      return this.getProgress(this.summit);
+    }
+  },
   methods: {
     getProgress(mountain) {
       const exCount = mountain.exercises.length;

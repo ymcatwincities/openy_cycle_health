@@ -28,7 +28,7 @@
   export default {
     props: {
       radius: String,
-      progress: String,
+      progress: Number,
       stroke: String,
     },
     data() {
