@@ -65,11 +65,11 @@
               </div>
             </div>
 
-            <div v-if="next_exercise" class="mountain__next d-flex flex-wrap">
+            <div v-if="thereIsWorkToDo()" class="mountain__next d-flex flex-wrap">
               <div class="burst-label">UP NEXT ...</div>
               <div class="burst-name">{{ currentExercise['label'] }}</div>
               <div class="burst-text">{{ currentExercise['label'] }}</div>
-              <div v-on:click="onExerciseSelected()" class="burst-btn"><span>Let's</span> go</div>
+              <div v-on:click="onExerciseSelected" class="burst-btn"><span>Let's</span> go</div>
             </div>
 
           </div>
@@ -113,11 +113,8 @@
         currentExercise: {},
         btnText: 'START BURSTING',
         exerciseModalVisible: false,
-        mountain_number: 1,
-        next_exercise: true,
         summits: null,
         summit: null,
-        number_exercises: 21,
         debug: null,
       };
     },
@@ -128,16 +125,8 @@
       this.summit = this.$store.state.summits[this.$route.params.id];
 
       this.debug = this.$store.state.debug;
-      this.mountain_number = parseInt(this.$route.params.id) + 1;
-
       twelve.local_storage.set_user_name(twelve.user.get_active_player_name());
-
-      for (let i = 0; i < this.summit.exercises.length; i++) {
-        if (!this.isExerciseFinished(this.summit.exercises[i])) {
-          this.currentExercise = this.summit.exercises[i];
-          break;
-        }
-      }
+      this.setUpNextExercise();
     },
     computed: {
       ...mapState([
@@ -150,26 +139,15 @@
         'incrementSummitsReached',
         'incrementMountainsConquered',
       ]),
+      setUpNextExercise() {
+        for (let i = 0; i < this.summit.exercises.length; i++) {
+          if (!this.isExerciseFinished(this.summit.exercises[i])) {
+            this.currentExercise = this.summit.exercises[i];
+            break;
+          }
+        }
+      },
       onExerciseSelected: function () {
-
-        let exercise = this.summit.exercises[0];
-        const finished_exercises = parseInt(this.summit.finished_exercises.length);
-
-        if (finished_exercises > 0) {
-
-          if (typeof this.summit.exercises[finished_exercises] !== 'undefined') {
-            exercise = this.summit.exercises[finished_exercises];
-          }
-          else {
-            this.next_exercise = false;
-          }
-        }
-
-        if (this.isExerciseFinished(exercise)) {
-          return;
-        }
-
-        this.currentExercise = exercise;
         this.exerciseModalVisible = true;
       },
       onExerciseClosed: function () {
@@ -185,18 +163,9 @@
         return this.summit.finished_exercises.includes(exercise.id);
       },
       onExerciseFinished(exercise) {
-
         this.summit.finished_exercises.push(exercise.id);
 
-        const finished_exercises = parseInt(this.summit.finished_exercises.length);
-        if (finished_exercises > 0) {
-          if (typeof this.summit.exercises[finished_exercises] !== 'undefined') {
-            this.currentExercise = this.summit.exercises[finished_exercises];
-          }
-          else {
-            this.next_exercise = false;
-          }
-        }
+        this.setUpNextExercise();
 
         this.beep();
 
@@ -226,6 +195,10 @@
       },
       fullyCompletedTodayExercises: function () {
         return (this.summit.finished_exercises.length >= Object.keys(this.summit.exercises).length);
+      },
+      thereIsWorkToDo() {
+        console.log(this.fullyCompletedTodayExercises());
+        return !this.fullyCompletedTodayExercises();
       }
     }
   }
