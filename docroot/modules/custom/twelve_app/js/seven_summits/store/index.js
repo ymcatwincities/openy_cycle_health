@@ -26,7 +26,13 @@ export default new Vuex.Store({
     },
     updateFleshTone(state, tone) {
       state.fleshTone = tone;
-    }
+    },
+    incrementSummitsReached(state) {
+      state.summits_reached++;
+    },
+    incrementMountainsConquered(state) {
+      state.mountains_conquered++;
+    },
   },
   actions: {
     saveHero (context) {

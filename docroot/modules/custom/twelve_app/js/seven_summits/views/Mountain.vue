@@ -97,7 +97,7 @@
   import Spinner from '../../components/Spinner.vue'
   import BadgeHelper from '../../helper/twelve/user/badge';
   import MountainMixin from "../mixins/Mountain";
-  import { mapState } from "vuex";
+  import { mapState, mapMutations } from "vuex";
 
   export default {
     components: {
@@ -146,6 +146,10 @@
       ]),
     },
     methods: {
+      ...mapMutations([
+        'incrementSummitsReached',
+        'incrementMountainsConquered',
+      ]),
       onExerciseSelected: function () {
 
         let exercise = this.summit.exercises[0];
@@ -173,7 +177,8 @@
 
         if (this.fullyCompletedTodayExercises()) {
           BadgeHelper.create_conquered_mountain(this.summit.game_id);
-          this.$router.push({ name: "Mountains"})
+          this.incrementMountainsConquered();
+          this.$router.push({ name: "Mountains"});
         }
       },
       isExerciseFinished: function(exercise) {
@@ -204,6 +209,7 @@
 
         if (this.summit.finished_exercises.length === 13) {
           BadgeHelper.create_summit_reached(this.summit.game_id);
+          this.incrementSummitsReached();
         }
 
         this.$notify({
