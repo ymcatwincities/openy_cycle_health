@@ -16,7 +16,8 @@ export default new Vuex.Store({
     jacketColor: '',
     fleshTone: '',
     summits: '',
-    finishes: '',
+    summits_reached: '1',
+    mountains_conquered: '3',
     debug: ''
   },
   mutations: {
@@ -25,7 +26,13 @@ export default new Vuex.Store({
     },
     updateFleshTone(state, tone) {
       state.fleshTone = tone;
-    }
+    },
+    incrementSummitsReached(state) {
+      state.summits_reached++;
+    },
+    incrementMountainsConquered(state) {
+      state.mountains_conquered++;
+    },
   },
   actions: {
     saveHero (context) {

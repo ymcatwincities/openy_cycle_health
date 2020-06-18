@@ -16,7 +16,7 @@
                 <div class="progress-bar" role="progressbar" :style="{width: `${progress}%`}" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
               <div class="progress-count">{{ progress }}% Complete</div>
-              <div class="progress-info">{{ mountain_number }} Summit | {{ finishes }} Finishes</div>
+              <div class="progress-info">{{ summits_reached }} Summit | {{ mountains_conquered }} Finishes</div>
             </div>
 
             <div class="mountain__view h-100">
@@ -97,6 +97,7 @@
   import Spinner from '../../components/Spinner.vue'
   import BadgeHelper from '../../helper/twelve/user/badge';
   import MountainMixin from "../mixins/Mountain";
+  import { mapState, mapMutations } from "vuex";
 
   export default {
     components: {
@@ -114,7 +115,6 @@
         exerciseModalVisible: false,
         mountain_number: 1,
         next_exercise: true,
-        finishes: 0,
         summits: null,
         summit: null,
         number_exercises: 21,
@@ -129,7 +129,6 @@
 
       this.debug = this.$store.state.debug;
       this.mountain_number = parseInt(this.$route.params.id) + 1;
-      this.finishes = this.$store.state.finishes.length;
 
       twelve.local_storage.set_user_name(twelve.user.get_active_player_name());
 
@@ -140,7 +139,17 @@
         }
       }
     },
+    computed: {
+      ...mapState([
+        'summits_reached',
+        'mountains_conquered'
+      ]),
+    },
     methods: {
+      ...mapMutations([
+        'incrementSummitsReached',
+        'incrementMountainsConquered',
+      ]),
       onExerciseSelected: function () {
 
         let exercise = this.summit.exercises[0];
@@ -168,7 +177,8 @@
 
         if (this.fullyCompletedTodayExercises()) {
           BadgeHelper.create_conquered_mountain(this.summit.game_id);
-          this.$router.push({ name: "Mountains"})
+          this.incrementMountainsConquered();
+          this.$router.push({ name: "Mountains"});
         }
       },
       isExerciseFinished: function(exercise) {
@@ -199,6 +209,7 @@
 
         if (this.summit.finished_exercises.length === 13) {
           BadgeHelper.create_summit_reached(this.summit.game_id);
+          this.incrementSummitsReached();
         }
 
         this.$notify({
