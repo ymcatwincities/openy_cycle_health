@@ -65,7 +65,7 @@
               </div>
             </div>
 
-            <div v-if="thereIsWorkToDo()" class="mountain__next d-flex flex-wrap">
+            <div v-if="!fullyCompletedTodayExercises()" class="mountain__next d-flex flex-wrap">
               <div class="burst-label">UP NEXT ...</div>
               <div class="burst-name">{{ currentExercise['label'] }}</div>
               <div class="burst-text">{{ currentExercise['label'] }}</div>
@@ -196,10 +196,6 @@
       fullyCompletedTodayExercises: function () {
         return (this.summit.finished_exercises.length >= Object.keys(this.summit.exercises).length);
       },
-      thereIsWorkToDo() {
-        console.log(this.fullyCompletedTodayExercises());
-        return !this.fullyCompletedTodayExercises();
-      }
     }
   }
 </script>
