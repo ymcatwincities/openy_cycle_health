@@ -45,14 +45,14 @@
         class="start_climbing"
         :class="{disabled: isConquered}"
       >{{ isConquered ? 'The mountain is conquered' : 'Start climbing' }}</a>
-      <p>{{ mountain.id }} summit / {{ finishes }} finishes</p>
+      <p>{{ summits_reached }} summit / {{ mountains_conquered }} finishes</p>
     </template>
   </Modal>
 </template>
 
 <script>
   import Modal from '../../components/Modal';
-  import { mapMutations, mapState, mapActions } from 'vuex';
+  import { mapMutations, mapState  } from 'vuex';
   import MountainMixin from "../mixins/Mountain";
   import Gallery from '../../components/Gallery';
   import router from "../router";
@@ -67,27 +67,25 @@
         gallery_responsive: true,
         gallery_showControls: false,
         gallery_accentColor: '#92278f',
-        finishes: 0
       }
-    },
-    created: function() {
-      this.finishes = this.$store.state.finishes.length;
     },
     computed: {
       isConquered() {
         return this.getProgress(this.mountain) === 100;
       },
-
       ...mapState('modalMountainInfo', [
         'modal',
         'mountain'
+      ]),
+      ...mapState([
+        'summits_reached',
+        'mountains_conquered'
       ]),
     },
     methods: {
       ...mapMutations('modalMountainInfo', {
         hideMountainInfoModal: 'hideModal',
       }),
-
       gotoMountain() {
         if (!this.isConquered) {
           router.push({ name: 'Mountain', params: {id: this.mountain.id } })

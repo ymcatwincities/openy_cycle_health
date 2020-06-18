@@ -9,20 +9,16 @@
 
 <script>
   import Mountain from "../components/Mountain";
-  import { mapState, mapMutations } from 'vuex';
+  import { mapState } from 'vuex';
 
   export default {
     components: {
       Mountain
     },
     computed: {
-      summits() {
-        return this.$store.state.summits;
-      },
-
-      ...mapState({
-        modal: state => state.modalMountainInfo.modal
-      }),
+      ...mapState([
+        'summits'
+      ]),
     },
   }
 </script>

@@ -41,6 +41,8 @@ function twelve_app_theme() {
         'debug' => '',
         'error_message' => '',
         'summits' => [],
+        'summits_reached' => '',
+        'mountains_conquered' => '',
         'hero_config' => []
       ],
     ],

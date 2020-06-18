@@ -16,7 +16,8 @@ export default new Vuex.Store({
     jacketColor: '',
     fleshTone: '',
     summits: '',
-    finishes: '',
+    summits_reached: '1',
+    mountains_conquered: '3',
     debug: ''
   },
   mutations: {
