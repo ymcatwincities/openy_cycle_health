@@ -49,7 +49,6 @@ class SevenSummits extends GameAbstract {
         $badge_list[$badge->name] = $badge->tid;
       }
 
-
       $result =  [
         '#theme' => 'seven_summits',
         '#debug' => $this->isUserAdmin(),

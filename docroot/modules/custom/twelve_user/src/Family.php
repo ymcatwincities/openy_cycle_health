@@ -297,14 +297,16 @@ class Family {
    * @return int
    */
   public function summitsReachedBadgeCount() {
-    return count($this->badgeListQuery('Summit Reached'));
+    $items = $this->badgeListQuery('Summit Reached');
+    return !empty($items) ? count($items) : 0;
   }
 
   /**
    * @return int
    */
   public function summitsConqueredCount() {
-    return count($this->badgeListQuery('Conquered the Mountain'));
+    $items = $this->badgeListQuery('Conquered the Mountain');
+    return !empty($items) ? count($items) : 0;
   }
 
   /**
