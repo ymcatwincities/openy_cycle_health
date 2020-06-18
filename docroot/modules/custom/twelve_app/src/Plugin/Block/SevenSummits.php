@@ -49,6 +49,7 @@ class SevenSummits extends GameAbstract {
         $badge_list[$badge->name] = $badge->tid;
       }
 
+
       $result =  [
         '#theme' => 'seven_summits',
         '#debug' => $this->isUserAdmin(),
@@ -57,6 +58,8 @@ class SevenSummits extends GameAbstract {
         ],
         '#hero_config' => $this->family->get7SummitsHeroConfig(),
         '#summits' => $this->getSummits(),
+        '#summits_reached' => $this->family->summitsReachedBadgeCount(),
+        '#mountains_conquered' => $this->family->summitsConqueredCount(),
         '#attached' => [
           'drupalSettings' => [
             'username' => $this->family->getActivePlayerName(),

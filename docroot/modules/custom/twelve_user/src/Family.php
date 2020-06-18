@@ -294,6 +294,20 @@ class Family {
   }
 
   /**
+   * @return int
+   */
+  public function summitsReachedBadgeCount() {
+    return count($this->badgeListQuery('Summit Reached'));
+  }
+
+  /**
+   * @return int
+   */
+  public function summitsConqueredCount() {
+    return count($this->badgeListQuery('Conquered the Mountain'));
+  }
+
+  /**
    * Get badge types from vocabulary.
    *
    * @return |array
@@ -319,7 +333,7 @@ class Family {
    *
    * @return mixed
    */
-  protected function getUserRecentBadgesIds($amount) {
+  protected function getUserRecentBadgesIds($amount, $badge_title = NULL) {
     $query = $this->database->select('node__field_results', 'results');
     $query->innerJoin('node__field_badge_type', 'badge', 'results.entity_id = badge.entity_id');
     $query->innerJoin('node_field_data', 'n', 'n.nid = results.entity_id');
