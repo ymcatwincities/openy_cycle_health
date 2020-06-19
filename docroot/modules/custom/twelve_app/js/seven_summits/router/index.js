@@ -15,40 +15,40 @@ const routes = [
     name: 'Welcome',
     component: Welcome,
     meta: { requiresAuth: true },
-    // beforeEnter: (to, from, next) => {
-    //   let checker = null;
-    //   if (from.name == null) {
-    //     checker = drupalSettings.heroConfig;
-    //   } else {
-    //     checker = Store.state.heroSelected;
-    //   }
-    //
-    //   if (checker) {
-    //     return next({name: 'Mountains'});
-    //   } else {
-    //     return next();
-    //   }
-    // }
+    beforeEnter: (to, from, next) => {
+      let checker = null;
+      if (from.name == null) {
+        checker = drupalSettings.heroConfig;
+      } else {
+        checker = Store.state.heroSelected;
+      }
+
+      if (checker) {
+        return next({name: 'Mountains'});
+      } else {
+        return next();
+      }
+    }
   },
   {
     path: '/hero',
     name: 'Hero',
     component: Hero,
     meta: { requiresGuest: true },
-    // beforeEnter: (to, from, next) => {
-    //   let checker = null;
-    //   if (from.name == null) {
-    //     checker = drupalSettings.heroConfig;
-    //   } else {
-    //     checker = Store.state.heroSelected;
-    //   }
-    //
-    //   if (checker) {
-    //     return next({name: 'Mountains'});
-    //   } else {
-    //     return next();
-    //   }
-    // }
+    beforeEnter: (to, from, next) => {
+      let checker = null;
+      if (from.name == null) {
+        checker = drupalSettings.heroConfig;
+      } else {
+        checker = Store.state.heroSelected;
+      }
+
+      if (checker) {
+        return next({name: 'Mountains'});
+      } else {
+        return next();
+      }
+    }
   },
   {
     path: '/mountains',
