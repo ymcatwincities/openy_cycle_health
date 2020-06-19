@@ -1,0 +1,30 @@
+.greetings-block-wrapper {
+  width: 100%;
+  .greeting-block {
+    width: 250px;
+    background: white;
+    border-radius: 5px;
+    margin: 1vh auto;
+    display: flex;
+
+    .climber-wrapper {
+      margin: 2vw;
+      width: 40px;
+    }
+    .user-name {
+
+    }
+    .edit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $black;
+      font-family: "Font Awesome 5 Free";
+      font-size: 24px;
+      font-weight: 900;
+      &:before {
+        content: "\f044";
+      }
+    }
+  }
+}

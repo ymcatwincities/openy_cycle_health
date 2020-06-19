@@ -33,6 +33,9 @@ export default new Vuex.Store({
     incrementMountainsConquered(state) {
       state.mountains_conquered++;
     },
+    updateHeroSelected(state) {
+      state.heroSelected = !state.heroSelected;
+    },
   },
   actions: {
     saveHero (context) {

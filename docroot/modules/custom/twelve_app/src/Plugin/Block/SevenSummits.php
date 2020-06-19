@@ -64,6 +64,7 @@ class SevenSummits extends GameAbstract {
             'username' => $this->family->getActivePlayerName(),
             'sub_account_id' => $this->family->getSubAccountId(),
             'badges' => $badge_list,
+            'heroConfig' => !empty($this->family->get7SummitsHeroConfig()),
           ],
         ],
       ];
