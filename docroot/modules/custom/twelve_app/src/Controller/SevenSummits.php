@@ -3,6 +3,7 @@ namespace Drupal\twelve_app\Controller;
 
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Driver\Exception\Exception;
 use Drupal\twelve_user\Family;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -18,10 +19,17 @@ class SevenSummits extends ControllerBase {
   protected $family;
 
   /**
-   * @param \Drupal\twelve_user\Family $family
+   * @var \Drupal\Core\Logger\LoggerChannelInterface
    */
-  public function __construct(Family $family) {
+  protected $logger;
+
+  /**
+   * @param \Drupal\twelve_user\Family $family
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $loggerFactory
+   */
+  public function __construct(Family $family, LoggerChannelFactoryInterface $loggerFactory) {
     $this->family = $family;
+    $this->logger = $loggerFactory->get('twelve_app');
   }
 
   /**
@@ -29,7 +37,8 @@ class SevenSummits extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('twelve_user.family')
+      $container->get('twelve_user.family'),
+      $container->get('logger.factory')
     );
   }
 
@@ -48,6 +57,7 @@ class SevenSummits extends ControllerBase {
         'status' => 'ok'
       ]);
     } catch (Exception $e) {
+      $this->logger->error($e->getMessage());
       return new AjaxResponse([
         'status' => 'error'
       ], AjaxResponse::HTTP_INTERNAL_SERVER_ERROR);
