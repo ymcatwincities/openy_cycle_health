@@ -8,7 +8,7 @@ export default {
     getProgress(mountain) {
       const exCount = mountain.exercises.length;
       const finCount = mountain.finished_exercises.length;
-      const percentage = (finCount / exCount).toFixed(2) * 100;
+      const percentage = (finCount / exCount) * 100;
       return Math.round(percentage);
     }
   }
