@@ -127,6 +127,7 @@ class SevenSummits extends GameAbstract {
         'main_image' => $main_image_url,
         'images' => $images,
         'id' => $index,
+        'climb_exercise_amount' => $paragraph->field_climb_exercise_amount->value,
       ];
     }
 

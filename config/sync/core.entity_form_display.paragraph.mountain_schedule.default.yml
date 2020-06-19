@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - entity_browser.browser.media_directories_modal
+    - field.field.paragraph.mountain_schedule.field_climb_exercise_amount
     - field.field.paragraph.mountain_schedule.field_continent
     - field.field.paragraph.mountain_schedule.field_country
     - field.field.paragraph.mountain_schedule.field_elevation
@@ -62,6 +63,13 @@ targetEntityType: paragraph
 bundle: mountain_schedule
 mode: default
 content:
+  field_climb_exercise_amount:
+    weight: 26
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
   field_continent:
     weight: 18
     settings:
