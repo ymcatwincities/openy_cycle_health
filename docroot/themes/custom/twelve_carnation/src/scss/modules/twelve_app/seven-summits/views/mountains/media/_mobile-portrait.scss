@@ -21,6 +21,18 @@ and (orientation: portrait) {
         top: 155px;
       }
 
+      &:nth-child(1) {
+        padding-top: 35px;
+
+        .progress-ring {
+          top: 60px !important;
+        }
+
+        .info {
+          top: 187px;
+        }
+      }
+
       &:nth-child(2) {
         grid-column: 3;
       }
