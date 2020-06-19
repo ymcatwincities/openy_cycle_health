@@ -49,12 +49,6 @@ router.beforeEach((to, from, next) => {
   if (to.name === 'Hero' && Store.state.heroSelected) {
     return next({name: 'Mountains'});
   }
-  // if (to.meta.requiresAuth && !Store.getters.isLoggedIn) {
-  //   return next({ name: 'Login' });
-  // }
-  // if (to.meta.requiresGuest && Store.getters.isLoggedIn) {
-  //   return next({ name: 'Home' });
-  // }
   return next();
 });
 
