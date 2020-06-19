@@ -40,27 +40,12 @@
                   <line x1="17.5659" y1="186.752" x2="121.566" y2="4.75193" stroke="white"/>
                   <line x1="227" y1="188.5" x2="18" y2="188.5" stroke="white"/>
                   <line x1="122.434" y1="2.75218" x2="227.434" y2="186.752" stroke="white"/>
-                  <circle cx="18" cy="187" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[0] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="26" cy="172" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[1] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="35" cy="157" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[2] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="43" cy="142" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[3] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="52" cy="127" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[4] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="60" cy="112" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[5] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="68" cy="98" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[6] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="77" cy="83" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[7] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="85" cy="68" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[8] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="94" cy="53" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[9] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="103" cy="38" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[10] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="111" cy="23" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[11] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="122" cy="5" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[12] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="138" cy="29" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[13] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="150" cy="51" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[14] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="163" cy="73" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[15] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="176" cy="96" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[16] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="190" cy="120" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[17] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="202" cy="142" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[18] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="214" cy="163" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[19] !== 'undefined'}" fill="white" stroke="white"/>
-                  <circle cx="227" cy="187" r="4.5" :class="{'finished_color': typeof summit.finished_exercises[20] !== 'undefined'}" fill="white" stroke="white"/>
+                  <ExerciseCircles
+                    :summit="summit"
+                    :vA="{x:17.5659,y:186.752}"
+                    :vB="{x:121.566,y:4.75193}"
+                    :vC="{x:227.434,y:186.752}"
+                  ></ExerciseCircles>
                 </svg>
               </div>
             </div>
@@ -98,9 +83,11 @@
   import BadgeHelper from '../../helper/twelve/user/badge';
   import MountainMixin from "../mixins/Mountain";
   import { mapState, mapMutations } from "vuex";
+  import ExerciseCircles from "../components/ExerciseCircles";
 
   export default {
     components: {
+      ExerciseCircles,
       Climber,
       ExerciseModal,
       Spinner,

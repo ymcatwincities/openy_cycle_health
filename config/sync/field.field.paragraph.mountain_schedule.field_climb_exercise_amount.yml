@@ -1,0 +1,29 @@
+uuid: 0e90075e-6de3-407a-93cb-81b30f20c6ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_climb_exercise_amount
+    - paragraphs.paragraphs_type.mountain_schedule
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_climb_exercise_amount
+id: paragraph.mountain_schedule.field_climb_exercise_amount
+field_name: field_climb_exercise_amount
+entity_type: paragraph
+bundle: mountain_schedule
+label: 'Climb exercise amount'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
