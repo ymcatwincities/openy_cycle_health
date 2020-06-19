@@ -54,7 +54,7 @@
 
   .jacket-colors,
   .flesh-colors {
-    @import "../hero/choice-colors";
+    @import "../components/buttons-list";
     display: grid;
     grid-column: 2;
     grid-auto-flow: column;

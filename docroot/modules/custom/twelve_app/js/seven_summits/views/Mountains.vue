@@ -1,6 +1,6 @@
 <template>
 
-  <div class="views-layout mountains-layout">
+  <div class="views-layout">
     <div class="greetings-block-wrapper">
     <div class="greeting-block">
       <div class="climber-wrapper">
@@ -10,10 +10,12 @@
       <div class="edit" v-on:click="editCharacterClick"></div>
     </div>
     </div>
-    <Mountain
-      v-for="summit in summits"
-      :summit="summit"
-    ></Mountain>
+    <div class="mountains-layout">
+      <Mountain
+        v-for="summit in summits"
+        :summit="summit"
+      ></Mountain>
+    </div>
   </div>
 </template>
 
