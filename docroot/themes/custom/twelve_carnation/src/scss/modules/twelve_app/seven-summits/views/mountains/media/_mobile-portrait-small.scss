@@ -13,6 +13,18 @@ and (orientation: portrait) {
         top: 130px;
       }
 
+      &:nth-child(1) {
+        padding-top: 25px;
+
+        .progress-ring {
+          top: 45px !important;
+        }
+
+        .info {
+          top: 160px;
+        }
+      }
+
       &:nth-child(6) {
         align-self: center;
       }

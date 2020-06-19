@@ -45,6 +45,7 @@
       }
 
       @include media-breakpoint-up(lg) {
+        margin-top: 0;
         font-size: 140px;
         line-height: 175px;
       }
