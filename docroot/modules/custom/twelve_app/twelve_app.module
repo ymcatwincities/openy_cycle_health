@@ -43,7 +43,7 @@ function twelve_app_theme() {
         'summits' => [],
         'summits_reached' => '',
         'mountains_conquered' => '',
-        'hero_config' => []
+        'hero_config' => [],
       ],
     ],
   ];
