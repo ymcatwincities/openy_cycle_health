@@ -15,6 +15,7 @@
     height: 90px;
 
     background-size: contain;
+    background-repeat: no-repeat;
 
     &.hidden-picture {
       background-image: url("/themes/custom/twelve_carnation/dist/img/badge/BadgeHiddenPicture@2x.png");
@@ -26,6 +27,12 @@
 
     &.blackout-bingo {
       background-image: url("/themes/custom/twelve_carnation/dist/img/badge/BadgeBlackout.png");
+    }
+
+    &.all-summits-conquered,
+    &.conquered-the-mountain,
+    &.summit-reached {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/seven-summits/7summits-badge.svg");
     }
   }
 
