@@ -38,7 +38,7 @@ class FamilyMemberAdd extends FormBase {
 
     $form['title'] = [
       '#type' => 'textfield',
-      '#title' => 'Title',
+      '#title' => 'Name',
       '#required' => TRUE,
       '#prefix' => '<span class="family-member-add-form-messages"></span>',
       '#suffix' => '<div class="form-item--error-message"></div>',

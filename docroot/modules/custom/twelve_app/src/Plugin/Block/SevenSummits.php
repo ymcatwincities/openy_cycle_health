@@ -112,10 +112,17 @@ class SevenSummits extends GameAbstract {
         }
       }
 
+      $exercises = $this->prepareExercisesArray($paragraph);
+
+      $climb_exercise_amount = round(count($exercises) / 2);
+      if ($paragraph->field_climb_exercise_amount->value > 0) {
+        $climb_exercise_amount = $paragraph->field_climb_exercise_amount->value;
+      }
+
       $summits[] = [
         'game_id' => $game['node_id'],
         'progress_nid' => !is_null($user_progress_node) ? $user_progress_node->id() : 0,
-        'exercises' => $this->prepareExercisesArray($paragraph),
+        'exercises' => $exercises,
         'finished_exercises' => $finished_exercises,
         'mountain' => $paragraph->field_mountain->value,
         'continent' => $paragraph->field_continent->value,
@@ -127,7 +134,7 @@ class SevenSummits extends GameAbstract {
         'main_image' => $main_image_url,
         'images' => $images,
         'id' => $index,
-        'climb_exercise_amount' => $paragraph->field_climb_exercise_amount->value,
+        'climb_exercise_amount' => $climb_exercise_amount,
       ];
     }
 

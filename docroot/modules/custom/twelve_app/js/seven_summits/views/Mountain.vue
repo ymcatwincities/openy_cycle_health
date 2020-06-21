@@ -163,7 +163,7 @@
           this.summit.finished_exercises,
         );
 
-        if (this.summit.finished_exercises.length === 13) {
+        if (this.summit.finished_exercises.length === parseInt(this.summit.climb_exercise_amount)) {
           BadgeHelper.create_summit_reached(this.summit.game_id);
           this.incrementSummitsReached();
         }
