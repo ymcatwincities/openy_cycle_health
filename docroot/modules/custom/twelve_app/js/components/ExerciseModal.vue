@@ -95,7 +95,7 @@
     computed: {
       time: function () {
         if(this.$route.query.debug === '1') {
-          return 3000;
+          return 1500;
         }
         return this.exercise.timer * 1000;
       }

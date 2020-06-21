@@ -139,9 +139,13 @@
       },
       onExerciseClosed: function () {
         this.exerciseModalVisible = false;
-
         if (this.fullyCompletedTodayExercises()) {
           BadgeHelper.create_conquered_mountain(this.summit.game_id);
+
+          if (this.mountains_conquered === 6) {
+            BadgeHelper.create_all_summits_conquered(this.summit.game_id);
+          }
+
           this.incrementMountainsConquered();
           this.$router.push({ name: "Mountains"});
         }
