@@ -36,6 +36,13 @@ function create_conquered_mountain(game_nid) {
   create(game_nid, 'Conquered the Mountain');
 }
 
+/**
+ * Function that creates All Summits Conquered node.
+ */
+function create_all_summits_conquered(game_nid) {
+  create(game_nid, 'All Summits Conquered');
+}
+
 function create(game_nid, badge_type) {
 
   let local_storage_progress_id = local_storage.get_progress_nid(game_nid);
@@ -86,5 +93,6 @@ export default {
   create_full_bingo,
   create_hidden_image,
   create_summit_reached,
-  create_conquered_mountain
+  create_conquered_mountain,
+  create_all_summits_conquered
 }

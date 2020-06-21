@@ -112,3 +112,22 @@ function twelve_user_update_8006() {
     ))->save();
   }
 }
+
+/**
+ * Create Seven Summit badge terms
+ */
+function twelve_user_update_8007() {
+  $vocab = 'badges';
+
+  $items = [
+    'All Summits Conquered',
+  ];
+
+  foreach ($items as $item) {
+    $term = Term::create(array(
+      'parent' => array(),
+      'name' => $item,
+      'vid' => $vocab,
+    ))->save();
+  }
+}

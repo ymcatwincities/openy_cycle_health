@@ -38,7 +38,7 @@ class FamilyMemberEdit extends FormBase {
 
     $form['title'] = [
       '#type' => 'textfield',
-      '#title' => 'Title',
+      '#title' => 'Name',
       '#required' => TRUE,
       '#default_value' => $node->getTitle(),
       '#prefix' => '<span class="family-member-add-form-messages"></span>',

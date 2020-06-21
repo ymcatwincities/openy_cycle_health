@@ -115,6 +115,13 @@
         background-image: url("/themes/custom/twelve_carnation/dist/img/logo--bingo.png");
       }
     }
+
+    &:nth-child(4) {
+      .grid-item .content .inner .image-prgf-grid {
+        background-image: url("/themes/custom/twelve_carnation/dist/img/seven-summits/7summits-badge.svg");
+      }
+    }
+
   }
 }
 
