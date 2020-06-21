@@ -43,13 +43,6 @@
         <img src="/themes/custom/twelve_carnation/dist/img/task-gold.png"></img>
         COMPLETE
       </button>
-      <button type="button" class="btn btn-blue"
-              v-if="debug"
-              @click="debugTimer = !debugTimer"
-      >
-        {{ debugTimer ? 'Type: Short time' : 'Type: Full time' }}
-      </button>
-
     </template>
   </Modal>
 </template>
@@ -77,7 +70,6 @@
       return {
         timerIsRunning: false,
         timerIsPaused: false,
-        debugTimer: false
       };
     },
     methods: {
@@ -102,7 +94,10 @@
     },
     computed: {
       time: function () {
-        return this.debugTimer ? 3000 : this.exercise.timer * 1000;
+        if(this.$route.query.debug === '1') {
+          return 3000;
+        }
+        return this.exercise.timer * 1000;
       }
     },
     filters: {
