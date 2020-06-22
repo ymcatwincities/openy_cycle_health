@@ -227,7 +227,7 @@ handlers:
     settings:
       states:
         - completed
-      to_mail: 'betsy.grams@ymcamn.org, anatoliy@imagexmedia.com, paige.kiecker@ymcamn.org'
+      to_mail: 'betsy.grams@ymcamn.org, anatoliy@imagexmedia.com, sarah.halby@ymcamn.org'
       to_options: {  }
       cc_mail: ''
       cc_options: {  }
