@@ -93,11 +93,12 @@
   .container {
     position: relative;
     z-index: 2;
-    min-height: 420px;
     height: 100vh;
+    min-height: 420px;
 
     @include media-breakpoint-up(lg) {
       height: calc(100vh - 85px - 50px);
+      min-height: 600px;
     }
   }
 

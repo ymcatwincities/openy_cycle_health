@@ -4,6 +4,7 @@
     <MountainInfoModal></MountainInfoModal>
 
     <router-view/>
+    <notifications group="twelve_app"></notifications>
   </div>
 </template>
 

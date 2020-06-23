@@ -11,9 +11,13 @@ Library
 .idea
 node_modules
 .composer
+composer.lock
 .drush
 .npm
 .config
+.cache
+.local
+*.sql
 
 # Vendors, core & contrib
 vendor/

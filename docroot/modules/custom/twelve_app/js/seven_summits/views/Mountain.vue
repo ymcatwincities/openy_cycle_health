@@ -36,15 +36,15 @@
                       <image xmlns:xlink="http://www.w3.org/1999/xlink" :href="summit.main_image" x="0" y="0" width="300" height="300"/>
                     </pattern>
                   </defs>
-                  <path d="M122.5 3L228.588 188.25H16.4119L122.5 3Z" fill="url(#mountain-img)"/>
-                  <line x1="17.5659" y1="186.752" x2="121.566" y2="4.75193" stroke="white"/>
-                  <line x1="227" y1="188.5" x2="18" y2="188.5" stroke="white"/>
-                  <line x1="122.434" y1="2.75218" x2="227.434" y2="186.752" stroke="white"/>
+                  <path d="M120,6 L225,188 H15 L122 Z" fill="url(#mountain-img)"/>
+                  <line x1="15" y1="188" x2="120" y2="6" stroke="white"/>
+                  <line x1="225" y1="188" x2="18" y2="188" stroke="white"/>
+                  <line x1="120" y1="6" x2="225" y2="188" stroke="white"/>
                   <ExerciseCircles
                     :summit="summit"
-                    :vA="{x:17.5659,y:186.752}"
-                    :vB="{x:121.566,y:4.75193}"
-                    :vC="{x:227.434,y:186.752}"
+                    :vA="{x:15,y:188}"
+                    :vB="{x:120,y:6}"
+                    :vC="{x:225,y:188}"
                   ></ExerciseCircles>
                 </svg>
               </div>
