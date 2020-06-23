@@ -33,14 +33,6 @@
           width: 60px;
           height: 60px;
         }
-
-        span {
-          margin-top: -7px;
-
-          @include media-breakpoint-up(md) {
-            margin-top: -3px;
-          }
-        }
       }
     }
 
