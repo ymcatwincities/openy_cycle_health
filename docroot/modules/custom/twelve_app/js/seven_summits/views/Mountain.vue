@@ -145,7 +145,11 @@
           if (this.mountains_conquered === 6) {
             BadgeHelper.create_all_summits_conquered(this.summit.game_id);
           }
-
+          this.$notify({
+            group: 'twelve_app',
+            title: 'Congratulations - you completed this mountain!',
+            text: 'Now, lets chose next one.'
+          });
           this.incrementMountainsConquered();
           this.$router.push({ name: "Mountains"});
         }
