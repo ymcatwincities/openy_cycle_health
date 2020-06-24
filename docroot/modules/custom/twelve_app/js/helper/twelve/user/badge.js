@@ -43,6 +43,13 @@ function create_all_summits_conquered(game_nid) {
   create(game_nid, 'All Summits Conquered');
 }
 
+/**
+ * Function that creates Eight Summit Conquered node.
+ */
+function create_eight_summit_conquered(game_nid) {
+  create(game_nid, 'Eight Summit Conquered');
+}
+
 function create(game_nid, badge_type) {
 
   let local_storage_progress_id = local_storage.get_progress_nid(game_nid);
@@ -94,5 +101,6 @@ export default {
   create_hidden_image,
   create_summit_reached,
   create_conquered_mountain,
-  create_all_summits_conquered
+  create_all_summits_conquered,
+  create_eight_summit_conquered
 }

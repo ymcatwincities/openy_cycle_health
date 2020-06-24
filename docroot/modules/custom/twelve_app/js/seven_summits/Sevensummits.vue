@@ -2,6 +2,14 @@
   <div>
     <LoginRequiredModal></LoginRequiredModal>
     <MountainInfoModal></MountainInfoModal>
+    <BadgeModal
+      :type="$store.state.badge.type"
+      :text="$store.state.badge.text"
+      :buttonText="$store.state.badge.buttonText"
+      :gotoUrl="$store.state.badge.url"
+      :badgeModalVisible="$store.state.badge.modal"
+      v-on:hide-badge-modal="$store.commit('badge/hideModal')"
+    ></BadgeModal>
 
     <router-view/>
     <notifications group="twelve_app"></notifications>
@@ -11,12 +19,14 @@
 <script>
   import MountainInfoModal from "./components/MountainInfoModal";
   import LoginRequiredModal from "./components/LoginRequiredModal";
+  import BadgeModal from "../components/BadgeModal";
 
   export default {
     name: 'Sevensummits',
     components: {
       LoginRequiredModal,
-      MountainInfoModal
+      MountainInfoModal,
+      BadgeModal
     },
     props: ['debug', 'error_message', 'summits', 'hero_config', 'summits_reached', 'mountains_conquered'],
     data() {

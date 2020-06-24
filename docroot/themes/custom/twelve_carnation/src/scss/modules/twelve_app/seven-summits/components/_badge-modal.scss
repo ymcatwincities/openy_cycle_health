@@ -1,0 +1,38 @@
+#seven_summits_app {
+  .modal.badge {
+    .modal-dialog {
+      .modal-content {
+        .modal-header {
+          .close {
+            margin: 5px;
+          }
+        }
+
+        .modal-body {
+          .badge-image {
+            margin-top: 10px;
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+
+          div:last-of-type {
+            padding-bottom: 10px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+.badge.seven-summits {
+  .badge-image {
+    background-image: url('/themes/custom/twelve_carnation/dist/img/seven-summits/7summits-badge.svg');
+  }
+}
+
+.badge.eight-summits {
+  .badge-image {
+    background-image: url('/themes/custom/twelve_carnation/dist/img/seven-summits/8-summits-badge.svg');
+  }
+}
