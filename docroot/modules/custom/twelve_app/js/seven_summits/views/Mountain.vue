@@ -144,6 +144,13 @@
         this.exerciseModalVisible = false;
         if (this.fullyCompletedTodayExercises()) {
           BadgeHelper.create_conquered_mountain(this.summit.game_id);
+
+          this.$notify({
+            group: 'twelve_app',
+            title: 'Congratulations - you completed this mountain!',
+            text: 'Now, lets chose next one.'
+          });
+
           this.incrementMountainsConquered();
 
           if (this.mountains_conquered === 7) {
