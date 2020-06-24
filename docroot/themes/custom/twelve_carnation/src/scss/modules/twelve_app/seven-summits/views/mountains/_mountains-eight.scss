@@ -58,6 +58,10 @@
         width: 900px;
         grid-row: 1;
         grid-column: 2;
+
+        .flag {
+          top: 120px;
+        }
       }
 
       &:nth-child(-n+7) {

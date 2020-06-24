@@ -1,6 +1,6 @@
 <template>
   <div class="views-layout"
-    :class="{'seven-summits-conquered': this.mountains_conquered === 7}"
+    :class="{'seven-summits-conquered': this.mountains_conquered >= 7}"
   >
     <Greeting></Greeting>
     <div class="mountains-layout">

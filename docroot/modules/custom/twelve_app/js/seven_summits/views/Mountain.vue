@@ -126,6 +126,9 @@
         'incrementSummitsReached',
         'incrementMountainsConquered',
       ]),
+      ...mapMutations('badge', {
+        showBadgeModal: 'showModal'
+      }),
       setUpNextExercise() {
         for (let i = 0; i < this.summit.exercises.length; i++) {
           if (!this.isExerciseFinished(this.summit.exercises[i])) {
@@ -141,12 +144,33 @@
         this.exerciseModalVisible = false;
         if (this.fullyCompletedTodayExercises()) {
           BadgeHelper.create_conquered_mountain(this.summit.game_id);
+          this.incrementMountainsConquered();
 
-          if (this.mountains_conquered === 6) {
+          if (this.mountains_conquered === 7) {
+            this.showBadgeModal({
+              type: 'seven-summits',
+              text: 'Seven summits conquered!',
+              url: '',
+              buttonText: 'Continue journey'
+            });
             BadgeHelper.create_all_summits_conquered(this.summit.game_id);
+          } else if (this.mountains_conquered === 8) {
+            this.showBadgeModal({
+              type: 'eight-summits',
+              text: `${this.summit.mountain} conquered!`,
+              url: '/challenges',
+              buttonText: 'FIND MORE BURSTS'
+            });
+            BadgeHelper.create_eight_summit_conquered(this.summit.game_id);
+          } else {
+            this.showBadgeModal({
+              type: 'seven-summits',
+              text: `${this.summit.mountain} conquered!`,
+              url: '',
+              buttonText: 'Continue journey'
+            });
           }
 
-          this.incrementMountainsConquered();
           this.$router.push({ name: "Mountains"});
         }
       },
@@ -170,6 +194,12 @@
         if (this.summit.finished_exercises.length === parseInt(this.summit.climb_exercise_amount)) {
           BadgeHelper.create_summit_reached(this.summit.game_id);
           this.incrementSummitsReached();
+          this.showBadgeModal({
+            type: 'seven-summits',
+            text: `${this.summit.mountain} summit reached!`,
+            url: '',
+            buttonText: 'Continue journey'
+          });
         }
 
         this.$notify({

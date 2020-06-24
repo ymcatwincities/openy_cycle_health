@@ -131,3 +131,22 @@ function twelve_user_update_8007() {
     ))->save();
   }
 }
+
+/**
+ * Create Eight Summit badge terms
+ */
+function twelve_user_update_8008() {
+  $vocab = 'badges';
+
+  $items = [
+    'Eight Summit Conquered',
+  ];
+
+  foreach ($items as $item) {
+    $term = Term::create(array(
+      'parent' => array(),
+      'name' => $item,
+      'vid' => $vocab,
+    ))->save();
+  }
+}

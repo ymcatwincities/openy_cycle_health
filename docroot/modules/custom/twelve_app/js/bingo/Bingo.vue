@@ -1,11 +1,5 @@
 <template>
   <div>
-    <DebugBar
-      :debug="debug"
-      :error_message="error_message"
-      :debug-show-badge-modal="debugShowBadgeModal"
-    ></DebugBar>
-
     <Greeting
       :login-required="true"
       :name-modal-visible="nameModalVisible"

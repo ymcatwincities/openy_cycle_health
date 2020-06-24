@@ -3,12 +3,14 @@ import Vuex from 'vuex';
 import Axios from "axios";
 import router from "../router";
 import modalMountainInfo from "./modalMountainInfo";
+import badge from "./badge";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
     modalMountainInfo,
+    badge,
   },
 
   state: {
@@ -16,8 +18,8 @@ export default new Vuex.Store({
     jacketColor: '',
     fleshTone: '',
     summits: '',
-    summits_reached: '1',
-    mountains_conquered: '3',
+    summits_reached: '',
+    mountains_conquered: '',
     debug: ''
   },
   mutations: {
