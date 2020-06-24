@@ -1,5 +1,7 @@
 <template>
-  <div class="views-layout">
+  <div class="views-layout"
+    :class="{'seven-summits-conquered': this.mountains_conquered === 7}"
+  >
     <Greeting></Greeting>
     <div class="mountains-layout">
       <Mountain
@@ -22,7 +24,8 @@
     },
     computed: {
       ...mapState([
-        'summits'
+        'summits',
+        'mountains_conquered'
       ]),
     },
   }
