@@ -62,7 +62,7 @@ class RecentAchievementsBlock extends BlockBase implements ContainerFactoryPlugi
 
     return [
       '#theme' => 'recent-achievements',
-      '#badges_list' => $this->family->getUserRecentsBadges(4),
+      '#badges_list' => $this->family->getUserRecentsBadges(6),
       '#uid' => $this->currentUser->id(),
       '#cache' => [
         'max-age' => 0
