@@ -1,8 +1,9 @@
 <template>
   <div class="greetings-block-wrapper">
     <div class="greeting-block">
-      <div class="climber-wrapper">
-        <Climber :class="['hero', $store.state.jacketColor, $store.state.fleshTone]"></Climber>
+      <div class="climber-wrapper"
+           :class="['hero', $store.state.jacketColor]"
+      >
       </div>
       <div class="user-name">Hi, {{ username }}</div>
       <div class="edit" v-on:click="editCharacterClick"></div>
@@ -11,11 +12,9 @@
 </template>
 <script>
   import { mapMutations } from "vuex";
-  import Climber from "./Climber";
   import twelve from "../../helper/twelve";
 
   export default {
-    components: { Climber },
     computed: {
       username() {
         return twelve.user.get_active_player_name();

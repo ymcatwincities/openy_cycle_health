@@ -10,11 +10,11 @@
         </div>
 
         <div class="seven-summits__climbers">
-          <div class="climber climber-l1 climber-1a"></div>
-          <div class="climber climber-l2 climber-1b"></div>
-          <div class="climber climber-l3 climber-1c"></div>
-          <div class="climber climber-l2 climber-1d"></div>
-          <div class="climber climber-l1 climber-1e"></div>
+          <div class="climber climber-l1 climber-blue"></div>
+          <div class="climber climber-l2 climber-green"></div>
+          <div class="climber climber-l3 climber-purple"></div>
+          <div class="climber climber-l2 climber-red"></div>
+          <div class="climber climber-l1 climber-yellow"></div>
         </div>
 
         <div class="seven-summits__sub-heading d-flex flex-column flex-sm-row flex-lg-column">

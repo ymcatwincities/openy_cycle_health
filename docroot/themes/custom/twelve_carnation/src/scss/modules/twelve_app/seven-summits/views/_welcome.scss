@@ -137,8 +137,8 @@
       z-index: 3;
     }
 
-    &-1a {
-      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-1a.svg");
+    &-blue {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-blue.svg");
       left: -5%;
 
       @include media-breakpoint-up(md) {
@@ -154,8 +154,8 @@
       }
     }
 
-    &-1b {
-      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-1b.svg");
+    &-green {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-green.svg");
       left: 10%;
 
       @include media-breakpoint-up(md) {
@@ -171,13 +171,13 @@
       }
     }
 
-    &-1c {
+    &-purple {
       left: calc(50% - 146px);
-      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-1c.svg");
+      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-purple.svg");
     }
 
-    &-1d {
-      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-1d.svg");
+    &-red {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-red.svg");
       left: auto;
       right: 10%;
 
@@ -194,8 +194,8 @@
       }
     }
 
-    &-1e {
-      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-1e.svg");
+    &-yellow {
+      background-image: url("/themes/custom/twelve_carnation/dist/img/climbers/climber-yellow.svg");
       left: auto;
       right: -5%;
 

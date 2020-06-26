@@ -229,6 +229,10 @@
         background: linear-gradient(180deg, rgba(1,163,237,1) 0%, rgba(218,242,252,1) 100%);
         margin: -48% auto 0;
 
+        > div {
+          height: 130%;
+        }
+
         @include media-breakpoint-up(sn) {
           height: 140px;
           width: 140px;

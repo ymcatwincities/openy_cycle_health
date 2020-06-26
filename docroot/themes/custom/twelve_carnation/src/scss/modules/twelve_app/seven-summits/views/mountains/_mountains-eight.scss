@@ -53,6 +53,7 @@
       }
 
       &:nth-child(8) {
+        display: block;
         align-self: center;
         z-index: 5;
         width: 900px;
@@ -61,6 +62,10 @@
 
         .flag {
           top: 120px;
+        }
+
+        .info {
+          margin-top: 2vh;
         }
       }
 
@@ -111,6 +116,10 @@
 
       .mountain:nth-child(8) {
         grid-row: 2;
+
+        .flag {
+          top: 90px;
+        }
       }
     }
   }
@@ -185,6 +194,10 @@
           z-index: 8;
           grid-row: 2;
           grid-column: 2;
+
+          .flag {
+            top: 90px;
+          }
         }
       }
     }

@@ -22,8 +22,10 @@
             <div class="mountain__view h-100">
 
               <div class="mountain__view-triangle">
-                <div class="mountain__view-wrap avatar">
-                  <Climber :class="['hero', $store.state.jacketColor, $store.state.fleshTone]"></Climber>
+                <div class="mountain__view-wrap avatar" >
+                  <div
+                    :class="['hero', $store.state.jacketColor]"
+                  ></div>
                 </div>
 
                 <div v-if="summit.finished_exercises.length !== 0 && summit.exercises.length === summit.finished_exercises.length" class="mountain__view-wrap text">
@@ -76,7 +78,6 @@
 </template>
 
 <script>
-  import Climber from "../components/Climber.vue";
   import twelve from '../../helper/twelve';
   import ExerciseModal from '../../components/ExerciseModal.vue';
   import Spinner from '../../components/Spinner.vue'
@@ -88,7 +89,6 @@
   export default {
     components: {
       ExerciseCircles,
-      Climber,
       ExerciseModal,
       Spinner,
     },

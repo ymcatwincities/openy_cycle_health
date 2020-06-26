@@ -43,16 +43,15 @@ class SevenSummits extends ControllerBase {
   }
 
   /**
-   * Render method for /seven-summits/save-hero/{jacketColor}/{fleshTone}
+   * Render method for /seven-summits/save-hero/{jacketColor}
    *
    * @param $jacketColor
-   * @param $fleshTone
    *
    * @return AjaxResponse
    */
-  public function saveHero($jacketColor, $fleshTone) {
+  public function saveHero($jacketColor) {
     try {
-      $this->family->save7SummitsHeroConfig($jacketColor, $fleshTone);
+      $this->family->save7SummitsHeroConfig($jacketColor);
       return new AjaxResponse([
         'status' => 'ok'
       ]);
