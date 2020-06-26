@@ -16,7 +16,6 @@ export default new Vuex.Store({
   state: {
     heroSelected: false,
     jacketColor: '',
-    fleshTone: '',
     summits: '',
     summits_reached: '',
     mountains_conquered: '',
@@ -25,9 +24,6 @@ export default new Vuex.Store({
   mutations: {
     updateJacketColor(state, color) {
       state.jacketColor = color;
-    },
-    updateFleshTone(state, tone) {
-      state.fleshTone = tone;
     },
     incrementSummitsReached(state) {
       state.summits_reached++;
@@ -43,9 +39,10 @@ export default new Vuex.Store({
     saveHero (context) {
       Axios({
         method: 'get',
-        url: `/seven-summits/save-hero/${context.state.jacketColor}/${context.state.fleshTone}`
+        url: `/seven-summits/save-hero/${context.state.jacketColor}`
       }).then((response) => {
         if (response.data.status === 'ok') {
+          context.commit('updateHeroSelected');
           router.push('Mountains');
         } else {
           if (process.env.DEBUG) {

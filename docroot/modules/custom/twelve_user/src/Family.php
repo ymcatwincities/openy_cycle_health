@@ -372,13 +372,11 @@ class Family {
   /**
    * Update Hero for Seven Summits
    * @param $jacketColor
-   * @param $fleshTone
    */
-  public function save7SummitsHeroConfig($jacketColor, $fleshTone) {
+  public function save7SummitsHeroConfig($jacketColor) {
     $subAccId = $this->getSubAccountId();
     $this->userData->set('twelve_app', $this->currentUser->id(), 'hero'.$subAccId, [
       'jacketColor' => $jacketColor,
-      'fleshTone' => $fleshTone,
     ]);
   }
 
@@ -392,7 +390,6 @@ class Family {
     if (is_null($hero)) {
       $hero = [
         'jacketColor' => null,
-        'fleshTone' => null
       ];
     }
 
