@@ -54,7 +54,11 @@
     // Climbers styles.
     &__climbers {
       position: relative;
-      height: 190px;
+      height: 30vh;
+
+      @include media-breakpoint-up(md) {
+        height: 40vh;
+      }
 
       @include media-breakpoint-up(lg) {
         margin-top: -15px;
@@ -75,6 +79,10 @@
       line-height: 27px;
       color: $thunder;
       align-items: center;
+
+      @media all and (min-width: 500px) {
+        flex-direction: row !important;
+      }
 
       @include media-breakpoint-up(lg) {
         font-size: 36px;
@@ -104,7 +112,7 @@
 
   // Style for climbers.
   .climber {
-    height: 190px;
+    height: 100%;
     background-repeat: no-repeat;
     background-position: center;
     position: absolute;
