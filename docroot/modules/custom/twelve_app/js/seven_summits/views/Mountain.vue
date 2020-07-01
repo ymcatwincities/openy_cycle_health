@@ -202,7 +202,7 @@
           BadgeHelper.create_summit_reached(this.summit.game_id);
           this.incrementSummitsReached();
           this.showBadgeModal({
-            type: 'seven-summits',
+            type: this.summits_reached <= 7 ? 'seven-summits' : 'eight-summits',
             text: `${this.summit.mountain} summit reached!`,
             url: '',
             buttonText: 'Continue journey'
