@@ -12,7 +12,7 @@
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^1.1.5",
     "@vue/babel-preset-app": "^3.12.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-polyfill": "^6.26.0",
     "bootstrap-vue": "^2.0.2",
     "core-js": "^2.6.11",
